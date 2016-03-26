@@ -25,7 +25,7 @@ namespace WPFLib.Dialogs
         {
             get
             {
-                SerialPort port = new SerialPort();
+                var port = new SerialPort();
                 port.StopBits = (System.IO.Ports.StopBits)Enum.Parse(typeof(System.IO.Ports.StopBits), ToStr(StopBits.SelectedItem));
                 port.Parity = (System.IO.Ports.Parity)Enum.Parse(typeof(System.IO.Ports.Parity), ToStr(Parity.SelectedItem));
                 port.BaudRate = Convert.ToInt32(ToStr(Baudrate.SelectedItem));
@@ -47,7 +47,7 @@ namespace WPFLib.Dialogs
             if (o is string) return (string)o;
             else
             {
-                ComboBoxItem c = (ComboBoxItem)o;
+                var c = (ComboBoxItem)o;
                 return c.Content.ToString();
             }
         }
