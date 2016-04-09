@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Syntax name="Python">
+	<HighlightWordsRule name="Reserved language words">
+		<Words>
+      and del from not while as elif global or with
+      assert else if pass yield break  except import
+      print class exec in raise continue finally is
+      return def for lambda try
+    </Words>
+		<IgnoreCase>false</IgnoreCase>
+		<Foreground>#0000FF</Foreground>
+		<FontWeight>Bold</FontWeight>
+		<FontStyle>Normal</FontStyle>
+	</HighlightWordsRule>
+
+	<HighlightLineRule name="Comments">
+		<LineStart>#</LineStart>
+		<IgnoreCase>false</IgnoreCase>
+		<Foreground>#00FF00</Foreground>
+		<FontWeight>Normal</FontWeight>
+		<FontStyle>Normal</FontStyle>
+	</HighlightLineRule>
+
+	<AdvancedHighlightRule name="Numbers">
+		<Expression>[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?.</Expression>
+		<IgnoreCase>false</IgnoreCase>
+		<Foreground>#F68A1B</Foreground>
+		<FontWeight>Normal</FontWeight>
+		<FontStyle>Normal</FontStyle>
+	</AdvancedHighlightRule>
+</Syntax>

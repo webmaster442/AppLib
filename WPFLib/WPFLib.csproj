@@ -62,6 +62,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\SyntaxHighlight\SyntaxHighlightBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Dialogs\SerialPortDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -74,19 +78,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Themes\SyntaxTextBox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\EditableSlider.xaml.cs">
       <DependentUpon>EditableSlider.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\ImageButton.cs" />
-    <Compile Include="Controls\PythonSyntax.cs" />
-    <Compile Include="Controls\SyntaxProvider.cs" />
-    <Compile Include="Controls\SyntaxTextBox.cs" />
+    <Compile Include="Controls\SyntaxHighlight\DrawingControl.cs" />
+    <Compile Include="Controls\SyntaxHighlight\HighlighterManager.cs" />
+    <Compile Include="Controls\SyntaxHighlight\IHighlighter.cs" />
+    <Compile Include="Controls\SyntaxHighlight\SyntaxHighlightBox.xaml.cs">
+      <DependentUpon>SyntaxHighlightBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SyntaxHighlight\TextUtilities.cs" />
     <Compile Include="Converters\FileNameConverter.cs" />
     <Compile Include="Converters\FileSizeConverter.cs" />
     <Compile Include="Converters\NegateConverter.cs" />
@@ -119,13 +123,21 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <Resource Include="Resources\syntax.xsd">
+      <SubType>Designer</SubType>
+    </Resource>
     <None Include="WPFLib.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\edit.png" />
     <Resource Include="Images\erease.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\VHDL.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ecalc.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
