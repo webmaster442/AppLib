@@ -74,12 +74,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Themes\SyntaxTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\EditableSlider.xaml.cs">
       <DependentUpon>EditableSlider.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\ImageButton.cs" />
+    <Compile Include="Controls\PythonSyntax.cs" />
+    <Compile Include="Controls\SyntaxProvider.cs" />
+    <Compile Include="Controls\SyntaxTextBox.cs" />
     <Compile Include="Converters\FileNameConverter.cs" />
     <Compile Include="Converters\FileSizeConverter.cs" />
     <Compile Include="Converters\NegateConverter.cs" />
