@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Media;
@@ -23,8 +24,8 @@ namespace WPFLib.Controls
         /// <summary>
         /// Creates a new instance of xml highlighter
         /// </summary>
-        /// <param name="xml">xml file to load</param>
-        public XmlHighlighter(string xml)
+        /// <param name="XML">xml stream to load</param>
+        public XmlHighlighter(Stream XML)
         {
             var schemafile = Application.GetResourceStream(new Uri("pack://application:,,,/WPFLib;component/Resources/syntax.xsd"));
             var schemaStream = schemafile.Stream;
@@ -39,8 +40,7 @@ namespace WPFLib.Controls
 
             try
             {
-                var xmlfile = Application.GetResourceStream(new Uri("pack://application:,,,/WPFLib;component/Resources/" + xml));
-                var stream = xmlfile.Stream;
+                var stream = XML;
                 var reader = XmlReader.Create(stream, readerSettings);
                 var xmldoc = XDocument.Load(reader);
                 var root = xmldoc.Root;
