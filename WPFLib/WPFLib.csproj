@@ -99,6 +99,7 @@
       <DependentUpon>SerialPortDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Extensions\DependencyObjectExtensions.cs" />
+    <Compile Include="Extensions\DoubleExtensions.cs" />
     <Compile Include="Extensions\FrameWorkElementExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

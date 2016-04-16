@@ -17,9 +17,9 @@ namespace WPFLib.Controls
     /// </summary>
     public class XmlHighlighter : IHighlighter
     {
-        private List<HighlightWordsRule> wordsRules;
-        private List<HighlightLineRule> lineRules;
-        private List<AdvancedHighlightRule> regexRules;
+        private readonly List<HighlightWordsRule> wordsRules;
+        private readonly List<HighlightLineRule> lineRules;
+        private readonly List<AdvancedHighlightRule> regexRules;
 
         /// <summary>
         /// Creates a new instance of xml highlighter
@@ -34,7 +34,7 @@ namespace WPFLib.Controls
             {
                 Debug.WriteLine("Xml schema validation error : " + e.Message);
             });
-            XmlReaderSettings readerSettings = new XmlReaderSettings();
+            var readerSettings = new XmlReaderSettings();
             readerSettings.Schemas.Add(schema);
             readerSettings.ValidationType = ValidationType.Schema;
 
@@ -87,7 +87,7 @@ namespace WPFLib.Controls
             //
             // WORDS RULES
             //
-            Regex wordsRgx = new Regex("[a-zA-Z_][a-zA-Z0-9_]*");
+            var wordsRgx = new Regex("[a-zA-Z_][a-zA-Z0-9_]*");
             foreach (Match m in wordsRgx.Matches(text.Text))
             {
                 foreach (HighlightWordsRule rule in wordsRules)
@@ -120,7 +120,7 @@ namespace WPFLib.Controls
             //
             foreach (AdvancedHighlightRule rule in regexRules)
             {
-                Regex regexRgx = new Regex(rule.Expression);
+                var regexRgx = new Regex(rule.Expression);
                 foreach (Match m in regexRgx.Matches(text.Text))
                 {
                     text.SetForegroundBrush(rule.Options.Foreground, m.Index, m.Length);
@@ -134,7 +134,7 @@ namespace WPFLib.Controls
             //
             foreach (HighlightLineRule rule in lineRules)
             {
-                Regex lineRgx = new Regex(Regex.Escape(rule.LineStart) + ".*");
+                var lineRgx = new Regex(Regex.Escape(rule.LineStart) + ".*");
                 foreach (Match m in lineRgx.Matches(text.Text))
                 {
                     text.SetForegroundBrush(rule.Options.Foreground, m.Index, m.Length);

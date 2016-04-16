@@ -3,7 +3,7 @@ using System.Diagnostics.Contracts;
 
 namespace WPFLib.Controls
 {
-    internal class TextUtilities
+    internal static class TextUtilities
     {
         /// <summary>
         /// Returns the raw number of the current line count.
@@ -28,7 +28,7 @@ namespace WPFLib.Controls
         public static int GetFirstCharIndexFromLineIndex(string text, int lineIndex)
         {
             if (text == null)
-                throw new ArgumentNullException("text");
+                throw new ArgumentNullException(nameof(text));
             if (lineIndex <= 0)
                 return 0;
 
@@ -55,7 +55,7 @@ namespace WPFLib.Controls
         public static int GetLastCharIndexFromLineIndex(string text, int lineIndex)
         {
             if (text == null)
-                throw new ArgumentNullException("text");
+                throw new ArgumentNullException(nameof(text));
             if (lineIndex < 0)
                 return 0;
 

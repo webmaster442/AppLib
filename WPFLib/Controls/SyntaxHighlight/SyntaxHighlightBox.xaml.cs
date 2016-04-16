@@ -5,6 +5,7 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using WPFLib.Extensions;
 
 namespace WPFLib.Controls
 {
@@ -23,7 +24,7 @@ namespace WPFLib.Controls
             get { return lineHeight; }
             set
             {
-                if (value != lineHeight)
+                if (!value.EqualsWithTolerance(lineHeight))
                 {
                     lineHeight = value;
                     blockHeight = MaxLineCountInBlock * value;
@@ -114,7 +115,7 @@ namespace WPFLib.Controls
 
         private void OnScrollChanged(object sender, ScrollChangedEventArgs e)
         {
-            if (e.VerticalChange != 0)
+            if (!e.VerticalChange.EqualsWithTolerance(0))
                 UpdateBlocks();
             InvalidateVisual();
         }
@@ -149,7 +150,7 @@ namespace WPFLib.Controls
                     return;
                 }
 
-                InnerTextBlock block = new InnerTextBlock(
+                var block = new InnerTextBlock(
                     fisrCharIndex,
                     lastCharIndex,
                     blocks.Last().LineEndIndex + 1,
@@ -197,7 +198,7 @@ namespace WPFLib.Controls
                 if (i == Text.Length - 1)
                 {
                     string blockText = Text.Substring(charStart);
-                    InnerTextBlock block = new InnerTextBlock(
+                    var block = new InnerTextBlock(
                         charStart,
                         i, lineStart,
                         lineStart + TextUtilities.GetLineCount(blockText) - 1,
@@ -216,7 +217,7 @@ namespace WPFLib.Controls
                 }
                 if (localLineCount > maxLineCountInBlock)
                 {
-                    InnerTextBlock block = new InnerTextBlock(
+                    var block = new InnerTextBlock(
                         charStart,
                         i,
                         lineStart,
@@ -293,7 +294,7 @@ namespace WPFLib.Controls
         /// </summary>
         public int GetIndexOfFirstVisibleLine()
         {
-            int guessedLine = (int)(VerticalOffset / lineHeight);
+            var guessedLine = (int)(VerticalOffset / lineHeight);
             return guessedLine > totalLineCount ? totalLineCount : guessedLine;
         }
 
@@ -303,7 +304,7 @@ namespace WPFLib.Controls
         public int GetIndexOfLastVisibleLine()
         {
             double height = VerticalOffset + ViewportHeight;
-            int guessedLine = (int)(height / lineHeight);
+            var guessedLine = (int)(height / lineHeight);
             return guessedLine > totalLineCount - 1 ? totalLineCount - 1 : guessedLine;
         }
 
@@ -328,7 +329,7 @@ namespace WPFLib.Controls
         /// </summary>
         private FormattedText GetFormattedText(string text)
         {
-            FormattedText ft = new FormattedText(
+            var ft = new FormattedText(
                 text,
                 System.Globalization.CultureInfo.InvariantCulture,
                 FlowDirection.LeftToRight,
@@ -349,10 +350,10 @@ namespace WPFLib.Controls
         {
             string text = "";
             for (int i = firstIndex + 1; i <= lastIndex + 1; i++)
-                text += i.ToString() + "\n";
+                text += i + "\n";
             text = text.Trim();
 
-            FormattedText ft = new FormattedText(
+            var ft = new FormattedText(
                 text,
                 System.Globalization.CultureInfo.InvariantCulture,
                 FlowDirection.LeftToRight,
@@ -372,7 +373,7 @@ namespace WPFLib.Controls
         /// </summary>
         private double GetFormattedTextWidth(string text)
         {
-            FormattedText ft = new FormattedText(
+            var ft = new FormattedText(
                 text,
                 System.Globalization.CultureInfo.InvariantCulture,
                 FlowDirection.LeftToRight,

@@ -6,8 +6,8 @@ namespace WPFLib.Controls
 {
     internal class DrawingControl : FrameworkElement
     {
-        private VisualCollection visuals;
-        private DrawingVisual visual;
+        private readonly VisualCollection visuals;
+        private readonly DrawingVisual visual;
 
         public DrawingControl()
         {

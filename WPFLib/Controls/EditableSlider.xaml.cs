@@ -48,30 +48,30 @@ namespace WPFLib.Controls
         /// </summary>
         public event RoutedEventHandler ValueChanged;
 
-        private bool _editOnClickSetting = false;
+        //private bool _editOnClickSetting;
 
         /// <summary>
         /// True if dragging via mouse, false otherwise
         /// </summary>
-        private bool _isDragging = false;
+        private bool _isDragging;
 
         /// <summary>
         /// True if the textbox is enabled and being edited, false otherwise
         /// </summary>
-        private bool _isInEditMode = false;
+        private bool _isInEditMode;
 
         /// <summary>
         /// True if the user started dragging, false otherwise
         /// </summary>
-        private bool _hasBeenDragging = false;
+        //private bool _hasBeenDragging;
 
         private string _displayFormat = "0.00";
 
-        private bool _usingCustomDisplayFormat = false;
+        private bool _usingCustomDisplayFormat;
 
-        bool _isInitialized = false;
+        bool _isInitialized;
 
-        private bool _isOverEditValueButton = false;
+        private bool _isOverEditValueButton;
 
         /// <summary>
         /// Creates a new instance of EditableSlider
@@ -158,27 +158,27 @@ namespace WPFLib.Controls
         {
             rectBase.CaptureMouse();
             _isDragging = true;
-            _hasBeenDragging = false;
+            //_hasBeenDragging = false;
         }
 
         private void rectBase_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             rectBase.ReleaseMouseCapture();
             ReleaseMouseCapture();
-            if (_editOnClickSetting)
+            /*if (_editOnClickSetting)
             {
                 _isDragging = false;
                 if (!_hasBeenDragging) EnterEditMode();
             }
             else
-            {
+            {*/
                 if (_isDragging)
                 {
                     double x = e.GetPosition(this.rectBase).X;
                     //if (x < 0) x = CorrectGetPosition(rectBase).X;
                     UpdatePercent(x);
                 }
-            }
+            //}
             _isDragging = false;
         }
 
@@ -194,7 +194,7 @@ namespace WPFLib.Controls
                 double x = e.GetPosition(this.rectBase).X;
                 //if (x < 0) x = CorrectGetPosition(rectBase).X;
                 UpdatePercent(x);
-                _hasBeenDragging = true;
+                //_hasBeenDragging = true;
             }
         }
 
