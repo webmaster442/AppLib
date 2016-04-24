@@ -83,6 +83,7 @@
     <Compile Include="Controls\EditableSlider.xaml.cs">
       <DependentUpon>EditableSlider.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\FuzzyTextClock.cs" />
     <Compile Include="Controls\ImageButton.cs" />
     <Compile Include="Controls\SyntaxHighlight\DrawingControl.cs" />
     <Compile Include="Controls\SyntaxHighlight\HighlighterManager.cs" />
