@@ -54,7 +54,9 @@ using System.Windows.Markup;
 [assembly: AssemblyFileVersion("1.0.0.0")]
 
 //XAML NAMESPACE DEFS
-[assembly: XmlnsPrefix("http://webmaster442.hu/wpflib", "WPFLib.Controls")]
-[assembly: XmlnsPrefix("http://webmaster442.hu/wpflib", "WPFLib.Converters")]
-[assembly: XmlnsPrefix("http://webmaster442.hu/wpflib", "WPFLib.Dialogs")]
-[assembly: XmlnsPrefix("http://webmaster442.hu/wpflib", "WPFLib.Extensions")]
+[assembly: XmlnsPrefix("http://github.com/webmaster442/WPFLib", "wpflib")]
+[assembly: XmlnsDefinition("http://github.com/webmaster442/WPFLib", "WPFLib.Controls")]
+[assembly: XmlnsDefinition("http://github.com/webmaster442/WPFLib", "WPFLib.Converters")]
+[assembly: XmlnsDefinition("http://github.com/webmaster442/WPFLib", "WPFLib.Dialogs")]
+[assembly: XmlnsDefinition("http://github.com/webmaster442/WPFLib", "WPFLib.Extensions")]
+[assembly: XmlnsDefinition("http://github.com/webmaster442/WPFLib", "WPFLib.Shaders")]
