@@ -74,6 +74,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Themes\ImageToggleButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\EditableSlider.xaml.cs">
@@ -81,6 +85,7 @@
     </Compile>
     <Compile Include="Controls\FuzzyTextClock.cs" />
     <Compile Include="Controls\ImageButton.cs" />
+    <Compile Include="Controls\ImageToggleButton.cs" />
     <Compile Include="Converters\FileNameConverter.cs" />
     <Compile Include="Converters\FileSizeConverter.cs" />
     <Compile Include="Converters\NegateConverter.cs" />

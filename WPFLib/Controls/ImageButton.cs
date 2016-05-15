@@ -19,17 +19,20 @@ namespace WPFLib.Controls
         /// <summary>
         /// Image property
         /// </summary>
-        public static readonly DependencyProperty ImageProperty = DependencyProperty.Register("Image", typeof(ImageSource), typeof(ImageButton), new PropertyMetadata(null));
+        public static readonly DependencyProperty ImageProperty = 
+            DependencyProperty.Register("Image", typeof(ImageSource), typeof(ImageButton), new PropertyMetadata(null));
 
         /// <summary>
         /// Image height property
         /// </summary>
-        public static readonly DependencyProperty ImageHeightProperty = DependencyProperty.Register("ImageHeight", typeof(double), typeof(ImageButton), new PropertyMetadata(Double.NaN));
+        public static readonly DependencyProperty ImageHeightProperty =
+            DependencyProperty.Register("ImageHeight", typeof(double), typeof(ImageButton), new PropertyMetadata(Double.NaN));
 
         /// <summary>
         /// Image Width property
         /// </summary>
-        public static readonly DependencyProperty ImageWidthProperty = DependencyProperty.Register("ImageWidth", typeof(double), typeof(ImageButton), new PropertyMetadata(Double.NaN));
+        public static readonly DependencyProperty ImageWidthProperty =
+            DependencyProperty.Register("ImageWidth", typeof(double), typeof(ImageButton), new PropertyMetadata(Double.NaN));
 
         /// <summary>
         /// Gets or sets the control image
