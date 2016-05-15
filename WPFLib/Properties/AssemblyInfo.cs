@@ -60,3 +60,4 @@ using System.Windows.Markup;
 [assembly: XmlnsDefinition("http://github.com/webmaster442/WPFLib", "WPFLib.Dialogs")]
 [assembly: XmlnsDefinition("http://github.com/webmaster442/WPFLib", "WPFLib.Extensions")]
 [assembly: XmlnsDefinition("http://github.com/webmaster442/WPFLib", "WPFLib.Shaders")]
+[assembly: XmlnsDefinition("http://github.com/webmaster442/WPFLib", "WPFLib.Attached")]
