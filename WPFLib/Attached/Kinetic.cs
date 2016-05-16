@@ -13,7 +13,7 @@ namespace WPFLib.Attached
     /// <summary>
     /// Kinetic scrolling attached behaviour for scrollviewers
     /// </summary>
-    public class Kinetic
+    public static class Kinetic
     {
         #region Friction
 
