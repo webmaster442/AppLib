@@ -39,7 +39,7 @@ namespace WPFLib.Shaders
         public FractalExplorerEffect()
         {
             PixelShader pixelShader = new PixelShader();
-            pixelShader.UriSource = new Uri("pack://application:,,,/WPFLib;component/Resources/FractalExplorerEffect");
+            pixelShader.UriSource = new Uri("pack://application:,,,/WPFLib;component/Resources/FractalExplorerEffect.ps");
             this.PixelShader = pixelShader;
 
             this.UpdateShaderValue(InputProperty);
