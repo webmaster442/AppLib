@@ -30,6 +30,7 @@ namespace WPFLib.Dialogs
                 var child = RenderNode(ex.InnerException);
                 node.Items.Add(child);
             }
+
             return node;
         }
 
