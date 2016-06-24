@@ -10,14 +10,11 @@ namespace WPFLib.Converters
     public class FileSizeConverter : IValueConverter
     {
         /// <summary>
-        /// Converts a long value to a human readable File size
+        /// Calculate a file size in bytes to a human readable size
         /// </summary>
-        /// <param name="value">The value produced by the binding source.</param>
-        /// <param name="targetType">The type of the binding target property.</param>
-        /// <param name="parameter">The converter parameter to use.</param>
-        /// <param name="culture">The culture to use in the converter.</param>
-        /// <returns>string, file size as a readable file size</returns>
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        /// <param name="value">long input value</param>
+        /// <returns>Human readable file size</returns>
+        public static string Calculate(long value)
         {
             double val = System.Convert.ToDouble(value);
             string unit = "Byte";
@@ -42,6 +39,20 @@ namespace WPFLib.Converters
                 unit = "kiB";
             }
             return string.Format("{0:0.000} {1}", val, unit);
+        }
+
+        /// <summary>
+        /// Converts a long value to a human readable File size
+        /// </summary>
+        /// <param name="value">The value produced by the binding source.</param>
+        /// <param name="targetType">The type of the binding target property.</param>
+        /// <param name="parameter">The converter parameter to use.</param>
+        /// <param name="culture">The culture to use in the converter.</param>
+        /// <returns>string, file size as a readable file size</returns>
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var ip = System.Convert.ToInt64(value);
+            return Calculate(ip);
         }
 
         /// <summary>
