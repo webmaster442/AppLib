@@ -57,6 +57,35 @@ namespace WPFLib.Extensions
         }
 
         /// <summary>
+        /// Finds the nearest child of the specified type, or null if one wasn't found.
+        /// </summary>
+        /// <typeparam name="T">Type to search for</typeparam>
+        /// <param name="reference">Parent container</param>
+        /// <returns>nearest child of the specified type, or null if one wasn't found.</returns>
+        public static T FindChild<T>(this DependencyObject reference) where T : class
+        {
+            // Do a breadth first search.
+            var queue = new Queue<DependencyObject>();
+            queue.Enqueue(reference);
+            while (queue.Count > 0)
+            {
+                DependencyObject child = queue.Dequeue();
+                T obj = child as T;
+                if (obj != null)
+                {
+                    return obj;
+                }
+
+                // Add the children to the queue to search through later.
+                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(child); i++)
+                {
+                    queue.Enqueue(VisualTreeHelper.GetChild(child, i));
+                }
+            }
+            return null; // Not found.
+        }
+
+        /// <summary>
         /// Finds all children of a specified type in a container
         /// </summary>
         /// <typeparam name="T">Type of children to search</typeparam>
