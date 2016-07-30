@@ -23,6 +23,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>..\bin\Debug\WPFLib.XML</DocumentationFile>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -60,6 +61,14 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Controls\AlphaSelectControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ColorPicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Controls\EditableSlider.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -92,7 +101,14 @@
   <ItemGroup>
     <Compile Include="Attached\Kinetic.cs" />
     <Compile Include="Attached\ListBoxSelector.cs" />
+    <Compile Include="Controls\AlphaSelectControl.xaml.cs">
+      <DependentUpon>AlphaSelectControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\AnimatedTabControl.cs" />
+    <Compile Include="Controls\ColorPicker.xaml.cs">
+      <DependentUpon>ColorPicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ColorSpace.cs" />
     <Compile Include="Controls\EditableSlider.xaml.cs">
       <DependentUpon>EditableSlider.xaml</DependentUpon>
     </Compile>
