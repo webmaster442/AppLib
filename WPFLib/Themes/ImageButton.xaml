@@ -1,8 +1,9 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:controls="clr-namespace:WPFLib.Controls"
-                    xmlns:converters="clr-namespace:WPFLib.Converters">
-
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFLib.Controls"
+    xmlns:converters="clr-namespace:WPFLib.Converters">
+    
     <controls:VisibilityConvertor x:Key="VisibilityConvertor"/>
 
     <Style TargetType="{x:Type controls:ImageButton}" BasedOn="{StaticResource {x:Type Button}}">
