@@ -26,13 +26,13 @@ namespace WPFLib.Dialogs
             get
             {
                 var port = new SerialPort();
-                port.StopBits = (System.IO.Ports.StopBits)Enum.Parse(typeof(System.IO.Ports.StopBits), ToStr(StopBits.SelectedItem));
-                port.Parity = (System.IO.Ports.Parity)Enum.Parse(typeof(System.IO.Ports.Parity), ToStr(Parity.SelectedItem));
+                port.StopBits = (StopBits)Enum.Parse(typeof(StopBits), ToStr(StopBits.SelectedItem));
+                port.Parity = (Parity)Enum.Parse(typeof(Parity), ToStr(Parity.SelectedItem));
                 port.BaudRate = Convert.ToInt32(ToStr(Baudrate.SelectedItem));
                 port.PortName = ToStr(Ports.SelectedItem);
                 port.RtsEnable = (bool)Rts.IsChecked;
                 port.DtrEnable = (bool)Dtr.IsChecked;
-                port.Handshake = (System.IO.Ports.Handshake)Enum.Parse(typeof(System.IO.Ports.Handshake), ToStr(Handshake.SelectedItem));
+                port.Handshake = (Handshake)Enum.Parse(typeof(Handshake), ToStr(Handshake.SelectedItem));
                 return port;
             }
         }
@@ -55,9 +55,9 @@ namespace WPFLib.Dialogs
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             AddItems(Ports.Items, SerialPort.GetPortNames());
-            AddItems(Parity.Items, Enum.GetNames(typeof(System.IO.Ports.Parity)));
-            AddItems(StopBits.Items, Enum.GetNames(typeof(System.IO.Ports.StopBits)));
-            AddItems(Handshake.Items, Enum.GetNames(typeof(System.IO.Ports.Handshake)));
+            AddItems(Parity.Items, Enum.GetNames(typeof(Parity)));
+            AddItems(StopBits.Items, Enum.GetNames(typeof(StopBits)));
+            AddItems(Handshake.Items, Enum.GetNames(typeof(Handshake)));
             Ports.SelectedIndex = 0;
             Handshake.SelectedIndex = 0;
             Parity.SelectedIndex = 0;
