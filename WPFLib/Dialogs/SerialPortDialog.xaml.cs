@@ -73,5 +73,24 @@ namespace WPFLib.Dialogs
         {
             this.DialogResult = false;
         }
+
+        /// <summary>
+        /// Selects a port name from the port selector, if the port is present on the system
+        /// </summary>
+        /// <param name="name">name of the port</param>
+        public void SelectPortName(string name)
+        {
+            int index = 0;
+            int i = 0;
+            foreach (string item in Ports.Items)
+            {
+                if (item == name)
+                {
+                    index = i;
+                    break;
+                }
+                i++;
+            }
+        }
     }
 }
