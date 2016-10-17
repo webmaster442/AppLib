@@ -6,11 +6,11 @@ using System.Windows.Markup;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("WPFLib")]
+[assembly: AssemblyTitle("AppLib.WPF")]
 [assembly: AssemblyDescription("WPF development libary written by webmaster442. This is free software licensed under the MIT license")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Webmaster442")]
-[assembly: AssemblyProduct("WPFLib")]
+[assembly: AssemblyProduct("AppLib")]
 [assembly: AssemblyCopyright("Copyright © Webmaster442 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -54,10 +54,9 @@ using System.Windows.Markup;
 [assembly: AssemblyFileVersion("1.0.0.0")]
 
 //XAML NAMESPACE DEFS
-[assembly: XmlnsPrefix("http://github.com/webmaster442/WPFLib", "wpflib")]
-[assembly: XmlnsDefinition("http://github.com/webmaster442/WPFLib", "WPFLib.Controls")]
-[assembly: XmlnsDefinition("http://github.com/webmaster442/WPFLib", "WPFLib.Converters")]
-[assembly: XmlnsDefinition("http://github.com/webmaster442/WPFLib", "WPFLib.Dialogs")]
-[assembly: XmlnsDefinition("http://github.com/webmaster442/WPFLib", "WPFLib.Extensions")]
-[assembly: XmlnsDefinition("http://github.com/webmaster442/WPFLib", "WPFLib.Shaders")]
-[assembly: XmlnsDefinition("http://github.com/webmaster442/WPFLib", "WPFLib.Attached")]
+[assembly: XmlnsPrefix("http://github.com/webmaster442/AppLib/WPF", "AppLib.WPF")]
+[assembly: XmlnsDefinition("http://github.com/webmaster442/AppLib/WPF", "AppLib.WPF.Controls")]
+[assembly: XmlnsDefinition("http://github.com/webmaster442/AppLib/WPF", "AppLib.WPF.Converters")]
+[assembly: XmlnsDefinition("http://github.com/webmaster442/AppLib/WPF", "AppLib.WPF.Dialogs")]
+[assembly: XmlnsDefinition("http://github.com/webmaster442/AppLib/WPF", "AppLib.WPF.Shaders")]
+[assembly: XmlnsDefinition("http://github.com/webmaster442/AppLib/WPF", "AppLib.WPF.Attached")]
