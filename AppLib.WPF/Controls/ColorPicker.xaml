@@ -1,0 +1,313 @@
+﻿<UserControl 
+    x:Class="AppLib.WPF.Controls.ColorPicker"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" d:DesignHeight="160" d:DesignWidth="160"
+    xmlns:my="clr-namespace:AppLib.WPF.Controls">
+    <UserControl.Resources>
+        <Style TargetType="Rectangle" x:Key="Palette">
+            <Setter Property="Width" Value="15"/>
+            <Setter Property="Height" Value="15"/>
+            <Setter Property="Margin" Value="1"/>
+        </Style>
+    </UserControl.Resources>
+    <TabControl x:Name="Maintab">
+        <TabItem Header="Picker">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="30" />
+                    <ColumnDefinition Width="12" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Row="1" Grid.Column="1" Margin="5,0,5,0">
+                    <Rectangle x:Name="rectHueMonitor" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                        <Rectangle.Fill>
+                            <LinearGradientBrush StartPoint ="0,0" EndPoint="0,1">
+                                <GradientStop Offset="0.00" Color="#ffff0000"/>
+                                <GradientStop Offset="0.17" Color="#ffffff00"/>
+                                <GradientStop Offset="0.33" Color="#ff00ff00"/>
+                                <GradientStop Offset="0.50" Color="#ff00ffff"/>
+                                <GradientStop Offset="0.66" Color="#ff0000ff"/>
+                                <GradientStop Offset="0.83" Color="#ffff00ff"/>
+                                <GradientStop Offset="1.00" Color="#ffff0000"/>
+                            </LinearGradientBrush>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Canvas x:Name="HueSelector" Height="8" Margin="0,-4,0,0" VerticalAlignment="Top">
+                        <Path Width="5" Height="8" Stretch="Fill" StrokeLineJoin="Round" Stroke="#FF000000" Fill="#FF000000" Data="F1 M 276.761,316L 262.619,307.835L 262.619,324.165L 276.761,316 Z " />
+                        <Path Width="5" Height="8" Canvas.Top="8" Canvas.Left="20" Stretch="Fill" StrokeLineJoin="Round" Stroke="#FF000000" Fill="#FF000000" Data="F1 M 276.761,316L 262.619,307.835L 262.619,324.165L 276.761,316 Z ">
+                            <Path.RenderTransform>
+                                <RotateTransform Angle="180" />
+                            </Path.RenderTransform>
+                        </Path>
+                    </Canvas>
+                </Grid>
+
+                <Grid x:Name="colorArea" Grid.Row="1" Grid.Column="0" >
+                    <Rectangle x:Name="rectSample" Fill="Red" />
+                    <Rectangle x:Name="rectWhiteGradient">
+                        <Rectangle.Fill>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Offset="0" Color="#ffffffff"/>
+                                <GradientStop Offset="1" Color="#00ffffff"/>
+                            </LinearGradientBrush>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Rectangle x:Name="rectBlackGradient" >
+                        <Rectangle.Fill>
+                            <LinearGradientBrush StartPoint="0,1" EndPoint="0, 0">
+                                <GradientStop Offset="0" Color="#ff000000"/>
+                                <GradientStop Offset="1" Color="#00000000"/>
+                            </LinearGradientBrush>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Canvas x:Name="SampleSelector" Width="8" Height="8" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-2,-2,0,0" >
+                        <Ellipse Width="8" Height="8" StrokeThickness="2" Stroke="#FFFFFFFF"/>
+                        <Ellipse Width="8" Height="8" StrokeThickness="1" Stroke="#FF000000"/>
+                    </Canvas>
+                    <Rectangle x:Name="rectSampleMonitor" Fill="Transparent" />
+
+                </Grid>
+
+                <StackPanel Grid.ColumnSpan="2" Orientation="Horizontal" Height="26" >
+                    <Grid Margin="0,0,6,0" >
+                        <Image x:Name="imgCheckerBoard" Width="20" Height="20" Stretch="None" />
+                        <Rectangle x:Name="SelectedColor" Width="20" Height="20" Fill="White" Stroke="Black" />
+                    </Grid>
+                    <TextBox x:Name="HexValue" Foreground="Black" Background="#4fFFFFFF" BorderBrush="#4F444444" Width="70" Text="#FFFFFFFF"  Canvas.Top="4" Canvas.Left="5"
+                     FontSize="10"
+                     Height="22"
+                     VerticalAlignment="Center" TextChanged="HexValue_TextChanged"/>
+                </StackPanel>
+                <my:AlphaSelectControl Grid.Column="2" Grid.Row="1" Height="95" HorizontalAlignment="Left" Margin="0,0,2,0"
+                x:Name="ctlAlphaSelect" VerticalAlignment="Top" Width="8" />
+            </Grid>
+        </TabItem>
+        <TabItem Header="Palette">
+            <ScrollViewer>
+                <WrapPanel>
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#BEBD7F" ToolTip="Green beige" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#C2B078" ToolTip="Beige" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#C6A664" ToolTip="Sand yellow" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#E5BE01" ToolTip="Signal yellow" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#CDA434" ToolTip="Golden yellow" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#A98307" ToolTip="Honey yellow" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#E4A010" ToolTip="Maize yellow" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#DC9D00" ToolTip="Daffodil yellow" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#8A6642" ToolTip="Brown beige" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#C7B446" ToolTip="Lemon yellow" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#EAE6CA" ToolTip="Oyster white" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#E1CC4F" ToolTip="Ivory" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#E6D690" ToolTip="Light ivory" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#EDFF21" ToolTip="Sulfur yellow" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#F5D033" ToolTip="Saffron yellow" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#F8F32B" ToolTip="Zinc yellow" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#9E9764" ToolTip="Grey beige" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#999950" ToolTip="Olive yellow" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#F3DA0B" ToolTip="Rape yellow" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#FAD201" ToolTip="Traffic yellow" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#AEA04B" ToolTip="Ochre yellow" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#FFFF00" ToolTip="Luminous yellow" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#9D9101" ToolTip="Curry" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#F4A900" ToolTip="Melon yellow" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#D6AE01" ToolTip="Broom yellow" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#F3A505" ToolTip="Dahlia yellow" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#EFA94A" ToolTip="Pastel yellow" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#6A5D4D" ToolTip="Pearl beige" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#705335" ToolTip="Pearl gold" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#F39F18" ToolTip="Sun yellow" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#ED760E" ToolTip="Yellow orange" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#C93C20" ToolTip="Red orange" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#CB2821" ToolTip="Vermilion" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#FF7514" ToolTip="Pastel orange" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#F44611" ToolTip="Pure orange" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#FF2301" ToolTip="Luminous orange" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#FFA420" ToolTip="Luminous bright orange" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#F75E25" ToolTip="Bright red orange" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#F54021" ToolTip="Traffic orange" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#D84B20" ToolTip="Signal orange" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#EC7C26" ToolTip="Deep orange" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#E55137" ToolTip="Salmon range" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#C35831" ToolTip="Pearl orange" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#AF2B1E" ToolTip="Flame red" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#A52019" ToolTip="Signal red" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#A2231D" ToolTip="Carmine red" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#9B111E" ToolTip="Ruby red" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#75151E" ToolTip="Purple red" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#5E2129" ToolTip="Wine red" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#412227" ToolTip="Black red" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#642424" ToolTip="Oxide red" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#781F19" ToolTip="Brown red" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#C1876B" ToolTip="Beige red" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#A12312" ToolTip="Tomato red" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#D36E70" ToolTip="Antique pink" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#EA899A" ToolTip="Light pink" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#B32821" ToolTip="Coral red" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#E63244" ToolTip="Rose" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#D53032" ToolTip="Strawberry red" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#CC0605" ToolTip="Traffic red" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#D95030" ToolTip="Salmon pink" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#F80000" ToolTip="Luminous red" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#FE0000" ToolTip="Luminous bright red" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#C51D34" ToolTip="Raspberry red" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#CB3234" ToolTip="Pure  red" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#B32428" ToolTip="Orient red" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#721422" ToolTip="Pearl ruby red" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#B44C43" ToolTip="Pearl pink" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#6D3F5B" ToolTip="Red lilac" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#922B3E" ToolTip="Red violet" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#DE4C8A" ToolTip="Heather violet" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#641C34" ToolTip="Claret violet" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#6C4675" ToolTip="Blue lilac" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#A03472" ToolTip="Traffic purple" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#4A192C" ToolTip="Purple violet" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#924E7D" ToolTip="Signal violet" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#A18594" ToolTip="Pastel violet" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#CF3476" ToolTip="Telemagenta" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#8673A1" ToolTip="Pearl violet" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#6C6874" ToolTip="Pearl black berry" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#354D73" ToolTip="Violet blue" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#1F3438" ToolTip="Green blue" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#20214F" ToolTip="Ultramarine blue" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#1D1E33" ToolTip="Saphire blue" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#18171C" ToolTip="Black blue" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#1E2460" ToolTip="Signal blue" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#3E5F8A" ToolTip="Brillant blue" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#26252D" ToolTip="Grey blue" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#025669" ToolTip="Azure blue" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#0E294B" ToolTip="Gentian blue" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#231A24" ToolTip="Steel blue" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#3B83BD" ToolTip="Light blue" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#1E213D" ToolTip="Cobalt blue" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#606E8C" ToolTip="Pigeon blue" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#2271B3" ToolTip="Sky blue" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#063971" ToolTip="Traffic blue" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#3F888F" ToolTip="Turquoise blue" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#1B5583" ToolTip="Capri blue" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#1D334A" ToolTip="Ocean blue" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#256D7B" ToolTip="Water blue" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#252850" ToolTip="Night blue" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#49678D" ToolTip="Distant blue" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#5D9B9B" ToolTip="Pastel blue" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#2A6478" ToolTip="Pearl gentian blue" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#102C54" ToolTip="Pearl night blue" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#316650" ToolTip="Patina green" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#287233" ToolTip="Emerald green" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#2D572C" ToolTip="Leaf green" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#424632" ToolTip="Olive green" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#1F3A3D" ToolTip="Blue green" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#2F4538" ToolTip="Moss green" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#3E3B32" ToolTip="Grey olive" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#343B29" ToolTip="Bottle green" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#39352A" ToolTip="Brown green" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#31372B" ToolTip="Fir green" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#35682D" ToolTip="Grass green" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#587246" ToolTip="Reseda green" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#343E40" ToolTip="Black green" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#6C7156" ToolTip="Reed green" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#47402E" ToolTip="Yellow olive" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#3B3C36" ToolTip="Black olive" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#1E5945" ToolTip="Turquoise green" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#4C9141" ToolTip="May green" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#57A639" ToolTip="Yellow green" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#BDECB6" ToolTip="Pastel green" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#2E3A23" ToolTip="Chrome green" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#89AC76" ToolTip="Pale green" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#25221B" ToolTip="Olive drab" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#308446" ToolTip="Traffic green" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#3D642D" ToolTip="Fern green" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#015D52" ToolTip="Opal green" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#84C3BE" ToolTip="Light green" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#2C5545" ToolTip="Pine green" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#20603D" ToolTip="Mint green" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#317F43" ToolTip="Signal green" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#497E76" ToolTip="Mint turquoise" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#7FB5B5" ToolTip="Pastel turquoise" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#1C542D" ToolTip="Pearl green" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#193737" ToolTip="Pearl opal green" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#008F39" ToolTip="Pure green" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#00BB2D" ToolTip="Luminous green" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#78858B" ToolTip="Squirrel grey" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#8A9597" ToolTip="Silver grey" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#7E7B52" ToolTip="Olive grey" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#6C7059" ToolTip="Moss grey" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#969992" ToolTip="Signal grey" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#646B63" ToolTip="Mouse grey" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#6D6552" ToolTip="Beige grey" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#6A5F31" ToolTip="Khaki grey" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#4D5645" ToolTip="Green grey" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#4C514A" ToolTip="Tarpaulin grey" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#434B4D" ToolTip="Iron grey" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#4E5754" ToolTip="Basalt grey" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#464531" ToolTip="Brown grey" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#434750" ToolTip="Slate grey" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#293133" ToolTip="Anthracite grey" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#23282B" ToolTip="Black grey" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#332F2C" ToolTip="Umbra grey" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#686C5E" ToolTip="Concrete grey" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#474A51" ToolTip="Graphite grey" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#2F353B" ToolTip="Granite grey" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#8B8C7A" ToolTip="Stone grey" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#474B4E" ToolTip="Blue grey" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#B8B799" ToolTip="Pebble grey" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#7D8471" ToolTip="Cement grey" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#8F8B66" ToolTip="Yellow grey" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#D7D7D7" ToolTip="Light grey" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#7F7679" ToolTip="Platinum grey" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#7D7F7D" ToolTip="Dusty grey" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#B5B8B1" ToolTip="Agate grey" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#6C6960" ToolTip="Quartz grey" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#9DA1AA" ToolTip="Window grey" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#8D948D" ToolTip="Traffic grey A" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#4E5452" ToolTip="Traffic grey B" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#CAC4B0" ToolTip="Silk grey" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#909090" ToolTip="Telegrey 1" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#82898F" ToolTip="Telegrey 2" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#D0D0D0" ToolTip="Telegrey 4" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#898176" ToolTip="Pearl mouse grey" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#826C34" ToolTip="Green brown" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#955F20" ToolTip="Ochre brown" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#6C3B2A" ToolTip="Signal brown" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#734222" ToolTip="Clay brown" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#8E402A" ToolTip="Copper brown" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#59351F" ToolTip="Fawn brown" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#6F4F28" ToolTip="Olive brown" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#5B3A29" ToolTip="Nut brown" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#592321" ToolTip="Red brown" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#382C1E" ToolTip="Sepia brown" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#633A34" ToolTip="Chestnut brown" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#4C2F27" ToolTip="Mahogany brown" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#45322E" ToolTip="Chocolate brown" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#403A3A" ToolTip="Grey brown" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#212121" ToolTip="Black brown" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#A65E2E" ToolTip="Orange brown" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#79553D" ToolTip="Beige brown" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#755C48" ToolTip="Pale brown" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#4E3B31" ToolTip="Terra brown" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#763C28" ToolTip="Pearl copper" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#FDF4E3" ToolTip="Cream" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#E7EBDA" ToolTip="Grey white" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#F4F4F4" ToolTip="Signal white" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#282828" ToolTip="Signal black" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#0A0A0A" ToolTip="Jet black" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#A5A5A5" ToolTip="White aluminium" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#8F8F8F" ToolTip="Grey aluminium" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#FFFFFF" ToolTip="Pure white" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#1C1C1C" ToolTip="Graphite black" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#F6F6F6" ToolTip="Traffic white" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#1E1E1E" ToolTip="Traffic black" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#D7D7D7" ToolTip="Papyrus white" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#9C9C9C" ToolTip="Pearl light grey" />
+                    <Rectangle MouseDown="Pal" Style="{StaticResource Palette}" Fill="#828282" ToolTip="Pearl dark grey" />
+                </WrapPanel>
+            </ScrollViewer>
+        </TabItem>
+    </TabControl>
+
+</UserControl>
