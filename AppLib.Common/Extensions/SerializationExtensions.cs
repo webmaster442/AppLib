@@ -3,7 +3,7 @@ using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace AppLib.WPF.Extensions
+namespace AppLib.Common.Extensions
 {
     /// <summary>
     /// Extensions for easy object serialization &amp; deserialization

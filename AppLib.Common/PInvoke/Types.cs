@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AppLib.WPF.PInvoke
+namespace AppLib.Common.PInvoke
 {
     /// <summary>
     /// Flag values for SetWindowPos

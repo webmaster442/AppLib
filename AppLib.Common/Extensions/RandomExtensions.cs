@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AppLib.WPF.Extensions
+namespace AppLib.Common.Extensions
 {
     /// <summary>
     /// A collection of extensions methods for System.Random class.

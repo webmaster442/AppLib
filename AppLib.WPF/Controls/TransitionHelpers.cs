@@ -3,7 +3,7 @@ using System;
 using System.Windows;
 using System.Windows.Media;
 using System.Linq;
-using AppLib.WPF.Extensions;
+using AppLib.Common.Extensions;
 
 namespace AppLib.WPF.Controls
 {

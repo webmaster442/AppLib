@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace AppLib.WPF.Extensions
+namespace AppLib.Common.Extensions
 {
     /// <summary>
     /// Dictionary Tkey, TValue extension methoods 

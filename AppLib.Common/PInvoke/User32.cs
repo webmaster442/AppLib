@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace AppLib.WPF.PInvoke
+namespace AppLib.Common.PInvoke
 {
     /// <summary>
     /// Platform Invokes to User32.dll

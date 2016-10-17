@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AppLib.WPF.Extensions
+namespace AppLib.Common.Extensions
 {
     /// <summary>
     /// Double number extension methods
