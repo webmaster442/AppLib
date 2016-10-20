@@ -50,10 +50,11 @@
   <ItemGroup>
     <Compile Include="BareParametersParser.cs" />
     <Compile Include="CharContext.cs" />
+    <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\DictionaryExtensions.cs" />
     <Compile Include="Extensions\DoubleExtensions.cs" />
     <Compile Include="Extensions\RandomExtensions.cs" />
-    <Compile Include="Extensions\SerializationExtensions.cs" />
+    <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Parameter.cs" />
     <Compile Include="ParametersParser.cs" />

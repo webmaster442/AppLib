@@ -256,5 +256,17 @@ namespace AppLib.Common.Extensions
             if (random.ThrowDiceToHit(sideCount, minHit)) return random.NextItem(list);
             return failureReturn;
         }
+
+        /// <summary>
+        /// Picks one item from the arguments list
+        /// </summary>
+        /// <typeparam name="T">type of item to return</typeparam>
+        ///  <param name="rng">The variable of Random class type.</param>
+        /// <param name="things">List of things to pick from</param>
+        /// <returns>A random item from the list of things</returns>
+        public static T OneOf<T>(this Random rng, params T[] things)
+        {
+            return things[rng.Next(things.Length)];
+        }
     }
 }
