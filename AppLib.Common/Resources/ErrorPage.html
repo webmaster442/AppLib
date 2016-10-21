@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Server error</title>
+    <style>
+        body
+        {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 22px;
+            background: #f2f2f2;
+            color: #000000;
+            margin-left: 20px;
+        }
+        #code
+        {
+            color: #fe4a1a;
+            font-size: 44px;
+            margin-bottom: 10px;
+        }
+        #trace
+        {
+            font-family: Courier New, Courier, monospace;
+            font-size: 16px;
+            margin-left: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div id="code">Server Error. Code: {{number}}</div>
+    <div id="message">Error Message: {{message}}</div>
+    <hr />
+    <p>Stack trace:</p>
+    <div id="trace">
+        <code>
+            <pre>{{trace}}</pre>
+        </code>
+    </div>
+</body>
+</html>
