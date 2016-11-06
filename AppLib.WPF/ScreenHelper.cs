@@ -41,5 +41,19 @@ namespace WPFLib
             var current = System.Windows.Forms.Screen.FromHandle(helper.Handle);
             return new Size(current.Bounds.Width, current.Bounds.Height);
         }
+
+        /// <summary>
+        /// Moves a window to the default, primary screen
+        /// </summary>
+        /// <param name="w">Window to move</param>
+        public static void MoveToDefaultScreen(Window w)
+        {
+            var def = ScreenSizes[0];
+            w.WindowState = WindowState.Normal;
+            w.Left = (def.Width - w.Width) / 2;
+            w.Top = (def.Height - w.Height) / 2;
+            w.BringIntoView();
+            w.Activate(); 
+        }
     }
 }
