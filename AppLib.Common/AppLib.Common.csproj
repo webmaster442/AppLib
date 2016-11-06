@@ -74,6 +74,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Common.snk" />
+    <None Include="Diagrams\Extensions.cd" />
+    <None Include="Diagrams\HTTPServer.cd" />
+    <None Include="Diagrams\Main.cd" />
+    <None Include="Diagrams\PInvoke.cd" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\ErrorPage.html" />
