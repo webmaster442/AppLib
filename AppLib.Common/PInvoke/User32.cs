@@ -212,7 +212,7 @@ namespace AppLib.Common.PInvoke
         /// <param name="lParam">Additional message-specific information.</param>
         /// <returns>The return value specifies the result of the message processing; it depends on the message sent.</returns>
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
-        static extern IntPtr SendMessage(IntPtr hWnd, UInt32 Msg, IntPtr wParam, IntPtr lParam);
+        public static extern IntPtr SendMessage(IntPtr hWnd, UInt32 Msg, IntPtr wParam, IntPtr lParam);
 
         /// <summary>
         /// Sends the specified message to a window or windows. 
@@ -236,7 +236,7 @@ namespace AppLib.Common.PInvoke
         /// </param>
         /// <returns>If the function succeeds, the return value is true, otherwise false</returns>
         [DllImport("user32.dll", SetLastError=true, CharSet=CharSet.Auto)]
-        static extern bool SendMessageCallback(IntPtr hWnd, uint Msg, UIntPtr wParam, IntPtr lParam, SendMessageDelegate lpCallBack, UIntPtr dwData);
+        public static extern bool SendMessageCallback(IntPtr hWnd, uint Msg, UIntPtr wParam, IntPtr lParam, SendMessageDelegate lpCallBack, UIntPtr dwData);
 
         /// <summary>
         /// Sends the specified message to one or more windows.

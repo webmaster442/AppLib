@@ -385,4 +385,15 @@ namespace AppLib.Common.PInvoke
         /// </summary>
         LOAD_WITH_ALTERED_SEARCH_PATH = 0x00000008
     }
+
+    public struct DWMCOLORIZATIONPARAMS
+    {
+        public uint ColorizationColor,
+            ColorizationAfterglow,
+            ColorizationColorBalance,
+            ColorizationAfterglowBalance,
+            ColorizationBlurBalance,
+            ColorizationGlassReflectionIntensity,
+            ColorizationOpaqueBlend;
+    }
 }
