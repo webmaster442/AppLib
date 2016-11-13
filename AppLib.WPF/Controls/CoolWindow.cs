@@ -10,6 +10,10 @@ using System.Windows.Shapes;
 
 namespace AppLib.WPF.Controls
 {
+    /// <summary>
+    /// Coolwindows is a custom themed window with an allways on top button-
+    /// CoolWindow border is affected by the theme accent.
+    /// </summary>
     public class CoolWindow: Window
     {
         static CoolWindow()
@@ -30,6 +34,9 @@ namespace AppLib.WPF.Controls
                 (byte)par.ColorizationColor);
         }
 
+        /// <summary>
+        /// Creates a new instance of CoolWindow
+        /// </summary>
         public CoolWindow() : base()
         {
             PreviewMouseMove += OnPreviewMouseMove;
@@ -37,6 +44,10 @@ namespace AppLib.WPF.Controls
 
         private HwndSource _hwndSource;
 
+        /// <summary>
+        /// Ovverride the OnInitialized event
+        /// </summary>
+        /// <param name="e">Event parameters</param>
         protected override void OnInitialized(EventArgs e)
         {
             SourceInitialized += OnSourceInitialized;
@@ -69,6 +80,9 @@ namespace AppLib.WPF.Controls
                 BorderGrid.Background = new SolidColorBrush(GetWindowColorizationColor(true));
         }
 
+        /// <summary>
+        /// Applies the template
+        /// </summary>
         public override void OnApplyTemplate()
         {
             Button minimizeButton = GetTemplateChild("minimizeButton") as Button;
@@ -114,17 +128,17 @@ namespace AppLib.WPF.Controls
             Topmost = !Topmost;
         }
 
-        protected void MinimizeClick(object sender, RoutedEventArgs e)
+        private void MinimizeClick(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
         }
 
-        protected void RestoreClick(object sender, RoutedEventArgs e)
+        private void RestoreClick(object sender, RoutedEventArgs e)
         {
             WindowState = (WindowState == WindowState.Normal) ? WindowState.Maximized : WindowState.Normal;
         }
 
-        protected void CloseClick(object sender, RoutedEventArgs e)
+        private void CloseClick(object sender, RoutedEventArgs e)
         {
             Close();
         }
@@ -135,7 +149,7 @@ namespace AppLib.WPF.Controls
                 DragMove();
         }
 
-        protected void ResizeRectangle_MouseMove(Object sender, MouseEventArgs e)
+        private void ResizeRectangle_MouseMove(Object sender, MouseEventArgs e)
         {
             Rectangle rectangle = sender as Rectangle;
             switch (rectangle.Name)
@@ -169,13 +183,13 @@ namespace AppLib.WPF.Controls
             }
         }
 
-        protected void OnPreviewMouseMove(object sender, MouseEventArgs e)
+        private void OnPreviewMouseMove(object sender, MouseEventArgs e)
         {
             if (Mouse.LeftButton != MouseButtonState.Pressed)
                 Cursor = Cursors.Arrow;
         }
 
-        protected void ResizeRectangle_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void ResizeRectangle_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             Rectangle rectangle = sender as Rectangle;
             switch (rectangle.Name)
@@ -222,9 +236,16 @@ namespace AppLib.WPF.Controls
             User32.SendMessage(_hwndSource.Handle, 0x112, (IntPtr)(61440 + direction), IntPtr.Zero);
         }
 
+        /// <summary>
+        /// Dependency property for TitleContent
+        /// </summary>
         public static readonly DependencyProperty TitleContentProperty =
             DependencyProperty.Register("TitleContent", typeof(FrameworkElement), typeof(CoolWindow));
 
+
+        /// <summary>
+        /// Title Content
+        /// </summary>
         public FrameworkElement TitleContent
         {
             get { return (FrameworkElement)GetValue(TitleContentProperty); }
