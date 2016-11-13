@@ -5,15 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppLib.WPF.Dialogs"
         mc:Ignorable="d"
-        ResizeMode="NoResize"
+        WindowStyle="ToolWindow"
+        ResizeMode="CanResizeWithGrip"
         Height="288"
         Width="512"
         Title="An Exception occured">
+    <Window.TaskbarItemInfo>
+        <TaskbarItemInfo/>
+    </Window.TaskbarItemInfo>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="58"/>
+            <RowDefinition Height="66"/>
             <RowDefinition/>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="60"/>
@@ -38,7 +42,11 @@
             IsReadOnly="True"
             Grid.Row="0"
             FontSize="14"
-            x:Name="ErrorText"/>
+            TextWrapping="Wrap"
+            x:Name="ErrorText"
+            VerticalScrollBarVisibility="Auto"
+            BorderBrush="{x:Null}"
+            VerticalAlignment="Stretch"/>
         <TabControl
             Grid.ColumnSpan="2"
             Grid.Row="1">
@@ -47,7 +55,11 @@
                     IsReadOnly="True"
                     FontFamily="Consolas"
                     FontSize="12"
-                    x:Name="StackTrace"/>
+                    x:Name="StackTrace"
+                    VerticalAlignment="Stretch"
+                    VerticalScrollBarVisibility="Auto"
+                    HorizontalScrollBarVisibility="Auto"
+                    BorderBrush="{x:Null}"/>
             </TabItem>
             <TabItem Header="Inner Exceptions">
                 <TreeView
@@ -62,12 +74,12 @@
             Orientation="Horizontal"
             HorizontalAlignment="Right" Margin="0,2">
             <Button
-                Width="140"
+                Width="150"
                 Content="Ok"
                 x:Name="BtnOk"
                 Click="BtnOk_Click"/>
             <Button
-                Width="140"
+                Width="150"
                 Content="Copy details to clipboard"
                 Margin="5,0"
                 x:Name="BtnClipboard"
