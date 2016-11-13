@@ -1,0 +1,86 @@
+﻿<UserControl x:Class="AppLib.WPF.Controls.FileExplorer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AppLib.WPF.Controls"
+             mc:Ignorable="d" 
+             Loaded="UserControl_Loaded"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <DrawingImage x:Key="IconFolder">
+            <DrawingImage.Drawing>
+                <DrawingGroup>
+                    <GeometryDrawing Brush="Black" Geometry="M20,18H4V8H20M20,6H12L10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6Z"/>
+                </DrawingGroup>
+            </DrawingImage.Drawing>
+        </DrawingImage>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel
+            Grid.Row="0"
+            x:Name="Drives"
+            Orientation="Horizontal"
+            Grid.ColumnSpan="2">
+        </StackPanel>
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="2"
+            Text="View: "/>
+        <RadioButton
+            Grid.Row="0"
+            Grid.Column="3"
+            IsChecked="True"
+            Content="Grid"/>
+        <RadioButton
+            Grid.Row="0"
+            Grid.Column="4"
+            Content="List"/>
+        <Expander
+            Grid.Column="0"
+            Grid.Row="1"
+            ExpandDirection="Right">
+            <Expander.Header>
+                <TextBlock Text="Tree view">
+                    <TextBlock.LayoutTransform>
+                        <RotateTransform Angle="-90"/>
+                    </TextBlock.LayoutTransform>
+                </TextBlock>
+            </Expander.Header>
+            <TreeView
+                x:Name="Folders"
+                SelectedItemChanged="Folders_SelectedItemChanged"
+                MaxWidth="200">
+                <TreeView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Image
+                                Source="{DynamicResource IconFolder}"
+                                Width="32"
+                                Height="32"/>
+                            <TextBlock
+                                Text="{Binding}"
+                                Margin="5,0"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </TreeView.ItemTemplate>
+            </TreeView>
+        </Expander>
+        <ListBox
+            x:Name="Files"
+            Grid.Row="1"
+            Grid.Column="1"
+            Grid.ColumnSpan="4"/>
+    </Grid>
+</UserControl>
