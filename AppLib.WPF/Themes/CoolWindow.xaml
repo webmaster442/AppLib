@@ -33,7 +33,7 @@
         <Setter Property="Margin" Value="0,2,3,0"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Foreground" Value="Black" />
+                <Setter Property="Foreground" Value="#ffffcc" />
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -68,7 +68,7 @@
         <Setter Property="Margin" Value="0,2,3,0"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Foreground" Value="Black" />
+                <Setter Property="Foreground" Value="#ffffcc" />
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -91,7 +91,7 @@
             </Trigger>
             <Trigger Property="IsChecked" Value="true">
                 <Setter Property="Content" Value="5"/>
-                <Setter Property="Foreground" Value="Black"/>
+                <Setter Property="Foreground" Value="#ffffcc"/>
             </Trigger>
         </Style.Triggers>
     </Style>
