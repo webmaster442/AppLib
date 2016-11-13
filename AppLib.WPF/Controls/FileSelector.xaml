@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="30"
              d:DesignWidth="300"
-             x:Name="Parent"
+             x:Name="Ctrlparent"
              MaxHeight="30">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -16,7 +16,7 @@
         </Grid.ColumnDefinitions>
         <TextBox
             Margin="2"
-            Text="{Binding ElementName=Parent, Path=SelectedFile, Mode=TwoWay}"
+            Text="{Binding ElementName=Ctrlparent, Path=SelectedFile, Mode=TwoWay}"
             FontSize="16"
             Grid.Column="0"/>
         <Button

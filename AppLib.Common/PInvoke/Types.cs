@@ -386,14 +386,38 @@ namespace AppLib.Common.PInvoke
         LOAD_WITH_ALTERED_SEARCH_PATH = 0x00000008
     }
 
+    /// <summary>
+    /// DWM Colors structiure
+    /// </summary>
     public struct DWMCOLORIZATIONPARAMS
     {
-        public uint ColorizationColor,
-            ColorizationAfterglow,
-            ColorizationColorBalance,
-            ColorizationAfterglowBalance,
-            ColorizationBlurBalance,
-            ColorizationGlassReflectionIntensity,
-            ColorizationOpaqueBlend;
+        /// <summary>
+        /// Current theme color
+        /// </summary>
+        public uint ColorizationColor;
+        /// <summary>
+        /// After Glow aplied color
+        /// </summary>
+        public uint ColorizationAfterglow;
+        /// <summary>
+        /// Color ballance
+        /// </summary>
+        public uint ColorizationColorBalance;
+        /// <summary>
+        /// After glow aplied color ballance
+        /// </summary>
+        public uint ColorizationAfterglowBalance;
+        /// <summary>
+        /// Blur ballance
+        /// </summary>
+        public uint ColorizationBlurBalance;
+        /// <summary>
+        /// Glass Reflection intensity
+        /// </summary>
+        public uint ColorizationGlassReflectionIntensity;
+        /// <summary>
+        /// Opaque Blend
+        /// </summary>
+        public uint ColorizationOpaqueBlend;
     }
 }
