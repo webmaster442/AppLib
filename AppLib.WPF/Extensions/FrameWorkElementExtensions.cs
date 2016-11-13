@@ -16,7 +16,16 @@ namespace AppLib.WPF.Extensions
         /// <returns>FrameWorkElement rendered to a RenderTargetBitmap</returns>
         public static ImageSource Render(this FrameworkElement element)
         {
-            var rtb = new RenderTargetBitmap((int)element.ActualWidth, (int)element.ActualHeight,
+            var w = element.ActualWidth > 0 ? element.Width : element.Width;
+            var h = element.ActualHeight > 0 ? element.ActualHeight : element.Height;
+
+            if (element.ActualHeight == 0 || element.ActualWidth == 0)
+            {
+                element.Measure(new Size(w, h));
+                element.Arrange(new Rect(0, 0, w, h));
+            }
+
+            var rtb = new RenderTargetBitmap((int)w, (int)h,
                                              96, 96, PixelFormats.Pbgra32);
             rtb.Render(element);
             return rtb;

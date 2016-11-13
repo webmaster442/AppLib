@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AppLib.Common.Extensions.DateTimeExtensions">
+    <Position X="3.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AggAAAAAAAAAAAAAAAAAAAAAAAAIgAAAIAAAAAAEAAA=</HashCode>
+      <FileName>Extensions\DateTimeExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppLib.Common.Extensions.DictionaryExtensions">
+    <Position X="0.5" Y="2.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Extensions\DictionaryExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppLib.Common.Extensions.DoubleExtensions">
+    <Position X="3.25" Y="2.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Extensions\DoubleExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppLib.Common.Extensions.ObjectExtensions">
+    <Position X="0.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAwAAAAAAAAAAAAAQAIAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Extensions\ObjectExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppLib.Common.Extensions.RandomExtensions">
+    <Position X="5.5" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAABAQgAAEBAAAAAAAAAAAACABAAAAQAAQAAAA=</HashCode>
+      <FileName>Extensions\RandomExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
