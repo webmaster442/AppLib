@@ -56,6 +56,7 @@ using System.Windows.Markup;
 //XAML NAMESPACE DEFS
 [assembly: XmlnsPrefix("http://github.com/webmaster442/AppLib/WPF", "AppLib.WPF")]
 [assembly: XmlnsDefinition("http://github.com/webmaster442/AppLib/WPF", "AppLib.WPF.Controls")]
+[assembly: XmlnsDefinition("http://github.com/webmaster442/AppLib/WPF", "AppLib.WPF.Controls.FontAwesome")]
 [assembly: XmlnsDefinition("http://github.com/webmaster442/AppLib/WPF", "AppLib.WPF.Converters")]
 [assembly: XmlnsDefinition("http://github.com/webmaster442/AppLib/WPF", "AppLib.WPF.Dialogs")]
 [assembly: XmlnsDefinition("http://github.com/webmaster442/AppLib/WPF", "AppLib.WPF.Shaders")]

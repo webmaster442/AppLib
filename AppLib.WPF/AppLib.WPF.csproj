@@ -131,6 +131,8 @@
     <Compile Include="Controls\FileSelector.xaml.cs">
       <DependentUpon>FileSelector.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\FontAwesome\Fa-Icons.cs" />
+    <Compile Include="Controls\FontAwesome\ImageAwesome.cs" />
     <Compile Include="Controls\FuzzyTextClock.cs" />
     <Compile Include="Controls\ImageButton.cs" />
     <Compile Include="Controls\TransitionControl.cs" />
@@ -172,6 +174,7 @@
     </None>
     <AppDesigner Include="Properties\" />
     <Resource Include="Resources\FractalExplorerEffect.ps" />
+    <Resource Include="Resources\fontawesome-webfont.ttf" />
     <None Include="WPFLib.pfx" />
   </ItemGroup>
   <ItemGroup>
