@@ -1,8 +1,11 @@
-﻿using System;
+﻿using AppLib.WPF.Controls.FontAwesome;
+using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace AppLib.WPF.Controls
 {
@@ -36,12 +39,41 @@ namespace AppLib.WPF.Controls
             foreach (var drive in drives)
             {
                 var ib = new ImageButton();
+                ib.ImageHeight = 24;
+                ib.ImageWidth = 24;
+                
+                switch (drive.DriveType)
+                {
+                    case DriveType.CDRom:
+                        ib.Image = ImageAwesome.CreateImageSource(FaIcons.fa_circle_o, new SolidColorBrush(Colors.Black));
+                        break;
+                    case DriveType.Fixed:
+                        ib.Image = ImageAwesome.CreateImageSource(FaIcons.fa_hdd_o, new SolidColorBrush(Colors.Black));
+                        break;
+                    case DriveType.Network:
+                        ib.Image = ImageAwesome.CreateImageSource(FaIcons.fa_globe, new SolidColorBrush(Colors.Black));
+                        break;
+                    case DriveType.Removable:
+                        ib.Image = ImageAwesome.CreateImageSource(FaIcons.fa_usb, new SolidColorBrush(Colors.Black));
+                        break;
+                    case DriveType.Ram:
+                    case DriveType.Unknown:
+                        ib.Image = ImageAwesome.CreateImageSource(FaIcons.fa_question, new SolidColorBrush(Colors.Black));
+                        break;
+                }
+
                 ib.Content = drive.Name;
+                ib.Margin = new Thickness(2);
                 ib.Click += DriveButton_Click;
                 Drives.Children.Add(ib);
             }
 
             var refresh = new ImageButton();
+            refresh.Image = ImageAwesome.CreateImageSource(FaIcons.fa_refresh, new SolidColorBrush(Colors.Black));
+            refresh.ImageWidth = 24;
+            refresh.ToolTip = "Rescan drives";
+            refresh.ImageHeight = 24;
+            refresh.Margin = new Thickness(2);
             refresh.Click += Refresh_Click;
             Drives.Children.Add(refresh);
         }
@@ -55,6 +87,7 @@ namespace AppLib.WPF.Controls
         {
             var drive = (sender as ImageButton)?.Content?.ToString();
             RenderFolderView(drive);
+            RenderFileList(drive);
         }
 
         #endregion
@@ -102,8 +135,21 @@ namespace AppLib.WPF.Controls
 
         private void Folders_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
+            TreeView tree = (TreeView)sender;
+            TreeViewItem temp = ((TreeViewItem)tree.SelectedItem);
 
+            if (temp == null)  return;
+            RenderFileList(temp.Tag.ToString());
         }
         #endregion
+
+        private void RenderFileList(string path)
+        {
+            var items = new List<string>();
+            items.AddRange(Directory.GetDirectories(path));
+            items.AddRange(Directory.GetFiles(path));
+            Files.ItemsSource = null;
+            Files.ItemsSource = items;
+        }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.IO.Ports;
 using System.Windows.Controls;
 
-namespace WPFLib.Controls
+namespace AppLib.WPF.Controls
 {
     /// <summary>
     /// A combo box that displays the available serial ports
@@ -55,7 +55,7 @@ namespace WPFLib.Controls
         /// <returns>the dialog result</returns>
         public bool? OpenSelectedWithDialog()
         {
-            var dialog = new WPFLib.Dialogs.SerialPortDialog();
+            var dialog = new AppLib.WPF.Dialogs.SerialPortDialog();
             var selected = SelectedItem as string;
             dialog.SelectPortName(selected);
             return dialog.ShowDialog();

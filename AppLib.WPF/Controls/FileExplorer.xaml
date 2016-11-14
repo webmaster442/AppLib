@@ -3,18 +3,52 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:AppLib.WPF.Controls"
+             xmlns:converters="clr-namespace:AppLib.WPF.Converters"
+             xmlns:fa="clr-namespace:AppLib.WPF.Controls.FontAwesome"
              mc:Ignorable="d" 
              Loaded="UserControl_Loaded"
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
-        <DrawingImage x:Key="IconFolder">
-            <DrawingImage.Drawing>
-                <DrawingGroup>
-                    <GeometryDrawing Brush="Black" Geometry="M20,18H4V8H20M20,6H12L10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6Z"/>
-                </DrawingGroup>
-            </DrawingImage.Drawing>
-        </DrawingImage>
+        <Style TargetType="{x:Type TreeViewItem}">
+            <Setter Property="HeaderTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <fa:ImageAwesome Icon="fa_folder_o" Width="32" Height="32"/>
+                            <TextBlock Text="{Binding}" Margin="5,0" />
+                        </StackPanel>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <converters:FileIconConverter x:Key="FileIconConv"/>
+        <converters:FileNameConverter x:Key="FileNameConv"/>
+
+        <Style TargetType="ListBox">
+            <Setter Property="ItemTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Image
+                                Grid.Column="0"
+                                Width="48"
+                                Height="48"
+                                Source="{Binding Converter={StaticResource FileIconConv}}"/>
+                            <TextBlock
+                                Margin="3,0"
+                                Grid.Column="1"
+                                VerticalAlignment="Center"
+                                Text="{Binding Converter={StaticResource FileNameConv}}"/>
+                        </Grid>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -37,14 +71,17 @@
         <TextBlock
             Grid.Row="0"
             Grid.Column="2"
+            VerticalAlignment="Center"
             Text="View: "/>
         <RadioButton
             Grid.Row="0"
             Grid.Column="3"
+            VerticalAlignment="Center"
             IsChecked="True"
             Content="Grid"/>
         <RadioButton
             Grid.Row="0"
+            VerticalAlignment="Center"
             Grid.Column="4"
             Content="List"/>
         <Expander
@@ -58,24 +95,22 @@
                     </TextBlock.LayoutTransform>
                 </TextBlock>
             </Expander.Header>
-            <TreeView
-                x:Name="Folders"
-                SelectedItemChanged="Folders_SelectedItemChanged"
-                MaxWidth="200">
-                <TreeView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <Image
-                                Source="{DynamicResource IconFolder}"
-                                Width="32"
-                                Height="32"/>
-                            <TextBlock
-                                Text="{Binding}"
-                                Margin="5,0"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </TreeView.ItemTemplate>
-            </TreeView>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="3"/>
+                </Grid.ColumnDefinitions>
+                <TreeView
+                    x:Name="Folders"
+                    Grid.Column="0"
+                    SelectedItemChanged="Folders_SelectedItemChanged">
+                </TreeView>
+                <GridSplitter
+                    Grid.Column="1"
+                    Width="3"
+                    ResizeBehavior="PreviousAndCurrent"
+                    ResizeDirection="Columns"/>
+            </Grid>
         </Expander>
         <ListBox
             x:Name="Files"

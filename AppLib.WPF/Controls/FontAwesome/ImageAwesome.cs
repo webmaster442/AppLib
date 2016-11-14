@@ -27,7 +27,8 @@ namespace AppLib.WPF.Controls.FontAwesome
         /// FontAwesome FontFamily.
         /// </summary>
         private static readonly FontFamily FontAwesomeFontFamily = 
-            new FontFamily(new Uri("pack://application:,,,/WPFLib;component/Resources/"), "./#FontAwesome");
+            new FontFamily(new Uri("pack://application:,,,/AppLib.WPF;component/Resources/"), "./#FontAwesome");
+        
 
         /// <summary>
         /// Typeface used to generate FontAwesome icon.

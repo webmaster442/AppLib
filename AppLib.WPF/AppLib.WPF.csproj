@@ -135,8 +135,10 @@
     <Compile Include="Controls\FontAwesome\ImageAwesome.cs" />
     <Compile Include="Controls\FuzzyTextClock.cs" />
     <Compile Include="Controls\ImageButton.cs" />
+    <Compile Include="Controls\SerialPortCombo.cs" />
     <Compile Include="Controls\TransitionControl.cs" />
     <Compile Include="Controls\TransitionHelpers.cs" />
+    <Compile Include="Converters\FileIconConverter.cs" />
     <Compile Include="Converters\FileNameConverter.cs" />
     <Compile Include="Converters\FileSizeConverter.cs" />
     <Compile Include="Converters\NegateConverter.cs" />
