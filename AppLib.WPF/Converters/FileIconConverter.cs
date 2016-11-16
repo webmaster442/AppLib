@@ -7,9 +7,20 @@ using System.Windows.Media;
 
 namespace AppLib.WPF.Converters
 {
+    /// <summary>
+    /// Converts a file name to a FontAwesome icon &amp; returns the icon
+    /// </summary>
     [ValueConversion(typeof(string), typeof(ImageSource))]
     public class FileIconConverter : IValueConverter
     {
+        /// <summary>
+        /// Converts a file name to a FontAwesome icon &amp; returns the icon
+        /// </summary>
+        /// <param name="value">The value produced by the binding source.</param>
+        /// <param name="targetType">The type of the binding target property.</param>
+        /// <param name="parameter">The converter parameter to use.</param>
+        /// <param name="culture">The culture to use in the converter.</param>
+        /// <returns>an ImageSource</returns>
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             string fullpath = value.ToString();
@@ -17,7 +28,7 @@ namespace AppLib.WPF.Converters
             if (Directory.Exists(fullpath))
                 return ImageAwesome.CreateImageSource(FaIcons.fa_folder_o, new SolidColorBrush(Colors.Black));
 
-            var ext = Path.GetExtension(fullpath);
+            var ext = Path.GetExtension(fullpath).ToLower();
 
             switch (ext)
             {
@@ -69,9 +80,17 @@ namespace AppLib.WPF.Converters
 
         }
 
+        /// <summary>
+        /// Returns the unmodified input
+        /// </summary>
+        /// <param name="value">The value produced by the binding source.</param>
+        /// <param name="targetType">The type of the binding target property.</param>
+        /// <param name="parameter">The converter parameter to use.</param>
+        /// <param name="culture">The culture to use in the converter.</param>
+        /// <returns>an ImageSource</returns>
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotImplementedException();
+            return value;
         }
     }
 }

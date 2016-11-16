@@ -23,7 +23,7 @@
         </Style>
 
         <converters:FileIconConverter x:Key="FileIconConv"/>
-        <converters:FileNameConverter x:Key="FileNameConv"/>
+        <converters:FileInfoConverter x:Key="FileInfoConv"/>
 
         <Style TargetType="ListBox">
             <Setter Property="ItemTemplate">
@@ -32,6 +32,9 @@
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="160"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
                             <Image
@@ -43,7 +46,23 @@
                                 Margin="3,0"
                                 Grid.Column="1"
                                 VerticalAlignment="Center"
-                                Text="{Binding Converter={StaticResource FileNameConv}}"/>
+                                TextWrapping="Wrap"
+                                Text="{Binding Converter={StaticResource FileInfoConv}, ConverterParameter=Name}"/>
+                            <TextBlock
+                                Margin="3,0"
+                                Grid.Column="2"
+                                VerticalAlignment="Center"
+                                Text="{Binding Converter={StaticResource FileInfoConv}, ConverterParameter=Extension}"/>
+                            <TextBlock
+                                Margin="3,0"
+                                Grid.Column="3"
+                                VerticalAlignment="Center"
+                                Text="{Binding Converter={StaticResource FileInfoConv}, ConverterParameter=Size}"/>
+                            <TextBlock
+                                Margin="3,0"
+                                Grid.Column="4"
+                                VerticalAlignment="Center"
+                                Text="{Binding Converter={StaticResource FileInfoConv}, ConverterParameter=Date}"/>
                         </Grid>
                     </DataTemplate>
                 </Setter.Value>
@@ -116,6 +135,7 @@
             x:Name="Files"
             Grid.Row="1"
             Grid.Column="1"
-            Grid.ColumnSpan="4"/>
+            Grid.ColumnSpan="4"
+            MouseDoubleClick="Files_MouseDoubleClick"/>
     </Grid>
 </UserControl>

@@ -9,6 +9,7 @@ namespace AppLib.WPF.Converters
     /// </summary>
     /// <seealso cref="System.IO.Path.GetFileName"/>
     [ValueConversion(typeof(long), typeof(string))]
+    [Obsolete("FileNameConverter is obsolete. Use FileInfoConverter instead")]
     public class FileNameConverter : IValueConverter
     {
         /// <summary>

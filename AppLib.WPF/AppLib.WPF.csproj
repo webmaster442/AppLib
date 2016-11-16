@@ -140,6 +140,7 @@
     <Compile Include="Controls\TransitionHelpers.cs" />
     <Compile Include="Converters\FileIconConverter.cs" />
     <Compile Include="Converters\FileNameConverter.cs" />
+    <Compile Include="Converters\FileInfoConverter.cs" />
     <Compile Include="Converters\FileSizeConverter.cs" />
     <Compile Include="Converters\NegateConverter.cs" />
     <Compile Include="Converters\VisibilityConverter.cs" />

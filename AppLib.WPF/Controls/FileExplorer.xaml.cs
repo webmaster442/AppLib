@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace AppLib.WPF.Controls
@@ -20,6 +21,8 @@ namespace AppLib.WPF.Controls
         {
             InitializeComponent();
         }
+
+        public RoutedEventHandler MouseDoubleClick;
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
@@ -146,10 +149,26 @@ namespace AppLib.WPF.Controls
         private void RenderFileList(string path)
         {
             var items = new List<string>();
-            items.AddRange(Directory.GetDirectories(path));
-            items.AddRange(Directory.GetFiles(path));
-            Files.ItemsSource = null;
-            Files.ItemsSource = items;
+            try
+            {
+                items.AddRange(Directory.GetDirectories(path));
+                items.AddRange(Directory.GetFiles(path));
+                Files.ItemsSource = null;
+                Files.ItemsSource = items;
+            }
+            catch (Exception)
+            {
+                Files.ItemsSource = null;
+            }
+
+        }
+
+        private void Files_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (Files.SelectedItem == null) return;
+            var selected = Files.SelectedItem as string;
+            if (Directory.Exists(selected)) RenderFileList(selected);
+            else if (this.MouseDoubleClick != null) MouseDoubleClick(this, e);
         }
     }
 }
