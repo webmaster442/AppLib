@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppLib.WPF.Controls.FontAwesome;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -61,6 +62,47 @@ namespace AppLib.WPF.Controls
             set { SetValue(ImageWidthProperty, value); }
         }
 
+    }
+
+    /// <summary>
+    /// ImageButton Control
+    /// </summary>
+    public class FaImageButton : Button
+    {
+        static FaImageButton()
+        {
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(FaImageButton), new FrameworkPropertyMetadata(typeof(FaImageButton)));
+        }
+
+        /// <summary>
+        /// Image property
+        /// </summary>
+        public static readonly DependencyProperty IconProperty = 
+            DependencyProperty.Register("Icon", typeof(FaIcons), typeof(FaImageButton), new PropertyMetadata(FaIcons.fa_none));
+
+        /// <summary>
+        /// Image Size property
+        /// </summary>
+        public static readonly DependencyProperty IconSizeProperty =
+            DependencyProperty.Register("IconSize", typeof(double), typeof(FaImageButton), new PropertyMetadata(Double.NaN));
+
+        /// <summary>
+        /// Gets or sets the icon size
+        /// </summary>
+        public double IconSize
+        {
+            get { return (double)GetValue(IconSizeProperty); }
+            set { SetValue(IconSizeProperty, value); }
+        }
+
+        /// <summary>
+        /// Gets or set the icon
+        /// </summary>
+        public FaIcons Icon
+        {
+            get { return (FaIcons)GetValue(IconProperty); }
+            set { SetValue(IconProperty, value); }
+        }
     }
 
     /// <summary>
