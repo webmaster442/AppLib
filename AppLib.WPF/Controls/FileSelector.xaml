@@ -17,7 +17,6 @@
         <TextBox
             Margin="2"
             Text="{Binding ElementName=Ctrlparent, Path=SelectedFile, Mode=TwoWay}"
-            FontSize="16"
             Grid.Column="0"/>
         <Button
             Grid.Column="1"
