@@ -138,6 +138,7 @@
     <Compile Include="Controls\SerialPortCombo.cs" />
     <Compile Include="Controls\TransitionControl.cs" />
     <Compile Include="Controls\TransitionHelpers.cs" />
+    <Compile Include="Controls\VirtualizingWrapPanel.cs" />
     <Compile Include="Converters\FileIconConverter.cs" />
     <Compile Include="Converters\FileNameConverter.cs" />
     <Compile Include="Converters\FileInfoConverter.cs" />

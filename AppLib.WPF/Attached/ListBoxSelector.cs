@@ -119,6 +119,7 @@ namespace AppLib.WPF.Attached
                 // PreviewMouseLeftButtonDown. The scroll content won't receive
                 // the message if we click on a blank area so use the ListBox.
                 listBox.PreviewMouseLeftButtonDown += this.OnPreviewMouseLeftButtonDown;
+                listBox.MouseDoubleClick += ListBox_MouseDoubleClick;
                 listBox.MouseLeftButtonUp += this.OnMouseLeftButtonUp;
                 listBox.MouseMove += this.OnMouseMove;
             }
@@ -172,6 +173,11 @@ namespace AppLib.WPF.Attached
                 this.autoScroller.Update(this.end);
                 this.UpdateSelection();
             }
+        }
+
+        private void ListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            this.mouseCaptured = false;
         }
 
         private void OnPreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
