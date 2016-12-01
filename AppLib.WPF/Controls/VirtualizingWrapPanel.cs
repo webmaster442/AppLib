@@ -504,7 +504,8 @@ namespace AppLib.WPF.Controls
         protected override Size MeasureOverride(Size availableSize)
         {
             if (_itemsControl == null || _itemsControl.Items.Count == 0)
-                return availableSize;
+                return new Size(double.IsInfinity(availableSize.Width) ? 0 : availableSize.Width,
+                                double.IsInfinity(availableSize.Height) ? 0 : availableSize.Height);
             if (_abstractPanel == null)
                 _abstractPanel = new WrapPanelAbstraction(_itemsControl.Items.Count);
 
