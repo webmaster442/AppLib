@@ -75,9 +75,10 @@ namespace AppLib.WPF.Controls
 
         private void SetColor()
         {
+            Color c = GetWindowColorizationColor(true);
             Grid BorderGrid = GetTemplateChild("BorderGrid") as Grid;
             if (BorderGrid != null)
-                BorderGrid.Background = new SolidColorBrush(GetWindowColorizationColor(true));
+                BorderGrid.Background = new SolidColorBrush(c);
         }
 
         /// <summary>

@@ -27,7 +27,7 @@
             </Setter.Value>
         </Setter>
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="FontFamily" Value="Webdings"/>
+        <Setter Property="FontFamily" Value="pack://application:,,,/AppLib.WPF;component/Resources/#FontAwesome"/>
         <Setter Property="FontSize" Value="13.333" />
         <Setter Property="Foreground" Value="White" />
         <Setter Property="Margin" Value="0,2,3,0"/>
@@ -62,7 +62,7 @@
             </Setter.Value>
         </Setter>
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="FontFamily" Value="Webdings"/>
+        <Setter Property="FontFamily" Value="pack://application:,,,/AppLib.WPF;component/Resources/#FontAwesome"/>
         <Setter Property="FontSize" Value="13.333" />
         <Setter Property="Foreground" Value="White" />
         <Setter Property="Margin" Value="0,2,3,0"/>
@@ -76,10 +76,12 @@
     <Style TargetType="ToggleButton" x:Key="RestoreStyle" BasedOn="{StaticResource WindowToggleButtonStyle}">
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="false">
-                <Setter Property="Content" Value="1"/>
+                <Setter Property="Content" Value="&#xf2d0;"/>
+                <Setter Property="ToolTip" Value="Maximize"/>
             </Trigger>
             <Trigger Property="IsChecked" Value="true">
-                <Setter Property="Content" Value="2"/>
+                <Setter Property="Content" Value="&#xf2d2;"/>
+                <Setter Property="ToolTip" Value="Restore"/>
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -87,11 +89,12 @@
     <Style TargetType="ToggleButton" x:Key="AllwaysTop" BasedOn="{StaticResource WindowToggleButtonStyle}">
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="false">
-                <Setter Property="Content" Value="6"/>
+                <Setter Property="Content" Value="&#xf096;"/>
+                <Setter Property="ToolTip" Value="Allways on top: disabled"/>
             </Trigger>
             <Trigger Property="IsChecked" Value="true">
-                <Setter Property="Content" Value="5"/>
-                <Setter Property="Foreground" Value="#ffffcc"/>
+                <Setter Property="Content" Value="&#xf046;"/>
+                <Setter Property="ToolTip" Value="Allways on top: enabled"/>
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -135,7 +138,18 @@
                                         VerticalAlignment="Center"
                                         Margin="5,0"/>
                                 </Border>
+                                <Border
+                                    Grid.Row="0"
+                                    Grid.Column="2">
+                                    <Border.Background>
+                                        <VisualBrush Visual="{Binding ElementName=WindowControls}"/>
+                                    </Border.Background>
+                                    <Border.Effect>
+                                        <BlurEffect Radius="26"/>
+                                    </Border.Effect>
+                                </Border>
                                 <StackPanel
+                                    x:Name="WindowControls"
                                     Grid.Row="0"
                                     Grid.Column="2"
                                     Orientation="Horizontal">
@@ -146,10 +160,11 @@
                                         Style="{StaticResource AllwaysTop}"/>
                                     <Button
                                         x:Name="minimizeButton"
+                                        ToolTip="Minimize"
                                         FontSize="18"
                                         Width="32"
                                         Style="{StaticResource WindowButtonStyle}"
-                                        Content="0"/>
+                                        Content="&#xf2d1;"/>
                                     <ToggleButton
                                         x:Name="restoreButton"
                                         FontSize="18"
@@ -157,10 +172,12 @@
                                         Style="{StaticResource RestoreStyle}"/>
                                     <Button
                                         x:Name="closeButton"
+                                        ToolTip="Close"
                                         FontSize="18"
                                         Width="32"
-                                        Style="{StaticResource WindowButtonStyle}"
-                                        Content="r"/>
+                                        Style="{StaticResource WindowButtonStyle}">
+                                        <TextBlock Text="&#xf2d3;"/>
+                                    </Button>
                                 </StackPanel>
                                 <Grid
                                     Background="{TemplateBinding Background}"

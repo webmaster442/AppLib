@@ -38,7 +38,7 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>WPFLib.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>AppLib.WPF.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Expression.Effects, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -173,6 +173,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="AppLib.WPF.snk" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -180,7 +181,6 @@
     <AppDesigner Include="Properties\" />
     <Resource Include="Resources\FractalExplorerEffect.ps" />
     <Resource Include="Resources\fontawesome-webfont.ttf" />
-    <None Include="WPFLib.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\edit.png" />

@@ -19,7 +19,7 @@
                         <Grid.Resources>
                             <controls:TabControlTransitionSelector x:Key="TabControlTransitionSelectorKey" />
                         </Grid.Resources>
-                        <ScrollViewer Grid.Row="0" Panel.ZIndex="1" MaxHeight="27" VerticalScrollBarVisibility="Auto">
+                        <ScrollViewer Grid.Row="0" Panel.ZIndex="1" MinHeight="27" VerticalScrollBarVisibility="Auto">
                             <TabPanel x:Name="HeaderPanel" Grid.Column="0" IsItemsHost="true" Margin="2,2,2,0" Grid.Row="0" KeyboardNavigation.TabIndex="1"  Background="Transparent"/>
                         </ScrollViewer>
                         <Border x:Name="ContentPanel" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Grid.ColumnSpan="2" KeyboardNavigation.DirectionalNavigation="Contained" Grid.Row="1" KeyboardNavigation.TabIndex="2" KeyboardNavigation.TabNavigation="Local">
