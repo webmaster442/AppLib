@@ -122,11 +122,11 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
-                                <ContentPresenter
+                                <Image
                                     Grid.Row="0"
                                     Grid.Column="0"
-                                    x:Name="TitleContentPresenter"
-                                    Content="{Binding TitleContent, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                    Source="{Binding Icon, RelativeSource={RelativeSource TemplatedParent}}"
+                                    Margin="10,0"/>
                                 <Border 
                                     x:Name="moveRectangle"
                                     Grid.Row="0"
@@ -134,25 +134,21 @@
                                     <TextBlock
                                         Text="{Binding Title, RelativeSource={RelativeSource TemplatedParent}}" 
                                         Foreground="White"
-                                        FontSize="18"
+                                        FontSize="16"
                                         VerticalAlignment="Center"
                                         Margin="5,0"/>
-                                </Border>
-                                <Border
-                                    Grid.Row="0"
-                                    Grid.Column="2">
-                                    <Border.Background>
-                                        <VisualBrush Visual="{Binding ElementName=WindowControls}"/>
-                                    </Border.Background>
-                                    <Border.Effect>
-                                        <BlurEffect Radius="26"/>
-                                    </Border.Effect>
                                 </Border>
                                 <StackPanel
                                     x:Name="WindowControls"
                                     Grid.Row="0"
                                     Grid.Column="2"
                                     Orientation="Horizontal">
+                                    <StackPanel.Background>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <GradientStop Color="Transparent" Offset="0"/>
+                                            <GradientStop Color="#FCFCFC" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </StackPanel.Background>
                                     <ToggleButton
                                         x:Name="allwaystopButton"
                                         FontSize="18"
@@ -175,6 +171,7 @@
                                         ToolTip="Close"
                                         FontSize="18"
                                         Width="32"
+                                        Foreground="Red"
                                         Style="{StaticResource WindowButtonStyle}">
                                         <TextBlock Text="&#xf2d3;"/>
                                     </Button>
