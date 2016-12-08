@@ -15,11 +15,16 @@ namespace AppLib.WPF.Controls
     /// </summary>
     public partial class FileExplorer : UserControl
     {
-        private object dummyNode = null;
+        private object _dummyNode;
+        private string _currentpath;
+        private bool _loaded;
 
         public FileExplorer()
         {
             InitializeComponent();
+            _dummyNode = null;
+            _currentpath = null;
+            _loaded = false;
         }
 
         public RoutedEventHandler MouseDoubleClick;
@@ -28,6 +33,7 @@ namespace AppLib.WPF.Controls
         {
             RenderDriveList();
             RenderFolderView();
+            _loaded = true;
         }
 
         #region Drive Bar
@@ -101,13 +107,28 @@ namespace AppLib.WPF.Controls
         {
             if (string.IsNullOrEmpty(path)) return;
             Folders.Items.Clear();
-            foreach (string s in Directory.GetDirectories(path))
+
+            string[] directories = null;
+
+            if (CBHidden.IsChecked == false)
+            {
+                var dir = new DirectoryInfo(path);
+                var folders = from i in dir.GetDirectories()
+                              where !i.Attributes.HasFlag(FileAttributes.Hidden)
+                              select i.FullName;
+                directories = folders.ToArray();
+            }
+            else
+            {
+                directories = Directory.GetDirectories(path);
+            }
+            foreach (string s in directories)
             {
                 var folder = new TreeViewItem();
                 folder.Header = Path.GetFileName(s);
                 folder.Tag = s;
                 folder.FontWeight = FontWeights.Normal;
-                folder.Items.Add(dummyNode);
+                folder.Items.Add(_dummyNode);
                 folder.Expanded += Folder_Expanded;
                 Folders.Items.Add(folder);
             }
@@ -116,7 +137,7 @@ namespace AppLib.WPF.Controls
         private void Folder_Expanded(object sender, RoutedEventArgs e)
         {
             var item = (TreeViewItem)sender;
-            if (item.Items.Count == 1 && item.Items[0] == dummyNode)
+            if (item.Items.Count == 1 && item.Items[0] == _dummyNode)
             {
                 item.Items.Clear();
                 try
@@ -127,7 +148,7 @@ namespace AppLib.WPF.Controls
                         subitem.Header = s.Substring(s.LastIndexOf("\\") + 1);
                         subitem.Tag = s;
                         subitem.FontWeight = FontWeights.Normal;
-                        subitem.Items.Add(dummyNode);
+                        subitem.Items.Add(_dummyNode);
                         subitem.Expanded += Folder_Expanded;
                         item.Items.Add(subitem);
                     }
@@ -146,17 +167,79 @@ namespace AppLib.WPF.Controls
         }
         #endregion
 
+        #region File view
+
+        private TreeViewItem FromID(string itemId, TreeViewItem rootNode)
+        {
+            if (rootNode == null)
+            {
+                var q = Folders.Items.OfType<TreeViewItem>().FirstOrDefault(node => node.Tag.Equals(itemId));
+                if (q != null) return q;
+                else
+                {
+                    var q2 = from i in Folders.Items.OfType<TreeViewItem>()
+                             where i.IsExpanded == true
+                             select i;
+                    foreach (var node in q2)
+                    {
+                        var result = FromID(itemId, node);
+                        if (result != null)
+                        {
+                            return result;
+                        }
+                    }
+                    return null;
+                }
+            }
+            else
+            {
+                foreach (TreeViewItem node in rootNode.Items)
+                {
+                    if (node == null) continue;
+                    if (node.Tag.Equals(itemId)) return node;
+                    var next = FromID(itemId, node);
+                    if (next != null) return next;
+                }
+                return null;
+            }
+        }
+
+        private void SelectNodePath(string path)
+        {
+            var node = FromID(path, null);
+            if (node != null) node.IsExpanded = true;
+        }
+
         private void RenderFileList(string path)
         {
             var items = new List<string>();
             try
             {
-                items.AddRange(Directory.GetDirectories(path));
-                items.AddRange(Directory.GetFiles(path));
+                _currentpath = path;
+                SelectNodePath(path);
+
+                if (CBHidden.IsChecked == true)
+                {
+                    items.AddRange(Directory.GetDirectories(path));
+                    items.AddRange(Directory.GetFiles(path));
+                }
+                else
+                {
+                    var dir = new DirectoryInfo(path);
+                    var folders = from i in dir.GetDirectories()
+                                  where !i.Attributes.HasFlag(FileAttributes.Hidden)
+                                  select i.FullName;
+                    items.AddRange(folders);
+
+                    var files = from i in dir.GetFiles()
+                                where !i.Attributes.HasFlag(FileAttributes.Hidden)
+                                select i.FullName;
+                    items.AddRange(files);
+                }
                 Files.ItemsSource = null;
                 Files.ItemsSource = items;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 Files.ItemsSource = null;
             }
@@ -170,5 +253,28 @@ namespace AppLib.WPF.Controls
             if (Directory.Exists(selected)) RenderFileList(selected);
             else if (this.MouseDoubleClick != null) MouseDoubleClick(this, e);
         }
+
+        #endregion
+
+        #region View
+        private void CBHidden_Checked(object sender, RoutedEventArgs e)
+        {
+            var drive = Path.GetPathRoot(_currentpath);
+            RenderFolderView(drive);
+            RenderFileList(_currentpath);
+
+        }
+
+        private void View_Checked(object sender, RoutedEventArgs e)
+        {
+            if (!_loaded) return;
+            if (ViewGrid.IsChecked == true)
+                Files.Style = this.FindResource("Grid") as Style;
+            else if (ViewList.IsChecked == true)
+                Files.Style = this.FindResource("List") as Style;
+        }
+        #endregion
+
+
     }
 }
