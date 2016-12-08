@@ -72,6 +72,30 @@ namespace AppLib.WPF.Converters
                 case ".rpm":
                 case ".deb":
                     return ImageAwesome.CreateImageSource(FaIcons.fa_file_archive_o, new SolidColorBrush(Colors.Black));
+                case ".c":
+                case ".h":
+                case ".cpp":
+                case ".xml":
+                case ".xaml":
+                case ".cs":
+                case ".vb":
+                case ".js":
+                case ".css":
+                case ".py":
+                case ".lua":
+                case ".less":
+                case ".java":
+                case ".php":
+                case ".r":
+                case ".perl":
+                case ".tcl":
+                case ".matlab":
+                case ".pde":
+                case ".ino":
+                    return ImageAwesome.CreateImageSource(FaIcons.fa_file_code_o, new SolidColorBrush(Colors.Black));
+                case ".txt":
+                case ".md":
+                    return ImageAwesome.CreateImageSource(FaIcons.fa_file_text_o, new SolidColorBrush(Colors.Black));
                 case ".exe":
                     return ImageAwesome.CreateImageSource(FaIcons.fa_windows, new SolidColorBrush(Colors.Black));
                 default:
