@@ -65,6 +65,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Controls\AnalogClock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\ColorPicker.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -115,6 +119,9 @@
     <Compile Include="Attached\ListBoxSelector.cs" />
     <Compile Include="Controls\AlphaSelectControl.xaml.cs">
       <DependentUpon>AlphaSelectControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AnalogClock.xaml.cs">
+      <DependentUpon>AnalogClock.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\AnimatedTabControl.cs" />
     <Compile Include="Controls\ColorPicker.xaml.cs">
