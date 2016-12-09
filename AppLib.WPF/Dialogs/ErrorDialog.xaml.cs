@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -18,8 +17,6 @@ namespace AppLib.WPF.Dialogs
         {
             InitializeComponent();
         }
-
-        private string _details;
 
         private static TreeViewItem RenderNode(Exception ex)
         {
@@ -40,25 +37,18 @@ namespace AppLib.WPF.Dialogs
         /// <param name="ex">Exception, that provides data for the dialog</param>
         public static bool? Show(Exception ex)
         {
-            StringBuilder details = new StringBuilder();
             var dialog = new ErrorDialog();
             dialog.ErrorText.Text = ex.Message;
-            details.AppendFormat("Message: {0}\nStack trace: {1}\n", ex.Message, ex.StackTrace);
             dialog.StackTrace.Text = ex.StackTrace;
             var nodes = RenderNode(ex);
             dialog.InnerExceptions.Items.Add(nodes);
-            dialog._details = details.ToString();
+            System.Media.SystemSounds.Exclamation.Play();
             return dialog.ShowDialog();
         }
 
         private void BtnOk_Click(object sender, RoutedEventArgs e)
         {
-            this.DialogResult = true;
-        }
-
-        private void BtnClipboard_Click(object sender, RoutedEventArgs e)
-        {
-            Clipboard.SetText(_details);
+            DialogResult = true;
         }
     }
 }
