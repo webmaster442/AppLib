@@ -27,7 +27,9 @@ namespace AppLib.WPF.Controls
             _loaded = false;
         }
 
-        public event MouseButtonEventHandler MouseDoubleClick;
+        public delegate void FileDoubleClickHandler(object sender, FileEventArgs e);
+
+        public event FileDoubleClickHandler FileDoubleClick;
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
@@ -251,7 +253,7 @@ namespace AppLib.WPF.Controls
             if (Files.SelectedItem == null) return;
             var selected = Files.SelectedItem as string;
             if (Directory.Exists(selected)) RenderFileList(selected);
-            else MouseDoubleClick?.Invoke(this, e);
+            else FileDoubleClick?.Invoke(this, new FileEventArgs { Filename = selected });
         }
 
         #endregion
@@ -276,5 +278,10 @@ namespace AppLib.WPF.Controls
         #endregion
 
 
+    }
+
+    public class FileEventArgs: RoutedEventArgs
+    {
+        public string Filename { get; set; }
     }
 }
