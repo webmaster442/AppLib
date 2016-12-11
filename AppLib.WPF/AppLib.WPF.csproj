@@ -132,6 +132,7 @@
     <Compile Include="Controls\EditableSlider.xaml.cs">
       <DependentUpon>EditableSlider.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\FAImageButton.cs" />
     <Compile Include="Controls\FileExplorer.xaml.cs">
       <DependentUpon>FileExplorer.xaml</DependentUpon>
     </Compile>
