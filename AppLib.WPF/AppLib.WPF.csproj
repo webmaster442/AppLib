@@ -153,6 +153,7 @@
     <Compile Include="Converters\FileSizeConverter.cs" />
     <Compile Include="Converters\NegateConverter.cs" />
     <Compile Include="Converters\VisibilityConverter.cs" />
+    <Compile Include="DelegateCommand.cs" />
     <Compile Include="Dialogs\ErrorDialog.xaml.cs">
       <DependentUpon>ErrorDialog.xaml</DependentUpon>
     </Compile>
