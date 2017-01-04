@@ -63,6 +63,7 @@ namespace AppLib.WPF
         /// <summary>
         /// Moves the window to the specified screen
         /// </summary>
+        /// <param name="w">Window to move</param>
         /// <param name="index">screen index</param>
         public static void MoveToScreen(Window w, int index)
         {
@@ -82,7 +83,7 @@ namespace AppLib.WPF
         /// Maximizes window on selected screen
         /// </summary>
         /// <param name="w">Window to maximize</param>
-        /// <param name="number">Screen number</param>
+        /// <param name="index">Screen number</param>
         public static void MaximizeOnScreen(Window w, int index)
         {
             var s = _screens[index];

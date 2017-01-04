@@ -8,7 +8,7 @@ namespace AppLib.WPF.Converters
     /// <summary>
     /// A FileInfo converter that converts between various informations of a file
     /// </summary>
-    class FileInfoConverter : IValueConverter
+    public class FileInfoConverter : IValueConverter
     {
         /// <summary>
         /// Returns various informations of a file based on its name and the given converter parameter
