@@ -16,7 +16,7 @@ namespace AppLib.WPF.Converters
         /// <param name="value">The value produced by the binding source.</param>
         /// <param name="targetType">The type of the binding target property.</param>
         /// <param name="parameter">The converter parameter to use. Can be one of the following:
-        /// name, size, extension, date
+        /// name, size, extension, date, namenoextension
         /// </param>
         /// <param name="culture">The culture to use in the converter.</param>
         /// <returns>requested data specified by the parameter</returns>
@@ -42,6 +42,8 @@ namespace AppLib.WPF.Converters
                 case "name":
                 case "filename":
                     return isdir ? di.Name : fi.Name;
+                case "namenoextension":
+                    return isdir ? di.Name : fi.Name.Replace(fi.Extension, "");
                 case "size":
                 case "filesize":
                     return isdir ? " - " : FileSizeConverter.Calculate(fi.Length);
@@ -52,7 +54,7 @@ namespace AppLib.WPF.Converters
                 case "filedate":
                     return isdir ? di.LastWriteTime.ToString(culture) : fi.LastWriteTime.ToString(culture);
                 default:
-                    return "No converter parameter given. Valid converter parameters are: name, size, extension, date";
+                    return "No converter parameter given. Valid converter parameters are: name, namenoextension, size, extension, date";
             }
         }
 

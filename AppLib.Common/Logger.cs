@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text;
 
-namespace WPFLib
+namespace AppLib
 {
     /// <summary>
     /// Identifies the logging level
