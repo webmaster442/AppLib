@@ -293,7 +293,7 @@ namespace AppLib.Common.PInvoke
         /// <param name="lpKids">An array of handles to the child windows to arrange. If a specified child window is a top-level window with the style WS_EX_TOPMOST or WS_EX_TOOLWINDOW, the child window is not arranged. If this parameter is NULL, all child windows of the specified parent window (or of the desktop window) are arranged. </param>
         /// <returns>If the function succeeds, the return value is the number of windows arranged. If the function fails, the return value is zero. To get extended error information, call GetLastError.</returns>
         [DllImport("user32.dll", SetLastError = true)]
-        public static extern int TileWindows(IntPtr hwndParent, wHowFlags wHow, IntPtr lpRect, int cKids, IntPtr lpKids);
+        public static extern int TileWindows(IntPtr hwndParent, wHowFlags wHow, IntPtr lpRect, int cKids, IntPtr[] lpKids);
 
         /// <summary>
         /// Cascades the specified child windows of the specified parent window.
@@ -359,7 +359,7 @@ namespace AppLib.Common.PInvoke
         ///     </see>
         /// </remarks>
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-        static extern int GetWindowText(IntPtr hWnd, StringBuilder lpString, int nMaxCount);
+        public static extern int GetWindowText(IntPtr hWnd, StringBuilder lpString, int nMaxCount);
 
         /// <summary>
         ///     Retrieves the length, in characters, of the specified window's title bar text (if the window has a title bar). If
@@ -392,9 +392,15 @@ namespace AppLib.Common.PInvoke
         ///     GetWindowText function.
         /// </remarks>
         [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
-        static extern int GetWindowTextLength(IntPtr hWnd);
+        public static extern int GetWindowTextLength(IntPtr hWnd);
 
+        /// <summary>
+        /// Retrieves information about the specified window. The function also retrieves the 32-bit (DWORD) value at the specified offset into the extra window memory. 
+        /// </summary>
+        /// <param name="hWnd">A handle to the window and, indirectly, the class to which the window belongs. </param>
+        /// <param name="nIndex">The zero-based offset to the value to be retrieved. Valid values are in the range zero through the number of bytes of extra window memory, minus four; for example, if you specified 12 or more bytes of extra memory, a value of 8 would be an index to the third 32-bit integer</param>
+        /// <returns>If the function succeeds, the return value is the requested value. If the function fails, the return value is zero. To get extended error information, call GetLastError.</returns>
         [DllImport("user32.dll", SetLastError = true)]
-        static extern int GetWindowLong(IntPtr hWnd, int nIndex);
+        public static extern long GetWindowLong(IntPtr hWnd, int nIndex);
     }
 }
