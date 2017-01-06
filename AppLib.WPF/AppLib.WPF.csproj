@@ -179,6 +179,7 @@
     <Compile Include="ScreenHelper.cs" />
     <Compile Include="Shaders\FractalExplorerEffect.cs" />
     <Compile Include="WindowManager.cs" />
+    <Compile Include="WindowThumbnail.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

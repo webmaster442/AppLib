@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows;
+using System.Windows.Interop;
 
 namespace AppLib.WPF
 {
@@ -27,7 +29,7 @@ namespace AppLib.WPF
             if ((User32.GetWindowLong(hwnd, GWLFlags.GWL_STYLE) & _IsVisible) == _IsVisible)
             {
                 var sb = new StringBuilder();
-                sb.Capacity = User32.GetWindowTextLength(hwnd);
+                sb.Capacity = User32.GetWindowTextLength(hwnd) + 1;
                 User32.GetWindowText(hwnd, sb, sb.Capacity);
                 var wi = new WindowInformation(hwnd, sb.ToString());
                 if ((_caller != IntPtr.Zero) && (_caller != hwnd))
@@ -47,6 +49,17 @@ namespace AppLib.WPF
             _windows.Clear();
             User32.EnumWindows(enumWindowsCall, 0);
             return _windows;
+        }
+
+        /// <summary>
+        /// Provides a list of Window Informations
+        /// </summary>
+        /// <param name="caller">Caller window</param>
+        /// <returns></returns>
+        public static IList<WindowInformation> GetWindowList(Window caller)
+        {
+            var interop = new WindowInteropHelper(caller).Handle;
+            return GetWindowList(interop);
         }
 
         /// <summary>

@@ -48,12 +48,12 @@ namespace AppLib.Common.PInvoke
         /// <summary>
         /// Specifies the rectangle's width. The units depend on which function uses this.
         /// </summary>
-        public long cX;
+        public int cX;
 
         /// <summary>
         /// Specifies the rectangle's height. The units depend on which function uses this.
         /// </summary>
-        public long cY;
+        public int cY;
     }
 
     /// <summary>
@@ -65,8 +65,7 @@ namespace AppLib.Common.PInvoke
         /// <summary>
         /// A bitwise combination of DWM thumbnail constant values that indicates which members of this structure are set.
         /// </summary>
-        [MarshalAs(UnmanagedType.U4)]
-        public dwFlags dwFlags;
+        public int dwFlags;
         /// <summary>
         /// The area in the destination window where the thumbnail will be rendered.
         /// </summary>
@@ -102,7 +101,7 @@ namespace AppLib.Common.PInvoke
         /// <param name="top">The y-coordinate of the upper-left corner of the rectangle.</param>
         /// <param name="right">The x-coordinate of the lower-right corner of the rectangle.</param>
         /// <param name="bottom">The y-coordinate of the lower-right corner of the rectangle.</param>
-        public Rect(long left, long top, long right, long bottom)
+        public Rect(int left, int top, int right, int bottom)
         {
             Left = left;
             Top = top;
@@ -113,52 +112,50 @@ namespace AppLib.Common.PInvoke
         /// <summary>
         /// The x-coordinate of the upper-left corner of the rectangle.
         /// </summary>
-        public long Left;
+        public int Left;
 
         /// <summary>
         /// The y-coordinate of the upper-left corner of the rectangle.
         /// </summary>
-        public long Top;
-
+        public int Top;
 
         /// <summary>
         /// The x-coordinate of the lower-right corner of the rectangle.
         /// </summary>
-        public long Right;
+        public int Right;
 
         /// <summary>
         /// The y-coordinate of the lower-right corner of the rectangle.
         /// </summary>
-        public long Bottom;
+        public int Bottom;
     }
 
 
     /// <summary>
     /// Flags used by the DWM_THUMBNAIL_PROPERTIES structure to indicate which of its members contain valid information.
     /// </summary>
-    [Flags]
-    public enum dwFlags: int
+    public static class dwFlags
     {
         /// <summary>
         /// A value for the rcDestination member has been specified.
         /// </summary>
-        DWM_TNP_RECTDESTINATION = 0x00000001,
+        public const int DWM_TNP_RECTDESTINATION = 0x00000001;
         /// <summary>
         /// A value for the rcSource member has been specified.
         /// </summary>
-        DWM_TNP_RECTSOURCE = 0x00000002,
+        public const int DWM_TNP_RECTSOURCE = 0x00000002;
         /// <summary>
         /// A value for the opacity member has been specified.
         /// </summary>
-        DWM_TNP_OPACITY = 0x00000004,
+        public const int DWM_TNP_OPACITY = 0x00000004;
         /// <summary>
         /// A value for the fVisible member has been specified.
         /// </summary>
-        DWM_TNP_VISIBLE = 0x00000008,
+        public const int DWM_TNP_VISIBLE = 0x00000008;
         /// <summary>
         /// A value for the fSourceClientAreaOnly member has been specified.
         /// </summary>
-        DWM_TNP_SOURCECLIENTAREAONLY = 0x00000010
+        public const int DWM_TNP_SOURCECLIENTAREAONLY = 0x00000010;
     }
 
     /// <summary>
