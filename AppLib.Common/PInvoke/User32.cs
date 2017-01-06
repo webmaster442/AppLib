@@ -282,5 +282,29 @@ namespace AppLib.Common.PInvoke
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool ExitWindowsEx(ExitWindows uFlags, ShutdownReason dwReason);
 
+        /// <summary>
+        /// Tiles the specified child windows of the specified parent window.
+        /// </summary>
+        /// <param name="hwndParent">A handle to the parent window. If this parameter is NULL, the desktop window is assumed. </param>
+        /// <param name="wHow">The tiling flags. This parameter can be one of the following values—optionally combined with MDITILE_SKIPDISABLED to prevent disabled MDI child windows from being tiled. </param>
+        /// <param name="lpRect">A pointer to a structure that specifies the rectangular area, in client coordinates, within which the windows are arranged. If this parameter is NULL, the client area of the parent window is used. </param>
+        /// <param name="cKids">The number of elements in the array specified by the lpKids parameter. This parameter is ignored if lpKids is NULL. </param>
+        /// <param name="lpKids">An array of handles to the child windows to arrange. If a specified child window is a top-level window with the style WS_EX_TOPMOST or WS_EX_TOOLWINDOW, the child window is not arranged. If this parameter is NULL, all child windows of the specified parent window (or of the desktop window) are arranged. </param>
+        /// <returns>If the function succeeds, the return value is the number of windows arranged. If the function fails, the return value is zero. To get extended error information, call GetLastError.</returns>
+        [DllImport("user32.dll", SetLastError = true)]
+        public static extern int TileWindows(IntPtr hwndParent, wHowFlags wHow, IntPtr lpRect, int cKids, IntPtr lpKids);
+
+        /// <summary>
+        /// Cascades the specified child windows of the specified parent window.
+        /// </summary>
+        /// <param name="hwndParent">A handle to the parent window. If this parameter is NULL, the desktop window is assumed.</param>
+        /// <param name="wHow">A cascade flag. This parameter can be one or more of the following values. </param>
+        /// <param name="lpRect">A pointer to a structure that specifies the rectangular area, in client coordinates, within which the windows are arranged. This parameter can be NULL, in which case the client area of the parent window is used. </param>
+        /// <param name="cKids">The number of elements in the array specified by the lpKids parameter. This parameter is ignored if lpKids is NULL. </param>
+        /// <param name="lpKids">An array of handles to the child windows to arrange. If a specified child window is a top-level window with the style WS_EX_TOPMOST or WS_EX_TOOLWINDOW, the child window is not arranged. If this parameter is NULL, all child windows of the specified parent window (or of the desktop window) are arranged. </param>
+        /// <returns>If the function succeeds, the return value is the number of windows arranged. If the function fails, the return value is zero. To get extended error information, call GetLastError.</returns>
+        [DllImport("user32.dll", SetLastError = true)]
+        public static extern ushort CascadeWindows(IntPtr hwndParent, wHowFlags wHow, IntPtr lpRect, uint cKids, IntPtr[] lpKids);
+
     }
 }

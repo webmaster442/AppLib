@@ -65,7 +65,8 @@ namespace AppLib.Common.PInvoke
         /// <summary>
         /// A bitwise combination of DWM thumbnail constant values that indicates which members of this structure are set.
         /// </summary>
-        public int dwFlags;
+        [MarshalAs(UnmanagedType.U4)]
+        public dwFlags dwFlags;
         /// <summary>
         /// The area in the destination window where the thumbnail will be rendered.
         /// </summary>

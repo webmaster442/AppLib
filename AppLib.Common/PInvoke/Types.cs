@@ -385,4 +385,28 @@ namespace AppLib.Common.PInvoke
         /// </summary>
         LOAD_WITH_ALTERED_SEARCH_PATH = 0x00000008
     }
+
+    /// <summary>
+    /// Flags used in CascadeWindows & TileWindows
+    /// </summary>
+    [Flags]
+    public enum wHowFlags : uint
+    {
+        /// <summary>
+        /// Tiles windows horizontally.
+        /// </summary>
+        MDITILE_HORIZONTAL = 0x0001,
+        /// <summary>
+        /// Tiles windows vertically.
+        /// </summary>
+        MDITILE_VERTICAL = 0x0000,
+        /// <summary>
+        /// Prevents disabled MDI child windows from being cascaded. 
+        /// </summary>
+        MDITILE_SKIPDISABLED = 0x0002,
+        /// <summary>
+        /// Arranges the windows in Z order.
+        /// </summary>
+        MDITILE_ZORDER = 0x0004
+    }
 }
