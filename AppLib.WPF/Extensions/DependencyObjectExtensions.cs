@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Media;
 
@@ -140,6 +141,16 @@ namespace AppLib.WPF.Extensions
                     yield return VisualTreeHelper.GetChild(parent, i);
                 }
             }
+        }
+
+        /// <summary>
+        /// Returns true, if the current dependency object is loaded in a designer
+        /// </summary>
+        /// <param name="obj">object to check</param>
+        /// <returns>True, if executing in designer, otherwise false</returns>
+        public static bool IsDesignMode(this DependencyObject obj)
+        {
+            return DesignerProperties.GetIsInDesignMode(obj);
         }
     }
 }
