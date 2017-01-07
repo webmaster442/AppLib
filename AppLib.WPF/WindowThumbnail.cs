@@ -6,15 +6,28 @@ using System.Windows.Media;
 
 namespace AppLib.WPF
 {
+    /// <summary>
+    /// DWM Thumbnail interop control
+    /// </summary>
     public class WindowThumbnail : FrameworkElement
     {
+        /// <summary>
+        /// Creates a new instance of WindowThumbnail
+        /// </summary>
         public WindowThumbnail()
         {
             this.LayoutUpdated += new EventHandler(Thumbnail_LayoutUpdated);
             this.Unloaded += new RoutedEventHandler(Thumbnail_Unloaded);
         }
 
+        /// <summary>
+        /// Dependency property for source
+        /// </summary>
         public static DependencyProperty SourceProperty;
+
+        /// <summary>
+        /// Dependency property for clientareaonly
+        /// </summary>
         public static DependencyProperty ClientAreaOnlyProperty;
 
         static WindowThumbnail()
@@ -54,18 +67,27 @@ namespace AppLib.WPF
                     }));
         }
 
+        /// <summary>
+        /// Gets or sets the window handle that needs to be drawn as a thumbnail
+        /// </summary>
         public IntPtr Source
         {
             get { return (IntPtr)this.GetValue(SourceProperty); }
             set { this.SetValue(SourceProperty, value); }
         }
 
+        /// <summary>
+        /// Gets or sets that the window's client area shuld be drawn
+        /// </summary>
         public bool ClientAreaOnly
         {
             get { return (bool)this.GetValue(ClientAreaOnlyProperty); }
             set { this.SetValue(ClientAreaOnlyProperty, value); }
         }
 
+        /// <summary>
+        /// Gets or sets control opacity
+        /// </summary>
         public new double Opacity
         {
             get { return (double)this.GetValue(OpacityProperty); }
@@ -148,6 +170,11 @@ namespace AppLib.WPF
             }
         }
 
+        /// <summary>
+        /// Override of the measure function
+        /// </summary>
+        /// <param name="availableSize">Available size</param>
+        /// <returns>new control size</returns>
         protected override Size MeasureOverride(Size availableSize)
         {
             SIZE size;
@@ -163,12 +190,19 @@ namespace AppLib.WPF
             return new Size(size.cX * scale, size.cY * scale); ;
         }
 
+        /// <summary>
+        /// Override for the arrangement
+        /// </summary>
+        /// <param name="finalSize">Final available size</param>
+        /// <returns>Actial draw size</returns>
         protected override Size ArrangeOverride(Size finalSize)
         {
             SIZE size;
             DwmApi.DwmQueryThumbnailSourceSize(thumb, out size);
             // scale to fit whatever size we were allocated
-            double scale = finalSize.Width / size.cX;
+            double scale = 1;
+            if (size.cX > 0)
+                scale = finalSize.Width / size.cX;
             scale = Math.Min(scale, finalSize.Height / size.cY);
             return new Size(size.cX * scale, size.cY * scale);
         }

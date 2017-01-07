@@ -14,28 +14,48 @@ namespace AppLib.WPF
     {
         private static List<WindowInformation> _windows;
         private static IntPtr _caller;
-        private static IntPtr _thumbnail;
+        private static IntPtr _shell;
         private readonly static uint _IsVisible;
 
         static WindowManagement()
         {
             _windows = new List<WindowInformation>();
-            _IsVisible = GWLFlags.WS_BORDER | GWLFlags.WS_VISIBLE;
             _caller = IntPtr.Zero;
+            _shell = User32.GetShellWindow();
+            _IsVisible = GWLFlags.WS_VISIBLE | GWLFlags.WS_EX_APPWINDOW;
+        }
+
+        private static bool IsWindowChainVisible(IntPtr hWnd)
+        {
+            // Start at the root owner
+            IntPtr hwndWalk = User32.GetAncestor(hWnd, GetAncestorFlags.GetRootOwner);
+            // Basically we try get from the parent back to that window
+            IntPtr hwndTry;
+            while ((hwndTry = User32.GetLastActivePopup(hwndWalk)) != hwndTry)
+            {
+                if (User32.IsWindowVisible(hwndTry)) break;
+                hwndWalk = hwndTry;
+            }
+            return (hwndWalk == hWnd);
         }
 
         private static bool enumWindowsCall(IntPtr hwnd, int lParam)
         {
-            if ((User32.GetWindowLong(hwnd, GWLFlags.GWL_STYLE) & _IsVisible) == _IsVisible)
+            var visible = (User32.GetWindowLong(hwnd, GWLFlags.GWL_STYLE) & _IsVisible) == _IsVisible;
+            var isshell = (hwnd == _shell);
+            if (visible && !isshell && IsWindowChainVisible(hwnd))
             {
                 var sb = new StringBuilder();
                 sb.Capacity = User32.GetWindowTextLength(hwnd) + 1;
                 User32.GetWindowText(hwnd, sb, sb.Capacity);
-                var wi = new WindowInformation(hwnd, sb.ToString());
-                if ((_caller != IntPtr.Zero) && (_caller != hwnd))
-                    _windows.Add(wi);
-                else
-                    _windows.Add(wi);
+                if (sb.Length > 0)
+                {
+                    var wi = new WindowInformation(hwnd, sb.ToString());
+                    if ((_caller != IntPtr.Zero) && (_caller != hwnd))
+                        _windows.Add(wi);
+                    else
+                        _windows.Add(wi);
+                }
             }
             return true;
         }

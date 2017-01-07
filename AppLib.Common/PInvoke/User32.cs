@@ -402,5 +402,38 @@ namespace AppLib.Common.PInvoke
         /// <returns>If the function succeeds, the return value is the requested value. If the function fails, the return value is zero. To get extended error information, call GetLastError.</returns>
         [DllImport("user32.dll", SetLastError = true)]
         public static extern long GetWindowLong(IntPtr hWnd, int nIndex);
+
+        /// <summary>
+        /// Determines the visibility state of the specified window. 
+        /// </summary>
+        /// <param name="hWnd">A handle to the window to be tested. </param>
+        /// <returns>If the specified window, its parent window, its parent's parent window, and so forth, have the WS_VISIBLE style, the return value is nonzero. Otherwise, the return value is zero. Because the return value specifies whether the window has the WS_VISIBLE style, it may be nonzero even if the window is totally obscured by other windows.</returns>
+        [DllImport("user32.dll")]
+        public static extern bool IsWindowVisible(IntPtr hWnd);
+
+        /// <summary>
+        /// Retrieves a handle to the Shell's desktop window.
+        /// </summary>
+        /// <returns>The return value is the handle of the Shell's desktop window. If no Shell process is present, the return value is NULL.</returns>
+        [DllImport("user32.dll")]
+        public static extern IntPtr GetShellWindow();
+
+        /// <summary>
+        /// Retrieves the handle to the ancestor of the specified window.
+        /// </summary>
+        /// <param name="hwnd">A handle to the window whose ancestor is to be retrieved.
+        /// If this parameter is the desktop window, the function returns NULL. </param>
+        /// <param name="flags">The ancestor to be retrieved.</param>
+        /// <returns>The return value is the handle to the ancestor window.</returns>
+        [DllImport("user32.dll", ExactSpelling = true)]
+        public static extern IntPtr GetAncestor(IntPtr hwnd, GetAncestorFlags flags);
+
+        /// <summary>
+        /// Determines which pop-up window owned by the specified window was most recently active. 
+        /// </summary>
+        /// <param name="hWnd">A handle to the owner window. </param>
+        /// <returns>The return value identifies the most recently active pop-up window. The return value is the same as the hWnd parameter, if any of the following conditions are met: The window identified by hWnd was most recently active. The window identified by hWnd does not own any pop-up windows. The window identifies by hWnd is not a top-level window, or it is owned by another window.</returns>
+        [DllImport("user32.dll")]
+        public static extern IntPtr GetLastActivePopup(IntPtr hWnd);
     }
 }
