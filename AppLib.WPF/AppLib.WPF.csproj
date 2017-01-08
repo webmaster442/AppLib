@@ -160,6 +160,7 @@
     <Compile Include="Dialogs\SerialPortDialog.xaml.cs">
       <DependentUpon>SerialPortDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\ColorExtensions.cs" />
     <Compile Include="Extensions\DependencyObjectExtensions.cs" />
     <Compile Include="Extensions\FrameWorkElementExtensions.cs" />
     <Compile Include="Extensions\ObservableCollectionExtensions.cs" />
