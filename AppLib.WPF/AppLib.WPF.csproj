@@ -163,6 +163,7 @@
     <Compile Include="Extensions\ColorExtensions.cs" />
     <Compile Include="Extensions\DependencyObjectExtensions.cs" />
     <Compile Include="Extensions\FrameWorkElementExtensions.cs" />
+    <Compile Include="Extensions\HSL.cs" />
     <Compile Include="Extensions\ObservableCollectionExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

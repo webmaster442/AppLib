@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Windows.Media;
 using AppLib.Common.Extensions;
+using System.Text;
 
 namespace AppLib.WPF.Extensions
 {
     /// <summary>
     /// Represents a color in the Hue, Saturation, Lightness modell
     /// </summary>
-    public sealed class HSLColor: IFormattable, IEquatable<HSLColor>, IEquatable<Color>
+    public sealed class HSLColor: IFormattable, IEquatable<HSLColor>
     {
         private float _hue;
         private float _saturation;
@@ -193,31 +194,111 @@ namespace AppLib.WPF.Extensions
             }
         }
 
+        /// <summary>
+        /// Converts a color represented in the HSL model to the RGB model equivalent
+        /// </summary>
+        /// <param name="hsl">HSL value to convert</param>
+        /// <returns>A color in RGB</returns>
+        public static Color HSLtoRGB(HSLColor hsl)
+        {
+            return HSLtoRGB(hsl.Hue, hsl.Saturation, hsl.Lightness);
+        }
+
+        /// <summary>
+        /// Converts this instance to a text
+        /// </summary>
+        /// <returns>A text representation of this instance</returns>
         public override string ToString()
         {
-            return string.Format("H: {0}, S: {1},  L: {2}", _hue, _saturation, _lightness);
+            return string.Format("H: {0:#,0.000}, S: {1:#,0.000},  L: {2:#,0.000}", _hue, _saturation, _lightness);
         }
 
+        /// <summary>
+        /// Formats the value of the current instance using the specified format.
+        /// </summary>
+        /// <param name="format">The format to use or a null reference to use the default format defined for the type of the IFormattable implementation.</param>
+        /// <param name="formatProvider">The provider to use to format the value. or A null reference to obtain the numeric format information from the current locale setting of the operating system. </param>
+        /// <returns>The value of the current instance in the specified format.</returns>
         public string ToString(string format, IFormatProvider formatProvider)
         {
-            throw new NotImplementedException();
+            var sb = new StringBuilder();
+            if (format == null)
+            {
+                sb.AppendFormat(formatProvider, "H: {0:#,0.000}, ", Hue);
+                sb.AppendFormat(formatProvider, "S: {0:#,0.000}, ", Saturation);
+                sb.AppendFormat(formatProvider, "L: {0:#,0.000}", Lightness);
+            }
+            else
+            {
+                sb.AppendFormat(formatProvider, "H: {0:" + format + "}, ", Hue);
+                sb.AppendFormat(formatProvider, "S: {0:" + format + "}, ", Saturation);
+                sb.AppendFormat(formatProvider, "L: {0:" + format + "}", Lightness);
+            }
+            return sb.ToString();
         }
 
+        /// <summary>
+        /// Compares two Instances for equality
+        /// </summary>
+        /// <param name="h1">A HSLColor instance</param>
+        /// <param name="h2">A HSLColor instance</param>
+        /// <returns>true, if the two instances are equal, false if not</returns>
+        public static bool operator ==(HSLColor h1, HSLColor h2)
+        {
+            if (h1 == null || h2 == null) return false;
+            var check = h1.Hue.EqualsWithTolerance(h2.Hue);
+            if (check) check = h1.Saturation.EqualsWithTolerance(h2.Saturation);
+            if (check) check = h1.Lightness.EqualsWithTolerance(h2.Lightness);
+            return check;
+        }
+
+        /// <summary>
+        /// Compares two Instances for not equality
+        /// </summary>
+        /// <param name="h1">A HSLColor instance</param>
+        /// <param name="h2">A HSLColor instance</param>
+        /// <returns>true, if the two instances are not equal, false if they are equal</returns>
+        public static bool operator != (HSLColor h1, HSLColor h2)
+        {
+            return !(h1 == h2);
+        }
+
+        /// <summary>
+        /// Indicates whether the current object is equal to another object of the same type.
+        /// </summary>
+        /// <param name="other">A HSLColor instance to compare with this instance</param>
+        /// <returns>True, if the two instances are equal, false otherwise</returns>
         public bool Equals(HSLColor other)
         {
-            var eq = Hue.EqualsWithTolerance(other.Hue);
-            if (eq) eq = Saturation.EqualsWithTolerance(other.Saturation);
-            if (eq) eq = Lightness.EqualsWithTolerance(other.Lightness);
-            return eq;
+            return this == other;
         }
 
-        public bool Equals(Color other)
+        /// <summary>
+        /// Indicates whether the current object is equal to another object.
+        /// </summary>
+        /// <param name="obj">An object to compare with this object</param>
+        /// <returns>True, if the two instances are equal, false otherwise</returns>
+        public override bool Equals(object obj)
         {
-            var hsl = RGBtoHSL(other);
-            var eq = Hue.EqualsWithTolerance(hsl.Hue);
-            if (eq) eq = Saturation.EqualsWithTolerance(hsl.Saturation);
-            if (eq) eq = Lightness.EqualsWithTolerance(hsl.Lightness);
-            return eq;
+            HSLColor other = obj as HSLColor;
+            if (other == null) return false;
+            return this == other;
+        }
+
+        /// <summary>
+        /// Computes the hash value of this instance
+        /// </summary>
+        /// <returns>a hash value</returns>
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                var hash = 17;
+                hash *= 23 + Hue.GetHashCode();
+                hash *= 23 + Saturation.GetHashCode();
+                hash *= 23 + Lightness.GetHashCode();
+                return hash;
+            }
         }
     }
 }

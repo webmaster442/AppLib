@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AppLib.Common.Extensions;
 using System.Windows.Media;
-using AppLib.Common.Extensions;
 
 namespace AppLib.WPF.Extensions
 {
@@ -41,6 +36,19 @@ namespace AppLib.WPF.Extensions
             return Color.FromRgb((byte)(255 - c.R), (byte)(255 - c.G), (byte)(255 - c.B));
         }
 
+
+        /// <summary>
+        /// Computes the inverse color
+        /// </summary>
+        /// <param name="c">a color</param>
+        /// <returns>The color's inverse color</returns>
+        public static Color Inverse(this Color c)
+        {
+            var hsl = HSLColor.RGBtoHSL(c);
+            hsl.Hue = 360 - hsl.Hue;
+            return HSLColor.HSLtoRGB(hsl);
+        }
+
         /// <summary>
         /// Creates a solid color brush from the parameter color
         /// </summary>
@@ -49,6 +57,26 @@ namespace AppLib.WPF.Extensions
         public static SolidColorBrush ToColorBrush(this Color c)
         {
             return new SolidColorBrush(c);
+        }
+
+        /// <summary>
+        /// Converts the current color to a HSL color value
+        /// </summary>
+        /// <param name="c">Color to convert</param>
+        /// <returns>Color in HSL color space</returns>
+        public static HSLColor ToHSLColor(this Color c)
+        {
+            return HSLColor.RGBtoHSL(c);
+        }
+
+        /// <summary>
+        /// Converts a HSL color to a Color
+        /// </summary>
+        /// <param name="hsl">HSL color to convert</param>
+        /// <returns>An RGB color instance</returns>
+        public static Color ToColor(this HSLColor hsl)
+        {
+            return HSLColor.HSLtoRGB(hsl);
         }
     }
 }
