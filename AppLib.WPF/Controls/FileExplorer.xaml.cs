@@ -71,6 +71,8 @@ namespace AppLib.WPF.Controls
                     case DriveType.Unknown:
                         ib.Image = ImageAwesome.CreateImageSource(FaIcons.fa_question, new SolidColorBrush(Colors.Black));
                         break;
+                    default:
+                        continue;
                 }
 
                 ib.Content = drive.Name;

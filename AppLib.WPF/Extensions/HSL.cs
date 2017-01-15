@@ -90,7 +90,7 @@ namespace AppLib.WPF.Extensions
             {
                 if (_lightness < 0) _lightness = 0;
                 else if (_lightness > 1) _lightness = 1;
-                _lightness = value;
+                else _lightness = value;
             }
         }
 

@@ -51,10 +51,7 @@ namespace AppLib.WPF
                 if (sb.Length > 0)
                 {
                     var wi = new WindowInformation(hwnd, sb.ToString());
-                    if ((_caller != IntPtr.Zero) && (_caller != hwnd))
-                        _windows.Add(wi);
-                    else
-                        _windows.Add(wi);
+                    _windows.Add(wi);
                 }
             }
             return true;

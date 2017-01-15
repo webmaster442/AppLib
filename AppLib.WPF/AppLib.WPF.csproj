@@ -180,6 +180,10 @@
     </Compile>
     <Compile Include="ScreenHelper.cs" />
     <Compile Include="Shaders\FractalExplorerEffect.cs" />
+    <Compile Include="Shaders\GrayscaleEffect.cs" />
+    <Compile Include="Shaders\HueShiftEffect.cs" />
+    <Compile Include="Shaders\SepiaEffect.cs" />
+    <Compile Include="Shaders\TransitionColorizeEffect.cs" />
     <Compile Include="WindowManager.cs" />
     <Compile Include="WindowThumbnail.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -192,6 +196,10 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <Resource Include="Resources\GrayscaleEffect.ps" />
+    <Resource Include="Resources\HueShiftEffect.ps" />
+    <Resource Include="Resources\SepiaEffect.ps" />
+    <Resource Include="Resources\TransitionColorizeEffect.ps" />
     <Resource Include="Resources\FractalExplorerEffect.ps" />
     <Resource Include="Resources\fontawesome-webfont.ttf" />
   </ItemGroup>
@@ -207,6 +215,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Shaders\FractalExplorer.fx" />
+    <Content Include="Shaders\Grayscale.fx" />
+    <Content Include="Shaders\HueShift.fx" />
+    <Content Include="Shaders\Sepia.fx" />
+    <Content Include="Shaders\TransitionColorize.fx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
