@@ -40,5 +40,15 @@ namespace AppLib.WPF.Extensions
         {
             return Color.FromRgb((byte)(255 - c.R), (byte)(255 - c.G), (byte)(255 - c.B));
         }
+
+        /// <summary>
+        /// Creates a solid color brush from the parameter color
+        /// </summary>
+        /// <param name="c">color to convert to brush</param>
+        /// <returns>A solid color brush with the specified color</returns>
+        public static SolidColorBrush ToColorBrush(this Color c)
+        {
+            return new SolidColorBrush(c);
+        }
     }
 }
