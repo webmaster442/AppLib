@@ -59,6 +59,8 @@
     <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="HttpServer\HttpCache.cs" />
     <Compile Include="HttpServer\HttpServer.cs" />
+    <Compile Include="INI\IniFile.cs" />
+    <Compile Include="INI\IniKey.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Parameter.cs" />
     <Compile Include="ParametersParser.cs" />

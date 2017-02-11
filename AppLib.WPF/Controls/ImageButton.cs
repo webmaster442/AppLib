@@ -6,6 +6,22 @@ using System.Windows.Media;
 
 namespace AppLib.WPF.Controls
 {
+
+    /// <summary>
+    /// Image Placement
+    /// </summary>
+    public enum ImagePlacement
+    {
+        /// <summary>
+        /// Left
+        /// </summary>
+        Left,
+        /// <summary>
+        /// Right
+        /// </summary>
+        Right
+    }
+
     /// <summary>
     /// ImageButton Control
     /// </summary>
@@ -35,12 +51,27 @@ namespace AppLib.WPF.Controls
             DependencyProperty.Register("ImageWidth", typeof(double), typeof(ImageButton), new PropertyMetadata(Double.NaN));
 
         /// <summary>
+        /// Image placement property
+        /// </summary>
+        public static readonly DependencyProperty ImagePlacementProperty =
+            DependencyProperty.Register("ImagePlacement", typeof(ImagePlacement), typeof(ImageButton), new PropertyMetadata(ImagePlacement.Left));
+
+        /// <summary>
         /// Gets or sets the control image
         /// </summary>
         public ImageSource Image
         {
             get { return (ImageSource)GetValue(ImageProperty); }
             set { SetValue(ImageProperty, value); }
+        }
+
+        /// <summary>
+        /// Image placement
+        /// </summary>
+        public ImagePlacement ImagePlacement
+        {
+            get { return (ImagePlacement)GetValue(ImagePlacementProperty); }
+            set { SetValue(ImagePlacementProperty, value); }
         }
 
         /// <summary>

@@ -35,6 +35,12 @@ namespace AppLib.WPF.Controls
             DependencyProperty.Register("IconForeground", typeof(Brush), typeof(FaImageButton), new PropertyMetadata(new SolidColorBrush(Colors.Black)));
 
         /// <summary>
+        /// Image placement property
+        /// </summary>
+        public static readonly DependencyProperty ImagePlacementProperty =
+            DependencyProperty.Register("ImagePlacement", typeof(ImagePlacement), typeof(FaImageButton), new PropertyMetadata(ImagePlacement.Left));
+
+        /// <summary>
         /// Gets or sets the icon size
         /// </summary>
         public double IconSize
@@ -59,6 +65,16 @@ namespace AppLib.WPF.Controls
         {
             get { return (FaIcons)GetValue(IconProperty); }
             set { SetValue(IconProperty, value); }
+        }
+
+
+        /// <summary>
+        /// Image placement
+        /// </summary>
+        public ImagePlacement ImagePlacement
+        {
+            get { return (ImagePlacement)GetValue(ImagePlacementProperty); }
+            set { SetValue(ImagePlacementProperty, value); }
         }
     }
 }
