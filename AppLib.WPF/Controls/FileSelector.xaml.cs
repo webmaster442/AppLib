@@ -49,12 +49,25 @@ namespace AppLib.WPF.Controls
 
         private void BtnBrowse_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Multiselect = true;
-            openFileDialog.Filter = Filter;
-            if (openFileDialog.ShowDialog() == true)
+            if (Filter.ToLower() == "folder")
             {
-                SelectedFile = openFileDialog.FileName;
+                var fs = new System.Windows.Forms.FolderBrowserDialog();
+                fs.Description = "Select folder ...";
+                if (fs.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    SelectedFile = fs.SelectedPath;
+                }
+            }
+            else
+            {
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                openFileDialog.Title = "Select file ...";
+                openFileDialog.Multiselect = true;
+                openFileDialog.Filter = Filter;
+                if (openFileDialog.ShowDialog() == true)
+                {
+                    SelectedFile = openFileDialog.FileName;
+                }
             }
         }
     }

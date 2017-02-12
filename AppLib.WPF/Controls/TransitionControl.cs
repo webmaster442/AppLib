@@ -203,7 +203,6 @@ namespace AppLib.WPF.Controls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-
             _contentPresenter = (ContentPresenter)Template.FindName("PART_ContentHost", this);
         }
 
