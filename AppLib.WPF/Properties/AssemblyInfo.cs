@@ -60,5 +60,6 @@ using System.Windows.Markup;
 [assembly: XmlnsDefinition("http://github.com/webmaster442/AppLib/WPF", "AppLib.WPF.Controls.FontAwesome")]
 [assembly: XmlnsDefinition("http://github.com/webmaster442/AppLib/WPF", "AppLib.WPF.Converters")]
 [assembly: XmlnsDefinition("http://github.com/webmaster442/AppLib/WPF", "AppLib.WPF.Dialogs")]
+[assembly: XmlnsDefinition("http://github.com/webmaster442/AppLib/WPF", "AppLib.WPF.MVVM")]
 [assembly: XmlnsDefinition("http://github.com/webmaster442/AppLib/WPF", "AppLib.WPF.Shaders")]
 [assembly: XmlnsDefinition("http://github.com/webmaster442/AppLib/WPF", "AppLib.WPF.Attached")]

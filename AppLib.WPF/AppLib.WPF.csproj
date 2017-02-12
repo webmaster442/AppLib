@@ -153,7 +153,7 @@
     <Compile Include="Converters\MultiBoolConverter.cs" />
     <Compile Include="Converters\NegateConverter.cs" />
     <Compile Include="Converters\VisibilityConverter.cs" />
-    <Compile Include="DelegateCommand.cs" />
+    <Compile Include="MVVM\DelegateCommand.cs" />
     <Compile Include="Dialogs\ErrorDialog.xaml.cs">
       <DependentUpon>ErrorDialog.xaml</DependentUpon>
     </Compile>
@@ -165,6 +165,7 @@
     <Compile Include="Extensions\FrameWorkElementExtensions.cs" />
     <Compile Include="Extensions\HSL.cs" />
     <Compile Include="Extensions\ObservableCollectionExtensions.cs" />
+    <Compile Include="MVVM\Model.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
