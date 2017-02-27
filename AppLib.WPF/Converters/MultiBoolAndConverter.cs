@@ -6,13 +6,13 @@ using System.Windows.Data;
 namespace AppLib.WPF.Converters
 {
     /// <summary>
-    /// Converts multiple bool values to a single bool value
+    /// Converts multiple bool values to a single bool value. Output will be true, if all the inputs are true.
     /// </summary>
-    public class MultiBoolConverter : IMultiValueConverter
+    public class MultiBoolAndConverter : IMultiValueConverter
     {
         /// <summary>
         ///  Converts multiple bool values to a single bool value.
-        ///  Output is true, if one of the values is true
+        ///  Output is false, if one of the values is false
         /// </summary>
         /// <param name="values">an array of values</param>
         /// <param name="targetType">target type</param>
@@ -21,12 +21,11 @@ namespace AppLib.WPF.Converters
         /// <returns>Output is true, if one of the values is true</returns>
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            if (values == null) return false;
-
             var q = from i in values.Cast<bool>()
-                    where i == true
+                    where i == false
                     select i;
-            return (q.Count() > 0);
+
+            return q.Count() > 0 ? false : true;
         }
 
         /// <summary>
