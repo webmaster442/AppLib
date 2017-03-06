@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Windows;
 using System.Windows.Input;
+using AppLib.WPF.Extensions;
 
 namespace AppLib.WPF.MVVM
 {
@@ -9,12 +11,54 @@ namespace AppLib.WPF.MVVM
     public class DelegateCommand : ICommand
     {
         private readonly Predicate<object> _canExecute;
+        private event EventHandler _internalCanExecuteChanged;
         private readonly Action<object> _action;
+
+        /// <summary>
+        /// Sets the binding direction for binding update
+        /// </summary>
+        public enum UpdateBindingOnExecute
+        {
+            /// <summary>
+            /// Binding shouldn't be updated
+            /// </summary>
+            No,
+            /// <summary>
+            /// Binding should be updated. Target data is copied to the source
+            /// </summary>
+            Source,
+            /// <summary>
+            /// Binding should be updated. Source data is copied to the target
+            /// </summary>
+            Target
+        }
 
         /// <summary>
         /// Occurs when changes occur that affect whether or not the command should execute.
         /// </summary>
-        public event EventHandler CanExecuteChanged;
+        public event EventHandler CanExecuteChanged
+        {
+            add
+            {
+                _internalCanExecuteChanged += value;
+                CommandManager.RequerySuggested += value;
+            }
+            remove
+            {
+                _internalCanExecuteChanged -= value;
+                CommandManager.RequerySuggested -= value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets wheather the binding of the focused element uppon firing the command should be updated
+        /// </summary>
+        public UpdateBindingOnExecute UpdateOnExecute
+        {
+            get;
+            set;
+        }
+
 
         /// <summary>
         /// Creates a new Instance of DelegateCommand
@@ -28,6 +72,18 @@ namespace AppLib.WPF.MVVM
         /// <param name="action">Acton to do</param>
         /// <param name="canExecute">canExecute predicate</param>
         public DelegateCommand(Action<object> action, Predicate<object> canExecute)
+        {
+            _action = action;
+            _canExecute = canExecute;
+        }
+
+        /// <summary>
+        /// Creates a new Instance of DelegateCommand
+        /// </summary>
+        /// <param name="action">Acton to do</param>
+        /// <param name="canExecute">canExecute predicate</param>
+        /// <param name="state"></param>
+        public DelegateCommand(Action<object> action, Predicate<object> canExecute, UpdateBindingOnExecute state)
         {
             _action = action;
             _canExecute = canExecute;
@@ -50,6 +106,17 @@ namespace AppLib.WPF.MVVM
         /// <param name="parameter">Data used by the command. If the command does not require data to be passed, this object can be set to null.</param>
         public void Execute(object parameter)
         {
+            var focused = Keyboard.FocusedElement as UIElement;
+
+            switch (UpdateOnExecute)
+            {
+                case UpdateBindingOnExecute.Source:
+                    focused?.UpdateAllBindings(BindingDirection.Source);
+                    break;
+                case UpdateBindingOnExecute.Target:
+                    focused?.UpdateAllBindings(BindingDirection.Target);
+                    break;
+            }
             _action(parameter);
         }
 
@@ -58,7 +125,17 @@ namespace AppLib.WPF.MVVM
         /// </summary>
         private void RaiseCanExecuteChanged()
         {
-            CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+            if (_canExecute != null)
+                OnCanExecuteChanged();
+        }
+
+        /// <summary>
+        /// This method is used to walk the delegate chain and well WPF that
+        /// our command execution status has changed.
+        /// </summary>
+        protected virtual void OnCanExecuteChanged()
+        {
+            _internalCanExecuteChanged?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
@@ -67,6 +144,11 @@ namespace AppLib.WPF.MVVM
         /// <param name="action">Action to transform to command</param>
         /// <returns>A new Instance of DelegateCommand</returns>
         public static DelegateCommand ToCommand(Action action)
+        {
+            return new DelegateCommand(x => action());
+        }
+
+        public static DelegateCommand ToCommand(Action action, UpdateBindingOnExecute state)
         {
             return new DelegateCommand(x => action());
         }

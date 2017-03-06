@@ -1,10 +1,28 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
+using System.Reflection;
 using System.Windows;
+using System.Windows.Data;
 using System.Windows.Media;
 
 namespace AppLib.WPF.Extensions
 {
+    /// <summary>
+    /// Used in the UpdateAllBindings methood to indicate update direction
+    /// </summary>
+    public enum BindingDirection
+    {
+        /// <summary>
+        /// Update binding source with target data
+        /// </summary>
+        Source,
+        /// <summary>
+        /// Update binding target with source data
+        /// </summary>
+        Target
+    }
+
     /// <summary>
     /// Dependency Object Extension methoods
     /// </summary>
@@ -151,6 +169,43 @@ namespace AppLib.WPF.Extensions
         public static bool IsDesignMode(this DependencyObject obj)
         {
             return DesignerProperties.GetIsInDesignMode(obj);
+        }
+
+        /// <summary>
+        /// Updates all bindings of a dependency object
+        /// </summary>
+        /// <param name="o">dependency object</param>
+        /// <param name="direcion">Binding direction to update</param>
+        public static void UpdateAllBindings(this DependencyObject o, BindingDirection direcion)
+        {
+            //Immediate Properties
+            var properties = new List<FieldInfo>();
+            var currentLevel = o.GetType();
+            while (currentLevel != typeof(object))
+            {
+                properties.AddRange(currentLevel.GetFields());
+                currentLevel = currentLevel.BaseType;
+            }
+
+            var dependecyproperties = properties.Where(x => x.FieldType == typeof(DependencyProperty));
+
+            foreach (var property in dependecyproperties)
+            {
+                var ex = BindingOperations.GetBindingExpression(o, property.GetValue(o) as DependencyProperty);
+                if (ex != null)
+                {
+                    if (direcion == BindingDirection.Source) ex.UpdateSource();
+                    else ex.UpdateTarget();
+                }
+            }
+
+            //Children
+            int childrenCount = VisualTreeHelper.GetChildrenCount(o);
+            for (int i = 0; i < childrenCount; i++)
+            {
+                var child = VisualTreeHelper.GetChild(o, i);
+                child.UpdateAllBindings(direcion);
+            }
         }
     }
 }
