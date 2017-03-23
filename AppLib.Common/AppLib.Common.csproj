@@ -58,6 +58,7 @@
     <Compile Include="Extensions\RandomExtensions.cs" />
     <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Extensions\StringConversionExtensions.cs" />
+    <Compile Include="Extensions\StringExtenions.cs" />
     <Compile Include="HttpServer\HttpCache.cs" />
     <Compile Include="HttpServer\HttpServer.cs" />
     <Compile Include="INI\IniFile.cs" />
