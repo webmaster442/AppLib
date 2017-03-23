@@ -111,12 +111,12 @@ namespace AppLib.WPF.Controls.ImageControls
         {
             // if the MinCharPos characters from CharPos are numeric, then MinCharPos = -1
             MinCharPos--;
-            if (CharPos + MinCharPos > InputValue.Length) return MinCharPos;
+            if (CharPos + MinCharPos >= InputValue.Length) return MinCharPos;
 
             while (MinCharPos >= 0)
             {
-                var a = char.Parse(InputValue.Substring(CharPos + MinCharPos, 1)) < 48;
-                var b = char.Parse(InputValue.Substring(CharPos + MinCharPos, 1)) > 57;
+                var a = InputValue[CharPos + MinCharPos] < 48;
+                var b = InputValue[CharPos + MinCharPos] > 57;
                 if (a || b) break;
                 MinCharPos--;
             }

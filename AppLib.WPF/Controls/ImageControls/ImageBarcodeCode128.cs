@@ -34,7 +34,7 @@ namespace AppLib.WPF.Controls.ImageControls
         /// FontAwesome FontFamily.
         /// </summary>
         private static readonly FontFamily Code128Family =
-            new FontFamily(new Uri("pack://application:,,,/AppLib.WPF;component/Resources/"), "./#Code128");
+            new FontFamily(new Uri("pack://application:,,,/AppLib.WPF;component/Resources/"), "./#Code 128");
 
 
         /// <summary>
