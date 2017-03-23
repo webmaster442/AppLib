@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppLib.WPF.Dialogs"
-        xmlns:fa="clr-namespace:AppLib.WPF.Controls.FontAwesome"
+        xmlns:images="clr-namespace:AppLib.WPF.Controls.ImageControls"
         mc:Ignorable="d"
         WindowStyle="ToolWindow"
         ResizeMode="NoResize"
@@ -26,18 +26,18 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <fa:ImageAwesome
+        <images:ImageAwesome
             Grid.Column="0"
             Icon="fa_exclamation_circle"
             Width="60"
             Margin="5">
-            <fa:ImageAwesome.Foreground>
+            <images:ImageAwesome.Foreground>
                 <RadialGradientBrush>
                     <GradientStop Color="#FFB00303" Offset="1"/>
                     <GradientStop Color="#FFFF300F"/>
                 </RadialGradientBrush>
-            </fa:ImageAwesome.Foreground>
-        </fa:ImageAwesome>
+            </images:ImageAwesome.Foreground>
+        </images:ImageAwesome>
         <TextBox
             x:Name="ErrorText"
             Grid.Row="0"

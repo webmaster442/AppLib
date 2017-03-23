@@ -139,8 +139,10 @@
     <Compile Include="Controls\FileSelector.xaml.cs">
       <DependentUpon>FileSelector.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\FontAwesome\Fa-Icons.cs" />
-    <Compile Include="Controls\FontAwesome\ImageAwesome.cs" />
+    <Compile Include="Controls\ImageControls\BarcodeConverter.cs" />
+    <Compile Include="Controls\ImageControls\ImageBarcodeCode128.cs" />
+    <Compile Include="Controls\ImageControls\Fa-Icons.cs" />
+    <Compile Include="Controls\ImageControls\ImageAwesome.cs" />
     <Compile Include="Controls\FuzzyTextClock.cs" />
     <Compile Include="Controls\ImageButton.cs" />
     <Compile Include="Controls\SerialPortCombo.cs" />
@@ -206,6 +208,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <Resource Include="Resources\code128.ttf" />
     <Resource Include="Resources\GrayscaleEffect.ps" />
     <Resource Include="Resources\HueShiftEffect.ps" />
     <Resource Include="Resources\SepiaEffect.ps" />
