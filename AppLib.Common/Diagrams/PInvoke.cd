@@ -1,60 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="AppLib.Common.PInvoke.User32">
-    <Position X="0.5" Y="2.25" Width="2" />
+  <Class Name="AppLib.Common.PInvoke.DwmApi">
+    <Position X="0.5" Y="0.5" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAACAAAAAAAABAAAAAAAAAABSAAAA=</HashCode>
-      <FileName>PInvoke\User32.cs</FileName>
+      <HashCode>AgAAAAAACAAAAACAAAAAAAAAAAAAAAAAAAgBAAIAAAQ=</HashCode>
+      <FileName>PInvoke\DwmApi.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AppLib.Common.PInvoke.Kernel32">
-    <Position X="0.5" Y="0.5" Width="1.5" />
+    <Position X="0.5" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAEAAAAQAAAAAA=</HashCode>
       <FileName>PInvoke\Kernel32.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Enum Name="AppLib.Common.PInvoke.SetWindowPosFlags">
-    <Position X="7.25" Y="3" Width="1.75" />
+  <Class Name="AppLib.Common.PInvoke.User32">
+    <Position X="3.5" Y="0.5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAABAAACCAAABAAAiAACEACAAAgQAAAAAjAQAA=</HashCode>
-      <FileName>PInvoke\Types.cs</FileName>
+      <HashCode>AACAAAAAAAABAAQCACAgAAAQAABCgBAAAAAAABSCAAA=</HashCode>
+      <FileName>PInvoke\User32.cs</FileName>
     </TypeIdentifier>
-  </Enum>
-  <Enum Name="AppLib.Common.PInvoke.SendMessageTimeoutFlags">
-    <Position X="4" Y="3.5" Width="2.25" />
+  </Class>
+  <Class Name="AppLib.Common.UnmanagedDllLoader">
+    <Position X="6" Y="0.5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAQQAAAAAAAAAAIAAAAAABAAAAAAAABAAAAAAAAAAAA=</HashCode>
-      <FileName>PInvoke\Types.cs</FileName>
+      <HashCode>AAAAgACAACAAABCAAAAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>UnmanagedDllLoader.cs</FileName>
     </TypeIdentifier>
-  </Enum>
-  <Enum Name="AppLib.Common.PInvoke.ExitWindows">
-    <Position X="7.25" Y="0.5" Width="2" />
-    <TypeIdentifier>
-      <HashCode>BQAAAAAACAAAAAAAAAAAAAAAEAAAgBAQAAAAAAAAAAA=</HashCode>
-      <FileName>PInvoke\Types.cs</FileName>
-    </TypeIdentifier>
-  </Enum>
-  <Enum Name="AppLib.Common.PInvoke.ShutdownReason">
-    <Position X="9.75" Y="0.5" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>AAACAAoAUAMkQCGoIGAoAAAkAAAAg0IAgAACQQUAAAQ=</HashCode>
-      <FileName>PInvoke\Types.cs</FileName>
-    </TypeIdentifier>
-  </Enum>
-  <Enum Name="AppLib.Common.PInvoke.LoadLibraryFlags">
-    <Position X="4" Y="0.5" Width="3" />
-    <TypeIdentifier>
-      <HashCode>AAAABAAAAAAgAAAQAACAAAAwAACAAEAAAAAAAIAIAEA=</HashCode>
-      <FileName>PInvoke\Types.cs</FileName>
-    </TypeIdentifier>
-  </Enum>
-  <Delegate Name="AppLib.Common.PInvoke.SendMessageDelegate">
-    <Position X="2.25" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAEAACAAAAAAAEAAAAAAAAAAA=</HashCode>
-      <FileName>PInvoke\Types.cs</FileName>
-    </TypeIdentifier>
-  </Delegate>
+    <Lollipop Position="0.2" />
+  </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

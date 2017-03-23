@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AppLib.Common.PInvoke.GWLFlags">
+    <Position X="11.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>lCBShCgABhCAgkAEAwlBAAMIEEAUGQACUSEIAAAUECI=</HashCode>
+      <FileName>PInvoke\Types.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppLib.Common.PInvoke.dwFlags">
+    <Position X="14.25" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAACAAAAAAAAAAABCAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>PInvoke\DWMTypes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="AppLib.Common.PInvoke.DWMCOLORIZATIONPARAMS">
+    <Position X="8.5" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAAgAAAAAAAAAIAIAAQAKAA=</HashCode>
+      <FileName>PInvoke\DWMTypes.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="AppLib.Common.PInvoke.SIZE">
+    <Position X="8.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>PInvoke\DWMTypes.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="AppLib.Common.PInvoke.DWM_THUMBNAIL_PROPERTIES">
+    <Position X="8.5" Y="9" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAACAAAAIAAgAAAAgAAAAAAAAABA=</HashCode>
+      <FileName>PInvoke\DWMTypes.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="AppLib.Common.PInvoke.Rect">
+    <Position X="8.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAIAAAACACAAAAAAAA=</HashCode>
+      <FileName>PInvoke\DWMTypes.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="AppLib.Common.PInvoke.MARGINS">
+    <Position X="8.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAIAAAAAAAAAAAAAAAABAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>PInvoke\DWMTypes.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="AppLib.Common.PInvoke.SetWindowPosFlags">
+    <Position X="5.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAACCAAABAAAiAACEACAAAgQAAAAAjAQAA=</HashCode>
+      <FileName>PInvoke\Types.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="AppLib.Common.PInvoke.SendMessageTimeoutFlags">
+    <Position X="5.75" Y="4.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQQAAAAAAAAAAIAAAAAABAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>PInvoke\Types.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="AppLib.Common.PInvoke.ExitWindows">
+    <Position X="0.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>BQAAAAAACAAAAAAAAAAAAAAAEAAAgBAQAAAAAAAAAAA=</HashCode>
+      <FileName>PInvoke\Types.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="AppLib.Common.PInvoke.ShutdownReason">
+    <Position X="3.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAACAAoAUAMkQCGoIGAoAAAkAAAAg0IAgAACQQUAAAQ=</HashCode>
+      <FileName>PInvoke\Types.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="AppLib.Common.PInvoke.LoadLibraryFlags">
+    <Position X="0.5" Y="4.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAgAAAQAACAAAAwAACAAEAAAAAAAIAIAEA=</HashCode>
+      <FileName>PInvoke\Types.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="AppLib.Common.PInvoke.wHowFlags">
+    <Position X="5.75" Y="6.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAIAAAAAAAAAAAgAAAAAAAEAAAAA=</HashCode>
+      <FileName>PInvoke\Types.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="AppLib.Common.PInvoke.GetAncestorFlags">
+    <Position X="0.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>PInvoke\Types.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Delegate Name="AppLib.Common.PInvoke.SendMessageDelegate">
+    <Position X="0.75" Y="8.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAACAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>PInvoke\Types.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="AppLib.Common.PInvoke.EnumWindowsProc">
+    <Position X="3.25" Y="8.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAECAAAAAAAAAA=</HashCode>
+      <FileName>PInvoke\Types.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

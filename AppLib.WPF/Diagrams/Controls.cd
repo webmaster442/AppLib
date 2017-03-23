@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AppLib.WPF.Controls.AlphaSelectControl">
+    <Position X="0.5" Y="0.5" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Delegate Name="AppLib.WPF.Controls.AlphaSelectControl.AlphaChangedHandler">
+        <TypeIdentifier>
+          <NewMemberFileName>Controls\AlphaSelectControl.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAABAAAAAAAAAIABAAAAACBAAAAAAQg=</HashCode>
+      <FileName>Controls\AlphaSelectControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AppLib.WPF.Controls.AnalogClock">
+    <Position X="3.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>gAAEABAAAAAgBAAAAAQAEAAAEAAABAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Controls\AnalogClock.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AppLib.WPF.Controls.AnimatedTabControl">
+    <Position X="0.5" Y="5.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\AnimatedTabControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppLib.WPF.Controls.ColorPicker">
+    <Position X="6.25" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAIoQBAABAAAEIAgAAAAFBogBAiAgAAIA=</HashCode>
+      <FileName>Controls\ColorPicker.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AppLib.WPF.Controls.CoolWindow">
+    <Position X="9.5" Y="0.5" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="AppLib.WPF.Controls.CoolWindow.ResizeDirection">
+        <TypeIdentifier>
+          <NewMemberFileName>Controls\CoolWindow.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAYAAFAIAADQIAAAAAAAAgAIAAAAEAACCAgARAAAAAA=</HashCode>
+      <FileName>Controls\CoolWindow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppLib.WPF.Controls.EditableSlider">
+    <Position X="12.25" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>wAAIAYCQAAxiQggAACAQAAhAAEBoAhAAAQFwEBAAAAA=</HashCode>
+      <FileName>Controls\EditableSlider.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AppLib.WPF.Controls.FaImageButton">
+    <Position X="0.5" Y="7.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAEAAAAAAAAAAAAAQBKAAIAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Controls\FAImageButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppLib.WPF.Controls.FileExplorer">
+    <Position X="3" Y="7.25" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Delegate Name="AppLib.WPF.Controls.FileExplorer.FileDoubleClickHandler">
+        <TypeIdentifier>
+          <NewMemberFileName>Controls\FileExplorer.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAgCAAAAgQSAAAAAEBAEAQFAABAAACAAAEAIAAAAAAA=</HashCode>
+      <FileName>Controls\FileExplorer.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AppLib.WPF.Controls.FileEventArgs">
+    <Position X="5.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\FileExplorer.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppLib.WPF.Controls.FileSelector">
+    <Position X="5.75" Y="9.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAIAEABAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Controls\FileSelector.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AppLib.WPF.Controls.FuzzyClockText">
+    <Position X="8" Y="9.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAABAAAAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Controls\FuzzyTextClock.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppLib.WPF.Controls.ImageButton">
+    <Position X="0.5" Y="10.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAEAAAABAAAAAAAAAAIAAAAAhABAAAAAAAAIAA=</HashCode>
+      <FileName>Controls\ImageButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppLib.WPF.Controls.VisibilityConvertor" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\ImageButton.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AppLib.WPF.Controls.SerialPortCombo">
+    <Position X="9.25" Y="11.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAABAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Controls\SerialPortCombo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppLib.WPF.Controls.TransitionControl">
+    <Position X="11.75" Y="10" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAgAByAAADABAAAAFAICAAAAAACAACAAAAAAA=</HashCode>
+      <FileName>Controls\TransitionControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppLib.WPF.Controls.VirtualizingWrapPanel">
+    <Position X="14.75" Y="0.5" Width="2" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="AppLib.WPF.Controls.VirtualizingWrapPanel.ItemAbstraction">
+        <TypeIdentifier>
+          <NewMemberFileName>Controls\VirtualizingWrapPanel.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="AppLib.WPF.Controls.VirtualizingWrapPanel.WrapPanelAbstraction">
+        <TypeIdentifier>
+          <NewMemberFileName>Controls\VirtualizingWrapPanel.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>IAAdgIBAASBACACIMQELAEcRGAaUmYwAKFEJKAQBiMA=</HashCode>
+      <FileName>Controls\VirtualizingWrapPanel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AppLib.WPF.Controls.FontAwesome.ImageAwesome">
+    <Position X="18.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAEAAAACAAAAAAAAAQAIIAAAAAAAAAAAEBAAA=</HashCode>
+      <FileName>Controls\FontAwesome\ImageAwesome.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="AppLib.WPF.Controls.ImagePlacement">
+    <Position X="7.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACACAAAAAAAA=</HashCode>
+      <FileName>Controls\ImageButton.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="AppLib.WPF.Controls.FontAwesome.FaIcons">
+    <Position X="17" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>v///f///////Pf///7/////7//7//+/////f9/////4=</HashCode>
+      <FileName>Controls\FontAwesome\Fa-Icons.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

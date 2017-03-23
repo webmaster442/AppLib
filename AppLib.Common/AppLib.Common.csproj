@@ -57,6 +57,7 @@
     <Compile Include="Extensions\FloatExtensions.cs" />
     <Compile Include="Extensions\RandomExtensions.cs" />
     <Compile Include="Extensions\ObjectExtensions.cs" />
+    <Compile Include="Extensions\StringConversionExtensions.cs" />
     <Compile Include="HttpServer\HttpCache.cs" />
     <Compile Include="HttpServer\HttpServer.cs" />
     <Compile Include="INI\IniFile.cs" />
@@ -79,9 +80,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Common.snk" />
+    <None Include="Diagrams\INI.cd" />
+    <None Include="Diagrams\Parameter Parser.cd" />
     <None Include="Diagrams\Extensions.cd" />
     <None Include="Diagrams\HTTPServer.cd" />
-    <None Include="Diagrams\Main.cd" />
+    <None Include="Diagrams\PInvoke Types.cd" />
     <None Include="Diagrams\PInvoke.cd" />
   </ItemGroup>
   <ItemGroup>

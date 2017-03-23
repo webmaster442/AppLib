@@ -17,7 +17,7 @@
   <Class Name="AppLib.Common.Extensions.DoubleExtensions">
     <Position X="3.25" Y="2.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
       <FileName>Extensions\DoubleExtensions.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -33,6 +33,20 @@
     <TypeIdentifier>
       <HashCode>ABAAAAAABAQgAAEBAAAAAAAAAAAACABAAAAQAAQAAAA=</HashCode>
       <FileName>Extensions\RandomExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppLib.Common.Extensions.FloatExtensions">
+    <Position X="3.25" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Extensions\FloatExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppLib.Common.Extensions.StringConversionExtensions">
+    <Position X="8.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAQAAABAAAAAAAAgAAAAAABAABgAAAQABAA=</HashCode>
+      <FileName>Extensions\StringConversionExtensions.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

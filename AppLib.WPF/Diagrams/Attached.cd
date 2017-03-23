@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AppLib.WPF.Attached.Kinetic">
+    <Position X="0.5" Y="0.5" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="AppLib.WPF.Attached.Kinetic.InertiaHandler">
+        <TypeIdentifier>
+          <NewMemberFileName>Attached\Kinetic.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAABAAQAAAEIAAAAAAABAIgAhAoAAFAAAjABI=</HashCode>
+      <FileName>Attached\Kinetic.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppLib.WPF.Attached.ListBoxSelector">
+    <Position X="3" Y="0.5" Width="2" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="AppLib.WPF.Attached.ListBoxSelector.AutoScroller">
+        <TypeIdentifier>
+          <NewMemberFileName>Attached\ListBoxSelector.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="AppLib.WPF.Attached.ListBoxSelector.ItemsControlSelector">
+        <TypeIdentifier>
+          <NewMemberFileName>Attached\ListBoxSelector.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="AppLib.WPF.Attached.ListBoxSelector.OffsetChangedEventArgs">
+        <TypeIdentifier>
+          <NewMemberFileName>Attached\ListBoxSelector.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="AppLib.WPF.Attached.ListBoxSelector.SelectionAdorner">
+        <TypeIdentifier>
+          <NewMemberFileName>Attached\ListBoxSelector.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AgAAAAGCgQAAEAAgAAgAAAAAgJFBAAAEABhAAIQAUIQ=</HashCode>
+      <FileName>Attached\ListBoxSelector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
