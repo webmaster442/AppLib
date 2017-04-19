@@ -1,11 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppLib.WPF", "AppLib.WPF\AppLib.WPF.csproj", "{FAF19388-A6C0-46F9-A588-A46DB392ACE4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppLib.Common", "AppLib.Common\AppLib.Common.csproj", "{516087B5-6AC5-44A5-8DF1-FE42D7A7A0E6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E613FAC0-0FDF-429F-A1BD-733301F69368}"
+	ProjectSection(SolutionItems) = preProject
+		Changes.txt = Changes.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
