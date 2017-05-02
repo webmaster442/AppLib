@@ -22,9 +22,11 @@ namespace AppLib.Common
         /// </summary>
         /// <param name="value">A value</param>
         /// <returns>A Uid containing the value</returns>
-        public static UId Create(long value)
+        public static UId CreateFrom(long value)
         {
-            return new UId(BitConverter.GetBytes(value));
+            var bytes = BitConverter.GetBytes(value);
+            Array.Reverse(bytes);
+            return new UId(bytes);
         }
 
         /// <summary>
@@ -33,9 +35,11 @@ namespace AppLib.Common
         /// </summary>
         /// <param name="value">A value</param>
         /// <returns>A Uid containing the value</returns>
-        public static UId Create(ulong value)
+        public static UId CreateFrom(ulong value)
         {
-            return new UId(BitConverter.GetBytes(value));
+            var bytes = BitConverter.GetBytes(value);
+            Array.Reverse(bytes);
+            return new UId(bytes);
         }
 
         /// <summary>
@@ -66,12 +70,12 @@ namespace AppLib.Common
         public override string ToString()
         {
             var sb = new StringBuilder();
-            int counter = 0;
-            foreach (var b in _data)
+            for (int i=0; i<_data.Length; i++)
             {
-                sb.AppendFormat("{0:X2}", b);
-                if (counter % 2 == 0) sb.Append("-");
-                ++counter;
+                sb.AppendFormat("{0:X2}", _data[i]);
+                if (i != _data.Length - 1)
+                    sb.Append("-");
+
             }
             return sb.ToString();
         }
@@ -128,13 +132,28 @@ namespace AppLib.Common
         /// <returns>A value that indicates the relative order of the objects being compared.</returns>
         public int CompareTo(UId other)
         {
-            if (Length > other.Length) return -1;
+            if (Length > other.Length) return 1;
             for (int i = Length - 1; i >= 0; i--)
             {
-                if (_data[i] > other._data[i]) return -1;
-                else if (_data[i] < other._data[i]) return 1;
+                if (_data[i] > other._data[i]) return 1;
+                else if (_data[i] < other._data[i]) return -1;
             }
             return 0;
+        }
+
+        /// <summary>
+        /// Checks wheather the specified Uid is null or zero
+        /// </summary>
+        /// <param name="id">Uid to check</param>
+        /// <returns>True, if the Uid is null or contains the value 0</returns>
+        public static bool IsNullOrZero(UId id)
+        {
+            if (id == null) return true;
+            foreach (var b in id._data)
+            {
+                if (b != 0) return false;
+            }
+            return true;
         }
 
         /// <summary>
@@ -157,6 +176,28 @@ namespace AppLib.Common
         public static bool operator !=(UId One, UId other)
         {
             return !One.Equals(other);
+        }
+
+        /// <summary>
+        /// returns true if the first operand is less than the second, false otherwise.
+        /// </summary>
+        /// <param name="One">First UID</param>
+        /// <param name="other">Second UID</param>
+        /// <returns>true if the first operand is less than the second, false otherwise.</returns>
+        public static bool operator < (UId one, UId other)
+        {
+            return one.CompareTo(other) == -1;
+        }
+
+        /// <summary>
+        /// returns true if the first operand is greater than the second, false otherwise
+        /// </summary>
+        /// <param name="One">First UID</param>
+        /// <param name="other">Second UID</param>
+        /// <returns>true if the first operand is greater than the second, false otherwise</returns>
+        public static bool operator >(UId one, UId other)
+        {
+            return one.CompareTo(other) == 1;
         }
     }
 }
