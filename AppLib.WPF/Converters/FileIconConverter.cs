@@ -1,4 +1,4 @@
-﻿using AppLib.WPF.Controls.FontAwesome;
+﻿using AppLib.WPF.Controls.ImageControls;
 using System;
 using System.Globalization;
 using System.IO;

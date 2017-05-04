@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace AppLib.WPF.Controls.FontAwesome
+namespace AppLib.WPF.Controls.ImageControls
 {
     /// <summary>
     /// Stripped from FontAwesome.WPF
