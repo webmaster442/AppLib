@@ -1,4 +1,5 @@
 ﻿using AppLib.Common.PInvoke;
+using AppLib.WPF.Extensions;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,6 +17,11 @@ namespace AppLib.WPF.Controls
     /// </summary>
     public class CoolWindow: Window
     {
+        private Button _minimizeButton;
+        private ToggleButton _restoreButton;
+        private ToggleButton _allwaystopButton;
+        private Button _closeButton;
+
         static CoolWindow()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(CoolWindow),
@@ -79,6 +85,12 @@ namespace AppLib.WPF.Controls
             Grid BorderGrid = GetTemplateChild("BorderGrid") as Grid;
             if (BorderGrid != null)
                 BorderGrid.Background = new SolidColorBrush(c);
+
+            var inverse = new SolidColorBrush(c.Inverse());
+            _minimizeButton.Foreground = inverse;
+            _restoreButton.Foreground = inverse;
+            _allwaystopButton.Foreground = inverse;
+
         }
 
         /// <summary>
@@ -86,21 +98,21 @@ namespace AppLib.WPF.Controls
         /// </summary>
         public override void OnApplyTemplate()
         {
-            Button minimizeButton = GetTemplateChild("minimizeButton") as Button;
-            if (minimizeButton != null)
-                minimizeButton.Click += MinimizeClick;
+            _minimizeButton = GetTemplateChild("minimizeButton") as Button;
+            if (_minimizeButton != null)
+                _minimizeButton.Click += MinimizeClick;
 
-            ToggleButton restoreButton = GetTemplateChild("restoreButton") as ToggleButton;
-            if (restoreButton != null)
-                restoreButton.Click += RestoreClick;
+            _restoreButton = GetTemplateChild("restoreButton") as ToggleButton;
+            if (_restoreButton != null)
+                _restoreButton.Click += RestoreClick;
 
-            ToggleButton allwaystopButton = GetTemplateChild("allwaystopButton") as ToggleButton;
-            if (allwaystopButton != null)
-                allwaystopButton.Click += AllwaystopButton_Click;
+            _allwaystopButton = GetTemplateChild("allwaystopButton") as ToggleButton;
+            if (_allwaystopButton != null)
+                _allwaystopButton.Click += AllwaystopButton_Click;
 
-            Button closeButton = GetTemplateChild("closeButton") as Button;
-            if (closeButton != null)
-                closeButton.Click += CloseClick;
+            _closeButton = GetTemplateChild("closeButton") as Button;
+            if (_closeButton != null)
+                _closeButton.Click += CloseClick;
 
             Border moove = GetTemplateChild("moveRectangle") as Border;
             if (moove != null)
