@@ -81,6 +81,15 @@ namespace AppLib.WPF.MVVM
         }
 
         /// <summary>
+        /// Call the property changed event.
+        /// </summary>
+        /// <param name="propertyName">Property name. If not set, then caller member name will be used</param>
+        protected virtual void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            OnPropertyChanged(propertyName);
+        }
+
+        /// <summary>
         /// Adds a validation rule for property value validation.
         /// </summary>
         /// <param name="property">property name.</param>

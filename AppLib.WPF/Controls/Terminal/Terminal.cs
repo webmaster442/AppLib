@@ -220,7 +220,7 @@ namespace AppLib.WPF.Controls.Terminal
         {
             base.OnPreviewKeyDown(args);
 
-            if (args.Key != Key.Tab)
+            if (args.Key != Key.Tab && _currentAutoCompletionList.Count > 0)
             {
                 _currentAutoCompletionList.Clear();
             }
