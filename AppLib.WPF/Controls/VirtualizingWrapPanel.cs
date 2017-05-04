@@ -901,11 +901,17 @@ namespace AppLib.WPF.Controls
             firstIndex = GetFirstVisibleIndex();
         }
 
+        /// <summary>
+        /// ViewPort height
+        /// </summary>
         public double ViewportHeight
         {
             get { return _viewport.Height; }
         }
 
+        /// <summary>
+        /// Viewport Width
+        /// </summary>
         public double ViewportWidth
         {
             get { return _viewport.Width; }

@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AppLib.Common.INI
+﻿namespace AppLib.Common.INI
 {
+    /// <summary>
+    /// A class representing an Ini file category &amp; setting
+    /// </summary>
     public class IniKey
     {
         /// <summary>
@@ -45,7 +42,7 @@ namespace AppLib.Common.INI
         /// <returns>string representation of the object</returns>
         public override string ToString()
         {
-            return string.Format("[{0}]\n{1}", Category, SettingName);
+            return string.Format("[{0}] => {1}", Category, SettingName);
         }
 
         /// <summary>

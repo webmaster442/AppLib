@@ -18,6 +18,9 @@ using System.Windows.Media.Media3D;
 namespace AppLib.WPF.Shaders
 {
 
+    /// <summary>
+    /// Sepia Pixel shader 2.0 effect
+    /// </summary>
     public class SepiaEffect : ShaderEffect
     {
         /// <summary>Dependency property for Input</summary>

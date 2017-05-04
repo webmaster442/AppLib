@@ -387,7 +387,7 @@ namespace AppLib.Common.PInvoke
     }
 
     /// <summary>
-    /// Flags used in CascadeWindows & TileWindows
+    /// Flags used in CascadeWindows &amp; TileWindows
     /// </summary>
     [Flags]
     public enum wHowFlags : uint

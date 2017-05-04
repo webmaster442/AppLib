@@ -181,7 +181,7 @@ namespace AppLib.Common
         /// <summary>
         /// returns true if the first operand is less than the second, false otherwise.
         /// </summary>
-        /// <param name="One">First UID</param>
+        /// <param name="one">First UID</param>
         /// <param name="other">Second UID</param>
         /// <returns>true if the first operand is less than the second, false otherwise.</returns>
         public static bool operator < (UId one, UId other)
@@ -192,7 +192,7 @@ namespace AppLib.Common
         /// <summary>
         /// returns true if the first operand is greater than the second, false otherwise
         /// </summary>
-        /// <param name="One">First UID</param>
+        /// <param name="one">First UID</param>
         /// <param name="other">Second UID</param>
         /// <returns>true if the first operand is greater than the second, false otherwise</returns>
         public static bool operator >(UId one, UId other)

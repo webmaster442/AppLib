@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AppLib.Common.Extensions
 {
@@ -70,14 +66,32 @@ namespace AppLib.Common.Extensions
             return years <= 1 ? "one year ago" : years + " years ago";
         }
 
+
+        /// <summary>
+        /// Returns true, if the date specified by the date is a work day
+        /// </summary>
+        /// <param name="date">A DateTime instance</param>
+        /// <returns>true, if the date specified by the date is a work day, otherwise false</returns>
         public static bool WorkingDay(this DateTime date)
         {
             return date.DayOfWeek != DayOfWeek.Saturday && date.DayOfWeek != DayOfWeek.Sunday;
         }
+
+        /// <summary>
+        /// Returns true, if the date specified by the date is on weekend
+        /// </summary>
+        /// <param name="date">A DateTime instance</param>
+        /// <returns>true, if the date specified by the date is on weekend, otherwise false</returns>
         public static bool IsWeekend(this DateTime date)
         {
             return date.DayOfWeek == DayOfWeek.Saturday || date.DayOfWeek == DayOfWeek.Sunday;
         }
+
+        /// <summary>
+        /// Returns the date of the next workday from the specified date
+        /// </summary>
+        /// <param name="date">A DateTime instance</param>
+        /// <returns>The next workday as a DateTime</returns>
         public static DateTime NextWorkday(this DateTime date)
         {
             var nextDay = date;
@@ -88,6 +102,12 @@ namespace AppLib.Common.Extensions
             return nextDay;
         }
 
+        /// <summary>
+        /// Returns the next occurance date of the specified day.
+        /// </summary>
+        /// <param name="current">A DateTime instance</param>
+        /// <param name="dayOfWeek">Day of week to calculate</param>
+        /// <returns>next occurance date of the specified day.</returns>
         public static DateTime Next(this DateTime current, DayOfWeek dayOfWeek)
         {
             int offsetDays = dayOfWeek - current.DayOfWeek;

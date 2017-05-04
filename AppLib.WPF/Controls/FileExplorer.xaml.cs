@@ -11,7 +11,7 @@ using System.Windows.Media;
 namespace AppLib.WPF.Controls
 {
     /// <summary>
-    /// Interaction logic for FileExplorer.xaml
+    /// A File explorer user control
     /// </summary>
     public partial class FileExplorer : UserControl
     {
@@ -19,6 +19,9 @@ namespace AppLib.WPF.Controls
         private string _currentpath;
         private bool _loaded;
 
+        /// <summary>
+        /// Creates a new instance of file explorer
+        /// </summary>
         public FileExplorer()
         {
             InitializeComponent();
@@ -27,8 +30,16 @@ namespace AppLib.WPF.Controls
             _loaded = false;
         }
 
+        /// <summary>
+        /// Event handler for double click
+        /// </summary>
+        /// <param name="sender">sender object</param>
+        /// <param name="e">File event arguments</param>
         public delegate void FileDoubleClickHandler(object sender, FileEventArgs e);
 
+        /// <summary>
+        /// Event, when a file is double clicked.
+        /// </summary>
         public event FileDoubleClickHandler FileDoubleClick;
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -243,7 +254,7 @@ namespace AppLib.WPF.Controls
                 Files.ItemsSource = null;
                 Files.ItemsSource = items;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Files.ItemsSource = null;
             }
@@ -282,8 +293,14 @@ namespace AppLib.WPF.Controls
 
     }
 
+    /// <summary>
+    /// File event arguments
+    /// </summary>
     public class FileEventArgs: RoutedEventArgs
     {
+        /// <summary>
+        /// The name of the file
+        /// </summary>
         public string Filename { get; set; }
     }
 }

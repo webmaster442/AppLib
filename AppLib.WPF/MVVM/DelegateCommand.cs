@@ -148,9 +148,15 @@ namespace AppLib.WPF.MVVM
             return new DelegateCommand(x => action());
         }
 
+        /// <summary>
+        /// Cretes a command from an action
+        /// </summary>
+        ///  <param name="action">Action to transform to command</param>
+        /// <param name="state">Update binding on execute state</param>
+        /// <returns>A new Instance of DelegateCommand</returns>
         public static DelegateCommand ToCommand(Action action, UpdateBindingOnExecute state)
         {
-            return new DelegateCommand(x => action());
+            return new DelegateCommand(x => action(), null, state);
         }
 
         /// <summary>
@@ -173,6 +179,19 @@ namespace AppLib.WPF.MVVM
         public static DelegateCommand ToCommand(Action action, Func<bool> canDoAction)
         {
             return new DelegateCommand(x => action(), x => canDoAction());
+        }
+
+        /// <summary>
+        /// Cretes a command from an action and a can do action
+        /// </summary>
+        /// <param name="action">Action to transform to command</param>
+        /// <returns>A new Instance of DelegateCommand</returns>
+        /// <param name="canDoAction">can do action</param>
+        /// <param name="state">Update binding on execute state</param>
+        /// <returns>A new Instance of DelegateCommand</returns>
+        public static DelegateCommand ToCommand(Action action, Func<bool> canDoAction, UpdateBindingOnExecute state)
+        {
+            return new DelegateCommand(x => action(), x => canDoAction(), state);
         }
     }
 }
