@@ -23,6 +23,11 @@ namespace AppLib.WPF.Controls.Terminal
     /// </summary>
     public sealed class Terminal : RichTextBox
     {
+        static Terminal()
+        {
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(Terminal), new FrameworkPropertyMetadata(typeof(Terminal)));
+        }
+
         /// <summary>
         /// Event fired when the user presses the Enter key.
         /// </summary>
@@ -93,7 +98,7 @@ namespace AppLib.WPF.Controls.Terminal
             typeof(Terminal),
             new PropertyMetadata(10, OnItemHeightChanged));
 
-        private readonly Paragraph _paragraph;
+        private Paragraph _paragraph;
         private readonly List<string> _buffer;
         private readonly Run _promptInline;
 
@@ -315,6 +320,14 @@ namespace AppLib.WPF.Controls.Terminal
             }
 
             var terminal = ((Terminal)d);
+            if (terminal._paragraph == null)
+            {
+                terminal._paragraph = new Paragraph
+                {
+                    Margin = terminal.ItemsMargin,
+                    LineHeight = terminal.ItemHeight
+                };
+            }
             terminal._paragraph.Margin = (Thickness)args.NewValue;
         }
 
