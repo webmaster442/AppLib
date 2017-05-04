@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text;
 
-namespace AppLib
+namespace AppLib.Common
 {
     /// <summary>
     /// Identifies the logging level

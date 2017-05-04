@@ -435,5 +435,12 @@ namespace AppLib.Common.PInvoke
         /// <returns>The return value identifies the most recently active pop-up window. The return value is the same as the hWnd parameter, if any of the following conditions are met: The window identified by hWnd was most recently active. The window identified by hWnd does not own any pop-up windows. The window identifies by hWnd is not a top-level window, or it is owned by another window.</returns>
         [DllImport("user32.dll")]
         public static extern IntPtr GetLastActivePopup(IntPtr hWnd);
+
+        [DllImport("user32.dll")]
+        public static extern bool RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, uint vk);
+
+        // Unregisters the hot key with Windows.
+        [DllImport("user32.dll")]
+        public static extern bool UnregisterHotKey(IntPtr hWnd, int id);
     }
 }

@@ -6,5 +6,6 @@
         <ResourceDictionary Source="pack://application:,,,/AppLib.WPF;component/Themes/TransitionControl.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/AppLib.WPF;component/Themes/AnimatedTabControl.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/AppLib.WPF;component/Themes/CoolWindow.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/AppLib.WPF;component/Themes/Terminal.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

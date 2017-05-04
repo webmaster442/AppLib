@@ -1,7 +1,9 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:controls="clr-namespace:AppLib.WPF.Controls"
-                    xmlns:local="clr-namespace:AppLib.WPF.Themes">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:AppLib.WPF.Controls">
+
+    <BooleanToVisibilityConverter x:Key="BoolVis"/>
 
     <Style TargetType="{x:Type Button}" x:Key="WindowButtonStyle">
         <Setter Property="Template">
@@ -149,10 +151,12 @@
                                             <GradientStop Color="#FCFCFC" Offset="1"/>
                                         </LinearGradientBrush>
                                     </StackPanel.Background>
+                                    <!-- Window buttons -->
                                     <ToggleButton
                                         x:Name="allwaystopButton"
                                         FontSize="18"
                                         Width="32"
+                                        Visibility="{Binding SysButtonAlwaystopVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BoolVis}}"
                                         Style="{StaticResource AllwaysTop}"/>
                                     <Button
                                         x:Name="minimizeButton"
@@ -160,11 +164,13 @@
                                         FontSize="18"
                                         Width="32"
                                         Style="{StaticResource WindowButtonStyle}"
+                                        Visibility="{Binding SysButtonMinimizeVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BoolVis}}"
                                         Content="&#xf2d1;"/>
                                     <ToggleButton
                                         x:Name="restoreButton"
                                         FontSize="18"
                                         Width="32"
+                                        Visibility="{Binding SysButtonMaximizeVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BoolVis}}"
                                         Style="{StaticResource RestoreStyle}"/>
                                     <Button
                                         x:Name="closeButton"

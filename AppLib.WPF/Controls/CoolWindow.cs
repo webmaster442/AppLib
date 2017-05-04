@@ -245,12 +245,57 @@ namespace AppLib.WPF.Controls
 
 
         /// <summary>
-        /// Title Content
+        /// Gets or sets the Titlebar Content
         /// </summary>
         public FrameworkElement TitleContent
         {
             get { return (FrameworkElement)GetValue(TitleContentProperty); }
             set { SetValue(TitleContentProperty, value); }
+        }
+
+        /// <summary>
+        /// Dependency property for SysButtonAlwaystopVisible
+        /// </summary>
+        public static readonly DependencyProperty SysButtonAlwaystopVisibleProperty =
+            DependencyProperty.Register("SysButtonAlwaystopVisible", typeof(bool), typeof(CoolWindow), new FrameworkPropertyMetadata(true));
+
+        /// <summary>
+        /// Dependency property for SysButtonMinimizeVisible
+        /// </summary>
+        public static readonly DependencyProperty SysButtonMinimizeVisibleProperty =
+            DependencyProperty.Register("SysButtonMinimizeVisible", typeof(bool), typeof(CoolWindow), new FrameworkPropertyMetadata(true));
+
+        /// <summary>
+        /// Dependency property for SysButtonMaximizeVisible
+        /// </summary>
+        public static readonly DependencyProperty SysButtonMaximizeVisibleProperty =
+            DependencyProperty.Register("SysButtonMaximizeVisible", typeof(bool), typeof(CoolWindow), new FrameworkPropertyMetadata(true));
+
+        /// <summary>
+        /// Gets or sets the visibility of the Always top button
+        /// </summary>
+        public bool SysButtonAlwaystopVisible
+        {
+            get { return (bool)GetValue(SysButtonAlwaystopVisibleProperty); }
+            set { SetValue(SysButtonAlwaystopVisibleProperty, value); }
+        }
+
+        /// <summary>
+        /// Gets or sets the visibility of the mimimize button
+        /// </summary>
+        public bool SysButtonMinimizeVisible
+        {
+            get { return (bool)GetValue(SysButtonMinimizeVisibleProperty); }
+            set { SetValue(SysButtonMinimizeVisibleProperty, value); }
+        }
+
+        /// <summary>
+        /// Gets or sets the visibility of the maximize button
+        /// </summary>
+        public bool SysButtonMaximizeVisible
+        {
+            get { return (bool)GetValue(SysButtonMaximizeVisibleProperty); }
+            set { SetValue(SysButtonMaximizeVisibleProperty, value); }
         }
 
         private enum ResizeDirection
