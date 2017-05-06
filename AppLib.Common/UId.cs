@@ -89,7 +89,7 @@ namespace AppLib.Common
         {
             var other = obj as UId;
             if (other == null) return false;
-            else return Equals(this, other);
+            else return Equals(other);
         }
 
         /// <summary>

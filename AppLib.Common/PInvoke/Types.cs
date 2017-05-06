@@ -498,4 +498,11 @@ namespace AppLib.Common.PInvoke
         /// </summary>
         GetRootOwner = 3
     }
+
+    public static class ConsoleModes
+    {
+        public const uint ENABLE_VIRTUAL_TERMINAL_PROCESSING = 0x0004;
+        public const uint DISABLE_NEWLINE_AUTO_RETURN = 0x0008;
+        public const uint ENABLE_VIRTUAL_TERMINAL_INPUT = 0x0200;
+    }
 }

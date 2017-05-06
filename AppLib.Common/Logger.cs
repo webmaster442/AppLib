@@ -139,15 +139,15 @@ namespace AppLib.Common
             if (!IsEnabled) return;
             if (!DecideFilter(FileFilter, level)) return;
             var dt = DateTime.Now.ToShortTimeString();
-            var current = Console.ForegroundColor;
+            var current = System.Console.ForegroundColor;
 
             if (level == LogLevel.Error)
-                Console.ForegroundColor = ConsoleColor.Red;
+                System.Console.ForegroundColor = ConsoleColor.Red;
 
-            Console.WriteLine("{0}\t{1}\t{2}", dt, level, message);
+            System.Console.WriteLine("{0}\t{1}\t{2}", dt, level, message);
 
             if (level == LogLevel.Error)
-                Console.ForegroundColor = current;
+                System.Console.ForegroundColor = current;
         }
         #endregion
 

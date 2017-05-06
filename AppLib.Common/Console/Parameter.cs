@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace AppLib.Common
+namespace AppLib.Common.Console
 {
     /// <summary>
     /// Parameter class used with ParametersParser

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AppLib.Common
+namespace AppLib.Common.Console
 {
     internal class CharContext
     {
