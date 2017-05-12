@@ -199,6 +199,9 @@
     <Compile Include="Shaders\HueShiftEffect.cs" />
     <Compile Include="Shaders\SepiaEffect.cs" />
     <Compile Include="Shaders\TransitionColorizeEffect.cs" />
+    <Compile Include="Shaders\Transition\SimpleTransitions.cs" />
+    <Compile Include="Shaders\Transition\Transition.cs" />
+    <Compile Include="Shaders\Transition\UriList.cs" />
     <Compile Include="WindowManager.cs" />
     <Compile Include="WindowThumbnail.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -207,6 +210,7 @@
     </EmbeddedResource>
     <None Include="AppLib.WPF.snk" />
     <None Include="Diagrams\Attached.cd" />
+    <None Include="Diagrams\Transitions.cd" />
     <None Include="Diagrams\WPF.cd" />
     <None Include="Diagrams\Controls.cd" />
     <None Include="Diagrams\Converters.cd" />
@@ -218,6 +222,27 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <Resource Include="Resources\TransitionBandedSwirlEffect.ps" />
+    <Resource Include="Resources\TransitionBlindsEffect.ps" />
+    <Resource Include="Resources\TransitionBloodEffect.ps" />
+    <Resource Include="Resources\TransitionCircleRevealEffect.ps" />
+    <Resource Include="Resources\TransitionCircleStretchEffect.ps" />
+    <Resource Include="Resources\TransitionDropEffect.ps" />
+    <Resource Include="Resources\TransitionFadeEffect.ps" />
+    <Resource Include="Resources\TransitionFoldEffect.ps" />
+    <Resource Include="Resources\TransitionLeastBrightEffect.ps" />
+    <Resource Include="Resources\TransitionMostBrightEffect.ps" />
+    <Resource Include="Resources\TransitionPixelateEffect.ps" />
+    <Resource Include="Resources\TransitionPixelateOutEffect.ps" />
+    <Resource Include="Resources\TransitionRadialBlurEffect.ps" />
+    <Resource Include="Resources\TransitionRadialWiggleEffect.ps" />
+    <Resource Include="Resources\TransitionRandomCircleRevealEffect.ps" />
+    <Resource Include="Resources\TransitionRippleEffect.ps" />
+    <Resource Include="Resources\TransitionSaturateEffect.ps" />
+    <Resource Include="Resources\TransitionSlideInEffect.ps" />
+    <Resource Include="Resources\TransitionSwirlEffect.ps" />
+    <Resource Include="Resources\TransitionWaterEffect.ps" />
+    <Resource Include="Resources\TransitionWaveEffect.ps" />
     <Resource Include="Resources\code128.ttf" />
     <Resource Include="Resources\GrayscaleEffect.ps" />
     <Resource Include="Resources\HueShiftEffect.ps" />
@@ -237,12 +262,34 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Shaders\FractalExplorer.fx" />
-    <Content Include="Shaders\Grayscale.fx" />
-    <Content Include="Shaders\HueShift.fx" />
-    <Content Include="Shaders\Sepia.fx" />
-    <Content Include="Shaders\TransitionColorize.fx" />
+    <Content Include="Shaders\Sources\FractalExplorer.fx" />
+    <Content Include="Shaders\Sources\Grayscale.fx" />
+    <Content Include="Shaders\Sources\HueShift.fx" />
+    <Content Include="Shaders\Sources\Sepia.fx" />
+    <Content Include="Shaders\Sources\TransitionColorize.fx" />
+    <Content Include="Shaders\Sources\Transitions\TransitionBandedSwirl.fx" />
+    <Content Include="Shaders\Sources\Transitions\TransitionBlinds.fx" />
+    <Content Include="Shaders\Sources\Transitions\TransitionBlood.fx" />
+    <Content Include="Shaders\Sources\Transitions\TransitionCircleReveal.fx" />
+    <Content Include="Shaders\Sources\Transitions\TransitionCircleStretch.fx" />
+    <Content Include="Shaders\Sources\Transitions\TransitionDrop.fx" />
+    <Content Include="Shaders\Sources\Transitions\TransitionFade.fx" />
+    <Content Include="Shaders\Sources\Transitions\TransitionFold.fx" />
+    <Content Include="Shaders\Sources\Transitions\TransitionLeastBright.fx" />
+    <Content Include="Shaders\Sources\Transitions\TransitionMostBright.fx" />
+    <Content Include="Shaders\Sources\Transitions\TransitionPixelate.fx" />
+    <Content Include="Shaders\Sources\Transitions\TransitionPixelateOut.fx" />
+    <Content Include="Shaders\Sources\Transitions\TransitionRadialBlur.fx" />
+    <Content Include="Shaders\Sources\Transitions\TransitionRadialWiggle.fx" />
+    <Content Include="Shaders\Sources\Transitions\TransitionRandomCircleReveal.fx" />
+    <Content Include="Shaders\Sources\Transitions\TransitionRipple.fx" />
+    <Content Include="Shaders\Sources\Transitions\TransitionSaturate.fx" />
+    <Content Include="Shaders\Sources\Transitions\TransitionSlideIn.fx" />
+    <Content Include="Shaders\Sources\Transitions\TransitionSwirl.fx" />
+    <Content Include="Shaders\Sources\Transitions\TransitionWater.fx" />
+    <Content Include="Shaders\Sources\Transitions\TransitionWave.fx" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>pushd $(TargetDir)

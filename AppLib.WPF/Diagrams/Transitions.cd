@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AppLib.WPF.Shaders.Transition.TransitionWave">
+    <Position X="2.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Shaders\Transition\SimpleTransitions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppLib.WPF.Shaders.Transition.TransitonSaturate">
+    <Position X="4.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Shaders\Transition\SimpleTransitions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppLib.WPF.Shaders.Transition.TransitionRipple">
+    <Position X="1" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Shaders\Transition\SimpleTransitions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppLib.WPF.Shaders.Transition.TransitionRadialBlur">
+    <Position X="9.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Shaders\Transition\SimpleTransitions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppLib.WPF.Shaders.Transition.TransitionPixelateOut">
+    <Position X="8" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Shaders\Transition\SimpleTransitions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppLib.WPF.Shaders.Transition.TransitionPixelate">
+    <Position X="6.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Shaders\Transition\SimpleTransitions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppLib.WPF.Shaders.Transition.TransitionMostBright">
+    <Position X="2.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Shaders\Transition\SimpleTransitions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppLib.WPF.Shaders.Transition.TransitionLeastBright">
+    <Position X="8" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Shaders\Transition\SimpleTransitions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppLib.WPF.Shaders.Transition.TransitionFold">
+    <Position X="6.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Shaders\Transition\SimpleTransitions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppLib.WPF.Shaders.Transition.TransitionFade">
+    <Position X="4.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Shaders\Transition\SimpleTransitions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppLib.WPF.Shaders.Transition.TransitionCircleStretch">
+    <Position X="1" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Shaders\Transition\SimpleTransitions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppLib.WPF.Shaders.Transition.Transition">
+    <Position X="1.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAEIAAAAAAAAAABACCAAA=</HashCode>
+      <FileName>Shaders\Transition\Transition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
