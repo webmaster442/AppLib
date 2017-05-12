@@ -38,8 +38,7 @@ namespace AppLib.Common
                     ModifierKeys modifier = (ModifierKeys)((int)m.LParam & 0xFFFF);
 
                     // invoke the event to notify the parent.
-                    if (KeyPressed != null)
-                        KeyPressed(this, new KeyPressedEventArgs(modifier, key));
+                    KeyPressed?.Invoke(this, new KeyPressedEventArgs(modifier, key));
                 }
             }
 
@@ -122,11 +121,17 @@ namespace AppLib.Common
             _key = key;
         }
 
+        /// <summary>
+        /// Modifier keys
+        /// </summary>
         public ModifierKeys Modifier
         {
             get { return _modifier; }
         }
 
+        /// <summary>
+        /// Key
+        /// </summary>
         public Keys Key
         {
             get { return _key; }
@@ -139,10 +144,25 @@ namespace AppLib.Common
     [Flags]
     public enum ModifierKeys : uint
     {
+        /// <summary>
+        /// No modifier provided
+        /// </summary>
         None = 0,
+        /// <summary>
+        /// Alt key
+        /// </summary>
         Alt = 1,
+        /// <summary>
+        /// Ctrl key
+        /// </summary>
         Control = 2,
+        /// <summary>
+        /// Shift key
+        /// </summary>
         Shift = 4,
+        /// <summary>
+        /// Windows key
+        /// </summary>
         Win = 8
     }
 }

@@ -207,6 +207,7 @@
     </EmbeddedResource>
     <None Include="AppLib.WPF.snk" />
     <None Include="Diagrams\Attached.cd" />
+    <None Include="Diagrams\WPF.cd" />
     <None Include="Diagrams\Controls.cd" />
     <None Include="Diagrams\Converters.cd" />
     <None Include="Diagrams\Dialogs.cd" />

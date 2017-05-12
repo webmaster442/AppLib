@@ -54,7 +54,7 @@
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAYAAFAIAADQIAAAAAAAAgAIAAAAEAACCAgARAAAAAA=</HashCode>
+      <HashCode>AAYAAHAIAQDQYAAAACAAAgCYAAAAEIhCCAgARAIAAAA=</HashCode>
       <FileName>Controls\CoolWindow.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -107,7 +107,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="AppLib.WPF.Controls.FuzzyClockText">
-    <Position X="8" Y="9.25" Width="2" />
+    <Position X="9.5" Y="10.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAgAAAABAAAAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
       <FileName>Controls\FuzzyTextClock.cs</FileName>
@@ -129,14 +129,14 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="AppLib.WPF.Controls.SerialPortCombo">
-    <Position X="9.25" Y="11.75" Width="2" />
+    <Position X="9.5" Y="12.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAABAAAABAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>Controls\SerialPortCombo.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AppLib.WPF.Controls.TransitionControl">
-    <Position X="11.75" Y="10" Width="2.25" />
+    <Position X="12.25" Y="10" Width="2.25" />
     <TypeIdentifier>
       <HashCode>BAAAAAAAgAByAAADABAAAAFAICAAAAAACAACAAAAAAA=</HashCode>
       <FileName>Controls\TransitionControl.cs</FileName>
@@ -166,11 +166,32 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="AppLib.WPF.Controls.FontAwesome.ImageAwesome">
+  <Class Name="AppLib.WPF.Controls.ImageControls.BarcodeConverter128">
+    <Position X="18.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Controls\ImageControls\BarcodeConverter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppLib.WPF.Controls.ImageControls.ImageAwesome">
     <Position X="18.75" Y="0.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAACAAEAAAACAAAAAAAAAQAIIAAAAAAAAAAAEBAAA=</HashCode>
-      <FileName>Controls\FontAwesome\ImageAwesome.cs</FileName>
+      <FileName>Controls\ImageControls\ImageAwesome.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppLib.WPF.Controls.ImageControls.ImageBarcodeCode128">
+    <Position X="18.75" Y="3.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAACCAEAAAAAAAACCAAAAQAAAAAAAAEAAACAAAAAA=</HashCode>
+      <FileName>Controls\ImageControls\ImageBarcodeCode128.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppLib.WPF.Controls.Terminal.Terminal">
+    <Position X="21" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>OAhwALAkQEoAEAAQQAC0AGGDREIQAAiMEEQKAaALwCA=</HashCode>
+      <FileName>Controls\Terminal\Terminal.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="AppLib.WPF.Controls.ImagePlacement">
@@ -180,11 +201,11 @@
       <FileName>Controls\ImageButton.cs</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="AppLib.WPF.Controls.FontAwesome.FaIcons">
+  <Enum Name="AppLib.WPF.Controls.ImageControls.FaIcons">
     <Position X="17" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>v///f///////Pf///7/////7//7//+/////f9/////4=</HashCode>
-      <FileName>Controls\FontAwesome\Fa-Icons.cs</FileName>
+      <FileName>Controls\ImageControls\Fa-Icons.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Font Name="Segoe UI" Size="9" />

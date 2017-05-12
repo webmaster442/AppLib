@@ -8,16 +8,16 @@
     </TypeIdentifier>
   </Class>
   <Class Name="AppLib.Common.PInvoke.Kernel32">
-    <Position X="0.5" Y="3" Width="1.5" />
+    <Position X="0.5" Y="3" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAEAAAAQAAAAAA=</HashCode>
+      <HashCode>QIAAiAAAAAAAAAAAQAAAAAAAAAAAAAAEAAAAQAAAAAA=</HashCode>
       <FileName>PInvoke\Kernel32.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AppLib.Common.PInvoke.User32">
     <Position X="3.5" Y="0.5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AACAAAAAAAABAAQCACAgAAAQAABCgBAAAAAAABSCAAA=</HashCode>
+      <HashCode>AACAAAAAAAABAAQCACAgAAAQAABCgBAAAQAAABSCCAA=</HashCode>
       <FileName>PInvoke\User32.cs</FileName>
     </TypeIdentifier>
   </Class>

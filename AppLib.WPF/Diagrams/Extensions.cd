@@ -34,10 +34,10 @@
       <HashCode>CAAQAAAAAAABAAAEgAAAACAAAAAAAIAAAAAwKAAAAiA=</HashCode>
       <FileName>Extensions\HSL.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
+    <Lollipop Position="0.2" />
   </Class>
   <Enum Name="AppLib.WPF.Extensions.BindingDirection">
-    <Position X="4.5" Y="2.75" Width="1.5" />
+    <Position X="4.75" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAgAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Extensions\DependencyObjectExtensions.cs</FileName>

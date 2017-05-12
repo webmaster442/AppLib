@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace AppLib.Common.Extensions
 {
@@ -17,6 +18,29 @@ namespace AppLib.Common.Extensions
         public static bool Contains(this string s, string search, StringComparison comp)
         {
             return s.IndexOf(search, comp) > 0;
+        }
+
+        /// <summary>
+        /// Converts a string to Title case
+        /// </summary>
+        /// <param name="s">string to convert to title case</param>
+        /// <returns>a title cased string</returns>
+        public static string TitleCase(this string s)
+        {
+            var textinfo = CultureInfo.CurrentCulture.TextInfo;
+            return textinfo.ToTitleCase(s);
+        }
+
+        /// <summary>
+        /// Converts a string to Title case
+        /// </summary>
+        /// <param name="s">string to convert to title case</param>
+        /// <param name="culture">culture info</param>
+        /// <returns>a title cased string</returns>
+        public static string TitleCase(this string s, CultureInfo culture)
+        {
+            var textinfo = culture.TextInfo;
+            return textinfo.ToTitleCase(s);
         }
     }
 }

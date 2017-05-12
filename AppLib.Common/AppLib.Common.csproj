@@ -55,10 +55,10 @@
     <Compile Include="Console\RGBColor.cs" />
     <Compile Include="Console\Vt100.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
-    <Compile Include="Extensions\DictionaryExtensions.cs" />
     <Compile Include="Extensions\DoubleExtensions.cs" />
     <Compile Include="Extensions\ExceptionExtensions.cs" />
     <Compile Include="Extensions\FloatExtensions.cs" />
+    <Compile Include="Extensions\CollectionExtensions.cs" />
     <Compile Include="Extensions\RandomExtensions.cs" />
     <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Extensions\StringConversionExtensions.cs" />
@@ -66,7 +66,9 @@
     <Compile Include="HttpServer\HttpCache.cs" />
     <Compile Include="HttpServer\HttpServer.cs" />
     <Compile Include="KeyboardHook.cs" />
-    <Compile Include="Messager.cs" />
+    <Compile Include="MessageHandler\Handler.cs" />
+    <Compile Include="MessageHandler\IMessage.cs" />
+    <Compile Include="MessageHandler\MessageSender.cs" />
     <Compile Include="UId.cs" />
     <Compile Include="INI\IniFile.cs" />
     <Compile Include="INI\IniKey.cs" />
@@ -88,8 +90,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Common.snk" />
+    <None Include="Diagrams\Common.cd" />
     <None Include="Diagrams\INI.cd" />
-    <None Include="Diagrams\Parameter Parser.cd" />
+    <None Include="Diagrams\Console.cd" />
     <None Include="Diagrams\Extensions.cd" />
     <None Include="Diagrams\HTTPServer.cd" />
     <None Include="Diagrams\PInvoke Types.cd" />
