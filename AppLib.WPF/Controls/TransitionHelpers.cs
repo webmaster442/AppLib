@@ -1,9 +1,9 @@
-﻿using Microsoft.Expression.Media.Effects;
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Media;
 using System.Linq;
 using AppLib.Common.Extensions;
+using AppLib.WPF.Shaders.Transition;
 
 namespace AppLib.WPF.Controls
 {
@@ -13,10 +13,7 @@ namespace AppLib.WPF.Controls
         {
             if (fe.IsLoaded)
             {
-                if (action != null)
-                {
-                    action();
-                }
+                action?.Invoke();
             }
             else
             {
@@ -24,11 +21,7 @@ namespace AppLib.WPF.Controls
                 handler = delegate
                 {
                     fe.Loaded -= handler;
-
-                    if (action != null)
-                    {
-                        action();
-                    }
+                    action?.Invoke();
                 };
 
                 fe.Loaded += handler;
@@ -48,7 +41,7 @@ namespace AppLib.WPF.Controls
         /// <param name="newContent">new content to be presented</param>
         /// <param name="container">container of the items</param>
         /// <returns>A transitionEffect</returns>
-        public abstract TransitionEffect GetTransition(object oldContent, object newContent, DependencyObject container);
+        public abstract Transition GetTransition(object oldContent, object newContent, DependencyObject container);
     }
 
     /// <summary>
@@ -58,7 +51,7 @@ namespace AppLib.WPF.Controls
     {
         private readonly Random _random = new Random();
 
-        private TransitionEffect[] _transitions;
+        private Transition[] _transitions;
         private int[] _animcount;
 
         /// <summary>
@@ -67,23 +60,36 @@ namespace AppLib.WPF.Controls
         public TabControlTransitionSelector()
         {
             if (!RenderCapability.IsPixelShaderVersionSupported(2, 0)) return;
-            _transitions = new TransitionEffect[]
+            _transitions = new Transition[]
             {
-                new SmoothSwirlGridTransitionEffect(),
-                new BlindsTransitionEffect(),
-                new CircleRevealTransitionEffect(),
-                new CloudRevealTransitionEffect(),
-                new FadeTransitionEffect(),
-                new PixelateTransitionEffect(),
-                new RadialBlurTransitionEffect(),
-                new RippleTransitionEffect(),
-                new WaveTransitionEffect(),
-                new WipeTransitionEffect(),
-                new SmoothSwirlGridTransitionEffect(),
-                new SlideInTransitionEffect { SlideDirection = SlideDirection.TopToBottom },
-                new SlideInTransitionEffect { SlideDirection = SlideDirection.LeftToRight },
-                new SlideInTransitionEffect { SlideDirection = SlideDirection.RightToLeft },
-                new SlideInTransitionEffect { SlideDirection = SlideDirection.BottomToTop }
+                new TransitionWave(),
+                new TransitonSaturate(),
+                new TransitionRipple(),
+                new TransitionRadialBlur(),
+                new TransitionPixelateOut(),
+                new TransitionPixelate(),
+                new TransitionMostBright(),
+                new TransitionLeastBright(),
+                new TransitionFold(),
+                new TransitionFade(),
+                new TransitionCircleStretch(),
+                new TransitionBandedSwirl(),
+                new TransitionBlinds(),
+                new TransitionBlood(),
+                new TransitionCircleReveal(),
+                new TransitionDrop(),
+                new TransitionRadialWiggle(),
+                new TransitionRandomCircleReveal(),
+                new TransitionSlideIn(TransitionSlideIn.SlideDirection.Down),
+                new TransitionSlideIn(TransitionSlideIn.SlideDirection.Left),
+                new TransitionSlideIn(TransitionSlideIn.SlideDirection.LeftDown),
+                new TransitionSlideIn(TransitionSlideIn.SlideDirection.LeftUp),
+                new TransitionSlideIn(TransitionSlideIn.SlideDirection.Right),
+                new TransitionSlideIn(TransitionSlideIn.SlideDirection.RightDown),
+                new TransitionSlideIn(TransitionSlideIn.SlideDirection.RightUp),
+                new TransitionSlideIn(TransitionSlideIn.SlideDirection.Up),
+                new TransitionSwirl(),
+                new TransitionWater()
             };
             _transitions = (from i in _transitions orderby _random.Next() select i).ToArray();
             _animcount = new int[_transitions.Length];
@@ -96,7 +102,7 @@ namespace AppLib.WPF.Controls
         /// <param name="newContent">new content to be presented</param>
         /// <param name="container">container of the items</param>
         /// <returns>A transitionEffect</returns>
-        public override TransitionEffect GetTransition(object oldContent, object newContent, DependencyObject container)
+        public override Transition GetTransition(object oldContent, object newContent, DependencyObject container)
         {
             if (_transitions.Length < 1) return null;
             return _random.NextItem(_transitions);

@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using Microsoft.Expression.Media.Effects;
+using AppLib.WPF.Shaders.Transition;
 
 namespace AppLib.WPF.Controls
 {
@@ -143,7 +143,7 @@ namespace AppLib.WPF.Controls
             }
             
             // create the transition
-            TransitionEffect transitionEffect = ContentTransitionSelector.GetTransition(oldContent, newContent, this);
+            Transition transitionEffect = ContentTransitionSelector.GetTransition(oldContent, newContent, this);
             if (transitionEffect == null)
             {
                 throw new InvalidOperationException("Returned transition effect is null.");
@@ -164,7 +164,7 @@ namespace AppLib.WPF.Controls
                 da.AccelerationRatio = 0.5;
                 da.DecelerationRatio = 0.5;
             }
-            transitionEffect.BeginAnimation(TransitionEffect.ProgressProperty, da);
+            transitionEffect.BeginAnimation(Transition.ProgressProperty, da);
 
             VisualBrush oldVisualBrush = new VisualBrush(oldContentVisual);
             transitionEffect.OldImage = oldVisualBrush;
@@ -188,7 +188,7 @@ namespace AppLib.WPF.Controls
             _contentPresenter.Content = content;
         }
 
-        private void ApplyEffect(TransitionEffect effect)
+        private void ApplyEffect(Transition effect)
         {
             _contentPresenter.Effect = effect;
         }

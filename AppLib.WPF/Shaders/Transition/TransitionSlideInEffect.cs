@@ -6,13 +6,13 @@ namespace AppLib.WPF.Shaders.Transition
     /// <summary>
     /// Slide in transition effect
     /// </summary>
-    public class TransitionSlideInEffect: Transition
+    public class TransitionSlideIn: Transition
     {
         /// <summary>
         /// Dependency property for SlideAmmount
         /// </summary>
         public static readonly DependencyProperty SlideAmountProperty = 
-            DependencyProperty.Register("SlideAmount", typeof(Point), typeof(TransitionSlideInEffect), new UIPropertyMetadata(new Point(1D, 0D), PixelShaderConstantCallback(1)));
+            DependencyProperty.Register("SlideAmount", typeof(Point), typeof(TransitionSlideIn), new UIPropertyMetadata(new Point(1D, 0D), PixelShaderConstantCallback(1)));
 
         /// <summary>
         /// Slide direction vector
@@ -28,7 +28,7 @@ namespace AppLib.WPF.Shaders.Transition
         /// Creates a new instance of Slide in transition
         /// </summary>
         /// <param name="dir">Slide in direction</param>
-        public TransitionSlideInEffect(SlideDirection dir) : base(new Uri(TransitionHelper.TransitionSlideInEffect))
+        public TransitionSlideIn(SlideDirection dir) : base(new Uri(TransitionHelper.TransitionSlideInEffect))
         {
             switch (dir)
             {
@@ -62,7 +62,7 @@ namespace AppLib.WPF.Shaders.Transition
         /// <summary>
         /// Creates a new instance of Slide in transition
         /// </summary>
-        public TransitionSlideInEffect() : this(SlideDirection.Left) { }
+        public TransitionSlideIn() : this(SlideDirection.Left) { }
 
         /// <summary>
         /// Slide direction
