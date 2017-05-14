@@ -18,7 +18,6 @@ namespace AppLib.WPF.Dialogs
     public sealed partial class Updater : Window, IDisposable
     {
         private WebClient _client;
-        private CancellationTokenSource _cancel;
         private string _updatefile;
 
         private Updater()
