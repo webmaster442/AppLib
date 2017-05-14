@@ -11,7 +11,7 @@ namespace AppLib.WPF.Dialogs
     /// try { //something; }
     /// catch (Exception ex) { ErrorDialog.Show(ex); }
     /// </example>
-    public partial class ErrorDialog : Window
+    public sealed partial class ErrorDialog : Window
     {
         private ErrorDialog()
         {

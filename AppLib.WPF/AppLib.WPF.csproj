@@ -91,6 +91,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Dialogs\Updater.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Themes\AnimatedTabControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -165,6 +169,10 @@
     <Compile Include="Converters\MultiBoolNOrConverter.cs" />
     <Compile Include="Converters\NegateConverter.cs" />
     <Compile Include="Converters\VisibilityConverter.cs" />
+    <Compile Include="Dialogs\UpdateInfo.cs" />
+    <Compile Include="Dialogs\Updater.xaml.cs">
+      <DependentUpon>Updater.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\CollectionExtensions.cs" />
     <Compile Include="MVVM\DelegateCommand.cs" />
     <Compile Include="Dialogs\ErrorDialog.xaml.cs">
