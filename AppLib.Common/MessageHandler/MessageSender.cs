@@ -5,12 +5,18 @@ using System.Linq;
 
 namespace AppLib.Common.MessageHandler
 {
+    /// <summary>
+    /// A class implementing message sending
+    /// </summary>
     public class MessageSender
     {
         private readonly List<Handler> _handlers;
 
         private static MessageSender _instance;
 
+        /// <summary>
+        /// Gets the current instance of the MessageSender
+        /// </summary>
         public static MessageSender Instance
         {
             get
@@ -26,6 +32,10 @@ namespace AppLib.Common.MessageHandler
             _handlers = new List<Handler>();
         }
 
+        /// <summary>
+        /// Subscribe to message notifications
+        /// </summary>
+        /// <param name="subscriber">subscriber</param>
         public void SubScribe(IMessageTarget subscriber)
         {
             if (subscriber == null)
@@ -38,6 +48,10 @@ namespace AppLib.Common.MessageHandler
             }
         }
 
+        /// <summary>
+        /// UnSubscribe from message notifications
+        /// </summary>
+        /// <param name="subscriber">UnSubscriber</param>
         public void UnSubscribe(IMessageTarget subscriber)
         {
             if (subscriber == null)
@@ -51,6 +65,12 @@ namespace AppLib.Common.MessageHandler
             }
         }
 
+        /// <summary>
+        /// Send a message to a specific target
+        /// </summary>
+        /// <param name="target">Target uid</param>
+        /// <param name="message">message to send</param>
+        /// <returns>true, if the sending was successfull</returns>
         public bool SendMessage(UId target, object message)
         {
             if (target == null)

@@ -63,17 +63,37 @@ namespace AppLib.Common.PInvoke
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool FreeLibrary(IntPtr hModule);
 
-        [DllImport("kernel32.dll")]
+        /// <summary>
+        /// Retrieves the current input mode of a console's input buffer or the current output mode of a console screen buffer.
+        /// </summary>
+        /// <param name="hConsoleHandle">A handle to the console input buffer or the console screen buffer. The handle must have the GENERIC_READ access right. For more information, see Console Buffer Security and Access Rights.</param>
+        /// <param name="lpMode">A pointer to a variable that receives the current mode of the specified buffer. </param>
+        /// <returns>If the function succeeds, the return value is nonzero.</returns>
+        [DllImport("kernel32.dll", SetLastError =true)]
         public static extern bool GetConsoleMode(IntPtr hConsoleHandle, out uint lpMode);
 
-        [DllImport("kernel32.dll")]
+        /// <summary>
+        /// Sets the input mode of a console's input buffer or the output mode of a console screen buffer.
+        /// </summary>
+        /// <param name="hConsoleHandle">A handle to the console input buffer or a console screen buffer. The handle must have the GENERIC_READ access right. For more information, see Console Buffer Security and Access Rights.</param>
+        /// <param name="dwMode">The input or output mode to be set. If the hConsoleHandle parameter is an input handle, the mode can be one or more of the following values. When a console is created, all input modes except ENABLE_WINDOW_INPUT are enabled by default.</param>
+        /// <returns>If the function succeeds, the return value is nonzero.</returns>
+        [DllImport("kernel32.dll", SetLastError = true)]
         public static extern bool SetConsoleMode(IntPtr hConsoleHandle, uint dwMode);
 
+        /// <summary>
+        /// Retrieves a handle to the specified standard device (standard input, standard output, or standard error).
+        /// </summary>
+        /// <param name="nStdHandle">The standard device</param>
+        /// <returns></returns>
         [DllImport("kernel32.dll", SetLastError = true)]
         public static extern IntPtr GetStdHandle(int nStdHandle);
 
+        /// <summary>
+        /// Retrieves the calling thread's last-error code value. The last-error code is maintained on a per-thread basis. Multiple threads do not overwrite each other's last-error code.
+        /// </summary>
+        /// <returns>The return value is the calling thread's last-error code. To obtain an error string for system error codes, use the FormatMessage function.</returns>
         [DllImport("kernel32.dll")]
         public static extern uint GetLastError();
-
     }
 }

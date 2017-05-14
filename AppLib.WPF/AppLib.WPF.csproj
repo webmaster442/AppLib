@@ -201,7 +201,12 @@
     <Compile Include="Shaders\TransitionColorizeEffect.cs" />
     <Compile Include="Shaders\Transition\SimpleTransitions.cs" />
     <Compile Include="Shaders\Transition\Transition.cs" />
-    <Compile Include="Shaders\Transition\UriList.cs" />
+    <Compile Include="Shaders\Transition\TransitionBandedSwirl.cs" />
+    <Compile Include="Shaders\Transition\TransitionBlinds.cs" />
+    <Compile Include="Shaders\Transition\TransitionBlood.cs" />
+    <Compile Include="Shaders\Transition\TransitionCircleReveal.cs" />
+    <Compile Include="Shaders\Transition\TransitionHelpers.cs" />
+    <Compile Include="Shaders\Transition\TransitionSlideInEffect.cs" />
     <Compile Include="WindowManager.cs" />
     <Compile Include="WindowThumbnail.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -262,6 +267,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\tex01.png" />
+    <Resource Include="Resources\tex02.png" />
+    <Resource Include="Resources\tex03.png" />
+    <Resource Include="Resources\tex04.png" />
+    <Resource Include="Resources\tex05.png" />
     <Content Include="Shaders\Sources\FractalExplorer.fx" />
     <Content Include="Shaders\Sources\Grayscale.fx" />
     <Content Include="Shaders\Sources\HueShift.fx" />

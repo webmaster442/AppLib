@@ -423,60 +423,222 @@ namespace AppLib.Common.PInvoke
     /// </summary>
     public static class GWLFlags
     {
+        /// <summary>
+        /// Retrieves a handle to the parent window, if any.
+        /// </summary>
         public const int GWL_HWNDPARENT = (-8);
+        /// <summary>
+        /// Retrieves the identifier of the window.
+        /// </summary>
         public const int GWL_ID = (-12);
+        /// <summary>
+        /// Retrieves the window styles.
+        /// </summary>
         public const int GWL_STYLE = (-16);
+        /// <summary>
+        /// Retrieves the extended window styles.
+        /// </summary>
         public const int GWL_EXSTYLE = (-20);
         // Window Styles
+        /// <summary>
+        /// The window is an overlapped window. An overlapped window has a title bar and a border. Same as the WS_TILED style.
+        /// </summary>
         public const uint WS_OVERLAPPED = 0;
+        /// <summary>
+        /// The windows is a pop-up window. This style cannot be used with the WS_CHILD style.
+        /// </summary>
         public const uint WS_POPUP = 0x80000000;
+        /// <summary>
+        /// The window is a child window. A window with this style cannot have a menu bar. This style cannot be used with the WS_POPUP style.
+        /// </summary>
         public const uint WS_CHILD = 0x40000000;
+        /// <summary>
+        /// The window is initially minimized. Same as the WS_ICONIC style.
+        /// </summary>
         public const uint WS_MINIMIZE = 0x20000000;
+        /// <summary>
+        /// The window is initially visible.
+        /// </summary>
         public const uint WS_VISIBLE = 0x10000000;
+        /// <summary>
+        /// The window is initially disabled. A disabled window cannot receive input from the user. To change this after a window has been created, use the EnableWindow function.
+        /// </summary>
         public const uint WS_DISABLED = 0x8000000;
+        /// <summary>
+        /// Clips child windows relative to each other; that is, when a particular child window receives a WM_PAINT message, the WS_CLIPSIBLINGS style clips all other overlapping child windows out of the region of the child window to be updated. If WS_CLIPSIBLINGS is not specified and child windows overlap, it is possible, when drawing within the client area of a child window, to draw within the client area of a neighboring child window.
+        /// </summary>
         public const uint WS_CLIPSIBLINGS = 0x4000000;
+        /// <summary>
+        /// Excludes the area occupied by child windows when drawing occurs within the parent window. This style is used when creating the parent window.
+        /// </summary>
         public const uint WS_CLIPCHILDREN = 0x2000000;
+        /// <summary>
+        /// The window is initially maximized.
+        /// </summary>
         public const uint WS_MAXIMIZE = 0x1000000;
-        public const uint WS_CAPTION = 0xC00000;      // WS_BORDER or WS_DLGFRAME  
+        /// <summary>
+        /// The window has a title bar (includes the WS_BORDER style).
+        /// </summary>
+        public const uint WS_CAPTION = 0xC00000;      // WS_BORDER or WS_DLGFRAME
+        /// <summary>
+        /// The window has a thin-line border.
+        /// </summary>
         public const uint WS_BORDER = 0x800000;
+        /// <summary>
+        /// The window has a border of a style typically used with dialog boxes. A window with this style cannot have a title bar.
+        /// </summary>
         public const uint WS_DLGFRAME = 0x400000;
+        /// <summary>
+        /// The window has a vertical scroll bar.
+        /// </summary>
         public const uint WS_VSCROLL = 0x200000;
+        /// <summary>
+        /// The window has a horizontal scroll bar.
+        /// </summary>
         public const uint WS_HSCROLL = 0x100000;
+        /// <summary>
+        /// The window has a window menu on its title bar. The WS_CAPTION style must also be specified.
+        /// </summary>
         public const uint WS_SYSMENU = 0x80000;
+        /// <summary>
+        /// The window has a sizing border. Same as the WS_SIZEBOX style.
+        /// </summary>
         public const uint WS_THICKFRAME = 0x40000;
+        /// <summary>
+        /// The window is the first control of a group of controls. The group consists of this first control and all controls defined after it, up to the next control with the WS_GROUP style. The first control in each group usually has the WS_TABSTOP style so that the user can move from group to group. The user can subsequently change the keyboard focus from one control in the group to the next control in the group by using the direction keys.
+        /// </summary>
         public const uint WS_GROUP = 0x20000;
+        /// <summary>
+        /// The window is a control that can receive the keyboard focus when the user presses the TAB key. Pressing the TAB key changes the keyboard focus to the next control with the WS_TABSTOP style.
+        /// </summary>
         public const uint WS_TABSTOP = 0x10000;
+        /// <summary>
+        /// The window has a minimize button. Cannot be combined with the WS_EX_CONTEXTHELP style. The WS_SYSMENU style must also be specified. 
+        /// </summary>
         public const uint WS_MINIMIZEBOX = 0x20000;
+        /// <summary>
+        /// The window has a maximize button. Cannot be combined with the WS_EX_CONTEXTHELP style. The WS_SYSMENU style must also be specified. 
+        /// </summary>
         public const uint WS_MAXIMIZEBOX = 0x10000;
+        /// <summary>
+        /// The window is an overlapped window. An overlapped window has a title bar and a border. Same as the WS_OVERLAPPED style. 
+        /// </summary>
         public const uint WS_TILED = WS_OVERLAPPED;
+        /// <summary>
+        /// The window is initially minimized. Same as the WS_MINIMIZE style.
+        /// </summary>
         public const uint WS_ICONIC = WS_MINIMIZE;
+        /// <summary>
+        /// The window has a sizing border. Same as the WS_THICKFRAME style.
+        /// </summary>
         public const uint WS_SIZEBOX = WS_THICKFRAME;
         // Extended Window Styles
+        /// <summary>
+        /// The window has a double border; the window can, optionally, be created with a title bar by specifying the WS_CAPTION style in the dwStyle parameter.
+        /// </summary>
         public const uint WS_EX_DLGMODALFRAME = 0x0001;
+        /// <summary>
+        /// The child window created with this style does not send the WM_PARENTNOTIFY message to its parent window when it is created or destroyed.
+        /// </summary>
         public const uint WS_EX_NOPARENTNOTIFY = 0x0004;
+        /// <summary>
+        /// The window should be placed above all non-topmost windows and should stay above them, even when the window is deactivated. To add or remove this style, use the SetWindowPos function.
+        /// </summary>
         public const uint WS_EX_TOPMOST = 0x0008;
+        /// <summary>
+        /// The window accepts drag-drop files.
+        /// </summary>
         public const uint WS_EX_ACCEPTFILES = 0x0010;
+        /// <summary>
+        /// The window should not be painted until siblings beneath the window (that were created by the same thread) have been painted. The window appears transparent because the bits of underlying sibling windows have already been painted.
+        /// </summary>
         public const uint WS_EX_TRANSPARENT = 0x0020;
+        /// <summary>
+        /// The window is a MDI child window.
+        /// </summary>
         public const uint WS_EX_MDICHILD = 0x0040;
+        /// <summary>
+        /// The window is intended to be used as a floating toolbar. A tool window has a title bar that is shorter than a normal title bar, and the window title is drawn using a smaller font. A tool window does not appear in the taskbar or in the dialog that appears when the user presses ALT+TAB. If a tool window has a system menu, its icon is not displayed on the title bar. However, you can display the system menu by right-clicking or by typing ALT+SPACE. 
+        /// </summary>
         public const uint WS_EX_TOOLWINDOW = 0x0080;
+        /// <summary>
+        /// The window has a border with a raised edge.
+        /// </summary>
         public const uint WS_EX_WINDOWEDGE = 0x0100;
+        /// <summary>
+        /// The window has a border with a sunken edge.
+        /// </summary>
         public const uint WS_EX_CLIENTEDGE = 0x0200;
+        /// <summary>
+        /// The title bar of the window includes a question mark. When the user clicks the question mark, the cursor changes to a question mark with a pointer. If the user then clicks a child window, the child receives a WM_HELP message. The child window should pass the message to the parent window procedure, which should call the WinHelp function using the HELP_WM_HELP command. The Help application displays a pop-up window that typically contains help for the child window.
+        /// </summary>
         public const uint WS_EX_CONTEXTHELP = 0x0400;
+        /// <summary>
+        /// The window has generic "right-aligned" properties. This depends on the window class. This style has an effect only if the shell language is Hebrew, Arabic, or another language that supports reading-order alignment; otherwise, the style is ignored.
+        /// </summary>
         public const uint WS_EX_RIGHT = 0x1000;
+        /// <summary>
+        /// The window has generic left-aligned properties. This is the default.
+        /// </summary>
         public const uint WS_EX_LEFT = 0x0000;
+        /// <summary>
+        /// If the shell language is Hebrew, Arabic, or another language that supports reading-order alignment, the window text is displayed using right-to-left reading-order properties. For other languages, the style is ignored.
+        /// </summary>
         public const uint WS_EX_RTLREADING = 0x2000;
+        /// <summary>
+        /// The window text is displayed using left-to-right reading-order properties. This is the default.
+        /// </summary>
         public const uint WS_EX_LTRREADING = 0x0000;
+        /// <summary>
+        /// If the shell language is Hebrew, Arabic, or another language that supports reading order alignment, the vertical scroll bar (if present) is to the left of the client area. For other languages, the style is ignored.
+        /// </summary>
         public const uint WS_EX_LEFTSCROLLBAR = 0x4000;
+        /// <summary>
+        /// The vertical scroll bar (if present) is to the right of the client area. This is the default.
+        /// </summary>
         public const uint WS_EX_RIGHTSCROLLBAR = 0x0000;
+        /// <summary>
+        /// The window itself contains child windows that should take part in dialog box navigation. If this style is specified, the dialog manager recurses into children of this window when performing navigation operations such as handling the TAB key, an arrow key, or a keyboard mnemonic.
+        /// </summary>
         public const uint WS_EX_CONTROLPARENT = 0x10000;
+        /// <summary>
+        /// The window has a three-dimensional border style intended to be used for items that do not accept user input.
+        /// </summary>
         public const uint WS_EX_STATICEDGE = 0x20000;
+        /// <summary>
+        /// Forces a top-level window onto the taskbar when the window is visible. 
+        /// </summary>
         public const uint WS_EX_APPWINDOW = 0x40000;
+        /// <summary>
+        /// The window is an overlapped window.
+        /// </summary>
         public const uint WS_EX_OVERLAPPEDWINDOW = (WS_EX_WINDOWEDGE | WS_EX_CLIENTEDGE);
+        /// <summary>
+        /// The window is palette window, which is a modeless dialog box that presents an array of commands. 
+        /// </summary>
         public const uint WS_EX_PALETTEWINDOW = (WS_EX_WINDOWEDGE | WS_EX_TOOLWINDOW | WS_EX_TOPMOST);
+        /// <summary>
+        ///  The window is a layered window. This style cannot be used if the window has a class style of either CS_OWNDC or CS_CLASSDC.
+        ///  Windows 8:  The WS_EX_LAYERED style is supported for top-level windows and child windows.Previous Windows versions support WS_EX_LAYERED only for top-level windows.
+        /// </summary>
         public const uint WS_EX_LAYERED = 0x00080000;
+        /// <summary>
+        /// The window does not pass its window layout to its child windows.
+        /// </summary>
         public const uint WS_EX_NOINHERITLAYOUT = 0x00100000; // Disable inheritence of mirroring by children
+        /// <summary>
+        /// If the shell language is Hebrew, Arabic, or another language that supports reading order alignment, the horizontal origin of the window is on the right edge. Increasing horizontal values advance to the left. 
+        /// </summary>
         public const uint WS_EX_LAYOUTRTL = 0x00400000; // Right to left mirroring
+        /// <summary>
+        /// Paints all descendants of a window in bottom-to-top painting order using double-buffering. For more information, see Remarks. This cannot be used if the window has a class style of either CS_OWNDC or CS_CLASSDC. 
+        /// </summary>
         public const uint WS_EX_COMPOSITED = 0x02000000;
+        /// <summary>
+        ///  A top-level window created with this style does not become the foreground window when the user clicks it. The system does not bring this window to the foreground when the user minimizes or closes the foreground window.
+        ///  To activate the window, use the SetActiveWindow or SetForegroundWindow function.
+        ///  The window does not appear on the taskbar by default. To force the window to appear on the taskbar, use the WS_EX_APPWINDOW style.
+        /// </summary>
         public const uint WS_EX_NOACTIVATE = 0x08000000;
     }
 
@@ -499,10 +661,26 @@ namespace AppLib.Common.PInvoke
         GetRootOwner = 3
     }
 
+    /// <summary>
+    /// Console configuration flags
+    /// </summary>
     public static class ConsoleModes
     {
+        /// <summary>
+        /// Setting this flag directs the Virtual Terminal processing engine to convert user input received by the console window into Console Virtual Terminal Sequences that can be retrieved by a supporting application through WriteFile or WriteConsole functions.
+        /// </summary>
         public const uint ENABLE_VIRTUAL_TERMINAL_PROCESSING = 0x0004;
+        /// <summary>
+        /// When writing with WriteFile or WriteConsole, this adds an additional state to end-of-line wrapping that can delay the cursor move and buffer scroll operations. 
+        /// </summary>
         public const uint DISABLE_NEWLINE_AUTO_RETURN = 0x0008;
+        /// <summary>
+        /// Setting this flag directs the Virtual Terminal processing engine to convert user input received by the console window into Console Virtual Terminal Sequences that can be retrieved by a supporting application through WriteFile or WriteConsole functions.
+        /// </summary>
         public const uint ENABLE_VIRTUAL_TERMINAL_INPUT = 0x0200;
+        /// <summary>
+        /// Characters read by the ReadFile or ReadConsole function are written to the active screen buffer as they are read. This mode can be used only if the ENABLE_LINE_INPUT mode is also enabled.
+        /// </summary>
+        public const uint ENABLE_ECHO_INPUT = 0x0004;
     }
 }
