@@ -205,8 +205,13 @@
     <Compile Include="Shaders\Transition\TransitionBlinds.cs" />
     <Compile Include="Shaders\Transition\TransitionBlood.cs" />
     <Compile Include="Shaders\Transition\TransitionCircleReveal.cs" />
+    <Compile Include="Shaders\Transition\TransitionDrop.cs" />
     <Compile Include="Shaders\Transition\TransitionHelpers.cs" />
+    <Compile Include="Shaders\Transition\TransitionRadialWiggle.cs" />
+    <Compile Include="Shaders\Transition\TransitionRandomCircleReveal.cs" />
     <Compile Include="Shaders\Transition\TransitionSlideInEffect.cs" />
+    <Compile Include="Shaders\Transition\TransitionSwirl.cs" />
+    <Compile Include="Shaders\Transition\TransitionWater.cs" />
     <Compile Include="WindowManager.cs" />
     <Compile Include="WindowThumbnail.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
