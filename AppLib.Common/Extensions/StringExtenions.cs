@@ -17,7 +17,7 @@ namespace AppLib.Common.Extensions
         /// <returns>true if the value parameter occurs within this string, or if value is the empty string (""); otherwise, false.</returns>
         public static bool Contains(this string s, string search, StringComparison comp)
         {
-            return s.IndexOf(search, comp) > 0;
+            return s.IndexOf(search, comp) >= 0;
         }
 
         /// <summary>
