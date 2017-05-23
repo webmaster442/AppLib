@@ -168,6 +168,7 @@
     <Compile Include="Converters\MultiBoolOrConverter.cs" />
     <Compile Include="Converters\MultiBoolNOrConverter.cs" />
     <Compile Include="Converters\NegateConverter.cs" />
+    <Compile Include="Converters\StringInfoConverter.cs" />
     <Compile Include="Converters\VisibilityConverter.cs" />
     <Compile Include="Dialogs\UpdateInfo.cs" />
     <Compile Include="Dialogs\Updater.xaml.cs">
