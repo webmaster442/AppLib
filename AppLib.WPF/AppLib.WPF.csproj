@@ -139,6 +139,7 @@
     </Compile>
     <Compile Include="Controls\ColorSpace.cs" />
     <Compile Include="Controls\CoolWindow.cs" />
+    <Compile Include="Controls\DockedWindow.cs" />
     <Compile Include="Controls\EditableSlider.xaml.cs">
       <DependentUpon>EditableSlider.xaml</DependentUpon>
     </Compile>
