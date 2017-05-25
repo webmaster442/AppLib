@@ -13,9 +13,9 @@ namespace AppLib.WPF.Controls
         private DockDirections _direction;
 
         /// <summary>
-        /// Parent window to dock the window to
+        /// Dock target window
         /// </summary>
-        public Window Parent
+        public Window DockTarget
         {
             get { return _parent; }
             set
@@ -28,6 +28,7 @@ namespace AppLib.WPF.Controls
                 _parent.LocationChanged += _parent_LocationChanged;
                 _parent.StateChanged += _parent_StateChanged;
                 _parent.Closed += _parent_Closed;
+                _parent.Activated += _parent_Activated;
                 MoveWindow();
             }
         }
@@ -52,6 +53,7 @@ namespace AppLib.WPF.Controls
             _parent.LocationChanged -= _parent_LocationChanged;
             _parent.StateChanged -= _parent_StateChanged;
             _parent.Closed -= _parent_Closed;
+            _parent.Activated -= _parent_Activated;
         }
 
         /// <summary>
@@ -65,6 +67,12 @@ namespace AppLib.WPF.Controls
             _parent = null;
             base.OnClosing(e);
 
+        }
+
+        private void _parent_Activated(object sender, EventArgs e)
+        {
+            Topmost = true;
+            Topmost = false;
         }
 
         private void _parent_Closed(object sender, EventArgs e)
