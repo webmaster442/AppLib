@@ -26,7 +26,7 @@ namespace AppLib.Common.MessageHandler
             foreach (var iface in ifaces)
             {
                 var t = iface.GetGenericArguments()[0];
-                var m = iface.GetMethod("Handle");
+                var m = iface.GetMethod("HandleMessage");
                 _supported.AddOrUpdate(t, m);
             }
 

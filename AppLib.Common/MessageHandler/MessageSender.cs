@@ -45,6 +45,8 @@ namespace AppLib.Common.MessageHandler
             {
                 if (_handlers.Any(h => h.IsTargetFor(subscriber)))
                     return;
+
+                _handlers.Add(new Handler(subscriber));
             }
         }
 
@@ -89,6 +91,25 @@ namespace AppLib.Common.MessageHandler
                 return false;
 
             return targethandler.CallHandler(message);
+        }
+
+        /// <summary>
+        /// Send a message to every subscriber that can handle the message
+        /// </summary>
+        /// <param name="message">Message to send</param>
+        /// <returns>true, if the sending was successfull</returns>
+        public bool SendMessage(object message)
+        {
+            if (message == null)
+                throw new ArgumentNullException(nameof(message));
+
+            ClearDeadHandlers();
+            var res = false;
+            foreach (var h in _handlers)
+            {
+                res = h.CallHandler(message);
+            }
+            return res;
         }
 
         private void ClearDeadHandlers()
