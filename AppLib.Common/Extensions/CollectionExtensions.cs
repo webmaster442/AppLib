@@ -106,5 +106,26 @@ namespace AppLib.Common.Extensions
             if (dictionary.ContainsKey(key)) dictionary[key] = value;
             else dictionary.Add(key, value);
         }
+
+        /// <summary>
+        /// Finds the first index of the element, that is matched by the rule.
+        /// </summary>
+        /// <typeparam name="T">Type of items</typeparam>
+        /// <param name="collection">Collection to search in</param>
+        /// <param name="match">Match function</param>
+        /// <returns>first index of the element, that is matched by the rule.</returns>
+        public static int FirstIndexOf<T>(this IEnumerable<T> collection, Func<T, bool> match)
+        {
+            var index = 0;
+            foreach (var item in collection)
+            {
+                if (match.Invoke(item))
+                {
+                    return index;
+                }
+                index++;
+            }
+            return -1;
+        }
     }
 }
