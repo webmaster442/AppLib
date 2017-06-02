@@ -11,17 +11,17 @@ namespace AppLib.Common.MessageHandler
         private readonly WeakReference _wref;
         private readonly Dictionary<Type, MethodInfo> _supported;
 
-        public Handler(IMessageTarget o)
+        public Handler(IMessageClient o)
         {
             _wref = new WeakReference(o);
             _supported = new Dictionary<Type, MethodInfo>();
             Inspect(o);
         }
 
-        private void Inspect(IMessageTarget o)
+        private void Inspect(IMessageClient o)
         {
             var ifaces = o.GetType().GetInterfaces()
-                .Where(x => typeof(IMessageTarget).IsAssignableFrom(x) && x.IsGenericType);
+                .Where(x => typeof(IMessageClient).IsAssignableFrom(x) && x.IsGenericType);
 
             foreach (var iface in ifaces)
             {
@@ -58,17 +58,23 @@ namespace AppLib.Common.MessageHandler
             get { return _wref.Target == null; }
         }
 
-        public bool IsTargetFor(IMessageTarget o)
+        public bool IsTargetFor(IMessageClient o)
         {
             return _wref.Target == o;
         }
 
+        public bool IsTypeof(Type t)
+        {
+            if (_wref.Target == null)
+                return false;
+            return _wref.Target.GetType() == t;
+        }
 
         public bool HasUid(UId search)
         {
             if (_wref.Target == null)
                 return false;
-            return (_wref.Target as IMessageTarget).MessageReciverID == search;
+            return (_wref.Target as IMessageClient).MessageReciverID == search;
         }
     }
 }

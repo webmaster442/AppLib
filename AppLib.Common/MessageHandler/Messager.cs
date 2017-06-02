@@ -8,26 +8,26 @@ namespace AppLib.Common.MessageHandler
     /// <summary>
     /// A class implementing message sending
     /// </summary>
-    public class MessageSender
+    public class Messager
     {
         private readonly List<Handler> _handlers;
 
-        private static MessageSender _instance;
+        private static Messager _instance;
 
         /// <summary>
         /// Gets the current instance of the MessageSender
         /// </summary>
-        public static MessageSender Instance
+        public static Messager Instance
         {
             get
             {
                 if (_instance == null)
-                    _instance = new MessageSender();
+                    _instance = new Messager();
                 return _instance;
             }
         }
 
-        private MessageSender()
+        private Messager()
         {
             _handlers = new List<Handler>();
         }
@@ -36,7 +36,7 @@ namespace AppLib.Common.MessageHandler
         /// Subscribe to message notifications
         /// </summary>
         /// <param name="subscriber">subscriber</param>
-        public void SubScribe(IMessageTarget subscriber)
+        public void SubScribe(IMessageClient subscriber)
         {
             if (subscriber == null)
                 throw new ArgumentNullException(nameof(subscriber));
@@ -54,7 +54,7 @@ namespace AppLib.Common.MessageHandler
         /// UnSubscribe from message notifications
         /// </summary>
         /// <param name="subscriber">UnSubscriber</param>
-        public void UnSubscribe(IMessageTarget subscriber)
+        public void UnSubscribe(IMessageClient subscriber)
         {
             if (subscriber == null)
                 throw new ArgumentNullException(nameof(subscriber));
@@ -94,20 +94,49 @@ namespace AppLib.Common.MessageHandler
         }
 
         /// <summary>
+        /// Send a message to the specific type of targets
+        /// </summary>
+        /// <param name="targettype">Target type</param>
+        /// <param name="message">Message to send</param>
+        /// <returns>true, if the sending was successfull to all clients</returns>
+        public bool SendMessage(Type targettype, object message)
+        {
+            if (targettype == null)
+                throw new ArgumentNullException(nameof(targettype));
+
+            if (message == null)
+                throw new ArgumentNullException(nameof(message));
+
+            var targethandler = from h in _handlers
+                                where h.IsTypeof(targettype)
+                                select h;
+
+            var res = true;
+            foreach (var target in targethandler)
+            {
+                if (!target.CallHandler(message))
+                    res = false;
+                
+            }
+            return res;
+        }
+
+        /// <summary>
         /// Send a message to every subscriber that can handle the message
         /// </summary>
         /// <param name="message">Message to send</param>
-        /// <returns>true, if the sending was successfull</returns>
+        /// <returns>true, if the sending was successfull to all clients</returns>
         public bool SendMessage(object message)
         {
             if (message == null)
                 throw new ArgumentNullException(nameof(message));
 
             ClearDeadHandlers();
-            var res = false;
+            var res = true;
             foreach (var h in _handlers)
             {
-                res = h.CallHandler(message);
+                if (!h.CallHandler(message))
+                    res = false;
             }
             return res;
         }

@@ -68,7 +68,7 @@
     <Compile Include="KeyboardHook.cs" />
     <Compile Include="MessageHandler\Handler.cs" />
     <Compile Include="MessageHandler\IMessage.cs" />
-    <Compile Include="MessageHandler\MessageSender.cs" />
+    <Compile Include="MessageHandler\Messager.cs" />
     <Compile Include="UId.cs" />
     <Compile Include="INI\IniFile.cs" />
     <Compile Include="INI\IniKey.cs" />

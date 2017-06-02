@@ -3,7 +3,7 @@
     /// <summary>
     /// Message Target interface
     /// </summary>
-    public interface IMessageTarget
+    public interface IMessageClient
     {
         /// <summary>
         /// Message reciever ID;
@@ -15,7 +15,7 @@
     /// Typed Message target interface
     /// </summary>
     /// <typeparam name="Tmsg">Message type</typeparam>
-    public interface IMessageTarget<Tmsg>: IMessageTarget
+    public interface IMessageClient<Tmsg>: IMessageClient
     {
         /// <summary>
         /// Handler for a message
