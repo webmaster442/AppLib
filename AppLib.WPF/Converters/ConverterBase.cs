@@ -10,6 +10,9 @@ namespace AppLib.WPF.Converters
     /// <typeparam name="T"></typeparam>
     public class ConverterBase<T> : MarkupExtension where T: new()
     {
+        /// <summary>
+        /// Convereters are singletons
+        /// </summary>
         private static T _converter;
 
         /// <summary>

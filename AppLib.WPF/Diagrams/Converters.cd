@@ -1,7 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="AppLib.WPF.Converters.FileIconConverter" BaseTypeListCollapsed="true">
-    <Position X="0.75" Y="0.5" Width="1.5" />
+    <Position X="6" Y="1.75" Width="2.25" />
+    <InheritanceLine Type="AppLib.WPF.Converters.ConverterBase&lt;T&gt;" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="1.625" Y="0.75" />
+        <Point X="1.625" Y="0.373" />
+        <Point X="7.125" Y="0.373" />
+        <Point X="7.125" Y="1.75" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Converters\FileIconConverter.cs</FileName>
@@ -9,7 +17,15 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="AppLib.WPF.Converters.FileInfoConverter" BaseTypeListCollapsed="true">
-    <Position X="5.25" Y="0.5" Width="1.5" />
+    <Position X="3.25" Y="1.75" Width="2.25" />
+    <InheritanceLine Type="AppLib.WPF.Converters.ConverterBase&lt;T&gt;" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="1.625" Y="0.75" />
+        <Point X="1.625" Y="0.373" />
+        <Point X="4.562" Y="0.373" />
+        <Point X="4.562" Y="1.75" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Converters\FileInfoConverter.cs</FileName>
@@ -17,7 +33,15 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="AppLib.WPF.Converters.FileSizeConverter" BaseTypeListCollapsed="true">
-    <Position X="5.25" Y="2.25" Width="1.5" />
+    <Position X="8.5" Y="1.75" Width="2.25" />
+    <InheritanceLine Type="AppLib.WPF.Converters.ConverterBase&lt;T&gt;" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="1.625" Y="0.75" />
+        <Point X="1.625" Y="0.375" />
+        <Point X="9.625" Y="0.375" />
+        <Point X="9.625" Y="1.75" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAACgAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Converters\FileSizeConverter.cs</FileName>
@@ -25,7 +49,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="AppLib.WPF.Converters.MultiBoolAndConverter" BaseTypeListCollapsed="true">
-    <Position X="0.75" Y="2.25" Width="2" />
+    <Position X="4.75" Y="4.5" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Converters\MultiBoolAndConverter.cs</FileName>
@@ -33,7 +57,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="AppLib.WPF.Converters.MultiBoolNAndConverter" BaseTypeListCollapsed="true">
-    <Position X="3" Y="2.25" Width="2" />
+    <Position X="3.5" Y="6.5" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Converters\MultiBoolNAndConverter.cs</FileName>
@@ -41,7 +65,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="AppLib.WPF.Converters.MultiBoolNOrConverter" BaseTypeListCollapsed="true">
-    <Position X="5.25" Y="4.25" Width="1.5" />
+    <Position X="2" Y="4.5" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Converters\MultiBoolNOrConverter.cs</FileName>
@@ -49,7 +73,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="AppLib.WPF.Converters.MultiBoolOrConverter" BaseTypeListCollapsed="true">
-    <Position X="3" Y="0.5" Width="2" />
+    <Position X="0.75" Y="6.5" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Converters\MultiBoolOrConverter.cs</FileName>
@@ -57,7 +81,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="AppLib.WPF.Converters.NegateConverter" BaseTypeListCollapsed="true">
-    <Position X="0.75" Y="4" Width="1.5" />
+    <Position X="7.5" Y="4.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Converters\NegateConverter.cs</FileName>
@@ -65,12 +89,19 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="AppLib.WPF.Converters.VisibilityConvertor" BaseTypeListCollapsed="true">
-    <Position X="3" Y="4" Width="1.5" />
+    <Position X="6.5" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Converters\VisibilityConverter.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AppLib.WPF.Converters.ConverterBase&lt;T&gt;">
+    <Position X="0.5" Y="0.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Converters\ConverterBase.cs</FileName>
+    </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
