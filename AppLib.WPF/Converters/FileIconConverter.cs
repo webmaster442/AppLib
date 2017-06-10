@@ -3,6 +3,7 @@ using System;
 using System.Globalization;
 using System.IO;
 using System.Windows.Data;
+using System.Windows.Markup;
 using System.Windows.Media;
 
 namespace AppLib.WPF.Converters
@@ -11,7 +12,7 @@ namespace AppLib.WPF.Converters
     /// Converts a file name to a FontAwesome icon &amp; returns the icon
     /// </summary>
     [ValueConversion(typeof(string), typeof(ImageSource))]
-    public class FileIconConverter : IValueConverter
+    public class FileIconConverter: ConverterBase<FileIconConverter>, IValueConverter
     {
         /// <summary>
         /// Converts a file name to a FontAwesome icon &amp; returns the icon

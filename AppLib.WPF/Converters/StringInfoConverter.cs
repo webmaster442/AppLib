@@ -8,7 +8,7 @@ namespace AppLib.WPF.Converters
     /// converts a string to word count or line count 
     /// </summary>
     [ValueConversion(typeof(string), typeof(int))]
-    public class StringInfoConverter : IValueConverter
+    public class StringInfoConverter : ConverterBase<StringInfoConverter>, IValueConverter
     {
         /// <summary>
         /// converts a string to word count or line count 

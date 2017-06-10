@@ -7,7 +7,7 @@ namespace AppLib.WPF.Converters
     /// <summary>
     /// Converts a long value to a human readable File size
     /// </summary>
-    public class FileSizeConverter : IValueConverter
+    public class FileSizeConverter : ConverterBase<FileSizeConverter>, IValueConverter
     {
         /// <summary>
         /// Calculate a file size in bytes to a human readable size

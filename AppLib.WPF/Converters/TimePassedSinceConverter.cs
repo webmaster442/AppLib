@@ -7,7 +7,7 @@ namespace AppLib.WPF.Converters
     /// <summary>
     /// Calculates the difference between the parameter time and the current time
     /// </summary>
-    public class TimePassedSinceConverter : IValueConverter
+    public class TimePassedSinceConverter : ConverterBase<TimePassedSinceConverter>, IValueConverter
     {
         /// <summary>
         /// Calculates the difference between the parameter time and the current time

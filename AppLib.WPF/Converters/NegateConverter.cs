@@ -8,7 +8,7 @@ namespace AppLib.WPF.Converters
     /// Converts a bool value to negated bool value
     /// </summary>
     [ValueConversion(typeof(bool), typeof(bool))]
-    public class NegateConverter : IValueConverter
+    public class NegateConverter : ConverterBase<NegateConverter>, IValueConverter
     {
 
         /// <summary>

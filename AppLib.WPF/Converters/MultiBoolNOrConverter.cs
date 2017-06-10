@@ -8,7 +8,7 @@ namespace AppLib.WPF.Converters
     /// <summary>
     /// Converts multiple bool values to a single bool value. Output will be true, if all the inputs are false.
     /// </summary>
-    public class MultiBoolNOrConverter : IMultiValueConverter
+    public class MultiBoolNOrConverter : ConverterBase<MultiBoolNOrConverter>, IMultiValueConverter
     {
         /// <summary>
         ///  Converts multiple bool values to a single bool value.
