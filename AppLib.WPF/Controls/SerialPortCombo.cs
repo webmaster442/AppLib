@@ -48,17 +48,5 @@ namespace AppLib.WPF.Controls
             port.Open();
             return port;
         }
-
-        /// <summary>
-        /// Opens the Serial Port configurator dialog with the preset port name
-        /// </summary>
-        /// <returns>the dialog result</returns>
-        public bool? OpenSelectedWithDialog()
-        {
-            var dialog = new AppLib.WPF.Dialogs.SerialPortDialog();
-            var selected = SelectedItem as string;
-            dialog.SelectPortName(selected);
-            return dialog.ShowDialog();
-        }
     }
 }
