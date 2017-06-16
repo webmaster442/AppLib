@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Security.Cryptography;
-using System.Text;
 
 namespace AppLib.Common
 {
@@ -9,59 +8,20 @@ namespace AppLib.Common
     /// </summary>
     public sealed class UId : IEquatable<UId>, IComparable<UId>
     {
-        private byte[] _data;
-
-        private UId(byte[] data)
-        {
-            _data = data;
-        }
+        private ulong _data;
 
         /// <summary>
-        /// Creates a new UID from a long value.
-        /// The Resulting UID will be 8 bytes
+        /// Creates a new instance of UID
         /// </summary>
-        /// <param name="value">A value</param>
-        /// <returns>A Uid containing the value</returns>
-        public static UId CreateFrom(long value)
+        public UId()
         {
-            var bytes = BitConverter.GetBytes(value);
-            Array.Reverse(bytes);
-            return new UId(bytes);
-        }
-
-        /// <summary>
-        /// Creates a new UID from an unsigned long value.
-        /// The Resulting UID will be 8 bytes
-        /// </summary>
-        /// <param name="value">A value</param>
-        /// <returns>A Uid containing the value</returns>
-        public static UId CreateFrom(ulong value)
-        {
-            var bytes = BitConverter.GetBytes(value);
-            Array.Reverse(bytes);
-            return new UId(bytes);
-        }
-
-        /// <summary>
-        /// Creates a new random UID 
-        /// </summary>
-        /// <param name="size">Size of UID in bytes. By default 8 is used</param>
-        /// <returns>A new random UID</returns>
-        public static UId Create(int size = 8)
-        {
-            var buffer = new byte[size];
+            var buffer = new byte[8];
             var rng = new RNGCryptoServiceProvider();
             rng.GetBytes(buffer);
-            return new UId(buffer);
+
+            _data = BitConverter.ToUInt64(buffer, 0);
         }
 
-        /// <summary>
-        /// Gets the UID length
-        /// </summary>
-        public int Length
-        {
-            get { return _data.Length; }
-        }
 
         /// <summary>
         /// Returns a string that represents the current object.
@@ -69,15 +29,7 @@ namespace AppLib.Common
         /// <returns>A string that represents the current object.</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            for (int i=0; i<_data.Length; i++)
-            {
-                sb.AppendFormat("{0:X2}", _data[i]);
-                if (i != _data.Length - 1)
-                    sb.Append("-");
-
-            }
-            return sb.ToString();
+            return _data.ToString("X16");
         }
 
         /// <summary>
@@ -98,15 +50,7 @@ namespace AppLib.Common
         /// <returns>A hash code for the current object.</returns>
         public override int GetHashCode()
         {
-            unchecked
-            {
-                int hash = 17;
-                for (int i = 0; i < _data.Length; i++)
-                {
-                    hash = hash * 23 + _data[i].GetHashCode();
-                }
-                return hash;
-            }
+                return _data.GetHashCode();
         }
 
         /// <summary>
@@ -116,13 +60,7 @@ namespace AppLib.Common
         /// <returns>true if the specified object is equal to the current object; otherwise, false.</returns>
         public bool Equals(UId other)
         {
-            if (this.Length != other.Length) return false;
-            for (int i = 0; i < other._data.Length; i++)
-            {
-                if (this._data[i] != other._data[i])
-                    return false;
-            }
-            return true;
+            return other._data == _data;
         }
 
         /// <summary>
@@ -132,13 +70,7 @@ namespace AppLib.Common
         /// <returns>A value that indicates the relative order of the objects being compared.</returns>
         public int CompareTo(UId other)
         {
-            if (Length > other.Length) return 1;
-            for (int i = Length - 1; i >= 0; i--)
-            {
-                if (_data[i] > other._data[i]) return 1;
-                else if (_data[i] < other._data[i]) return -1;
-            }
-            return 0;
+            return _data.CompareTo(other._data);
         }
 
         /// <summary>
@@ -149,11 +81,7 @@ namespace AppLib.Common
         public static bool IsNullOrZero(UId id)
         {
             if (id == null) return true;
-            foreach (var b in id._data)
-            {
-                if (b != 0) return false;
-            }
-            return true;
+            return id._data == 0;
         }
 
         /// <summary>
