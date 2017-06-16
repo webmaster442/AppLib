@@ -157,7 +157,6 @@
     <Compile Include="Controls\FuzzyTextClock.cs" />
     <Compile Include="Controls\ImageButton.cs" />
     <Compile Include="Controls\SerialPortCombo.cs" />
-    <Compile Include="Controls\Terminal\Terminal.cs" />
     <Compile Include="Controls\TransitionControl.cs" />
     <Compile Include="Controls\TransitionHelpers.cs" />
     <Compile Include="Controls\VirtualizingWrapPanel.cs" />

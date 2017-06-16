@@ -30,5 +30,17 @@ namespace AppLib.WPF.Extensions
             rtb.Render(element);
             return rtb;
         }
+
+        /// <summary>
+        /// Set focus to a named element of a container
+        /// </summary>
+        /// <param name="parent">parent element</param>
+        /// <param name="name">name of control to set focus to</param>
+        public static void SetFocus(this FrameworkElement parent, string name)
+        {
+            var ctrl = DependencyObjectExtensions.FindChild<FrameworkElement>(parent, name);
+            if (ctrl != null && ctrl.Focusable)
+                ctrl.Focus();
+        }
     }
 }
