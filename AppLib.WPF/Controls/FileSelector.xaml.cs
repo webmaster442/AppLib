@@ -52,6 +52,10 @@ namespace AppLib.WPF.Controls
             if (Filter.ToLower() == "folder")
             {
                 var fs = new System.Windows.Forms.FolderBrowserDialog();
+
+                if (System.IO.Directory.Exists(SelectedFile))
+                    fs.SelectedPath = SelectedFile;
+
                 fs.Description = "Select folder ...";
                 if (fs.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
@@ -64,6 +68,10 @@ namespace AppLib.WPF.Controls
                 openFileDialog.Title = "Select file ...";
                 openFileDialog.Multiselect = true;
                 openFileDialog.Filter = Filter;
+
+                if (System.IO.File.Exists(SelectedFile))
+                    openFileDialog.FileName = SelectedFile;
+
                 if (openFileDialog.ShowDialog() == true)
                 {
                     SelectedFile = openFileDialog.FileName;

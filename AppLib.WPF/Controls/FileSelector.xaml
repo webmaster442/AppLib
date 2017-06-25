@@ -16,7 +16,7 @@
         </Grid.ColumnDefinitions>
         <TextBox
             Margin="2"
-            Text="{Binding ElementName=Ctrlparent, Path=SelectedFile, Mode=TwoWay}"
+            Text="{Binding ElementName=Ctrlparent, Path=SelectedFile, UpdateSourceTrigger=PropertyChanged}"
             Grid.Column="0"/>
         <Button
             Grid.Column="1"
