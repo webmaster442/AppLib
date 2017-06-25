@@ -25,7 +25,7 @@ namespace AppLib.Common.Extensions
         /// </summary>
         /// <param name="s">string to convert to title case</param>
         /// <returns>a title cased string</returns>
-        public static string TitleCase(this string s)
+        public static string ToTitleCase(this string s)
         {
             var textinfo = CultureInfo.CurrentCulture.TextInfo;
             return textinfo.ToTitleCase(s);
@@ -37,7 +37,7 @@ namespace AppLib.Common.Extensions
         /// <param name="s">string to convert to title case</param>
         /// <param name="culture">culture info</param>
         /// <returns>a title cased string</returns>
-        public static string TitleCase(this string s, CultureInfo culture)
+        public static string ToTitleCase(this string s, CultureInfo culture)
         {
             var textinfo = culture.TextInfo;
             return textinfo.ToTitleCase(s);
