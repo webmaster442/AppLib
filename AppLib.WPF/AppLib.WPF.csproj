@@ -173,6 +173,7 @@
       <DependentUpon>Updater.xaml</DependentUpon>
     </Compile>
     <Compile Include="Extensions\CollectionExtensions.cs" />
+    <Compile Include="Extensions\VisualExtensions.cs" />
     <Compile Include="MVVM\ChangeTracker.cs" />
     <Compile Include="MVVM\DelegateCommand.cs" />
     <Compile Include="Dialogs\ErrorDialog.xaml.cs">
