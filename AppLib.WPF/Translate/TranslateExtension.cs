@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows.Data;
 using System.Windows.Markup;
 
 namespace AppLib.WPF.Translate
@@ -10,6 +9,8 @@ namespace AppLib.WPF.Translate
     /// </summary>
     public class TranslateExtension : MarkupExtension
     {
+
+        private static ResxTranslator _translator;
         private string _key;
 
         /// <summary>
@@ -21,9 +22,11 @@ namespace AppLib.WPF.Translate
             _key = key;
         }
 
-        /// <summary>
-        /// Gets or sets the key
-        /// </summary>
+        static TranslateExtension()
+        {
+            _translator = new ResxTranslator();
+        }
+
         [ConstructorArgument("key")]
         public string Key
         {
@@ -36,11 +39,8 @@ namespace AppLib.WPF.Translate
         /// </summary>
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
-            var binding = new Binding("Value")
-            {
-                Source = new TranslationData(_key)
-            };
-            return binding.ProvideValue(serviceProvider);
+            return _translator.Translate(_key);
         }
     }
+
 }
