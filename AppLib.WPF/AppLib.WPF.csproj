@@ -219,6 +219,12 @@
     <Compile Include="Shaders\Transition\TransitionSlideInEffect.cs" />
     <Compile Include="Shaders\Transition\TransitionSwirl.cs" />
     <Compile Include="Shaders\Transition\TransitionWater.cs" />
+    <Compile Include="Transalate\ITranslationProvider.cs" />
+    <Compile Include="Transalate\LanguageChangedEventManager.cs" />
+    <Compile Include="Transalate\ResxTranslationProvider.cs" />
+    <Compile Include="Transalate\TranslateExtension.cs" />
+    <Compile Include="Transalate\TranslationData.cs" />
+    <Compile Include="Transalate\TranslationManager.cs" />
     <Compile Include="WindowManager.cs" />
     <Compile Include="WindowThumbnail.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

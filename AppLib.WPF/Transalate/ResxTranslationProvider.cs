@@ -8,6 +8,9 @@ using System.Resources;
 
 namespace AppLib.WPF.Transalate
 {
+    /// <summary>
+    /// ResX translation provider
+    /// </summary>
     public class ResxTranslationProvider : ITranslationProvider
     {
         private readonly ResourceManager _resourceManager;
