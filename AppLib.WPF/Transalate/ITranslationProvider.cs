@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
 
-namespace AppLib.WPF.Transalate
+namespace AppLib.WPF.Translate
 {
     /// <summary>
     /// Interface for translation providers

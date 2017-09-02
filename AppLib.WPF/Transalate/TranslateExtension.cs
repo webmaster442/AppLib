@@ -2,7 +2,7 @@
 using System.Windows.Data;
 using System.Windows.Markup;
 
-namespace AppLib.WPF.Transalate
+namespace AppLib.WPF.Translate
 {
     /// <summary>
     /// The Translate Markup extension returns a binding to a TranslationData

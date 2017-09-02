@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Windows;
 
-namespace AppLib.WPF.Transalate
+namespace AppLib.WPF.Translate
 {
     /// <summary>
     /// Translation Data

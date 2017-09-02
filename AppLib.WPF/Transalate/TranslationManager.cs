@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Threading;
 
-namespace AppLib.WPF.Transalate
+namespace AppLib.WPF.Translate
 {
     /// <summary>
     /// Translation manager

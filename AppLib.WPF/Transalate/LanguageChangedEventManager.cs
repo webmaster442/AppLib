@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows;
 
-namespace AppLib.WPF.Transalate
+namespace AppLib.WPF.Translate
 {
     /// <summary>
     /// Manager for Language change events

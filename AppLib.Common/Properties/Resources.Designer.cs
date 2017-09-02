@@ -19,7 +19,7 @@ namespace AppLib.Common.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -65,12 +65,20 @@ namespace AppLib.Common.Properties {
         ///&lt;html lang=&quot;en&quot; xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
         ///&lt;head&gt;
         ///    &lt;meta charset=&quot;utf-8&quot; /&gt;
-        ///    &lt;title&gt;&lt;/title&gt;
-        ///&lt;/head&gt;
-        ///&lt;body&gt;
-        ///
-        ///&lt;/body&gt;
-        ///&lt;/html&gt;.
+        ///    &lt;title&gt;Server error&lt;/title&gt;
+        ///    &lt;style&gt;
+        ///        body
+        ///        {
+        ///            font-family: &apos;Trebuchet MS&apos;, &apos;Lucida Sans Unicode&apos;, &apos;Lucida Grande&apos;, &apos;Lucida Sans&apos;, Arial, sans-serif;
+        ///            font-size: 22px;
+        ///            background: #f2f2f2;
+        ///            color: #000000;
+        ///            margin-left: 20px;
+        ///        }
+        ///        #code
+        ///        {
+        ///            color: #fe4a1a;
+        ///            font-size: 4 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ErrorPage {
             get {

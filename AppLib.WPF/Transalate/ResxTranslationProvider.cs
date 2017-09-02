@@ -6,7 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Resources;
 
-namespace AppLib.WPF.Transalate
+namespace AppLib.WPF.Translate
 {
     /// <summary>
     /// ResX translation provider
