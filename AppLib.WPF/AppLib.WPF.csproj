@@ -175,6 +175,7 @@
     </Compile>
     <Compile Include="Extensions\CollectionExtensions.cs" />
     <Compile Include="Extensions\VisualExtensions.cs" />
+    <Compile Include="MVVM\BindableBase.cs" />
     <Compile Include="MVVM\ChangeTracker.cs" />
     <Compile Include="MVVM\DelegateCommand.cs" />
     <Compile Include="Dialogs\ErrorDialog.xaml.cs">
@@ -187,7 +188,6 @@
     <Compile Include="Extensions\DependencyObjectExtensions.cs" />
     <Compile Include="Extensions\FrameWorkElementExtensions.cs" />
     <Compile Include="Extensions\HSL.cs" />
-    <Compile Include="MVVM\Model.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -281,11 +281,16 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Shaders\TransitionColorize.fx" />
     <Resource Include="Resources\tex01.png" />
     <Resource Include="Resources\tex02.png" />
     <Resource Include="Resources\tex03.png" />
     <Resource Include="Resources\tex04.png" />
     <Resource Include="Resources\tex05.png" />
+    <Content Include="Shaders\FractalExplorer.fx" />
+    <Content Include="Shaders\Grayscale.fx" />
+    <Content Include="Shaders\HueShift.fx" />
+    <Content Include="Shaders\Sepia.fx" />
     <Content Include="Shaders\Sources\FractalExplorer.fx" />
     <Content Include="Shaders\Sources\Grayscale.fx" />
     <Content Include="Shaders\Sources\HueShift.fx" />
