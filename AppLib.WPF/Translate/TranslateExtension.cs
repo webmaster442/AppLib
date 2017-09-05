@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Globalization;
+using System.Reflection;
+using System.Resources;
+using System.Threading;
 using System.Windows.Markup;
 
 namespace AppLib.WPF.Translate
@@ -10,7 +14,9 @@ namespace AppLib.WPF.Translate
     public class TranslateExtension : MarkupExtension
     {
 
-        private static ResxTranslator _translator;
+        private static readonly ResourceManager _resourceManager;
+        private static readonly CultureInfo _curent;
+
         private string _key;
 
         /// <summary>
@@ -24,14 +30,44 @@ namespace AppLib.WPF.Translate
 
         static TranslateExtension()
         {
-            _translator = new ResxTranslator();
+            var caller = Assembly.GetEntryAssembly();
+            var path = string.Format("{0}.Properties.Resources", caller.GetName().Name);
+            _resourceManager = new ResourceManager(path, caller);
+            _curent = Thread.CurrentThread.CurrentUICulture;
         }
 
+        /// <summary>
+        /// Key of string to translate
+        /// </summary>
         [ConstructorArgument("key")]
         public string Key
         {
             get { return _key; }
             set { _key = value; }
+        }
+        
+        /// <summary>
+        /// Translate a string from ResX
+        /// </summary>
+        /// <param name="key">Key of string to translate</param>
+        /// <returns>Translated text</returns>
+        public static string Translate(string key)
+        {
+            try
+            {
+                return _resourceManager.GetString(key, _curent);
+            }
+            catch (Exception)
+            {
+                try
+                {
+                    return _resourceManager.GetString(key, new CultureInfo("en"));
+                }
+                catch (Exception)
+                {
+                    return string.Format("!{0}!", key);
+                }
+            }
         }
 
         /// <summary>
@@ -39,7 +75,7 @@ namespace AppLib.WPF.Translate
         /// </summary>
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
-            return _translator.Translate(_key);
+            return Translate(_key);
         }
     }
 

@@ -220,7 +220,6 @@
     <Compile Include="Shaders\Transition\TransitionSlideInEffect.cs" />
     <Compile Include="Shaders\Transition\TransitionSwirl.cs" />
     <Compile Include="Shaders\Transition\TransitionWater.cs" />
-    <Compile Include="Translate\ResxTranslator.cs" />
     <Compile Include="Translate\TranslateExtension.cs" />
     <Compile Include="WindowManager.cs" />
     <Compile Include="WindowThumbnail.cs" />
