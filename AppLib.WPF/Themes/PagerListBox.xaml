@@ -24,6 +24,8 @@
                             x:Name="Internal"
                             ItemsSource="{TemplateBinding ItemsSource}"
                             DataContext="{TemplateBinding DataContext}"
+                            SelectedItem="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedItem, Mode=TwoWay}"
+                            SelectedIndex="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedIndex, Mode=TwoWay}"
                             Grid.Column="0"
                             Grid.RowSpan="4"/>
                         <controls:FaImageButton
