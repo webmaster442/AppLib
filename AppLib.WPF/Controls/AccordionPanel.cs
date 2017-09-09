@@ -60,12 +60,15 @@ namespace AppLib.WPF.Controls
         protected override Size MeasureOverride(Size availableSize)
         {
             double requiredHeight = 0;
+            double requiredWidth = 0;
             double resizableHeight = 0;
 
             foreach (UIElement child in InternalChildren)
             {
                 child.Measure(availableSize);
                 requiredHeight += child.DesiredSize.Height;
+                if (child.DesiredSize.Width > requiredWidth)
+                    requiredWidth = child.DesiredSize.Width;
 
                 if (CanResize(child))
                 {
@@ -90,7 +93,7 @@ namespace AppLib.WPF.Controls
                 }
             }
 
-            return base.MeasureOverride(availableSize);
+            return new Size(requiredWidth, requiredHeight);
         }
 
         /// <summary>

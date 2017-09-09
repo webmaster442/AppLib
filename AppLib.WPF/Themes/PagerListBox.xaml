@@ -1,9 +1,7 @@
-﻿<ResourceDictionary 
+﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:controls="clr-namespace:AppLib.WPF.Controls"
-    xmlns:images="clr-namespace:AppLib.WPF.Controls.ImageControls"
-    xmlns:converters="clr-namespace:AppLib.WPF.Converters">
+    xmlns:controls="clr-namespace:AppLib.WPF.Controls">
 
     <Style TargetType="{x:Type controls:PagerListBox}" BasedOn="{StaticResource {x:Type ListBox}}">
         <Setter Property="Template">
@@ -22,6 +20,9 @@
                         </Grid.RowDefinitions>
                         <ListBox
                             x:Name="Internal"
+                            ItemTemplate="{TemplateBinding ItemTemplate}"
+                            ScrollViewer.HorizontalScrollBarVisibility="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ScrollViewer.HorizontalScrollBarVisibility, Mode=TwoWay}"
+                            ScrollViewer.VerticalScrollBarVisibility="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ScrollViewer.VerticalScrollBarVisibility, Mode=TwoWay}"
                             ItemsSource="{TemplateBinding ItemsSource}"
                             DataContext="{TemplateBinding DataContext}"
                             SelectedItem="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedItem, Mode=TwoWay}"

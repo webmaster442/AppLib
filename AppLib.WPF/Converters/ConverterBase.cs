@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Windows.Data;
 using System.Windows.Markup;
 
@@ -8,7 +9,7 @@ namespace AppLib.WPF.Converters
     /// Base for converters to be usesd as Markup extensions
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class ConverterBase<T> : MarkupExtension where T: new()
+    public abstract class ConverterBase<T> : MarkupExtension where T: new()
     {
         /// <summary>
         /// Convereters are singletons

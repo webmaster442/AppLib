@@ -68,6 +68,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\AsyncProgressIndicator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\ColorPicker.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -136,6 +140,9 @@
       <DependentUpon>AnalogClock.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\AnimatedTabControl.cs" />
+    <Compile Include="Controls\AsyncProgressIndicator.xaml.cs">
+      <DependentUpon>AsyncProgressIndicator.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ColorPicker.xaml.cs">
       <DependentUpon>ColorPicker.xaml</DependentUpon>
     </Compile>
@@ -163,6 +170,7 @@
     <Compile Include="Controls\TransitionControl.cs" />
     <Compile Include="Controls\TransitionHelpers.cs" />
     <Compile Include="Controls\VirtualizingWrapPanel.cs" />
+    <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Converters\ConverterBase.cs" />
     <Compile Include="Converters\FileIconConverter.cs" />
     <Compile Include="Converters\FileInfoConverter.cs" />
@@ -172,6 +180,7 @@
     <Compile Include="Converters\MultiBoolOrConverter.cs" />
     <Compile Include="Converters\MultiBoolNOrConverter.cs" />
     <Compile Include="Converters\NegateConverter.cs" />
+    <Compile Include="Converters\SecondsToTimeStringConverter.cs" />
     <Compile Include="Converters\StringInfoConverter.cs" />
     <Compile Include="Converters\TimePassedSinceConverter.cs" />
     <Compile Include="Converters\VisibilityConverter.cs" />
@@ -195,6 +204,7 @@
     <Compile Include="Extensions\FrameWorkElementExtensions.cs" />
     <Compile Include="Extensions\HSL.cs" />
     <Compile Include="MVVM\GetViewModelExtensions.cs" />
+    <Compile Include="MVVM\ViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
