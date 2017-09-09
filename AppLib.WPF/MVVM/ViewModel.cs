@@ -1,4 +1,6 @@
-﻿namespace AppLib.WPF.MVVM
+﻿using System.ComponentModel;
+
+namespace AppLib.WPF.MVVM
 {
     /// <summary>
     /// An Interface for view Implementation
