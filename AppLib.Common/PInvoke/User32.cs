@@ -463,5 +463,11 @@ namespace AppLib.Common.PInvoke
 
         [DllImport("user32.dll", SetLastError = true)]
         public static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+
+        [DllImport("user32")]
+        public static extern bool GetMonitorInfo(IntPtr hMonitor, MONITORINFO lpmi);
+
+        [DllImport("User32")]
+        public static extern IntPtr MonitorFromWindow(IntPtr handle, int flags);
     }
 }

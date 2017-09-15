@@ -148,6 +148,7 @@
     </Compile>
     <Compile Include="Controls\ColorSpace.cs" />
     <Compile Include="Controls\CoolWindow.cs" />
+    <Compile Include="Controls\DateTimeTextBlock.cs" />
     <Compile Include="Controls\DockedWindow.cs" />
     <Compile Include="Controls\EditableSlider.xaml.cs">
       <DependentUpon>EditableSlider.xaml</DependentUpon>
@@ -188,7 +189,6 @@
     <Compile Include="Dialogs\Updater.xaml.cs">
       <DependentUpon>Updater.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Extensions\CollectionExtensions.cs" />
     <Compile Include="Extensions\VisualExtensions.cs" />
     <Compile Include="MVVM\BindableBase.cs" />
     <Compile Include="MVVM\ChangeTracker.cs" />

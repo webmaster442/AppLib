@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 namespace AppLib.Common.PInvoke
 {
@@ -683,4 +684,102 @@ namespace AppLib.Common.PInvoke
         /// </summary>
         public const uint ENABLE_ECHO_INPUT = 0x0004;
     }
+
+    /// <summary>
+    /// POINT aka POINTAPI
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct POINT
+    {
+        /// <summary>
+        /// x coordinate of point.
+        /// </summary>
+        public int x;
+        /// <summary>
+        /// y coordinate of point.
+        /// </summary>
+        public int y;
+
+        /// <summary>
+        /// Construct a point of coordinates (x,y).
+        /// </summary>
+        public POINT(int x, int y)
+        {
+            this.x = x;
+            this.y = y;
+        }
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct MINMAXINFO
+    {
+        public POINT ptReserved;
+        public POINT ptMaxSize;
+        public POINT ptMaxPosition;
+        public POINT ptMinTrackSize;
+        public POINT ptMaxTrackSize;
+    };
+
+    /// <summary> Win32 </summary>
+    [StructLayout(LayoutKind.Sequential, Pack = 0)]
+    public struct RECT
+    {
+        public int left;
+        public int top;
+        public int right;
+        public int bottom;
+
+        public static readonly RECT Empty = new RECT();
+
+        public int Width
+        {
+            get { return Math.Abs(right - left); }  // Abs needed for BIDI OS
+        }
+
+        public int Height
+        {
+            get { return bottom - top; }
+        }
+
+        public RECT(int left, int top, int right, int bottom)
+        {
+            this.left = left;
+            this.top = top;
+            this.right = right;
+            this.bottom = bottom;
+        }
+
+        public RECT(RECT rcSrc)
+        {
+            this.left = rcSrc.left;
+            this.top = rcSrc.top;
+            this.right = rcSrc.right;
+            this.bottom = rcSrc.bottom;
+        }
+    }
+
+
+    /// <summary>
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
+    public class MONITORINFO
+    {
+        /// <summary>
+        /// </summary>            
+        public int cbSize = Marshal.SizeOf(typeof(MONITORINFO));
+
+        /// <summary>
+        /// </summary>            
+        public RECT rcMonitor = new RECT();
+
+        /// <summary>
+        /// </summary>            
+        public RECT rcWork = new RECT();
+
+        /// <summary>
+        /// </summary>            
+        public int dwFlags = 0;
+    }
+
+
 }
