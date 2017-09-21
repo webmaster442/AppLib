@@ -36,6 +36,15 @@ namespace AppLib.WPF.Controls
         /// <param name="sender">sender object</param>
         /// <param name="e">File event arguments</param>
         public delegate void FileDoubleClickHandler(object sender, FileEventArgs e);
+        
+        /// <summary>
+        /// Extensions to filter
+        /// </summary>
+        public IEnumerable<string> FilteredExtensions
+        {
+            get;
+            set;
+        }
 
         /// <summary>
         /// Event, when a file is double clicked.
@@ -46,6 +55,7 @@ namespace AppLib.WPF.Controls
         {
             RenderDriveList();
             RenderFolderView();
+            RenderFileList();
             _loaded = true;
         }
 
@@ -67,20 +77,20 @@ namespace AppLib.WPF.Controls
                 switch (drive.DriveType)
                 {
                     case DriveType.CDRom:
-                        ib.Image = ImageAwesome.CreateImageSource(FaIcons.fa_circle_o, new SolidColorBrush(Colors.Black));
+                        ib.Image = ImageAwesome.CreateImageSource(FaIcons.fa_circle_o, new SolidColorBrush(Colors.CadetBlue));
                         break;
                     case DriveType.Fixed:
-                        ib.Image = ImageAwesome.CreateImageSource(FaIcons.fa_hdd_o, new SolidColorBrush(Colors.Black));
+                        ib.Image = ImageAwesome.CreateImageSource(FaIcons.fa_hdd_o, new SolidColorBrush(Colors.CadetBlue));
                         break;
                     case DriveType.Network:
-                        ib.Image = ImageAwesome.CreateImageSource(FaIcons.fa_globe, new SolidColorBrush(Colors.Black));
+                        ib.Image = ImageAwesome.CreateImageSource(FaIcons.fa_globe, new SolidColorBrush(Colors.CadetBlue));
                         break;
                     case DriveType.Removable:
-                        ib.Image = ImageAwesome.CreateImageSource(FaIcons.fa_usb, new SolidColorBrush(Colors.Black));
+                        ib.Image = ImageAwesome.CreateImageSource(FaIcons.fa_usb, new SolidColorBrush(Colors.CadetBlue));
                         break;
                     case DriveType.Ram:
                     case DriveType.Unknown:
-                        ib.Image = ImageAwesome.CreateImageSource(FaIcons.fa_question, new SolidColorBrush(Colors.Black));
+                        ib.Image = ImageAwesome.CreateImageSource(FaIcons.fa_question, new SolidColorBrush(Colors.CadetBlue));
                         break;
                     default:
                         continue;
@@ -93,7 +103,7 @@ namespace AppLib.WPF.Controls
             }
 
             var refresh = new ImageButton();
-            refresh.Image = ImageAwesome.CreateImageSource(FaIcons.fa_refresh, new SolidColorBrush(Colors.Black));
+            refresh.Image = ImageAwesome.CreateImageSource(FaIcons.fa_refresh, new SolidColorBrush(Colors.CadetBlue));
             refresh.ImageWidth = 24;
             refresh.ToolTip = "Rescan drives";
             refresh.ImageHeight = 24;
@@ -225,18 +235,31 @@ namespace AppLib.WPF.Controls
             if (node != null) node.IsExpanded = true;
         }
 
-        private void RenderFileList(string path)
+        private void RenderFileList(string path = null)
         {
             var items = new List<string>();
             try
             {
+                if (string.IsNullOrEmpty(path))
+                {
+                    return;
+                }
+
                 _currentpath = path;
                 SelectNodePath(path);
 
                 if (CBHidden.IsChecked == true)
                 {
                     items.AddRange(Directory.GetDirectories(path));
-                    items.AddRange(Directory.GetFiles(path));
+                    if (FilteredExtensions.Any())
+                        return;
+                    else
+                    {
+                        var dir = new DirectoryInfo(path);
+                        var files = from i in dir.GetFiles()
+                                    where FilteredExtensions.Contains(i.Extension)
+                                    select i.FullName;
+                    }
                 }
                 else
                 {
@@ -246,10 +269,21 @@ namespace AppLib.WPF.Controls
                                   select i.FullName;
                     items.AddRange(folders);
 
-                    var files = from i in dir.GetFiles()
-                                where !i.Attributes.HasFlag(FileAttributes.Hidden)
-                                select i.FullName;
-                    items.AddRange(files);
+                    if (FilteredExtensions.Any())
+                    {
+                        var files = from i in dir.GetFiles()
+                                    where !i.Attributes.HasFlag(FileAttributes.Hidden)
+                                    && FilteredExtensions.Contains(i.Extension)
+                                    select i.FullName;
+                        items.AddRange(files);
+                    }
+                    else
+                    {
+                        var files = from i in dir.GetFiles()
+                                    where !i.Attributes.HasFlag(FileAttributes.Hidden)
+                                    select i.FullName;
+                        items.AddRange(files);
+                    }
                 }
                 Files.ItemsSource = null;
                 Files.ItemsSource = items;

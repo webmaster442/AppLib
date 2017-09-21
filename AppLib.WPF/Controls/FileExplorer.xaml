@@ -15,7 +15,7 @@
                 <Setter.Value>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <images:ImageAwesome Icon="fa_folder_o" Width="32" Height="32"/>
+                            <images:ImageAwesome Icon="fa_folder_o" Foreground="Gold" Width="32" Height="32"/>
                             <TextBlock Text="{Binding}" Margin="5,0" />
                         </StackPanel>
                     </DataTemplate>
