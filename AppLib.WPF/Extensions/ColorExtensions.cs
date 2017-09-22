@@ -1,5 +1,7 @@
 ﻿using AppLib.Common.Extensions;
+using System.Windows;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace AppLib.WPF.Extensions
 {
@@ -77,6 +79,36 @@ namespace AppLib.WPF.Extensions
         public static Color ToColor(this HSLColor hsl)
         {
             return HSLColor.HSLtoRGB(hsl);
+        }
+
+        /// <summary>
+        /// Get the dominant color of an image
+        /// </summary>
+        /// <param name="img">image to get color from</param>
+        /// <returns>the dominant color of an image</returns>
+        public static Color GetDominantColor(this ImageSource img)
+        {
+
+            var rect = new Rect(0, 0, 1, 1);
+            var group = new DrawingGroup();
+            RenderOptions.SetBitmapScalingMode(group, BitmapScalingMode.HighQuality);
+            group.Children.Add(new ImageDrawing(img, rect));
+
+            var drawingVisual = new DrawingVisual();
+            using (var drawingContext = drawingVisual.RenderOpen())
+                drawingContext.DrawDrawing(group);
+
+            var resizedImage = new RenderTargetBitmap(
+                1, 1,         // Resized dimensions
+                96, 96,                // Default DPI values
+                PixelFormats.Default); // Default pixel format
+            resizedImage.Render(drawingVisual);
+            byte[] pixels = new byte[4];
+            resizedImage.CopyPixels(pixels, 4, 0);
+
+            return Color.FromArgb(pixels[3], pixels[2], pixels[1], pixels[0]);
+
+
         }
     }
 }

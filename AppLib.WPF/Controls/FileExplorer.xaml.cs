@@ -17,6 +17,12 @@ namespace AppLib.WPF.Controls
     /// </summary>
     public partial class FileExplorer : UserControl
     {
+        /// <summary>
+        /// Dependency property for HasFilesSelected
+        /// </summary>
+        public static DependencyProperty HasFilesSelectedProperty =
+            DependencyProperty.Register("HasFilesSelected", typeof(bool), typeof(FileExplorer), new PropertyMetadata(false));
+
         private object _dummyNode;
         private string _currentpath;
         private bool _loaded;
@@ -30,7 +36,14 @@ namespace AppLib.WPF.Controls
             _dummyNode = null;
             _currentpath = null;
             _loaded = false;
+            Files.SelectionChanged += Files_SelectionChanged;
         }
+
+        private void Files_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            SetValue(HasFilesSelectedProperty, true);
+        }
+
 
         /// <summary>
         /// Event handler for double click
@@ -46,6 +59,29 @@ namespace AppLib.WPF.Controls
         {
             get;
             set;
+        }
+
+        /// <summary>
+        /// Selected files
+        /// </summary>
+        public IEnumerable<string> SelectedFiles
+        {
+            get
+            {
+                foreach (string file in Files.SelectedItems)
+                {
+                    yield return file;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Retruns true, if a file is selected
+        /// </summary>
+        public bool HasFilesSelected
+        {
+            get { return (bool)GetValue(HasFilesSelectedProperty); }
+            set { SetValue(HasFilesSelectedProperty, value); }
         }
 
         /// <summary>

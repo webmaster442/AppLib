@@ -6,6 +6,7 @@
              xmlns:converters="clr-namespace:AppLib.WPF.Converters"
              xmlns:local="clr-namespace:AppLib.WPF.Controls"
              xmlns:images="clr-namespace:AppLib.WPF.Controls.ImageControls"
+             xmlns:attached="clr-namespace:AppLib.WPF.Attached"
              mc:Ignorable="d" 
              Loaded="UserControl_Loaded"
              d:DesignHeight="300"
@@ -203,6 +204,7 @@
             </Grid>
         </Expander>
         <ListBox
+            attached:ListBoxSelector.Enabled="True"
             x:Name="Files"
             Style="{StaticResource Grid}"
             Grid.Row="2"
