@@ -7,6 +7,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using AppLib.WPF.Extensions;
+using System.Text;
 
 namespace AppLib.WPF.Controls
 {
@@ -56,6 +58,7 @@ namespace AppLib.WPF.Controls
             RenderDriveList();
             RenderFolderView();
             RenderFileList();
+            RenderPath(null);
             _loaded = true;
         }
 
@@ -97,7 +100,8 @@ namespace AppLib.WPF.Controls
                 }
 
                 ib.Content = drive.Name;
-                ib.Margin = new Thickness(2);
+                ib.MinWidth = 60;
+                ib.Margin = new Thickness(3, 2, 3, 2);
                 ib.Click += DriveButton_Click;
                 Drives.Children.Add(ib);
             }
@@ -105,6 +109,7 @@ namespace AppLib.WPF.Controls
             var refresh = new ImageButton();
             refresh.Image = ImageAwesome.CreateImageSource(FaIcons.fa_refresh, new SolidColorBrush(Colors.CadetBlue));
             refresh.ImageWidth = 24;
+            refresh.MinWidth = 60;
             refresh.ToolTip = "Rescan drives";
             refresh.ImageHeight = 24;
             refresh.Margin = new Thickness(2);
@@ -165,6 +170,7 @@ namespace AppLib.WPF.Controls
             if (item.Items.Count == 1 && item.Items[0] == _dummyNode)
             {
                 item.Items.Clear();
+                RenderPath(item.Tag.ToString());
                 try
                 {
                     foreach (string s in Directory.GetDirectories(item.Tag.ToString()))
@@ -247,11 +253,12 @@ namespace AppLib.WPF.Controls
 
                 _currentpath = path;
                 SelectNodePath(path);
+                RenderPath(path);
 
                 if (CBHidden.IsChecked == true)
                 {
                     items.AddRange(Directory.GetDirectories(path));
-                    if (FilteredExtensions.Any())
+                    if (FilteredExtensions != null && FilteredExtensions.Any())
                         return;
                     else
                     {
@@ -269,7 +276,7 @@ namespace AppLib.WPF.Controls
                                   select i.FullName;
                     items.AddRange(folders);
 
-                    if (FilteredExtensions.Any())
+                    if (FilteredExtensions != null && FilteredExtensions.Any())
                     {
                         var files = from i in dir.GetFiles()
                                     where !i.Attributes.HasFlag(FileAttributes.Hidden)
@@ -301,6 +308,62 @@ namespace AppLib.WPF.Controls
             var selected = Files.SelectedItem as string;
             if (Directory.Exists(selected)) RenderFileList(selected);
             else FileDoubleClick?.Invoke(this, new FileEventArgs { Filename = selected });
+        }
+
+        #endregion
+
+        #region Path Selector
+
+        private void RenderPath(string path)
+        {
+            if (PathSelector.Children.Count > 0)
+            {
+                foreach (var button in PathSelector.FindChildren<Button>())
+                {
+                    button.Click -= PathSelectorButtonClick;
+                }
+                PathSelector.Children.Clear();
+            }
+
+            if (string.IsNullOrEmpty(path))
+                return;
+
+            var parts = path.Split('\\');
+
+            var pathbuilder = new StringBuilder();
+
+            foreach(var part in parts)
+            {
+                if (string.IsNullOrEmpty(part))
+                    continue;
+
+                pathbuilder.AppendFormat("{0}\\", part);
+
+                var navbutton = new Button();
+                navbutton.Content = part;
+                navbutton.Click += PathSelectorButtonClick;
+                navbutton.MaxWidth = 150;
+                navbutton.MinWidth = 25;
+                navbutton.ToolTip = pathbuilder.ToString();
+                navbutton.VerticalAlignment = VerticalAlignment.Center;
+                navbutton.Margin = new Thickness(5, 0, 5, 0);
+                PathSelector.Children.Add(navbutton);
+
+                PathSelector.Children.Add(new TextBlock
+                {
+                    Text = "\\",
+                    VerticalAlignment = VerticalAlignment.Center
+
+                });
+            }
+
+        }
+
+        private void PathSelectorButtonClick(object sender, RoutedEventArgs e)
+        {
+            var btn = sender as Button;
+            if (btn == null) return;
+            RenderFileList(btn.ToolTip.ToString());
         }
 
         #endregion

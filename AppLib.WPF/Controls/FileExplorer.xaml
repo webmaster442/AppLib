@@ -8,7 +8,8 @@
              xmlns:images="clr-namespace:AppLib.WPF.Controls.ImageControls"
              mc:Ignorable="d" 
              Loaded="UserControl_Loaded"
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300"
+             d:DesignWidth="500">
     <UserControl.Resources>
         <Style TargetType="{x:Type TreeViewItem}">
             <Setter Property="HeaderTemplate">
@@ -110,6 +111,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="30"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -160,9 +162,21 @@
             Unchecked="CBHidden_Checked"
             Content="Show Hidden files"
             VerticalAlignment="Center"/>
+        <StackPanel
+            Grid.Row="1"
+            Grid.ColumnSpan="8"
+            Grid.Column="0"
+            Orientation="Horizontal">
+            <TextBlock
+                Text="Path:"
+                VerticalAlignment="Center"/>
+            <StackPanel
+                Orientation="Horizontal"
+                x:Name="PathSelector"/>
+        </StackPanel>
         <Expander
             Grid.Column="0"
-            Grid.Row="1"
+            Grid.Row="2"
             ExpandDirection="Right">
             <Expander.Header>
                 <TextBlock Text="Tree view">
@@ -191,7 +205,7 @@
         <ListBox
             x:Name="Files"
             Style="{StaticResource Grid}"
-            Grid.Row="1"
+            Grid.Row="2"
             Grid.Column="1"
             Grid.ColumnSpan="5"
             MouseDoubleClick="Files_MouseDoubleClick"/>
