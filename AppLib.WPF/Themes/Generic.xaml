@@ -5,6 +5,5 @@
         <ResourceDictionary Source="pack://application:,,,/AppLib.WPF;component/Themes/TransitionControl.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/AppLib.WPF;component/Themes/AnimatedTabControl.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/AppLib.WPF;component/Themes/CoolWindow.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/AppLib.WPF;component/Themes/PagerListBox.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

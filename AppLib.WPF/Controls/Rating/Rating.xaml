@@ -1,0 +1,9 @@
+﻿<UserControl
+    x:Class="AppLib.WPF.Controls.Rating"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Width="Auto"
+    Height="Auto"
+    Loaded="Rating_Loaded">
+    <StackPanel x:Name="stackPanelStars" Orientation="Horizontal" />
+</UserControl>
