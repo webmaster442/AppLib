@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.ComponentModel;
+using System.Linq;
+using System.Reflection;
 
 namespace AppLib.Common.Extensions
 {
@@ -22,7 +26,7 @@ namespace AppLib.Common.Extensions
 
             var stack = new Stack<T>(source);
             return stack;
-            
+
         }
 
         /// <summary>
@@ -63,14 +67,32 @@ namespace AppLib.Common.Extensions
         /// <param name="items">items to add</param>
         public static void AddRange<T>(this ObservableCollection<T> collection, IEnumerable<T> items)
         {
-            if (collection == null)
-                throw new ArgumentNullException(nameof(collection));
+            if (collection == null || items == null || !items.Any())
+                return;
 
-            if (items == null)
-                throw new ArgumentException(nameof(items));
+            Type type = collection.GetType();
+
+            var bindflags = BindingFlags.Instance | BindingFlags.InvokeMethod | BindingFlags.NonPublic;
+
+            type.InvokeMember("CheckReentrancy", bindflags, null, collection, null);
+
+            var itemsProp = type.BaseType.GetProperty("Items", BindingFlags.NonPublic | BindingFlags.FlattenHierarchy | BindingFlags.Instance);
+
+            var privateItems = itemsProp.GetValue(collection) as IList<T>;
 
             foreach (var item in items)
-                collection.Add(item);
+            {
+                privateItems.Add(item);
+            }
+
+            type.InvokeMember("OnPropertyChanged", bindflags, null,
+              collection, new object[] { new PropertyChangedEventArgs("Count") });
+
+            type.InvokeMember("OnPropertyChanged", bindflags, null,
+              collection, new object[] { new PropertyChangedEventArgs("Item[]") });
+
+            type.InvokeMember("OnCollectionChanged", bindflags, null,
+              collection, new object[] { new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset) });
         }
 
         /// <summary>
@@ -88,9 +110,7 @@ namespace AppLib.Common.Extensions
                 throw new ArgumentException(nameof(items));
 
             collection.Clear();
-
-            foreach (var item in items)
-                collection.Add(item);
+            collection.AddRange(items);
         }
 
         /// <summary>
