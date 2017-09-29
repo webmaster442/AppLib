@@ -54,5 +54,17 @@ namespace AppLib.Common.Extensions
         {
             return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
         }
+
+        /// <summary>
+        /// Get a certain percentage of the specified number.
+        /// </summary>
+        /// <param name="value">The number to get the percentage of.</param>
+        /// <param name="percentage">The percentage of the specified number to get.</param>
+        /// <returns>The actual specified percentage of the specified number.</returns>
+        public static float GetPercentage(this float value, int percentage)
+        {
+            var percentAsDouble = (float)percentage / 100;
+            return value * percentAsDouble;
+        }
     }
 }
