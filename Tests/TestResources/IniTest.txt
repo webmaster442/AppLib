@@ -1,8 +1,0 @@
-﻿[Section]
-StringTest=Test string
-IntTest=3893
-DoubleTest=5366.5699
-
-[OtherSection]
-MalFomated1 =         Blah
-    MalFormated22 = Blah33
