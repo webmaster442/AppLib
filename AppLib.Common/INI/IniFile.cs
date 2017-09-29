@@ -215,12 +215,39 @@ namespace AppLib.Common.INI
         /// </summary>
         /// <param name="source">A stream to read from</param>
         /// <param name="apend">if set to true, the read vales are apended</param>
-        public void ReadFromStream(Stream source, bool apend = false)
+        private void ReadFromStream(Stream source, bool apend = false)
         {
             if (!apend) Clear();
             var buffer = new byte[source.Length];
             source.Read(buffer, 0, buffer.Length);
             ReadFromString(Encoding.UTF8.GetString(buffer));
+        }
+
+        /// <summary>
+        /// Open an ini File from disk
+        /// </summary>
+        /// <param name="filename">File to open</param>
+        /// <returns>An ini file instance</returns>
+        public static IniFile Open(string filename)
+        {
+            IniFile ret = new IniFile();
+            using (var f = File.OpenText(filename))
+            {
+                ret.ReadFromString(f.ReadToEnd());
+            }
+            return ret;
+        }
+
+        /// <summary>
+        /// Open an ini file from stream
+        /// </summary>
+        /// <param name="source">stream source</param>
+        /// <returns>an ini file instance</returns>
+        public static IniFile Open(Stream source)
+        {
+            IniFile ret = new IniFile();
+            ret.ReadFromStream(source);
+            return ret;
         }
 
         /// <summary>
