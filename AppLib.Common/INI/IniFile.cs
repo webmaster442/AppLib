@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -10,7 +11,7 @@ namespace AppLib.Common.INI
     /// <summary>
     /// A Class for reading &amp; writing settings to INI files
     /// </summary>
-    public class IniFile
+    public class IniFile: IEnumerable<KeyValuePair<IniKey, string>>
     {
         private Dictionary<IniKey, string> _container;
         private CultureInfo _fileculture;
@@ -183,6 +184,18 @@ namespace AppLib.Common.INI
         }
 
         /// <summary>
+        /// Save current instance to a file
+        /// </summary>
+        /// <param name="target">Target file</param>
+        public void SaveToFile(string target)
+        {
+            using (var f = File.CreateText(target))
+            {
+                f.Write(SaveToString());
+            }
+        }
+
+        /// <summary>
         /// Reads values from an string to the inifile
         /// </summary>
         /// <param name="s">a string, representing the inifile</param>
@@ -257,6 +270,20 @@ namespace AppLib.Common.INI
         {
             _container.Clear();
             CurrentCategory = "";
+        }
+
+        /// <summary>
+        /// Returns the enumerator of the inner container
+        /// </summary>
+        /// <returns>The enumerator of the inner container</returns>
+        public IEnumerator<KeyValuePair<IniKey, string>> GetEnumerator()
+        {
+            return _container.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return _container.GetEnumerator();
         }
     }
 }
