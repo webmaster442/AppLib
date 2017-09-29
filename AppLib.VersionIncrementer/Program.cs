@@ -11,6 +11,7 @@ namespace AppLib.VersionIncrementer
         {
             Console.WriteLine("Usage:");
             Console.WriteLine("VersionIncrementer <VersioningTemplate.xml> <assembly info template> <assembly info to modify>");
+            Console.WriteLine("VersionIncrementer /increment <VersioningTemplate.xml> <assembly info template> <assembly info to modify>");
             Console.WriteLine("VersionIncrementer /?");
             Console.WriteLine("VersionIncrementer /createtemplate <VersioningTemplate.xml>");
         }
@@ -44,8 +45,12 @@ namespace AppLib.VersionIncrementer
             }
             else if (args.Length == 3)
             {
-                IcrementerLogic.Increment(args[0], args[1], args[2]);
+                IcrementerLogic.Increment(args[0], args[1], args[2], false);
                 return;
+            }
+            else if (args.Length == 4 && args[0] == "/increment")
+            {
+                IcrementerLogic.Increment(args[1], args[2], args[3], false);
             }
             else
             {

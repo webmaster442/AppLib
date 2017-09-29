@@ -71,7 +71,7 @@ namespace AppLib.VersionIncrementer
         /// <param name="inc">VersionIncrement data</param>
         /// <param name="modified">true, if the build counter needs to be modified</param>
         /// <returns>The processed command word</returns>
-        private static string Process(string commandword, VersionIncrement inc, out bool modified)
+        private static string Process(string commandword, VersionIncrement inc, bool increment, out bool modified)
         {
             modified = false;
 
@@ -84,8 +84,11 @@ namespace AppLib.VersionIncrementer
                 case CommandWords.YearInput:
                     return DateTime.Now.Year.ToString();
                 case CommandWords.BuildIncrement:
-                    inc.BuildCounter += 1;
-                    modified = true;
+                    if (increment)
+                    {
+                        inc.BuildCounter += 1;
+                        modified = true;
+                    }
                     return inc.BuildCounter.ToString();
                 case CommandWords.TimeStampInput:
                     return string.Format("{0:00}{1:00}{2:00}", DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
@@ -116,16 +119,17 @@ namespace AppLib.VersionIncrementer
         /// <param name="incrementertemplate">VersionIncrement XML template</param>
         /// <param name="assemblyinfotemplate">AssemblyInfo.cs template</param>
         /// <param name="outfile">Output file</param>
-        public static void Increment(string incrementertemplate, string assemblyinfotemplate, string outfile)
+        /// <param name="increment">Increment version number flag</param>
+        public static void Increment(string incrementertemplate, string assemblyinfotemplate, string outfile, bool increment)
         {
             try
             {
                 VersionIncrement template = DeSerialize(incrementertemplate);
                 bool modified;
-                string Main = Process(template.Main, template, out modified);
-                string Minor = Process(template.Minor, template, out modified);
-                string Revision = Process(template.Revision, template, out modified);
-                string Build = Process(template.Build, template, out modified);
+                string Main = Process(template.Main, template, increment, out modified);
+                string Minor = Process(template.Minor, template, increment, out modified);
+                string Revision = Process(template.Revision, template, increment, out modified);
+                string Build = Process(template.Build, template, increment, out modified);
 
                 var output = ReadFile(assemblyinfotemplate);
                 output.AppendFormat("[assembly: AssemblyVersion(\"{0}.{1}.{2}.{3}\")]\r\n", Main, Minor, Revision, Build);
