@@ -50,7 +50,7 @@ namespace AppLib.VersionIncrementer
             }
             else if (args.Length == 4 && args[0] == "/increment")
             {
-                IcrementerLogic.Increment(args[1], args[2], args[3], false);
+                IcrementerLogic.Increment(args[1], args[2], args[3], true);
             }
             else
             {
