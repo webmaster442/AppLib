@@ -64,15 +64,41 @@ namespace AppLib.WPF.Converters
                 TextBlock t = new TextBlock();
                 Viewbox strecher = new Viewbox();
                 strecher.Child = t;
+                strecher.Margin = new System.Windows.Thickness(5);
                 b.Child = strecher;
                 t.Text = ext;
-                t.Foreground = new SolidColorBrush(Colors.White);
+                t.Foreground = new SolidColorBrush(Colors.Black);
                 var img = b.Render();
                 _cache.Add(ext, img);
                 return img;
 
             }
         }
+
+        private ImageSource RenderDriveIcon(string path)
+        {
+            var di = new DriveInfo(path);
+
+            switch (di.DriveType)
+            {
+                case DriveType.CDRom:
+                    return ImageAwesome.CreateImageSource(FaIcons.fa_circle_o, new SolidColorBrush(Colors.CadetBlue));
+                case DriveType.Fixed:
+                    return ImageAwesome.CreateImageSource(FaIcons.fa_hdd_o, new SolidColorBrush(Colors.CadetBlue));
+                case DriveType.Network:
+                    return ImageAwesome.CreateImageSource(FaIcons.fa_globe, new SolidColorBrush(Colors.CadetBlue));
+                case DriveType.Removable:
+                    return ImageAwesome.CreateImageSource(FaIcons.fa_usb, new SolidColorBrush(Colors.CadetBlue));
+                case DriveType.Ram:
+                    return ImageAwesome.CreateImageSource(FaIcons.fa_rocket, new SolidColorBrush(Colors.CadetBlue));
+                case DriveType.Unknown:
+                case DriveType.NoRootDirectory:
+                default:
+                    return ImageAwesome.CreateImageSource(FaIcons.fa_question, new SolidColorBrush(Colors.CadetBlue));
+            }
+
+        }
+
 
         private SolidColorBrush GetBrush(string ext)
         {
@@ -91,6 +117,9 @@ namespace AppLib.WPF.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             string fullpath = value.ToString();
+
+            if (Directory.GetLogicalDrives().Contains(fullpath))
+                return RenderDriveIcon(fullpath);
 
             if (Directory.Exists(fullpath))
                 return ImageAwesome.CreateImageSource(FaIcons.fa_folder_o, new SolidColorBrush(Colors.Gold));

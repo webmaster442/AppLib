@@ -107,6 +107,17 @@ namespace AppLib.WPF.Controls
                          select drive;
 
             Drives.Children.Clear();
+
+            var home = new ImageButton();
+            home.Image = ImageAwesome.CreateImageSource(FaIcons.fa_home, new SolidColorBrush(Colors.CadetBlue));
+            home.ImageWidth = 24;
+            home.MinWidth = 60;
+            home.ToolTip = "Home";
+            home.ImageHeight = 24;
+            home.Margin = new Thickness(2);
+            home.Click += (s, e) => { RenderHomeView(); };
+            Drives.Children.Add(home);
+
             foreach (var drive in drives)
             {
                 var ib = new ImageButton();
@@ -128,6 +139,8 @@ namespace AppLib.WPF.Controls
                         ib.Image = ImageAwesome.CreateImageSource(FaIcons.fa_usb, new SolidColorBrush(Colors.CadetBlue));
                         break;
                     case DriveType.Ram:
+                        ib.Image = ImageAwesome.CreateImageSource(FaIcons.fa_rocket, new SolidColorBrush(Colors.CadetBlue));
+                        break;
                     case DriveType.Unknown:
                         ib.Image = ImageAwesome.CreateImageSource(FaIcons.fa_question, new SolidColorBrush(Colors.CadetBlue));
                         break;
@@ -336,6 +349,37 @@ namespace AppLib.WPF.Controls
                 Files.ItemsSource = null;
             }
 
+        }
+
+        /// <summary>
+        /// Render Homve view
+        /// </summary>
+        public void RenderHomeView()
+        {
+            try
+            {
+                var items = new List<string>();
+
+                var drives = from drive in DriveInfo.GetDrives()
+                             where drive.IsReady == true
+                             select drive.Name;
+
+                items.AddRange(drives);
+                items.AddRange(new string[]
+                {
+                    Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory),
+                    Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                    Environment.GetFolderPath(Environment.SpecialFolder.MyMusic),
+                    Environment.GetFolderPath(Environment.SpecialFolder.MyPictures),
+                    Environment.GetFolderPath(Environment.SpecialFolder.MyVideos)
+                });
+                Files.ItemsSource = null;
+                Files.ItemsSource = items;
+            }
+            catch (Exception)
+            {
+                Files.ItemsSource = null;
+            }
         }
 
         private void Files_MouseDoubleClick(object sender, MouseButtonEventArgs e)

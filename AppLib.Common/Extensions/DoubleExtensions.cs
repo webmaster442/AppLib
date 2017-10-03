@@ -11,16 +11,30 @@ namespace AppLib.Common.Extensions
         /// Compare two doubles with a maximum allowed difference.
         /// If differnece is not set, then by default 0.00001 is aplied
         /// </summary>
-        /// <param name="d">double number</param>
-        /// <param name="other">other double number</param>
-        /// <param name="diff">maximum allowed difference.</param>
+        /// <param name="a">double number</param>
+        /// <param name="b">other double number</param>
+        /// <param name="tolerance">maximum allowed difference.</param>
         /// <returns></returns>
-        public static bool EqualsWithTolerance(this double d, double other, double diff = 0.00001)
+        public static bool EqualsWithTolerance(this double a, double b, double tolerance = 1E-6d)
         {
-            double sub = 0;
-            if (other > d) sub = other - d;
-            else sub = d - other;
-            return sub < diff;
+            double absA = Math.Abs(a);
+            double absB = Math.Abs(b);
+            double diff = Math.Abs(a - b);
+
+            if (a == b)
+            { // shortcut, handles infinities
+                return true;
+            }
+            else if (a == 0 || b == 0 || diff < double.Epsilon)
+            {
+                // a or b is zero or both are extremely close to it
+                // relative error is less meaningful here
+                return diff < (tolerance * double.Epsilon);
+            }
+            else
+            { // use relative error
+                return diff / Math.Min((absA + absB), double.MaxValue) < tolerance;
+            }
         }
 
         /// <summary>
