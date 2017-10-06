@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppLib.Common", "AppLib.Com
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppLib.VersionIncrementer", "AppLib.VersionIncrementer\AppLib.VersionIncrementer.csproj", "{A6FE1342-6C9D-4DCE-A297-B5573E665116}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppLib.Tests", "AppLib.Tests\AppLib.Tests.csproj", "{A6BC2791-772C-4F1D-847E-FBC40D89F9B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppLib.Maths", "AppLib.Math\AppLib.Maths.csproj", "{0169FF46-6F3D-4CE8-BAD2-05F024EB24E2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{A6FE1342-6C9D-4DCE-A297-B5573E665116}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6FE1342-6C9D-4DCE-A297-B5573E665116}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6FE1342-6C9D-4DCE-A297-B5573E665116}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6BC2791-772C-4F1D-847E-FBC40D89F9B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6BC2791-772C-4F1D-847E-FBC40D89F9B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6BC2791-772C-4F1D-847E-FBC40D89F9B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6BC2791-772C-4F1D-847E-FBC40D89F9B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0169FF46-6F3D-4CE8-BAD2-05F024EB24E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0169FF46-6F3D-4CE8-BAD2-05F024EB24E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0169FF46-6F3D-4CE8-BAD2-05F024EB24E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0169FF46-6F3D-4CE8-BAD2-05F024EB24E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
