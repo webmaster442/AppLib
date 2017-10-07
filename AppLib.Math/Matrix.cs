@@ -569,6 +569,12 @@ namespace AppLib.Maths
             return GetEnumerator();
         }
 
+        /// <summary>
+        /// Adds two matrices together
+        /// </summary>
+        /// <param name="left">Matrix 1</param>
+        /// <param name="right">Matrix 2</param>
+        /// <returns>Result matrix</returns>
         public static Matrix operator +(Matrix left, Matrix right)
         {
             if (left == null) throw new ArgumentNullException(nameof(left));
@@ -585,6 +591,12 @@ namespace AppLib.Maths
             return ret;
         }
 
+        /// <summary>
+        /// Checks equality of two matrixes
+        /// </summary>
+        /// <param name="left">Matrix 1</param>
+        /// <param name="right">Matrix 2</param>
+        /// <returns>True, if the two matrices are the same, otherwise false</returns>
         public static bool operator ==(Matrix left, Matrix right)
         {
             if (((object)left == null) || ((object)right == null))
@@ -593,9 +605,9 @@ namespace AppLib.Maths
             }
             if (left.Columns != right.Columns || left.Rows != right.Rows) return false;
             if (ReferenceEquals(left, right)) return true;
-            for (int i=0; i<left.Rows; i++)
+            for (int i=0; i<left.Rows; ++i)
             {
-                for (int j=0; j<right.Columns; j++)
+                for (int j=0; j<right.Columns; ++j)
                 {
                     if (left[i, j] != right[i, j]) return false;
                 }
@@ -603,11 +615,23 @@ namespace AppLib.Maths
             return true;
         }
 
+        /// <summary>
+        /// Inverse of the operator ==
+        /// </summary>
+        /// <param name="left">Matrix 1</param>
+        /// <param name="right">Matrix 2</param>
+        /// <returns>true, if the two matrices are not the same</returns>
         public static bool operator !=(Matrix left, Matrix right)
         {
             return !(left == right);
         }
 
+        /// <summary>
+        /// Subtracts two matrices
+        /// </summary>
+        /// <param name="left">Matrix 1</param>
+        /// <param name="right">Matrix 2</param>
+        /// <returns>Result matrix</returns>
         public static Matrix operator -(Matrix left, Matrix right)
         {
             if (left == null) throw new ArgumentNullException(nameof(left));
@@ -624,6 +648,12 @@ namespace AppLib.Maths
             return ret;
         }
 
+        /// <summary>
+        /// Matrix Multiplication
+        /// </summary>
+        /// <param name="left">Matrix 1</param>
+        /// <param name="right">Matrix 2</param>
+        /// <returns>Result matrix</returns>
         public static Matrix operator *(Matrix left, Matrix right)
         {
             if (left == null) throw new ArgumentNullException(nameof(left));
@@ -631,12 +661,12 @@ namespace AppLib.Maths
             if (left.Columns != right.Rows) throw new Exception("Input matrix row/column count mismatch");
             var ret = new Matrix(left.Rows, right.Columns);
 
-            for (int j = 0; j != right.Columns; j++)
+            for (int j = 0; j != right.Columns; ++j)
             {
-                for (int i = 0; i != left.Rows; i++)
+                for (int i = 0; i != left.Rows; ++i)
                 {
                     double s = 0;
-                    for (int l = 0; l != left.Columns; l++)
+                    for (int l = 0; l != left.Columns; ++l)
                     {
                         s += left[i, l] * right[l, j];
                     }
@@ -646,6 +676,12 @@ namespace AppLib.Maths
             return ret;
         }
 
+        /// <summary>
+        /// Divides two matrixes. Divides individual elements
+        /// </summary>
+        /// <param name="left">Matrix 1</param>
+        /// <param name="right">Matrix 2</param>
+        /// <returns>Result matrix</returns>
         public static Matrix operator /(Matrix left, Matrix right)
         {
             if (left == null) throw new ArgumentNullException(nameof(left));
@@ -653,9 +689,9 @@ namespace AppLib.Maths
             if (left.Rows != right.Rows && left.Columns != right.Columns) throw new Exception("Input matrix row/column count mismatch");
             var ret = new Matrix(left.Rows, left.Columns);
 
-            for (int i = 0; i < ret.Rows; i++)
+            for (int i = 0; i < ret.Rows; ++i)
             {
-                for (int j = 0; j < ret.Columns; j++)
+                for (int j = 0; j < ret.Columns; ++j)
                 {
                     ret[i, j] = left[i, j] / right[i, j];
                 }
@@ -663,12 +699,18 @@ namespace AppLib.Maths
             return ret;
         }
 
+        /// <summary>
+        /// Adds a Matrix and a value
+        /// </summary>
+        /// <param name="left">Matrix 1</param>
+        /// <param name="right">Matrix 2</param>
+        /// <returns>Result matrix</returns>
         public static Matrix operator +(Matrix left, double right)
         {
             var ret = new Matrix(left.Rows, left.Columns);
-            for (int i = 0; i < ret.Rows; i++)
+            for (int i = 0; i < ret.Rows; ++i)
             {
-                for (int j = 0; j < ret.Columns; j++)
+                for (int j = 0; j < ret.Columns; ++j)
                 {
                     ret[i, j] = left[i, j] + right;
                 }
@@ -676,12 +718,18 @@ namespace AppLib.Maths
             return ret;
         }
 
+        /// <summary>
+        /// Subtracts a Matrix and a value
+        /// </summary>
+        /// <param name="left">Matrix 1</param>
+        /// <param name="right">Matrix 2</param>
+        /// <returns>Result matrix</returns>
         public static Matrix operator -(Matrix left, double right)
         {
             var ret = new Matrix(left.Rows, left.Columns);
-            for (int i = 0; i < ret.Rows; i++)
+            for (int i = 0; i < ret.Rows; ++i)
             {
-                for (int j = 0; j < ret.Columns; j++)
+                for (int j = 0; j < ret.Columns; ++j)
                 {
                     ret[i, j] = left[i, j] - right;
                 }
@@ -689,12 +737,18 @@ namespace AppLib.Maths
             return ret;
         }
 
+        /// <summary>
+        /// Multiplies a Matrix and a value
+        /// </summary>
+        /// <param name="left">Matrix 1</param>
+        /// <param name="right">Matrix 2</param>
+        /// <returns>Result matrix</returns>
         public static Matrix operator *(Matrix left, double right)
         {
             var ret = new Matrix(left.Rows, left.Columns);
-            for (int i = 0; i < ret.Rows; i++)
+            for (int i = 0; i < ret.Rows; ++i)
             {
-                for (int j = 0; j < ret.Columns; j++)
+                for (int j = 0; j < ret.Columns; ++j)
                 {
                     ret[i, j] = left[i, j] * right;
                 }
@@ -702,12 +756,18 @@ namespace AppLib.Maths
             return ret;
         }
 
+        /// <summary>
+        /// divides a Matrix and a value
+        /// </summary>
+        /// <param name="left">Matrix 1</param>
+        /// <param name="right">Matrix 2</param>
+        /// <returns>Result matrix</returns>
         public static Matrix operator /(Matrix left, double right)
         {
             var ret = new Matrix(left.Rows, left.Columns);
-            for (int i = 0; i < ret.Rows; i++)
+            for (int i = 0; i < ret.Rows; ++i)
             {
-                for (int j = 0; j < ret.Columns; j++)
+                for (int j = 0; j < ret.Columns; ++j)
                 {
                     ret[i, j] = left[i, j] / right;
                 }
@@ -715,12 +775,18 @@ namespace AppLib.Maths
             return ret;
         }
 
+        /// <summary>
+        /// Mods a Matrix and a value
+        /// </summary>
+        /// <param name="left">Matrix 1</param>
+        /// <param name="right">Matrix 2</param>
+        /// <returns>Result matrix</returns>
         public static Matrix operator %(Matrix left, double right)
         {
             var ret = new Matrix(left.Rows, left.Columns);
-            for (int i = 0; i < ret.Rows; i++)
+            for (int i = 0; i < ret.Rows; ++i)
             {
-                for (int j = 0; j < ret.Columns; j++)
+                for (int j = 0; j < ret.Columns; ++j)
                 {
                     ret[i, j] = left[i, j] % right;
                 }
