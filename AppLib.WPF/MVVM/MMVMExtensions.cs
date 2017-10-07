@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System;
+using System.ComponentModel;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace AppLib.WPF.MVVM
@@ -14,7 +16,7 @@ namespace AppLib.WPF.MVVM
         /// <typeparam name="T">Type of ViewModel</typeparam>
         /// <param name="window">Window</param>
         /// <param name="ViewModel">ViewModel to set</param>
-        public static void AttachViewModel<T>(this Window window, T ViewModel)
+        public static void SetViewModel<T>(this Window window, T ViewModel)
         {
             window.DataContext = ViewModel;
         }
@@ -25,7 +27,7 @@ namespace AppLib.WPF.MVVM
         /// <typeparam name="T">Type of ViewModel</typeparam>
         /// <param name="control">UserControl</param>
         /// <param name="ViewModel">ViewModel to set</param>
-        public static void AttachViewModel<T>(this UserControl control, T ViewModel)
+        public static void SetViewModel<T>(this UserControl control, T ViewModel)
         {
             control.DataContext = ViewModel;
         }
@@ -50,6 +52,32 @@ namespace AppLib.WPF.MVVM
         public static T GetViewModel<T>(this Window window)
         {
             return (T)window.DataContext;
+        }
+
+        /// <summary>
+        /// Execute an action when the associated viewmodel for the control is not null
+        /// </summary>
+        /// <typeparam name="T">Type of viewmodel</typeparam>
+        /// <param name="w">Window</param>
+        /// <param name="action">Action to perform</param>
+        public static void ViewModelAction<T>(this Window w, Action<T> action) where T : class, INotifyPropertyChanged
+        {
+            var viewmodel = GetViewModel<T>(w);
+            if (viewmodel != null)
+                action?.Invoke(viewmodel);
+        }
+
+        /// <summary>
+        /// Execute an action when the associated viewmodel for the control is not null
+        /// </summary>
+        /// <typeparam name="T">Type of viewmodel</typeparam>
+        /// <param name="w">UserControl</param>
+        /// <param name="action">Action to perform</param>
+        public static void ViewModelAction<T>(this UserControl w, Action<T> action) where T : class, INotifyPropertyChanged
+        {
+            var viewmodel = GetViewModel<T>(w);
+            if (viewmodel != null)
+                action?.Invoke(viewmodel);
         }
     }
 }

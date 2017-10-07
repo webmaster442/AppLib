@@ -7,7 +7,7 @@ namespace AppLib.WPF.MVVM
     /// View Model Implementation class
     /// </summary>
     /// <typeparam name="ViewType">View Type</typeparam>
-    public abstract class ViewModel<ViewType>: BindableBase where ViewType: IView<ViewModel<ViewType>>
+    public abstract class ViewModel<ViewType>: BindableBase where ViewType: IView
     {
         /// <summary>
         /// Gets wheather the current viewmodel is in designer mode or not
@@ -21,7 +21,10 @@ namespace AppLib.WPF.MVVM
             }
         }
 
-        ViewType View
+        /// <summary>
+        /// View
+        /// </summary>
+        public ViewType View
         {
             get;
             set;
@@ -34,7 +37,6 @@ namespace AppLib.WPF.MVVM
         public ViewModel(ViewType view)
         {
             View = view;
-            view.ViewModel = this;
         }
     }
 }
