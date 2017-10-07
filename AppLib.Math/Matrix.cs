@@ -5,11 +5,19 @@ using System.Collections;
 
 namespace AppLib.Maths
 {
+    /// <summary>
+    /// A class for matrix representation
+    /// </summary>
     public class Matrix : ICloneable, IFormattable, IEquatable<Matrix>, IEnumerable<double>
     {
         private int nRows, nCols;
         private readonly double[] mData;
 
+        /// <summary>
+        /// Creates a new instance of matrix
+        /// </summary>
+        /// <param name="rows">Number of rows</param>
+        /// <param name="columns">Number of columns</param>
         public Matrix(int rows, int columns)
         {
             if (rows < 1) throw new ArgumentException("must be greater than 0", nameof(rows));
@@ -20,13 +28,24 @@ namespace AppLib.Maths
         }
 
         #region Constructors
+        /// <summary>
+        /// Creates a new instance of matrix with default values
+        /// </summary>
+        /// <param name="rows">number of rows</param>
+        /// <param name="columns">number of columns</param>
+        /// <param name="value">default value</param>
         public Matrix(int rows, int columns, double value) : this(rows, columns)
         {
-            for (int i = 0; i < mData.Length; i++)
+            for (int i = 0; i < mData.Length; ++i)
             {
                 mData[i] = value;
             }
         }
+
+        /// <summary>
+        /// Cretes a matrix from an other matrix
+        /// </summary>
+        /// <param name="other">Other matrix to use as source</param>
         public Matrix(Matrix other) : this(other.Rows, other.Columns)
         {
             if (other != null)
@@ -34,12 +53,17 @@ namespace AppLib.Maths
                 Buffer.BlockCopy(other.mData, 0, mData, 0, mData.Length * sizeof(double));
             }
         }
+
+        /// <summary>
+        /// Creates a matrix from a 2d array
+        /// </summary>
+        /// <param name="array">Array to use</param>
         public Matrix(double[,] array) : this(array.GetLength(0), array.GetLength(1))
         {
-            for (int j = 0; j < Columns; j++)
+            for (int j = 0; j < Columns; ++j)
             {
                 int jIndex = j * Rows;
-                for (int i = 0; i < Rows; i++)
+                for (int i = 0; i < Rows; ++i)
                 {
                     mData[jIndex + i] = array[i, j];
                 }
@@ -70,6 +94,12 @@ namespace AppLib.Maths
             protected set { nRows = value; }
         }
 
+        /// <summary>
+        /// Gets or sets a value at the specified position
+        /// </summary>
+        /// <param name="row">Row position</param>
+        /// <param name="column">Column position</param>
+        /// <returns>value at position</returns>
         public double this[int row, int column]
         {
             get
@@ -84,7 +114,12 @@ namespace AppLib.Maths
             }
         }
 
-        public double this[int loc]
+        /// <summary>
+        /// Gets or sets a value at the specified location
+        /// </summary>
+        /// <param name="loc">location index</param>
+        /// <returns>value at position</returns>
+        internal double this[int loc]
         {
             get { return mData[loc]; }
             set { mData[loc] = value; }
@@ -97,6 +132,10 @@ namespace AppLib.Maths
             if (column < 0 || column >= nCols) throw new ArgumentOutOfRangeException(nameof(column));
         }
 
+        /// <summary>
+        /// Copies matrix to a nother matrix
+        /// </summary>
+        /// <param name="target">Target matrix</param>
         public void CopyTo(Matrix target)
         {
             if (target == null) throw new ArgumentNullException(nameof(target));
@@ -105,22 +144,26 @@ namespace AppLib.Maths
             Buffer.BlockCopy(mData, 0, target.mData, 0, target.mData.Length * sizeof(double));
         }
 
+        /// <summary>
+        /// Negates the matrix
+        /// </summary>
         public void Negate()
         {
-            for (int i = 0; i < Rows; i++)
+            for (int i = 0; i < Rows; ++i)
             {
-                for (int j = 0; j < Columns; j++)
+                for (int j = 0; j < Columns; ++j)
                 {
                     this[i, j] = -1 * this[i, j];
                 }
             }
         }
 
-        protected Matrix mMatrix;
+
+        private Matrix mMatrix;
         private bool mComputed;
         private double mDeterminant = Double.MinValue;
         private bool mIsSingular;
-        protected int[] mPivots;
+        private int[] mPivots;
 
         private void Compute()
         {
@@ -200,12 +243,12 @@ namespace AppLib.Maths
             }
         }
 
-        protected void Solve(Matrix factor, int[] pivots, Matrix result)
+        private void Solve(Matrix factor, int[] pivots, Matrix result)
         {
             Solve(factor.Rows, result.Columns, ((Matrix)factor).Data, pivots, ((Matrix)result).Data);
         }
 
-        protected void DoCompute(Matrix data, int[] pivots)
+        private void DoCompute(Matrix data, int[] pivots)
         {
 
             Matrix matrix = data;
@@ -260,6 +303,10 @@ namespace AppLib.Maths
             }
         }
 
+        /// <summary>
+        /// Computes the determinant of the current matrix
+        /// </summary>
+        /// <returns>determinant value</returns>
         public double Determinant()
         {
             Compute();
@@ -269,7 +316,7 @@ namespace AppLib.Maths
                 lock (mMatrix)
                 {
                     mDeterminant = 1.0;
-                    for (int j = 0; j < mMatrix.Rows; j++)
+                    for (int j = 0; j < mMatrix.Rows; ++j)
                     {
                         if (mPivots[j] != j) mDeterminant = -mDeterminant * mMatrix[j, j];
                         else mDeterminant *= mMatrix[j, j];
@@ -279,6 +326,10 @@ namespace AppLib.Maths
             return mDeterminant;
         }
 
+        /// <summary>
+        /// Transposes the current matrix
+        /// </summary>
+        /// <returns>Transposed matrix</returns>
         public Matrix Transpose()
         {
             var ret = new Matrix(Columns, Rows);
@@ -293,6 +344,11 @@ namespace AppLib.Maths
             return ret;
         }
 
+
+        /// <summary>
+        /// Inverts the current matrix
+        /// </summary>
+        /// <returns>Inverse matrix</returns>
         public Matrix Inverse()
         {
             Compute();
@@ -308,32 +364,57 @@ namespace AppLib.Maths
             return inverse;
         }
 
-        public double[] CopyRow(int index)
+        /// <summary>
+        /// Get a copy of a row
+        /// </summary>
+        /// <param name="index">row to copy</param>
+        /// <returns>row data as double array</returns>
+        public double[] GetRowCopy(int index)
         {
             double[] array = new double[Columns];
             for (int i = 0; i < Columns; ++i) array[i] = this[index, i];
             return array;
         }
 
+        /// <summary>
+        /// Return row as an IEnumerable
+        /// </summary>
+        /// <param name="index">Row to return</param>
+        /// <returns>row data in an IEnumerable</returns>
         public IEnumerable<double> GetRow(int index)
         {
             for (int i = 0; i < Columns; ++i)
                 yield return this[index, i];
         }
 
-        public double[] CopyColumn(int index)
+        /// <summary>
+        /// Get a copy of a column
+        /// </summary>
+        /// <param name="index">column to copy</param>
+        /// <returns>column data as a double array</returns>
+        public double[] GetColumnCopy(int index)
         {
             double[] array = new double[Rows];
             for (int i = 0; i < Rows; ++i) array[i] = this[i, index];
             return array;
         }
 
+        /// <summary>
+        /// Return column as an IEnumerable
+        /// </summary>
+        /// <param name="index">column to return</param>
+        /// <returns>column data as an IEnumerable</returns>
         public IEnumerable<double> GetColumn(int index)
         {
             for (int i = 0; i < Rows; ++i)
                 yield return this[i, index];
         }
 
+        /// <summary>
+        /// Set column data from an array
+        /// </summary>
+        /// <param name="index">Column index</param>
+        /// <param name="source">Column data</param>
         public void SetColumn(int index, double[] source)
         {
             if (index < 0 || index >= Columns) throw new ArgumentOutOfRangeException(nameof(index));
@@ -342,6 +423,11 @@ namespace AppLib.Maths
             Buffer.BlockCopy(source, 0, mData, index * Rows * sizeof(double), source.Length * sizeof(double));
         }
 
+        /// <summary>
+        /// Set Row data from an array
+        /// </summary>
+        /// <param name="index">Row index</param>
+        /// <param name="source">Row data</param>
         public void SetRow(int index, double[] source)
         {
             if (index < 0 || index >= Rows) throw new ArgumentOutOfRangeException(nameof(index));
@@ -350,6 +436,12 @@ namespace AppLib.Maths
             for (int j = 0; j < Columns; j++) this[index, j] = source[j];
         }
 
+        /// <summary>
+        /// Trims a matrix to a specified size
+        /// </summary>
+        /// <param name="rows">number of rows</param>
+        /// <param name="columns">number of coluns</param>
+        /// <returns>Trimmed matrix</returns>
         public Matrix TrimTo(int rows, int columns)
         {
             if (rows > Rows || columns > Columns) throw new ArgumentException("Can't trim the matrix to a bigger matrix");
@@ -365,18 +457,31 @@ namespace AppLib.Maths
             return ret;
         }
 
+        /// <summary>
+        /// default getHashCode overrade
+        /// </summary>
+        /// <returns>HashCode of this object</returns>
         public override int GetHashCode()
         {
             return mData.GetHashCode();
         }
 
+        /// <summary>
+        /// default Equals override
+        /// </summary>
+        /// <param name="obj">other object</param>
+        /// <returns>true, if the other object equals this</returns>
         public override bool Equals(object obj)
         {
-            if (obj == null) return false;
             var m = obj as Matrix;
+            if (m == null) return false;
             return this == m;
         }
 
+        /// <summary>
+        /// Default ToString override
+        /// </summary>
+        /// <returns>string representation of this instance</returns>
         public override string ToString()
         {
             var sb = new StringBuilder();
@@ -398,6 +503,12 @@ namespace AppLib.Maths
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Converts this instance to string with format
+        /// </summary>
+        /// <param name="format">Format to use</param>
+        /// <param name="formatProvider">Format provider</param>
+        /// <returns>string representation of this instance</returns>
         public string ToString(string format, IFormatProvider formatProvider)
         {
             var sb = new StringBuilder();
@@ -419,16 +530,29 @@ namespace AppLib.Maths
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Clones this instance
+        /// </summary>
+        /// <returns>A copy of the current instance</returns>
         public object Clone()
         {
             return new Matrix(this);
         }
 
+        /// <summary>
+        /// returns true, if two matrices are identical
+        /// </summary>
+        /// <param name="other">other matrix to compare</param>
+        /// <returns>true, if the other matrix is identical to this instance</returns>
         public bool Equals(Matrix other)
         {
             return this == other;
         }
 
+        /// <summary>
+        /// IEnumerable implementation
+        /// </summary>
+        /// <returns></returns>
         public IEnumerator<double> GetEnumerator()
         {
             for (int i=0; i<Rows; ++i)

@@ -1,5 +1,4 @@
-﻿using System.Numerics;
-using System;
+﻿using System;
 
 namespace ECalc.Maths
 {
@@ -9,7 +8,18 @@ namespace ECalc.Maths
     /// </summary>
     public enum TrigMode
     {
-        DEG, RAD, GRAD
+        /// <summary>
+        /// Degrees
+        /// </summary>
+        DEG,
+        /// <summary>
+        /// Radians
+        /// </summary>
+        RAD,
+        /// <summary>
+        /// Gradians
+        /// </summary>
+        GRAD
     }
 
     /// <summary>
@@ -23,6 +33,9 @@ namespace ECalc.Maths
         }
 
 
+        /// <summary>
+        /// Gets or sets the Trigonometry Mode
+        /// </summary>
         public static TrigMode Mode
         {
             get;
@@ -93,7 +106,7 @@ namespace ECalc.Maths
         }
 
         /// <summary>
-        /// Returns the sine of a number, depending on the mode set. For more info, see the documentation of SetMode
+        /// Returns the sine of a number, depending on the mode set. 
         /// </summary>
         /// <param name="value1">input number</param>
         
@@ -115,14 +128,8 @@ namespace ECalc.Maths
             }
         }
 
-        
-        public static Complex Sin(Complex value)
-        {
-            return Complex.Sin(value);
-        }
-
         /// <summary>
-        /// Returns the cosine of a number, depending on the mode set. For more info, see the documentation of SetMode
+        /// Returns the cosine of a number, depending on the mode set. 
         /// </summary>
         /// <param name="value1">input number</param>
         
@@ -144,14 +151,8 @@ namespace ECalc.Maths
             }
         }
 
-        
-        public static Complex Cos(Complex value)
-        {
-            return Complex.Cos(value);
-        }
-
         /// <summary>
-        /// Returns the tangent of a number, depending on the mode set. For more info, see the documentation of SetMode
+        /// Returns the tangent of a number, depending on the mode set. 
         /// </summary>
         /// <param name="value1">input number</param>
         
@@ -160,14 +161,8 @@ namespace ECalc.Maths
             return Sin(value1) / Cos(value1);
         }
 
-        
-        public static Complex Tan(Complex value)
-        {
-            return Complex.Tan(value);
-        }
-
         /// <summary>
-        /// Returns the secant of a number, depending on the mode set. For more info, see the documentation of SetMode 
+        /// Returns the secant of a number, depending on the mode set.  
         /// </summary>
         /// <param name="x">input number</param>
         
@@ -177,7 +172,7 @@ namespace ECalc.Maths
         }
 
         /// <summary>
-        /// Returns the cosecant of a number, depending on the mode set. For more info, see the documentation of SetMode 
+        /// Returns the cosecant of a number, depending on the mode set.  
         /// </summary>
         /// <param name="x">input number</param>
         
@@ -188,7 +183,7 @@ namespace ECalc.Maths
 
 
         /// <summary>
-        /// Returns the cotangent of a number, depending on the mode set. For more info, see the documentation of SetMode
+        /// Returns the cotangent of a number, depending on the mode set. 
         /// </summary>
         /// <param name="value1">input number</param>
         
@@ -198,7 +193,7 @@ namespace ECalc.Maths
         }
 
         /// <summary>
-        /// Returns the hyperbolic sine of a number, depending on the mode set. For more info, see the documentation of SetMode
+        /// Returns the hyperbolic sine of a number, depending on the mode set. 
         /// </summary>
         /// <param name="value1">input number</param>
         
@@ -217,14 +212,8 @@ namespace ECalc.Maths
             }
         }
 
-        
-        public static Complex Sinh(Complex value)
-        {
-            return Complex.Sinh(value);
-        }
-
         /// <summary>
-        /// Returns the hyperbolic cosine of a number, depending on the mode set. For more info, see the documentation of SetMode
+        /// Returns the hyperbolic cosine of a number, depending on the mode set. 
         /// </summary>
         /// <param name="value1">input number</param>
         
@@ -243,14 +232,8 @@ namespace ECalc.Maths
             }
         }
 
-        
-        public static Complex Cosh(Complex value)
-        {
-            return Complex.Cosh(value);
-        }
-
         /// <summary>
-        /// Returns the hyperbolic tangent of a number, depending on the mode set. For more info, see the documentation of SetMode
+        /// Returns the hyperbolic tangent of a number, depending on the mode set. 
         /// </summary>
         /// <param name="value1">input number</param>
         
@@ -269,14 +252,8 @@ namespace ECalc.Maths
             }
         }
 
-        
-        public static Complex Tanh(Complex value)
-        {
-            return Complex.Sinh(value);
-        }
-
         /// <summary>
-        /// Returns the hyperbolic secant of a number, depending on the mode set. For more info, see the documentation of SetMode 
+        /// Returns the hyperbolic secant of a number, depending on the mode set.  
         /// </summary>
         /// <param name="value">input number</param>
         
@@ -296,7 +273,7 @@ namespace ECalc.Maths
         }
 
         /// <summary>
-        /// Returns the arcus sine of a number, depending on the mode set. For more info, see the documentation of SetMode
+        /// Returns the arcus sine of a number, depending on the mode set. 
         /// </summary>
         /// <param name="value1">input number</param>
         
@@ -316,7 +293,7 @@ namespace ECalc.Maths
         }
 
         /// <summary>
-        /// Returns the arcus cosine of a number, depending on the mode set. For more info, see the documentation of SetMode
+        /// Returns the arcus cosine of a number, depending on the mode set. 
         /// </summary>
         /// <param name="value1">input number</param>
         
@@ -336,7 +313,7 @@ namespace ECalc.Maths
         }
 
         /// <summary>
-        /// Returns the arcus tangent of a number, depending on the mode set. For more info, see the documentation of SetMode
+        /// Returns the arcus tangent of a number, depending on the mode set. 
         /// </summary>
         /// <param name="value1">input number</param>
         
@@ -356,7 +333,7 @@ namespace ECalc.Maths
         }
 
         /// <summary>
-        /// returns the arcus cotangent of a number, depending on the mode set. For more info, see the documentation of SetMode 
+        /// returns the arcus cotangent of a number, depending on the mode set.  
         /// </summary>
         /// <param name="value">input number</param>
         
@@ -365,7 +342,12 @@ namespace ECalc.Maths
             return ArcTan(1 / value);
         }
 
-        
+
+        /// <summary>
+        /// Returns the arcus Secant of a number, depending on the mode set.
+        /// </summary>
+        /// <param name="x">input number</param>
+        /// <returns>arcus Secant of a number, depending on the mode set.</returns>
         public static double ArcSec(double x)
         {
             return 2 * ArcTan(1) - ArcTan(Math.Sign(x) / Math.Sqrt(x * x - 1));
@@ -373,7 +355,7 @@ namespace ECalc.Maths
 
 
         /// <summary>
-        /// Returns the arcus hyperboc sine of a number, depending on the mode set. For more info, see the documentation of SetMode
+        /// Returns the arcus hyperboc sine of a number, depending on the mode set. 
         /// </summary>
         /// <param name="value1">input number</param>
         
@@ -394,7 +376,7 @@ namespace ECalc.Maths
         }
 
         /// <summary>
-        /// Returns the arcus hyperbolic cosine of a number, depending on the mode set. For more info, see the documentation of SetMode
+        /// Returns the arcus hyperbolic cosine of a number, depending on the mode set. 
         /// </summary>
         /// <param name="value1">input number</param>
         
@@ -416,7 +398,7 @@ namespace ECalc.Maths
 
 
         /// <summary>
-        /// Returns the arcus hyperbolic tangent of a number, depending on the mode set. For more info, see the documentation of SetMode
+        /// Returns the arcus hyperbolic tangent of a number, depending on the mode set. 
         /// </summary>
         /// <param name="value1">input number</param>
         
@@ -436,7 +418,12 @@ namespace ECalc.Maths
             }
         }
 
-        
+
+        /// <summary>
+        /// Returns the arcus hyperbolic secant of a number, depending on the mode set. 
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns>hyperbolic secant of a number,depending on the mode set.</returns>
         public static double ArcSech(double value)
         {
             double inrad = Math.Log((Math.Sqrt(-value * value + 1) + 1) / value);
@@ -453,14 +440,22 @@ namespace ECalc.Maths
             }
         }
 
-        // Inverse Cosecant 
-        
+        /// <summary>
+        /// Returns the arcus cosecant of a number, depending on the mode set. 
+        /// </summary>
+        /// <param name="x">input number</param>
+        /// <returns>arcus cosecant of a number, depending on the mode set</returns>
         public static double ArcCosec(double x)
         {
             return ArcTan(Math.Sign(x) / Math.Sqrt(x * x - 1));
         }
 
-        
+
+        /// <summary>
+        /// Returns the hyperbolic arcus cosecant of a number, depending on the mode set. 
+        /// </summary>
+        /// <param name="value">input number</param>
+        /// <returns>hyperbolic arcus cosecant of a number, depending on the mode set.</returns>
         public static double ArcCosech(double value)
         {
             double inrad = Math.Log((Math.Sign(value) * Math.Sqrt(value * value + 1) + 1) / value);
@@ -478,7 +473,7 @@ namespace ECalc.Maths
         }
 
         /// <summary>
-        /// Returns the hyperbolic cosecant of a number, depending on the mode set. For more info, see the documentation of SetMode 
+        /// Returns the hyperbolic cosecant of a number, depending on the mode set.  
         /// </summary>
         /// <param name="value">input number</param>
         
@@ -498,10 +493,9 @@ namespace ECalc.Maths
         }
 
         /// <summary>
-        /// Returns the hyperbolic cotangent of a number, depending on the mode set. For more info, see the documentation of SetMode
+        /// Returns the hyperbolic cotangent of a number, depending on the mode set. 
         /// </summary>
-        /// <param name="value1">input number</param>
-        
+        /// <param name="value">input number</param>
         public static double Ctgh(double value)
         {
             double rad = value;

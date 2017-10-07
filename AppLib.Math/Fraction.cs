@@ -290,7 +290,7 @@ namespace AppLib.Maths
         /// <summary>
         /// Compares the current object with another object of the same type.
         /// </summary>
-        /// <param name="obj"> An object to compare with this object.</param>
+        /// <param name="other"> An object to compare with this object.</param>
         /// <returns> A value that indicates the relative order of the objects being compared. The
         /// return value has the following meanings: Value Meaning Less than zero This object
         /// is less than the other parameter.Zero This object is equal to other. Greater
@@ -308,7 +308,7 @@ namespace AppLib.Maths
         /// <summary>
         /// Compares the current object with another object of the same type.
         /// </summary>
-        /// <param name="obj"> An object to compare with this object.</param>
+        /// <param name="number"> An object to compare with this object.</param>
         /// <returns> A value that indicates the relative order of the objects being compared. The
         /// return value has the following meanings: Value Meaning Less than zero This object
         /// is less than the other parameter.Zero This object is equal to other. Greater
@@ -328,7 +328,7 @@ namespace AppLib.Maths
         /// <summary>
         /// Compares the current object with another object of the same type.
         /// </summary>
-        /// <param name="obj"> An object to compare with this object.</param>
+        /// <param name="number"> An object to compare with this object.</param>
         /// <returns> A value that indicates the relative order of the objects being compared. The
         /// return value has the following meanings: Value Meaning Less than zero This object
         /// is less than the other parameter.Zero This object is equal to other. Greater
@@ -348,7 +348,7 @@ namespace AppLib.Maths
         /// <summary>
         /// Compares the current object with another object of the same type.
         /// </summary>
-        /// <param name="obj"> An object to compare with this object.</param>
+        /// <param name="number"> An object to compare with this object.</param>
         /// <returns> A value that indicates the relative order of the objects being compared. The
         /// return value has the following meanings: Value Meaning Less than zero This object
         /// is less than the other parameter.Zero This object is equal to other. Greater
@@ -546,15 +546,21 @@ namespace AppLib.Maths
         }
 
         /// <summary>
-        /// 
+        /// Converts this instance to a System.String
         /// </summary>
-        /// <param name="provider"></param>
+        /// <param name="provider">Format provider</param>
         /// <returns>A System.String instance equivalent to the value of this instance.</returns>
         public string ToString(IFormatProvider provider)
         {
             return ToString(null, provider);
         }
 
+        /// <summary>
+        /// Generic type converson
+        /// </summary>
+        /// <param name="conversionType">Target type</param>
+        /// <param name="provider">Format provider</param>
+        /// <returns>This instance converted to target type</returns>
         public object ToType(Type conversionType, IFormatProvider provider)
         {
             double val = (double)this;
@@ -609,7 +615,7 @@ namespace AppLib.Maths
         /// Returns the inverse of the input faction
         /// </summary>
         /// <param name="input">fracton to invert</param>
-        /// <returns>the inverse of the input fraction (numerator & denominator swapped)</returns>
+        /// <returns>the inverse of the input fraction (numerator &amp; denominator swapped)</returns>
         public static Fraction Inverse(Fraction input)
         {
             if (input.Numerator == 0)
@@ -751,7 +757,7 @@ namespace AppLib.Maths
         /// <summary>
         /// Adds a fraction to a double
         /// </summary>
-        /// <param name="iNo">double to add to</param>
+        /// <param name="dbl">double to add to</param>
         /// <param name="frac1">Fraction to add</param>
         /// <returns>The sum of the double and the faction</returns>
         public static Fraction operator +(double dbl, Fraction frac1)
@@ -763,7 +769,7 @@ namespace AppLib.Maths
         /// Adds a double to a fraction
         /// </summary>
         /// <param name="frac1">Fraction to add to</param>
-        /// <param name="iNo">double to add</param>
+        /// <param name="dbl">double to add</param>
         /// <returns>The sum of the double and the faction</returns>
         public static Fraction operator +(Fraction frac1, double dbl)
         {
@@ -773,7 +779,7 @@ namespace AppLib.Maths
         /// <summary>
         /// Adds a fraction to a float
         /// </summary>
-        /// <param name="iNo">float to add to</param>
+        /// <param name="dbl">float to add to</param>
         /// <param name="frac1">Fraction to add</param>
         /// <returns>The sum of the float and the faction</returns>
         public static Fraction operator +(float dbl, Fraction frac1)
@@ -785,7 +791,7 @@ namespace AppLib.Maths
         /// Adds a float to a fraction
         /// </summary>
         /// <param name="frac1">Fraction to add to</param>
-        /// <param name="iNo">float to add</param>
+        /// <param name="dbl">float to add</param>
         /// <returns>The sum of the float and the faction</returns>
         public static Fraction operator +(Fraction frac1, float dbl)
         {
@@ -795,7 +801,7 @@ namespace AppLib.Maths
         /// <summary>
         /// Adds a fraction to a decimal
         /// </summary>
-        /// <param name="iNo">decimal to add to</param>
+        /// <param name="dbl">decimal to add to</param>
         /// <param name="frac1">Fraction to add</param>
         /// <returns>The sum of the decimal and the faction</returns>
         public static Fraction operator +(decimal dbl, Fraction frac1)
@@ -807,7 +813,7 @@ namespace AppLib.Maths
         /// Adds a decimal to a fraction
         /// </summary>
         /// <param name="frac1">Fraction to add to</param>
-        /// <param name="iNo">decimal to add</param>
+        /// <param name="dbl">decimal to add</param>
         /// <returns>The sum of the decimal and the faction</returns>
         public static Fraction operator +(Fraction frac1, decimal dbl)
         {
@@ -884,7 +890,7 @@ namespace AppLib.Maths
         /// Subtracts a double from a faction
         /// </summary>
         /// <param name="frac1">Fraction to subtract from</param>
-        /// <param name="iNo">double to subtract</param>
+        /// <param name="dbl">double to subtract</param>
         /// <returns>the difference of the fraction and the double</returns>
         public static Fraction operator -(Fraction frac1, double dbl)
         {
@@ -906,7 +912,7 @@ namespace AppLib.Maths
         /// Subtracts a float from a faction
         /// </summary>
         /// <param name="frac1">Fraction to subtract from</param>
-        /// <param name="iNo">float to subtract</param>
+        /// <param name="dbl">float to subtract</param>
         /// <returns>the difference of the fraction and the float</returns>
         public static Fraction operator -(Fraction frac1, float dbl)
         {
@@ -929,7 +935,7 @@ namespace AppLib.Maths
         /// Subtracts a decimal from a faction
         /// </summary>
         /// <param name="frac1">Fraction to subtract from</param>
-        /// <param name="iNo">decimal to subtract</param>
+        /// <param name="dbl">decimal to subtract</param>
         /// <returns>the difference of the fraction and the decimal</returns>
         public static Fraction operator -(Fraction frac1, decimal dbl)
         {
@@ -995,7 +1001,7 @@ namespace AppLib.Maths
         /// <summary>
         /// Multiplies a double and a fraction
         /// </summary>
-        /// <param name="iNo">double parameter</param>
+        /// <param name="dbl">double parameter</param>
         /// <param name="frac1">Fraction</param>
         /// <returns>The result of the multiplication</returns>
         public static Fraction operator *(double dbl, Fraction frac1)
@@ -1007,7 +1013,7 @@ namespace AppLib.Maths
         /// Multiplies a Fraction and a double
         /// </summary>
         /// <param name="frac1">Fraction</param>
-        /// <param name="iNo">double</param>
+        /// <param name="dbl">double</param>
         /// <returns>The result of the multiplication</returns>
         public static Fraction operator *(Fraction frac1, double dbl)
         {
@@ -1017,7 +1023,7 @@ namespace AppLib.Maths
         /// <summary>
         /// Multiplies a float and a fraction
         /// </summary>
-        /// <param name="iNo">float parameter</param>
+        /// <param name="dbl">float parameter</param>
         /// <param name="frac1">Fraction</param>
         /// <returns>The result of the multiplication</returns>
         public static Fraction operator *(float dbl, Fraction frac1)
@@ -1030,7 +1036,7 @@ namespace AppLib.Maths
         /// Multiplies a Fraction and a decimal
         /// </summary>
         /// <param name="frac1">Fraction</param>
-        /// <param name="iNo">decimal</param>
+        /// <param name="dbl">decimal</param>
         /// <returns>The result of the multiplication</returns>
         public static Fraction operator *(Fraction frac1, decimal dbl)
         {
@@ -1040,7 +1046,7 @@ namespace AppLib.Maths
         /// <summary>
         /// Multiplies a decimal and a fraction
         /// </summary>
-        /// <param name="iNo">decimal parameter</param>
+        /// <param name="dbl">decimal parameter</param>
         /// <param name="frac1">Fraction</param>
         /// <returns>The result of the multiplication</returns>
         public static Fraction operator *(decimal dbl, Fraction frac1)
@@ -1052,7 +1058,7 @@ namespace AppLib.Maths
         /// Multiplies a Fraction and a float
         /// </summary>
         /// <param name="frac1">Fraction</param>
-        /// <param name="iNo">float</param>
+        /// <param name="dbl">float</param>
         /// <returns>The result of the multiplication</returns>
         public static Fraction operator *(Fraction frac1, float dbl)
         {
@@ -1117,7 +1123,7 @@ namespace AppLib.Maths
         /// <summary>
         /// Divides a double with a fraction
         /// </summary>
-        /// <param name="iNo">double to divide</param>
+        /// <param name="dbl">double to divide</param>
         /// <param name="frac1">Fraction to divide with</param>
         /// <returns>result of division</returns>
         public static Fraction operator /(double dbl, Fraction frac1)
@@ -1129,7 +1135,7 @@ namespace AppLib.Maths
         /// Divides a Fraction with a double
         /// </summary>
         /// <param name="frac1">Fraction to divide</param>
-        /// <param name="iNo">double to divide with</param>
+        /// <param name="dbl">double to divide with</param>
         /// <returns>result of division</returns>
         public static Fraction operator /(Fraction frac1, double dbl)
         {
@@ -1139,7 +1145,7 @@ namespace AppLib.Maths
         /// <summary>
         /// Divides a float with a fraction
         /// </summary>
-        /// <param name="iNo">float to divide</param>
+        /// <param name="dbl">float to divide</param>
         /// <param name="frac1">Fraction to divide with</param>
         /// <returns>result of division</returns>
         public static Fraction operator /(float dbl, Fraction frac1)
@@ -1151,7 +1157,7 @@ namespace AppLib.Maths
         /// Divides a Fraction with an decimal
         /// </summary>
         /// <param name="frac1">Fraction to divide</param>
-        /// <param name="iNo">decimal to divide with</param>
+        /// <param name="dbl">decimal to divide with</param>
         /// <returns>result of division</returns>
         public static Fraction operator /(Fraction frac1, decimal dbl)
         {
@@ -1161,7 +1167,7 @@ namespace AppLib.Maths
         /// <summary>
         /// Divides an decimal with a fraction
         /// </summary>
-        /// <param name="iNo">decimal to divide</param>
+        /// <param name="dbl">decimal to divide</param>
         /// <param name="frac1">Fraction to divide with</param>
         /// <returns>result of division</returns>
         public static Fraction operator /(decimal dbl, Fraction frac1)
@@ -1173,7 +1179,7 @@ namespace AppLib.Maths
         /// Divides a Fraction with a float
         /// </summary>
         /// <param name="frac1">Fraction to divide</param>
-        /// <param name="iNo">float to divide with</param>
+        /// <param name="dbl">float to divide with</param>
         /// <returns>result of division</returns>
         public static Fraction operator /(Fraction frac1, float dbl)
         {
@@ -1218,7 +1224,7 @@ namespace AppLib.Maths
         /// Cheks the unquality of a fraction and an integer
         /// </summary>
         /// <param name="frac1">Fraction</param>
-        /// <param name="frac2">integer</param>
+        /// <param name="iNo">integer</param>
         /// <returns>true, if they are unequal, false if not</returns>
         public static bool operator !=(Fraction frac1, int iNo)
         {
@@ -1240,7 +1246,7 @@ namespace AppLib.Maths
         /// Cheks the unquality of a fraction and a long
         /// </summary>
         /// <param name="frac1">Fraction</param>
-        /// <param name="frac2">long</param>
+        /// <param name="iNo">long</param>
         /// <returns>true, if they are unequal, false if not</returns>
         public static bool operator !=(Fraction frac1, long iNo)
         {
@@ -1262,7 +1268,7 @@ namespace AppLib.Maths
         /// Cheks the unquality of a fraction and an double
         /// </summary>
         /// <param name="frac1">Fraction</param>
-        /// <param name="frac2">double</param>
+        /// <param name="iNo">double</param>
         /// <returns>true, if they are unequal, false if not</returns>
         public static bool operator !=(Fraction frac1, double iNo)
         {
@@ -1284,7 +1290,7 @@ namespace AppLib.Maths
         /// Cheks the unquality of a fraction and a float
         /// </summary>
         /// <param name="frac1">Fraction</param>
-        /// <param name="frac2">float</param>
+        /// <param name="iNo">float</param>
         /// <returns>true, if they are unequal, false if not</returns>
         public static bool operator !=(Fraction frac1, float iNo)
         {
@@ -1306,7 +1312,7 @@ namespace AppLib.Maths
         /// Cheks the unquality of a fraction and a decimal
         /// </summary>
         /// <param name="frac1">Fraction</param>
-        /// <param name="frac2">decimal</param>
+        /// <param name="iNo">decimal</param>
         /// <returns>true, if they are unequal, false if not</returns>
         public static bool operator !=(Fraction frac1, decimal iNo)
         {
@@ -1812,7 +1818,7 @@ namespace AppLib.Maths
         /// <summary>
         /// Implicit operator for converting a long to Fraction
         /// </summary>
-        /// <param name="ino">long to convert</param>
+        /// <param name="lNo">long to convert</param>
         public static implicit operator Fraction(long lNo)
         {
             return new Fraction(lNo);
@@ -1830,7 +1836,7 @@ namespace AppLib.Maths
         /// <summary>
         /// Implicit operator for converting a float to Fraction
         /// </summary>
-        /// <param name="ino">float to convert</param>
+        /// <param name="dNo">float to convert</param>
         public static implicit operator Fraction(float dNo)
         {
             return new Fraction(dNo);
@@ -1839,7 +1845,7 @@ namespace AppLib.Maths
         /// <summary>
         /// Implicit operator for converting a decimal to Fraction
         /// </summary>
-        /// <param name="ino">decimal to convert</param>
+        /// <param name="dNo">decimal to convert</param>
         public static implicit operator Fraction(decimal dNo)
         {
             return new Fraction(dNo);
@@ -1848,13 +1854,17 @@ namespace AppLib.Maths
         /// <summary>
         /// Implicit operator for converting a string to Fraction
         /// </summary>
-        /// <param name="ino">string to convert</param>
+        /// <param name="strNo">string to convert</param>
         public static implicit operator Fraction(string strNo)
         {
             return new Fraction(strNo);
         }
 
-        public static implicit operator string(Fraction frac)
+        /// <summary>
+        /// Explicitly converts to string
+        /// </summary>
+        /// <param name="frac">Fraction to convert</param>
+        public static explicit operator string(Fraction frac)
         {
             return frac.ToString();
         }
