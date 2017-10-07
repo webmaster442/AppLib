@@ -1,26 +1,40 @@
 ﻿using System.ComponentModel;
+using System.Windows;
 
 namespace AppLib.WPF.MVVM
 {
     /// <summary>
-    /// An Interface for view Implementation
+    /// View Model Implementation class
     /// </summary>
-    public interface IView
+    /// <typeparam name="ViewType">View Type</typeparam>
+    public abstract class ViewModel<ViewType>: BindableBase where ViewType: IView<ViewModel<ViewType>>
     {
         /// <summary>
-        /// Close the view
+        /// Gets wheather the current viewmodel is in designer mode or not
         /// </summary>
-        void Close();
-    }
+        public static bool IsInDesignMode
+        {
+            get
+            {
+                var prop = DesignerProperties.IsInDesignModeProperty;
+                return (bool)DependencyPropertyDescriptor.FromProperty(prop, typeof(FrameworkElement)).Metadata.DefaultValue;
+            }
+        }
 
-    /// <summary>
-    /// A ViewModel with reference to the view
-    /// </summary>
-    public class ViewModel<IViewType>: BindableBase where IViewType : IView
-    {
+        ViewType View
+        {
+            get;
+            set;
+        }
+
         /// <summary>
-        /// View associated with the viewmodel
+        /// Creates a new instance of the ViewModel
         /// </summary>
-        public IViewType View { get; set; }
+        /// <param name="view">View to inject</param>
+        public ViewModel(ViewType view)
+        {
+            View = view;
+            view.ViewModel = this;
+        }
     }
 }

@@ -202,6 +202,7 @@
     <Compile Include="MVVM\BindableBase.cs" />
     <Compile Include="MVVM\ChangeTracker.cs" />
     <Compile Include="MVVM\DelegateCommand.cs" />
+    <Compile Include="MVVM\DelegateCommandT.cs" />
     <Compile Include="Dialogs\ErrorDialog.xaml.cs">
       <DependentUpon>ErrorDialog.xaml</DependentUpon>
     </Compile>
@@ -212,7 +213,8 @@
     <Compile Include="Extensions\DependencyObjectExtensions.cs" />
     <Compile Include="Extensions\FrameWorkElementExtensions.cs" />
     <Compile Include="Extensions\HSL.cs" />
-    <Compile Include="MVVM\GetViewModelExtensions.cs" />
+    <Compile Include="MVVM\Interfaces.cs" />
+    <Compile Include="MVVM\MMVMExtensions.cs" />
     <Compile Include="MVVM\ViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
