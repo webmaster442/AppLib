@@ -15,16 +15,30 @@ namespace AppLib.Common.Extensions
         /// Compare two floats with a maximum allowed difference.
         /// If differnece is not set, then by default 0.00001 is aplied
         /// </summary>
-        /// <param name="d">float number</param>
-        /// <param name="other">other float number</param>
-        /// <param name="diff">maximum allowed difference.</param>
+        /// <param name="a">float number</param>
+        /// <param name="b">other float number</param>
+        /// <param name="tolerance">maximum allowed difference.</param>
         /// <returns></returns>
-        public static bool EqualsWithTolerance(this float d, float other, float diff = 0.00001f)
+        public static bool EqualsWithTolerance(this float a, float b, float tolerance = 1E-6f)
         {
-            float sub = 0;
-            if (other > d) sub = other - d;
-            else sub = d - other;
-            return sub < diff;
+            float absA = Math.Abs(a);
+            float absB = Math.Abs(b);
+            float diff = Math.Abs(a - b);
+
+            if (a == b)
+            { // shortcut, handles infinities
+                return true;
+            }
+            else if (a == 0 || b == 0 || diff < float.Epsilon)
+            {
+                // a or b is zero or both are extremely close to it
+                // relative error is less meaningful here
+                return diff < (tolerance * float.Epsilon);
+            }
+            else
+            { // use relative error
+                return diff / Math.Min((absA + absB), float.MaxValue) < tolerance;
+            }
         }
 
         /// <summary>

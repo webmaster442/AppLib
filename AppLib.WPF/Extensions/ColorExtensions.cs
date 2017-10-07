@@ -48,6 +48,7 @@ namespace AppLib.WPF.Extensions
         {
             var hsl = HSLColor.RGBtoHSL(c);
             hsl.Hue = 360 - hsl.Hue;
+            hsl.Saturation = 1 - hsl.Saturation;
             return HSLColor.HSLtoRGB(hsl);
         }
 

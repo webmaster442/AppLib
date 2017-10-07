@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.IO;
 using System.Windows.Data;
+using System.Linq;
 
 namespace AppLib.WPF.Converters
 {
@@ -10,6 +11,28 @@ namespace AppLib.WPF.Converters
     /// </summary>
     public class FileInfoConverter : ConverterBase<FileInfoConverter>, IValueConverter
     {
+        private enum ItemType
+        {
+            File,
+            Drive,
+            Directory
+        }
+
+        private string Render(ItemType t, string fileContent, string driveContent, string dirContent)
+        {
+            switch (t)
+            {
+                case ItemType.Directory:
+                    return dirContent;
+                case ItemType.Drive:
+                    return driveContent;
+                case ItemType.File:
+                    return fileContent;
+                default:
+                    return null;
+            }
+        }
+
         /// <summary>
         /// Returns various informations of a file based on its name and the given converter parameter
         /// </summary>
@@ -25,15 +48,26 @@ namespace AppLib.WPF.Converters
             var par = parameter.ToString().ToLower();
             var filename = value.ToString();
 
-            bool isdir = false;
+            ItemType type = ItemType.File;
+
             FileInfo fi = null;
             DirectoryInfo di = null;
+            DriveInfo dri = null;
 
-            if (File.Exists(filename)) fi = new FileInfo(filename);
+            if (Directory.GetLogicalDrives().Contains(filename))
+            {
+                dri = new DriveInfo(filename);
+                type = ItemType.Drive;
+            }
+            if (File.Exists(filename))
+            {
+                fi = new FileInfo(filename);
+                type = ItemType.File;
+            }
             else if (Directory.Exists(filename))
             {
                 di = new DirectoryInfo(filename);
-                isdir = true;
+                type = ItemType.Directory;
             }
             else return "File doesn't exist: " + filename;
 
@@ -41,18 +75,18 @@ namespace AppLib.WPF.Converters
             {
                 case "name":
                 case "filename":
-                    return isdir ? di.Name : fi.Name;
+                    return Render(type, fi?.Name, dri?.Name, di?.Name);
                 case "namenoextension":
-                    return isdir ? di.Name : fi.Name.Replace(fi.Extension, "");
+                    return Render(type, fi?.Name.Replace(fi?.Extension, ""), dri?.Name, di?.Name);
                 case "size":
                 case "filesize":
-                    return isdir ? " - " : FileSizeConverter.Calculate(fi.Length);
+                    return Render(type, FileSizeConverter.Calculate(fi == null ? 0 : fi.Length), FileSizeConverter.Calculate(dri == null ? 0 : dri.TotalSize), " - ");
                 case "extension":
                 case "fileextension":
-                    return isdir ? "Directory" : fi.Extension;
+                    return Render(type, fi?.Extension, dri?.DriveType.ToString(), "Directory");
                 case "date":
                 case "filedate":
-                    return isdir ? di.LastWriteTime.ToString(culture) : fi.LastWriteTime.ToString(culture);
+                    return Render(type, fi?.LastWriteTime.ToString(culture), di?.LastWriteTime.ToString(culture), di?.LastWriteTime.ToString(culture));
                 default:
                     return "No converter parameter given. Valid converter parameters are: name, namenoextension, size, extension, date";
             }
