@@ -64,3 +64,4 @@ using System.Windows.Markup;
 [assembly: XmlnsDefinition("http://github.com/webmaster442/AppLib/WPF", "AppLib.WPF.Shaders")]
 [assembly: XmlnsDefinition("http://github.com/webmaster442/AppLib/WPF", "AppLib.WPF.Attached")]
 [assembly: XmlnsDefinition("http://github.com/webmaster442/AppLib/WPF", "AppLib.WPF.Translate")]
+[assembly: XmlnsDefinition("http://github.com/webmaster442/AppLib/WPF", "AppLib.WPF.BindingValidators")]
