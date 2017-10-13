@@ -28,10 +28,15 @@
             </Setter.Value>
         </Setter>
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Margin" Value="0,2,3,0"/>
+        <Setter Property="Margin" Value="3,2,3,0"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Foreground" Value="#ffffcc" />
+                <Setter Property="LayoutTransform">
+                    <Setter.Value>
+                        <ScaleTransform ScaleX="0.8" ScaleY="0.8"/>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Background" Value="#AD969600"/>
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -63,10 +68,15 @@
         <Setter Property="FontFamily" Value="pack://application:,,,/AppLib.WPF;component/Resources/#FontAwesome"/>
         <Setter Property="FontSize" Value="13.333" />
         <Setter Property="Foreground" Value="White" />
-        <Setter Property="Margin" Value="0,2,3,0"/>
+        <Setter Property="Margin" Value="3,2,3,0"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Foreground" Value="#ffffcc" />
+                <Setter Property="LayoutTransform">
+                    <Setter.Value>
+                        <ScaleTransform ScaleX="0.8" ScaleY="0.8"/>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Background" Value="#AD969600"/>
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -180,7 +190,7 @@
                                 <ContentPresenter/>
                             </AdornerDecorator>
                         </Border>
-                        
+
                         <DockPanel
                             x:Name="PART_HEADER"
                             Height="30"
@@ -217,6 +227,7 @@
                                 <Button
                                     Visibility="{TemplateBinding WindowMinimizeIsVisible, Converter={converters:BoolToVisibilityConverter}}"
                                     x:Name="PART_MINIMIZE"
+                                    ToolTip="Minimize"
                                     WindowChrome.IsHitTestVisibleInChrome="True"
                                     Style="{StaticResource WindowButtonStyle}"
                                     DockPanel.Dock="Right">
@@ -234,6 +245,7 @@
                                     x:Name="PART_CLOSE"
                                     WindowChrome.IsHitTestVisibleInChrome="True"
                                     Style="{StaticResource WindowButtonStyle}"
+                                    ToolTip="Close"
                                     DockPanel.Dock="Right">
                                     <imgc:ImageAwesome 
                                         Width="20"
@@ -248,5 +260,5 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
 </ResourceDictionary>
