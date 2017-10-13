@@ -4,6 +4,6 @@
         <ResourceDictionary Source="pack://application:,,,/AppLib.WPF;component/Themes/ImageButton.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/AppLib.WPF;component/Themes/TransitionControl.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/AppLib.WPF;component/Themes/AnimatedTabControl.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/AppLib.WPF;component/Themes/CoolWindow.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/AppLib.WPF;component/Themes/ModernWindow.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

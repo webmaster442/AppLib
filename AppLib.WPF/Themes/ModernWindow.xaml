@@ -1,0 +1,252 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:AppLib.WPF.Controls"
+                    xmlns:converters="clr-namespace:AppLib.WPF.Converters"
+                    xmlns:imgc="clr-namespace:AppLib.WPF.Controls.ImageControls">
+
+    <Style TargetType="{x:Type Button}" x:Key="WindowButtonStyle">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ButtonBase}">
+                    <Border
+                            x:Name="Chrome"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            Margin="0"
+                            Background="{TemplateBinding Background}"
+                            SnapsToDevicePixels="True">
+                        <ContentPresenter
+                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                Content="{TemplateBinding Content}"
+                                ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                Margin="{TemplateBinding Padding}"
+                                RecognizesAccessKey="True"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Margin" Value="0,2,3,0"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="#ffffcc" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="{x:Type ToggleButton}" x:Key="WindowToggleButtonStyle">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Border
+                            x:Name="Chrome"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            Margin="0"
+                            Background="{TemplateBinding Background}"
+                            SnapsToDevicePixels="True">
+                        <ContentPresenter
+                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                Content="{TemplateBinding Content}"
+                                ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                Margin="{TemplateBinding Padding}"
+                                RecognizesAccessKey="True"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="FontFamily" Value="pack://application:,,,/AppLib.WPF;component/Resources/#FontAwesome"/>
+        <Setter Property="FontSize" Value="13.333" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Margin" Value="0,2,3,0"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="#ffffcc" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="ToggleButton" x:Key="RestoreStyle" BasedOn="{StaticResource WindowToggleButtonStyle}">
+        <Style.Triggers>
+            <Trigger Property="IsChecked" Value="false">
+                <Setter Property="ToolTip" Value="Maximize"/>
+                <Setter Property="Content">
+                    <Setter.Value>
+                        <imgc:ImageAwesome 
+                            Width="20"
+                            Foreground="White"
+                            Icon="fa_window_maximize"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="IsChecked" Value="true">
+                <Setter Property="Content">
+                    <Setter.Value>
+                        <imgc:ImageAwesome 
+                            Width="20"
+                            Foreground="White"
+                            Icon="fa_window_restore"/>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="ToolTip" Value="Restore"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="ToggleButton" x:Key="AllwaysTop" BasedOn="{StaticResource WindowToggleButtonStyle}">
+        <Style.Triggers>
+            <Trigger Property="IsChecked" Value="false">
+                <Setter Property="ToolTip" Value="Allways on top: disabled"/>
+                <Setter Property="Content">
+                    <Setter.Value>
+                        <imgc:ImageAwesome 
+                            Width="20"
+                            Foreground="White"
+                            Icon="fa_square_o"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="IsChecked" Value="true">
+                <Setter Property="ToolTip" Value="Allways on top: enabled"/>
+                <Setter Property="Content">
+                    <Setter.Value>
+                        <imgc:ImageAwesome 
+                            Width="20"
+                            Foreground="White"
+                            Icon="fa_check_square"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="ToggleButton" x:Key="ToogleTranparent" BasedOn="{StaticResource WindowToggleButtonStyle}">
+        <Style.Triggers>
+            <Trigger Property="IsChecked" Value="false">
+                <Setter Property="ToolTip" Value="Transparency: disabled"/>
+                <Setter Property="Content">
+                    <Setter.Value>
+                        <imgc:ImageAwesome 
+                            Width="20"
+                            Foreground="White"
+                            Icon="fa_eye"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="IsChecked" Value="true">
+                <Setter Property="ToolTip" Value="Transparency: enabled"/>
+                <Setter Property="Content">
+                    <Setter.Value>
+                        <imgc:ImageAwesome 
+                            Width="20"
+                            Foreground="White"
+                            Icon="fa_low_vision"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="{x:Type controls:ModernWindow}">
+        <Setter Property="WindowChrome.WindowChrome">
+            <Setter.Value>
+                <WindowChrome
+                    CaptionHeight="30"
+                    CornerRadius="2"
+                    GlassFrameThickness="5,30,5,5"
+                    NonClientFrameEdges="None"
+                    ResizeBorderThickness="5"
+                    UseAeroCaptionButtons="False"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="WindowStyle" Value="None"/>
+        <Setter Property="AllowsTransparency" Value="True"/>
+        <Setter Property="Background" Value="LightSlateGray"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:ModernWindow}">
+                    <Grid>
+                        <Border
+                            x:Name="PART_FRAME"
+                            BorderBrush="{TemplateBinding DwmBorderBrush}"
+                            Background="{TemplateBinding Background}"
+                            BorderThickness="5,30,5,5">
+                            <AdornerDecorator>
+                                <ContentPresenter/>
+                            </AdornerDecorator>
+                        </Border>
+                        
+                        <DockPanel
+                            x:Name="PART_HEADER"
+                            Height="30"
+                            Background="{TemplateBinding DwmBorderBrush}"
+                            VerticalAlignment="Top"
+                            LastChildFill="False">
+                            <Image
+                                Margin="5,0"
+                                Source="{TemplateBinding Icon}"/>
+                            <TextBlock
+                                FontSize="16"
+                                FontWeight="Bold"
+                                Foreground="White"
+                                VerticalAlignment="Center"
+                                Text="{TemplateBinding Title}"/>
+
+                            <StackPanel
+                                Orientation="Horizontal"
+                                DockPanel.Dock="Right">
+
+                                <ToggleButton
+                                    x:Name="PART_TRANSPARENT"
+                                    Visibility="{TemplateBinding WindowTransparentIsVisible, Converter={converters:BoolToVisibilityConverter}}"
+                                    WindowChrome.IsHitTestVisibleInChrome="True"
+                                    Style="{StaticResource ToogleTranparent}"/>
+
+                                <ToggleButton
+                                    x:Name="PART_ALWAYSTOP"
+                                    Visibility="{TemplateBinding WindowOnTopIsVisible, Converter={converters:BoolToVisibilityConverter}}"
+                                    WindowChrome.IsHitTestVisibleInChrome="True"
+                                    Style="{StaticResource AllwaysTop}">
+                                </ToggleButton>
+
+                                <Button
+                                    Visibility="{TemplateBinding WindowMinimizeIsVisible, Converter={converters:BoolToVisibilityConverter}}"
+                                    x:Name="PART_MINIMIZE"
+                                    WindowChrome.IsHitTestVisibleInChrome="True"
+                                    Style="{StaticResource WindowButtonStyle}"
+                                    DockPanel.Dock="Right">
+                                    <imgc:ImageAwesome 
+                                        Width="20"
+                                        Foreground="White"
+                                        Icon="fa_window_minimize"/>
+                                </Button>
+                                <ToggleButton
+                                    Visibility="{TemplateBinding WindowRestoreIsVisible, Converter={converters:BoolToVisibilityConverter}}"
+                                    x:Name="PART_RESTORE"
+                                    WindowChrome.IsHitTestVisibleInChrome="True"
+                                    Style="{StaticResource RestoreStyle}"/>
+                                <Button
+                                    x:Name="PART_CLOSE"
+                                    WindowChrome.IsHitTestVisibleInChrome="True"
+                                    Style="{StaticResource WindowButtonStyle}"
+                                    DockPanel.Dock="Right">
+                                    <imgc:ImageAwesome 
+                                        Width="20"
+                                        Foreground="Red"
+                                        Icon="fa_window_close"/>
+                                </Button>
+                            </StackPanel>
+
+                        </DockPanel>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>

@@ -6,29 +6,11 @@ using System.Windows.Data;
 namespace AppLib.WPF.Converters
 {
     /// <summary>
-    /// Bool to Visibility converter with markup extension
+    /// Converts a visibility value to bool
     /// </summary>
-    [ValueConversion(typeof(bool), typeof(Visibility))]
-    public class BoolToVisibilityConverter : ConverterBase<BoolToVisibilityConverter>, IValueConverter
+    [ValueConversion(typeof(Visibility), typeof(bool))]
+    public class VisibilityToBoolConverter : ConverterBase<VisibilityToBoolConverter>, IValueConverter
     {
-        /// <summary>
-        /// Converts a bool to visibility
-        /// </summary>
-        /// <param name="value">The value produced by the binding source.</param>
-        /// <param name="targetType">The type of the binding target property.</param>
-        /// <param name="parameter">The converter parameter to use.</param>
-        /// <param name="culture">The culture to use in the converter.</param>
-        /// <returns>Visibe, if value is true, otherwise Collapsed</returns>
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            var input = (bool)value;
-            if (input)
-                return Visibility.Visible;
-            else
-                return Visibility.Collapsed;
-        }
-
-
         /// <summary>
         /// Converts a visibility to bool value
         /// </summary>
@@ -37,20 +19,32 @@ namespace AppLib.WPF.Converters
         /// <param name="parameter">The converter parameter to use.</param>
         /// <param name="culture">The culture to use in the converter.</param>
         /// <returns>bool value. True if Visible, false if not</returns>
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            Visibility input = (Visibility)value;
-
-            switch(input)
+            var vs = (Visibility)value;
+            switch (vs)
             {
-                case Visibility.Visible:
-                    return true;
                 case Visibility.Collapsed:
                 case Visibility.Hidden:
-                default:
                     return false;
-
+                case Visibility.Visible:
+                    return true;
             }
+            return false;
+        }
+
+        /// <summary>
+        /// Converts a bool to visibility
+        /// </summary>
+        /// <param name="value">The value produced by the binding source.</param>
+        /// <param name="targetType">The type of the binding target property.</param>
+        /// <param name="parameter">The converter parameter to use.</param>
+        /// <param name="culture">The culture to use in the converter.</param>
+        /// <returns>Visibe, if value is true, otherwise Collapsed</returns>
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var b = (bool)value;
+            return b == true ? Visibility.Visible : Visibility.Collapsed;
         }
     }
 }
