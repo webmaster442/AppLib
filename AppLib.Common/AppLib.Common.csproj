@@ -66,6 +66,9 @@
     <Compile Include="Extensions\StringExtenions.cs" />
     <Compile Include="HttpServer\HttpCache.cs" />
     <Compile Include="HttpServer\HttpServer.cs" />
+    <Compile Include="IOC\Container.cs" />
+    <Compile Include="IOC\IContainer.cs" />
+    <Compile Include="IOC\MappingKey.cs" />
     <Compile Include="KeyboardHook.cs" />
     <Compile Include="MessageHandler\Handler.cs" />
     <Compile Include="MessageHandler\IMessage.cs" />
