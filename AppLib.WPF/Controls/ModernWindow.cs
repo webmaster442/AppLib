@@ -53,6 +53,30 @@ namespace AppLib.WPF.Controls
             = DependencyProperty.Register("WindowTransparencyLevel", typeof(double), typeof(ModernWindow), new PropertyMetadata(0.85d));
 
         /// <summary>
+        /// Dependency property for WindowIsTransparent
+        /// </summary>
+        public static readonly DependencyProperty WindowIsTransparentProperty
+            = DependencyProperty.Register("WindowIsTransparent", typeof(bool), typeof(ModernWindow), new PropertyMetadata(false, WindowIsTransparentChanged));
+
+        /// <summary>
+        /// Window is transparent toggle
+        /// </summary>
+        public bool WindowIsTransparent
+        {
+            get { return (bool)GetValue(WindowIsTransparentProperty); }
+            set { SetValue(WindowIsTransparentProperty, value); }
+        }
+
+        private static void WindowIsTransparentChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            ModernWindow sender = d as ModernWindow;
+
+            if (sender.WindowIsTransparent)
+                sender.Opacity = sender.WindowTransparencyLevel;
+            else sender.Opacity = 1.0d;
+        }
+
+        /// <summary>
         /// Dependency property for DwmBorderBrush
         /// </summary>
         public static readonly DependencyProperty DwmBorderBrushProperty
@@ -237,7 +261,7 @@ namespace AppLib.WPF.Controls
                     Topmost = !Topmost;
                     break;
                 case "PART_TRANSPARENT":
-                    Opacity = (Opacity == 1.0d) ? Opacity = WindowTransparencyLevel : Opacity = 1.0d;
+                    WindowIsTransparent = !WindowIsTransparent;
                     break;
             }
         }

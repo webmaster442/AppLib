@@ -213,12 +213,14 @@
 
                                 <ToggleButton
                                     x:Name="PART_TRANSPARENT"
+                                    IsChecked="{TemplateBinding WindowIsTransparent}"
                                     Visibility="{TemplateBinding WindowTransparentIsVisible, Converter={converters:BoolToVisibilityConverter}}"
                                     WindowChrome.IsHitTestVisibleInChrome="True"
                                     Style="{StaticResource ToogleTranparent}"/>
 
                                 <ToggleButton
                                     x:Name="PART_ALWAYSTOP"
+                                    IsChecked="{TemplateBinding Topmost}"
                                     Visibility="{TemplateBinding WindowOnTopIsVisible, Converter={converters:BoolToVisibilityConverter}}"
                                     WindowChrome.IsHitTestVisibleInChrome="True"
                                     Style="{StaticResource AllwaysTop}">
