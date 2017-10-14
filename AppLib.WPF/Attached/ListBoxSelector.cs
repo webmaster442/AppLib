@@ -13,7 +13,8 @@ namespace AppLib.WPF.Attached
 {
     /// <summary>
     /// Enables the selection inside of a ListBox using a seleciton rectangle.
-    /// </summary>
+    /// </summary> 
+    #warning ListBoxSelector is buggy in File Explorer
     public sealed class ListBoxSelector
     {
         /// <summary>Identifies the IsEnabled attached property.</summary>

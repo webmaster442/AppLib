@@ -204,7 +204,7 @@
             </Grid>
         </Expander>
         <ListBox
-            attached:ListBoxSelector.Enabled="True"
+            attached:ListBoxSelector.Enabled="False"
             x:Name="Files"
             Style="{StaticResource Grid}"
             Grid.Row="2"
