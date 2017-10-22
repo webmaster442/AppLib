@@ -188,6 +188,7 @@
     <Compile Include="Controls\TransitionHelpers.cs" />
     <Compile Include="Controls\VirtualizingWrapPanel.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Converters\EnumToCollectionConverter.cs" />
     <Compile Include="Converters\OperationConverter.cs" />
     <Compile Include="Converters\PercentOperationConverter.cs" />
     <Compile Include="Converters\VisibilityToBoolConverter.cs" />
