@@ -56,6 +56,22 @@ namespace AppLib.WPF.Controls
         public static readonly DependencyProperty ImagePlacementProperty =
             DependencyProperty.Register("ImagePlacement", typeof(ImagePlacement), typeof(ImageButton), new PropertyMetadata(ImagePlacement.Left));
 
+
+        /// <summary>
+        /// Content margin property
+        /// </summary>
+        public static readonly DependencyProperty ContentMarginProperty =
+            DependencyProperty.Register("ContentMargin", typeof(Thickness), typeof(ImageButton), new PropertyMetadata(new Thickness(0)));
+
+        /// <summary>
+        /// Content Margin
+        /// </summary>
+        public Thickness ContentMargin
+        {
+            get { return (Thickness)GetValue(ContentMarginProperty); }
+            set { SetValue(ContentMarginProperty, value); }
+        }
+
         /// <summary>
         /// Gets or sets the control image
         /// </summary>

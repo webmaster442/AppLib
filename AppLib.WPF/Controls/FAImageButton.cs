@@ -41,6 +41,21 @@ namespace AppLib.WPF.Controls
             DependencyProperty.Register("ImagePlacement", typeof(ImagePlacement), typeof(FaImageButton), new PropertyMetadata(ImagePlacement.Left));
 
         /// <summary>
+        /// Content margin property
+        /// </summary>
+        public static readonly DependencyProperty ContentMarginProperty =
+            DependencyProperty.Register("ContentMargin", typeof(Thickness), typeof(FaImageButton), new PropertyMetadata(new Thickness(0)));
+
+        /// <summary>
+        /// Content Margin
+        /// </summary>
+        public Thickness ContentMargin
+        {
+            get { return (Thickness)GetValue(ContentMarginProperty); }
+            set { SetValue(ContentMarginProperty, value); }
+        }
+
+        /// <summary>
         /// Gets or sets the icon size
         /// </summary>
         public double IconSize
