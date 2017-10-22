@@ -1,14 +1,14 @@
 ﻿using AppLib.WPF.Controls.ImageControls;
+using AppLib.WPF.Extensions;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using AppLib.WPF.Extensions;
-using System.Text;
 
 namespace AppLib.WPF.Controls
 {
@@ -25,7 +25,6 @@ namespace AppLib.WPF.Controls
 
         private object _dummyNode;
         private string _currentpath;
-        private bool _loaded;
 
         /// <summary>
         /// Creates a new instance of file explorer
@@ -35,8 +34,8 @@ namespace AppLib.WPF.Controls
             InitializeComponent();
             _dummyNode = null;
             _currentpath = null;
-            _loaded = false;
             Files.SelectionChanged += Files_SelectionChanged;
+            RenderHomeView();
         }
 
         private void Files_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -95,7 +94,6 @@ namespace AppLib.WPF.Controls
             RenderFolderView();
             RenderFileList();
             RenderPath(null);
-            _loaded = true;
         }
 
         #region Drive Bar
@@ -455,15 +453,6 @@ namespace AppLib.WPF.Controls
             RenderFolderView(drive);
             RenderFileList(_currentpath);
 
-        }
-
-        private void View_Checked(object sender, RoutedEventArgs e)
-        {
-            if (!_loaded) return;
-            if (ViewGrid.IsChecked == true)
-                Files.Style = this.FindResource("Grid") as Style;
-            else if (ViewList.IsChecked == true)
-                Files.Style = this.FindResource("List") as Style;
         }
         #endregion
 

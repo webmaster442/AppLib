@@ -13,8 +13,7 @@ namespace AppLib.WPF.Attached
 {
     /// <summary>
     /// Enables the selection inside of a ListBox using a seleciton rectangle.
-    /// </summary> 
-    #warning ListBoxSelector is buggy in File Explorer
+    /// </summary>
     public sealed class ListBoxSelector
     {
         /// <summary>Identifies the IsEnabled attached property.</summary>
@@ -102,40 +101,63 @@ namespace AppLib.WPF.Attached
             }
         }
 
+        // Finds the nearest child of the specified type, or null if one wasn't found.
+        private static T FindChild<T>(DependencyObject reference) where T : class
+        {
+            // Do a breadth first search.
+            var queue = new Queue<DependencyObject>();
+            queue.Enqueue(reference);
+            while (queue.Count > 0)
+            {
+                DependencyObject child = queue.Dequeue();
+                T obj = child as T;
+                if (obj != null)
+                {
+                    return obj;
+                }
+
+                // Add the children to the queue to search through later.
+                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(child); i++)
+                {
+                    queue.Enqueue(VisualTreeHelper.GetChild(child, i));
+                }
+            }
+            return null; // Not found.
+        }
+
         private bool Register()
         {
-            scrollContent = listBox.FindChild<ScrollContentPresenter>();
-            if (scrollContent != null)
+            this.scrollContent = FindChild<ScrollContentPresenter>(this.listBox);
+            if (this.scrollContent != null)
             {
-                autoScroller = new AutoScroller(this.listBox);
-                autoScroller.OffsetChanged += this.OnOffsetChanged;
+                this.autoScroller = new AutoScroller(this.listBox);
+                this.autoScroller.OffsetChanged += this.OnOffsetChanged;
 
-                selectionRect = new SelectionAdorner(this.scrollContent);
-                scrollContent.AdornerLayer.Add(this.selectionRect);
+                this.selectionRect = new SelectionAdorner(this.scrollContent);
+                this.scrollContent.AdornerLayer.Add(this.selectionRect);
 
-                selector = new ItemsControlSelector(this.listBox);
+                this.selector = new ItemsControlSelector(this.listBox);
 
                 // The ListBox intercepts the regular MouseLeftButtonDown event
                 // to do its selection processing, so we need to handle the
                 // PreviewMouseLeftButtonDown. The scroll content won't receive
                 // the message if we click on a blank area so use the ListBox.
-                listBox.PreviewMouseLeftButtonDown += this.OnPreviewMouseLeftButtonDown;
-                listBox.MouseDoubleClick += ListBox_MouseDoubleClick;
-                listBox.MouseLeftButtonUp += this.OnMouseLeftButtonUp;
-                listBox.MouseMove += this.OnMouseMove;
+                this.listBox.PreviewMouseLeftButtonDown += this.OnPreviewMouseLeftButtonDown;
+                this.listBox.MouseLeftButtonUp += this.OnMouseLeftButtonUp;
+                this.listBox.MouseMove += this.OnMouseMove;
             }
 
             // Return success if we found the ScrollContentPresenter
-            return (scrollContent != null);
+            return (this.scrollContent != null);
         }
 
         private void UnRegister()
         {
-            StopSelection();
+            this.StopSelection();
 
             // Remove all the event handlers so this instance can be reclaimed by the GC.
-            listBox.PreviewMouseLeftButtonDown -= this.OnPreviewMouseLeftButtonDown;
-            listBox.MouseLeftButtonUp -= this.OnMouseLeftButtonUp;
+            this.listBox.PreviewMouseLeftButtonDown -= this.OnPreviewMouseLeftButtonDown;
+            this.listBox.MouseLeftButtonUp -= this.OnMouseLeftButtonUp;
             this.listBox.MouseMove -= this.OnMouseMove;
 
             this.autoScroller.UnRegister();
@@ -174,11 +196,6 @@ namespace AppLib.WPF.Attached
                 this.autoScroller.Update(this.end);
                 this.UpdateSelection();
             }
-        }
-
-        private void ListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            this.mouseCaptured = false;
         }
 
         private void OnPreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -306,9 +323,9 @@ namespace AppLib.WPF.Attached
                 }
 
                 this.itemsControl = itemsControl;
-                this.scrollViewer = itemsControl.FindChild<ScrollViewer>();
+                this.scrollViewer = FindChild<ScrollViewer>(itemsControl);
                 this.scrollViewer.ScrollChanged += this.OnScrollChanged;
-                this.scrollContent = this.scrollViewer.FindChild<ScrollContentPresenter>();
+                this.scrollContent = FindChild<ScrollContentPresenter>(this.scrollViewer);
 
                 this.autoScroll.Tick += delegate { this.PreformScroll(); };
                 this.autoScroll.Interval = TimeSpan.FromMilliseconds(GetRepeatRate());
@@ -637,4 +654,5 @@ namespace AppLib.WPF.Attached
             }
         }
     }
+
 }
