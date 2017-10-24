@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Data;
@@ -19,10 +19,10 @@ namespace AppLib.WPF.Converters
                 enumItem.
                 GetType().
                 GetField(enumItem.ToString()).
-                GetCustomAttributes(typeof(DescriptionAttribute), false);
+                GetCustomAttributes(typeof(DisplayAttribute), false);
 
             if (nAttributes.Any())
-                return (nAttributes.First() as DescriptionAttribute).Description;
+                return (nAttributes.First() as DisplayAttribute).Name;
 
             TextInfo oTI = CultureInfo.CurrentCulture.TextInfo;
             return oTI.ToTitleCase(oTI.ToLower(enumItem.ToString().Replace("_", " ")));
@@ -42,7 +42,10 @@ namespace AppLib.WPF.Converters
             if (!t.IsEnum)
                 return null;
 
-            return Enum.GetValues(t).Cast<Enum>().Select((e) => GetDesciption(e)).ToList();
+            return Enum.GetValues(t)
+                .Cast<Enum>()
+                .Select((e) => GetDesciption(e))
+                .ToList();
         }
 
         /// <summary>
@@ -55,7 +58,16 @@ namespace AppLib.WPF.Converters
         /// <returns>null</returns>
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return null;
+            if (!targetType.IsEnum)
+                return null;
+
+            var input = value as string;
+
+            return Enum.GetValues(targetType)
+                .Cast<Enum>()
+                .Where(e => GetDesciption(e) == input)
+                .Select(e => Enum.Parse(targetType, e.ToString()))
+                .FirstOrDefault();
         }
     }
 }
