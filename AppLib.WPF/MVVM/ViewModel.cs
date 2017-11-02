@@ -31,6 +31,14 @@ namespace AppLib.WPF.MVVM
         }
 
         /// <summary>
+        /// Default constructor
+        /// </summary>
+        public ViewModel()
+        {
+
+        }
+
+        /// <summary>
         /// Creates a new instance of the ViewModel
         /// </summary>
         /// <param name="view">View to inject</param>

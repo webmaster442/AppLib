@@ -10,7 +10,7 @@
     /// <summary>
     /// A View that can be cloded
     /// </summary>
-    public interface ICloseableView<ViewModelType>: IView
+    public interface ICloseableView: IView
     {
         /// <summary>
         /// Close the view
