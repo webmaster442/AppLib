@@ -3,11 +3,11 @@ using System.Windows;
 
 namespace AppLib.WPF.MVVM
 {
+
     /// <summary>
     /// View Model Implementation class
     /// </summary>
-    /// <typeparam name="ViewType">View Type</typeparam>
-    public abstract class ViewModel<ViewType>: BindableBase where ViewType: IView
+    public abstract class ViewModel: BindableBase
     {
         /// <summary>
         /// Gets wheather the current viewmodel is in designer mode or not
@@ -20,6 +20,14 @@ namespace AppLib.WPF.MVVM
                 return (bool)DependencyPropertyDescriptor.FromProperty(prop, typeof(FrameworkElement)).Metadata.DefaultValue;
             }
         }
+    }
+
+    /// <summary>
+    /// View Model Implementation class
+    /// </summary>
+    /// <typeparam name="ViewType">View Type</typeparam>
+    public abstract class ViewModel<ViewType>: ViewModel where ViewType: IView
+    {
 
         /// <summary>
         /// View
@@ -28,14 +36,6 @@ namespace AppLib.WPF.MVVM
         {
             get;
             set;
-        }
-
-        /// <summary>
-        /// Default constructor
-        /// </summary>
-        public ViewModel()
-        {
-
         }
 
         /// <summary>

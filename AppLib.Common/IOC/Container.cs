@@ -8,6 +8,11 @@ namespace AppLib.Common.IOC
 	/// </summary>
 	public class Container : IContainer
 	{
+        /// <summary>
+        /// Singleton instance name
+        /// </summary>
+        public const string Singleton = "_Singleton_";
+
 		/// <summary>
 		/// Key: object containing the type of the object to resolve and the name of the instance (if any);
 		/// Value: delegate that creates the instance of the object mapped
