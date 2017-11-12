@@ -11,7 +11,7 @@ namespace AppLib.Common.IOC
         /// <summary>
         /// Singleton instance name
         /// </summary>
-        public const string Singleton = "_Singleton_";
+        private const string Singleton = "_Singleton_";
 
 		/// <summary>
 		/// Key: object containing the type of the object to resolve and the name of the instance (if any);
@@ -53,14 +53,13 @@ namespace AppLib.Common.IOC
 			Register(from, () => Activator.CreateInstance(to), instanceName);
 		}
 
-
-		/// <summary>
-		/// Register a type mapping
-		/// </summary>
-		/// <typeparam name="TFrom">Type that will be requested</typeparam>
-		/// <typeparam name="TTo">Type that will actually be returned</typeparam>
-		/// <param name="instanceName">Instance name (optional)</param>
-		public void Register<TFrom, TTo>(string instanceName = null) where TTo : TFrom
+        /// <summary>
+        /// Register a type mapping
+        /// </summary>
+        /// <typeparam name="TFrom">Type that will be requested</typeparam>
+        /// <typeparam name="TTo">Type that will actually be returned</typeparam>
+        /// <param name="instanceName">Instance name (optional)</param>
+        public void Register<TFrom, TTo>(string instanceName = null) where TTo : TFrom
 		{
 			Register(typeof(TFrom), typeof(TTo), instanceName);
 		}
@@ -192,5 +191,66 @@ namespace AppLib.Common.IOC
 			return string.Join(Environment.NewLine, _mappings.Keys);
 		}
 
-	}
+        /// <summary>
+        /// Register a Singleton type mapping
+        /// </summary>
+        /// <param name="from">Type that will be requested</param>
+        /// <param name="to">Type that will actually be returned</param>
+        public void RegisterSingleton(Type from, Type to)
+        {
+            Register(from, to, Container.Singleton);
+        }
+
+        /// <summary>
+        /// Register a Singleton type mapping
+        /// </summary>
+        /// <typeparam name="TFrom">Type that will be requested</typeparam>
+        /// <typeparam name="TTo">Type that will actually be returned</typeparam>
+        public void RegisterSingleton<TFrom, TTo>() where TTo : TFrom
+        {
+            Register<TFrom, TTo>(Container.Singleton);
+        }
+
+        /// <summary>
+        /// Register a Singleton type mapping
+        /// </summary>
+        /// <param name="type">Type that will be requested</param>
+        /// <param name="createInstanceDelegate">A delegate that will be used to 
+        /// create an instance of the requested object</param>
+        public void RegisterSingleton(Type type, Func<object> createInstanceDelegate)
+        {
+            Register(type, createInstanceDelegate, Container.Singleton);
+        }
+
+        /// <summary>
+        /// Register a Singleton type mapping
+        /// </summary>
+        /// <param name="type">Type that will be requested</param>
+        /// <param name="createInstanceDelegate">A delegate that will be used to 
+        /// create an instance of the requested object</param>
+        public void RegisterSingleton<T>(Func<T> createInstanceDelegate)
+        {
+            Register<T>(createInstanceDelegate, Container.Singleton);
+        }
+
+        /// <summary>
+        /// Resolve a signleton instance of the requested type from the container.
+        /// </summary>
+        /// <param name="type">Requested type</param>
+        /// <returns>The retrieved object</returns>
+        public object ResolveSingleton(Type type)
+        {
+            return Resolve(type, Container.Singleton);
+        }
+
+        /// <summary>
+        /// Resolve a signleton instance of the requested type from the container.
+        /// </summary>
+        /// <typeparam name="T">Requested type</typeparam>
+        /// <returns>The retrieved object</returns>
+        public T ResolveSingleton<T>()
+        {
+            return Resolve<T>(Container.Singleton);
+        }
+    }
 }
