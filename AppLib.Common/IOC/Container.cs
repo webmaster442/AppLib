@@ -3,55 +3,51 @@ using System.Collections.Generic;
 
 namespace AppLib.Common.IOC
 {
-	/// <summary>
-	/// IoC container
-	/// </summary>
-	public class Container : IContainer
-	{
+    /// <summary>
+    /// IoC container
+    /// </summary>
+    public class Container : IContainer
+    {
         /// <summary>
-        /// Singleton instance name
+        /// Key: object containing the type of the object to resolve and the name of the instance (if any);
+        /// Value: delegate that creates the instance of the object mapped
         /// </summary>
-        private const string Singleton = "_Singleton_";
+        private readonly Dictionary<MappingKey, Func<object>> _mappings;
+        private readonly Dictionary<MappingKey, object> _signgletons;
 
-		/// <summary>
-		/// Key: object containing the type of the object to resolve and the name of the instance (if any);
-		/// Value: delegate that creates the instance of the object mapped
-		/// </summary>
-		private readonly Dictionary<MappingKey, Func<object>> _mappings;
-
-
-		/// <summary>
-		/// Creates a new instance of <see cref="Container"/>
-		/// </summary>
-		public Container()
-		{
-			_mappings = new Dictionary<MappingKey, Func<object>>();
-		}
+        /// <summary>
+        /// Creates a new instance of <see cref="Container"/>
+        /// </summary>
+        public Container()
+        {
+            _mappings = new Dictionary<MappingKey, Func<object>>();
+            _signgletons = new Dictionary<MappingKey, object>();
+        }
 
 
-		/// <summary>
-		/// Register a type mapping
-		/// </summary>
-		/// <param name="from">Type that will be requested</param>
-		/// <param name="to">Type that will actually be returned</param>
-		/// <param name="instanceName">Instance name (optional)</param>
-		public void Register(Type from, Type to, string instanceName = null)
-		{
-			//if (from == null)
-			//	throw new ArgumentNullException("from");
+        /// <summary>
+        /// Register a type mapping
+        /// </summary>
+        /// <param name="from">Type that will be requested</param>
+        /// <param name="to">Type that will actually be returned</param>
+        /// <param name="instanceName">Instance name (optional)</param>
+        public void Register(Type from, Type to, string instanceName = null)
+        {
+            //if (from == null)
+            //	throw new ArgumentNullException("from");
 
-			if (to == null)
-				throw new ArgumentNullException("to");
+            if (to == null)
+                throw new ArgumentNullException("to");
 
-			if(!from.IsAssignableFrom(to))
-			{
-				const string errorMessageFormat = "Error trying to register the instance: '{0}' is not assignable from '{1}'";
-				throw new InvalidOperationException(string.Format(errorMessageFormat, from.FullName, to.FullName));
-			}
+            if(!from.IsAssignableFrom(to))
+            {
+                const string errorMessageFormat = "Error trying to register the instance: '{0}' is not assignable from '{1}'";
+                throw new InvalidOperationException(string.Format(errorMessageFormat, from.FullName, to.FullName));
+            }
 
 
-			Register(from, () => Activator.CreateInstance(to), instanceName);
-		}
+            Register(from, () => Activator.CreateInstance(to), instanceName);
+        }
 
         /// <summary>
         /// Register a type mapping
@@ -60,136 +56,136 @@ namespace AppLib.Common.IOC
         /// <typeparam name="TTo">Type that will actually be returned</typeparam>
         /// <param name="instanceName">Instance name (optional)</param>
         public void Register<TFrom, TTo>(string instanceName = null) where TTo : TFrom
-		{
-			Register(typeof(TFrom), typeof(TTo), instanceName);
-		}
+        {
+            Register(typeof(TFrom), typeof(TTo), instanceName);
+        }
 
 
-		/// <summary>
-		/// Register a type mapping
-		/// </summary>
-		/// <param name="type">Type that will be requested</param>
-		/// <param name="createInstanceDelegate">A delegate that will be used to 
-		/// create an instance of the requested object</param>
-		/// <param name="instanceName">Instance name (optional)</param>
-		public void Register(Type type, Func<object> createInstanceDelegate, string instanceName = null)
-		{
-			if (type == null)
-				throw new ArgumentNullException("type");
+        /// <summary>
+        /// Register a type mapping
+        /// </summary>
+        /// <param name="type">Type that will be requested</param>
+        /// <param name="createInstanceDelegate">A delegate that will be used to 
+        /// create an instance of the requested object</param>
+        /// <param name="instanceName">Instance name (optional)</param>
+        public void Register(Type type, Func<object> createInstanceDelegate, string instanceName = null)
+        {
+            if (type == null)
+                throw new ArgumentNullException("type");
 
-			if (createInstanceDelegate == null)
-				throw new ArgumentNullException("createInstanceDelegate");
-
-
-			var key = new MappingKey(type, instanceName);
-
-			if (_mappings.ContainsKey(key))
-			{
-				const string errorMessageFormat = "The requested mapping already exists - {0}";
-				throw new InvalidOperationException(string.Format(errorMessageFormat, key.ToTraceString()));
-			}
+            if (createInstanceDelegate == null)
+                throw new ArgumentNullException("createInstanceDelegate");
 
 
-			_mappings.Add(key, createInstanceDelegate);
-		}
+            var key = new MappingKey(type, instanceName);
+
+            if (_mappings.ContainsKey(key))
+            {
+                const string errorMessageFormat = "The requested mapping already exists - {0}";
+                throw new InvalidOperationException(string.Format(errorMessageFormat, key.ToTraceString()));
+            }
 
 
-		/// <summary>
-		/// Register a type mapping
-		/// </summary>
-		/// <typeparam name="T">Type that will be requested</typeparam>
-		/// <param name="createInstanceDelegate">A delegate that will be used to 
-		/// create an instance of the requested object</param>
-		/// <param name="instanceName">Instance name (optional)</param>
-		public void Register<T>(Func<T> createInstanceDelegate, string instanceName = null)
-		{
-			if (createInstanceDelegate == null)
-				throw new ArgumentNullException("createInstanceDelegate");
+            _mappings.Add(key, createInstanceDelegate);
+        }
 
 
-			Register(typeof(T), createInstanceDelegate as Func<object>, instanceName);
-		}
+        /// <summary>
+        /// Register a type mapping
+        /// </summary>
+        /// <typeparam name="T">Type that will be requested</typeparam>
+        /// <param name="createInstanceDelegate">A delegate that will be used to 
+        /// create an instance of the requested object</param>
+        /// <param name="instanceName">Instance name (optional)</param>
+        public void Register<T>(Func<T> createInstanceDelegate, string instanceName = null)
+        {
+            if (createInstanceDelegate == null)
+                throw new ArgumentNullException("createInstanceDelegate");
 
 
-		/// <summary>
-		/// Check if a particular type/instance name has been registered with the container
-		/// </summary>
-		/// <param name="type">Type to check registration for</param>
-		/// <param name="instanceName">Instance name (optional)</param>
-		/// <returns><c>true</c>if the type/instance name has been registered 
-		/// with the container; otherwise <c>false</c></returns>
-		public bool IsRegistered(Type type, string instanceName = null)
-		{
-			if (type == null)
-				throw new ArgumentNullException("type");
+            Register(typeof(T), createInstanceDelegate as Func<object>, instanceName);
+        }
 
 
-			var key = new MappingKey(type, instanceName);
-
-			return _mappings.ContainsKey(key);
-		}
-
-
-		/// <summary>
-		/// Check if a particular type/instance name has been registered with the container
-		/// </summary>
-		/// <typeparam name="T">Type to check registration for</typeparam>
-		/// <param name="instanceName">Instance name (optional)</param>
-		/// <returns><c>true</c>if the type/instance name has been registered 
-		/// with the container; otherwise <c>false</c></returns>
-		public bool IsRegistered<T>(string instanceName = null)
-		{
-			return IsRegistered(typeof(T), instanceName);
-		}
+        /// <summary>
+        /// Check if a particular type/instance name has been registered with the container
+        /// </summary>
+        /// <param name="type">Type to check registration for</param>
+        /// <param name="instanceName">Instance name (optional)</param>
+        /// <returns><c>true</c>if the type/instance name has been registered 
+        /// with the container; otherwise <c>false</c></returns>
+        public bool IsRegistered(Type type, string instanceName = null)
+        {
+            if (type == null)
+                throw new ArgumentNullException("type");
 
 
-		/// <summary>
-		/// Resolve an instance of the requested type from the container.
-		/// </summary>
-		/// <param name="type">Requested type</param>
-		/// <param name="instanceName">Instance name (optional)</param>
-		/// <returns>The retrieved object</returns>
-		public object Resolve(Type type, string instanceName = null)
-		{
-			var key = new MappingKey(type, instanceName);
-			Func<object> createInstance;
+            var key = new MappingKey(type, instanceName);
 
-			if (_mappings.TryGetValue(key, out createInstance))
-			{
-				var instance = createInstance();
-				return instance;
-			}
-
-			const string errorMessageFormat = "Could not find mapping for type '{0}'";
-			throw new InvalidOperationException(string.Format(errorMessageFormat, type.FullName));
-		}
+            return _mappings.ContainsKey(key);
+        }
 
 
-		/// <summary>
-		/// Resolve an instance of the requested type from the container.
-		/// </summary>
-		/// <typeparam name="T">Requested type</typeparam>
-		/// <param name="instanceName">Instance name (optional)</param>
-		/// <returns>The retrieved object</returns>
-		public T Resolve<T>(string instanceName = null)
-		{
-			object instance = Resolve(typeof(T), instanceName);
+        /// <summary>
+        /// Check if a particular type/instance name has been registered with the container
+        /// </summary>
+        /// <typeparam name="T">Type to check registration for</typeparam>
+        /// <param name="instanceName">Instance name (optional)</param>
+        /// <returns><c>true</c>if the type/instance name has been registered 
+        /// with the container; otherwise <c>false</c></returns>
+        public bool IsRegistered<T>(string instanceName = null)
+        {
+            return IsRegistered(typeof(T), instanceName);
+        }
 
-			return (T) instance;
-		}
+
+        /// <summary>
+        /// Resolve an instance of the requested type from the container.
+        /// </summary>
+        /// <param name="type">Requested type</param>
+        /// <param name="instanceName">Instance name (optional)</param>
+        /// <returns>The retrieved object</returns>
+        public object Resolve(Type type, string instanceName = null)
+        {
+            var key = new MappingKey(type, instanceName);
+            Func<object> createInstance;
+
+            if (_mappings.TryGetValue(key, out createInstance))
+            {
+                var instance = createInstance();
+                return instance;
+            }
+
+            const string errorMessageFormat = "Could not find mapping for type '{0}'";
+            throw new InvalidOperationException(string.Format(errorMessageFormat, type.FullName));
+        }
 
 
-		/// <summary>
-		/// For debugging purposes only
-		/// </summary>
-		/// <returns></returns>
-		public override string ToString()
-		{
-			if (_mappings == null)
-				return "No mappings";
+        /// <summary>
+        /// Resolve an instance of the requested type from the container.
+        /// </summary>
+        /// <typeparam name="T">Requested type</typeparam>
+        /// <param name="instanceName">Instance name (optional)</param>
+        /// <returns>The retrieved object</returns>
+        public T Resolve<T>(string instanceName = null)
+        {
+            object instance = Resolve(typeof(T), instanceName);
 
-			return string.Join(Environment.NewLine, _mappings.Keys);
-		}
+            return (T) instance;
+        }
+
+
+        /// <summary>
+        /// For debugging purposes only
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            if (_mappings == null)
+                return "No mappings";
+
+            return string.Join(Environment.NewLine, _mappings.Keys);
+        }
 
         /// <summary>
         /// Register a Singleton type mapping
@@ -198,59 +194,65 @@ namespace AppLib.Common.IOC
         /// <param name="to">Type that will actually be returned</param>
         public void RegisterSingleton(Type from, Type to)
         {
-            Register(from, to, Container.Singleton);
+            var key = new MappingKey(from, null);
+            _signgletons.Add(key, Activator.CreateInstance(to));
         }
 
         /// <summary>
-        /// Register a Singleton type mapping
+        /// Register a signleton object
         /// </summary>
         /// <typeparam name="TFrom">Type that will be requested</typeparam>
         /// <typeparam name="TTo">Type that will actually be returned</typeparam>
         public void RegisterSingleton<TFrom, TTo>() where TTo : TFrom
         {
-            Register<TFrom, TTo>(Container.Singleton);
+            RegisterSingleton(typeof(TFrom), typeof(TTo));
         }
 
         /// <summary>
-        /// Register a Singleton type mapping
+        /// Register a singleton object
         /// </summary>
         /// <param name="type">Type that will be requested</param>
-        /// <param name="createInstanceDelegate">A delegate that will be used to 
-        /// create an instance of the requested object</param>
+        /// <param name="createInstanceDelegate">Object Initializer function</param>
         public void RegisterSingleton(Type type, Func<object> createInstanceDelegate)
         {
-            Register(type, createInstanceDelegate, Container.Singleton);
+            var key = new MappingKey(type, null);
+            _signgletons.Add(key, createInstanceDelegate.Invoke());
         }
 
         /// <summary>
-        /// Register a Singleton type mapping
+        /// Register a singleton object
         /// </summary>
-        /// <param name="type">Type that will be requested</param>
-        /// <param name="createInstanceDelegate">A delegate that will be used to 
-        /// create an instance of the requested object</param>
+        /// <typeparam name="T">Type that will be requested</typeparam>
+        /// <param name="createInstanceDelegate">Object Initializer function</param>
         public void RegisterSingleton<T>(Func<T> createInstanceDelegate)
         {
-            Register<T>(createInstanceDelegate, Container.Singleton);
+            var key = new MappingKey(typeof(T), null);
+            _signgletons.Add(key, (object)createInstanceDelegate.Invoke());
         }
 
         /// <summary>
-        /// Resolve a signleton instance of the requested type from the container.
+        /// Resolve a Singleton object
         /// </summary>
         /// <param name="type">Requested type</param>
-        /// <returns>The retrieved object</returns>
+        /// <returns>Object matching requested type</returns>
         public object ResolveSingleton(Type type)
         {
-            return Resolve(type, Container.Singleton);
+            var key = new MappingKey(type, null);
+
+            if (_signgletons.ContainsKey(key))
+                return _signgletons[key];
+            else
+                return null;
         }
 
         /// <summary>
-        /// Resolve a signleton instance of the requested type from the container.
+        /// Resolve a Singleton object
         /// </summary>
         /// <typeparam name="T">Requested type</typeparam>
-        /// <returns>The retrieved object</returns>
+        /// <returns>Object matching Requested type</returns>
         public T ResolveSingleton<T>()
         {
-            return Resolve<T>(Container.Singleton);
+            return (T)ResolveSingleton(typeof(T));
         }
     }
 }
