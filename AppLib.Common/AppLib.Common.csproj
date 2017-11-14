@@ -69,6 +69,7 @@
     <Compile Include="IOC\Container.cs" />
     <Compile Include="IOC\IContainer.cs" />
     <Compile Include="IOC\MappingKey.cs" />
+    <Compile Include="IO\EventRaisingStreamWriter.cs" />
     <Compile Include="IO\RandomStream.cs" />
     <Compile Include="IO\ZeroStream.cs" />
     <Compile Include="KeyboardHook.cs" />
