@@ -20,22 +20,22 @@ namespace AppLib.WPF.Controls
         /// <summary>
         /// Dependency property for SelectedFile
         /// </summary>
-        public static DependencyProperty SeletedFileProperty = 
-            DependencyProperty.Register("SelectedFile", typeof(string), typeof(FileSelector));
+        public static readonly DependencyProperty SelectedFileProperty = 
+            DependencyProperty.Register("SelectedFile", typeof(string), typeof(FileSelector), new PropertyMetadata(""));
 
         /// <summary>
         /// Dependency property for Filter
         /// </summary>
-        public static DependencyProperty FilterProperty =
-            DependencyProperty.Register("Filter", typeof(string), typeof(FileSelector));
+        public static readonly DependencyProperty FilterProperty =
+            DependencyProperty.Register("Filter", typeof(string), typeof(FileSelector), new PropertyMetadata(""));
 
         /// <summary>
         /// Gets or sets the selected file
         /// </summary>
         public string SelectedFile
         {
-            get { return (string)GetValue(SeletedFileProperty); }
-            set { SetValue(SeletedFileProperty, value); }
+            get { return (string)GetValue(SelectedFileProperty); }
+            set { SetValue(SelectedFileProperty, value); }
         }
 
         /// <summary>

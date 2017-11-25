@@ -361,16 +361,8 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>pushd $(TargetDir)
-rmdir /s /q de
-rmdir /s /q es
-rmdir /s /q fr
-rmdir /s /q it
-rmdir /s /q ja
-rmdir /s /q ko
-rmdir /s /q ru
-rmdir /s /q zh-Hans
-rmdir /s /q zh-Hant</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
