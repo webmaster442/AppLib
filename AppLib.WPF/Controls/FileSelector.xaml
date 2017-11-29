@@ -16,7 +16,7 @@
         </Grid.ColumnDefinitions>
         <TextBox
             Margin="2"
-            Text="{Binding SelectedFile, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, UpdateSourceTrigger=PropertyChanged}"
+            Text="{Binding SelectedFile, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
             Grid.Column="0"/>
         <Button
             Grid.Column="1"
