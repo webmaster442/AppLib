@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
+using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AppLib.WPF.MVVM
 {
@@ -29,6 +27,16 @@ namespace AppLib.WPF.MVVM
         }
 
         /// <summary>
+        /// Fires the PropertyChanged event
+        /// </summary>
+        /// <param name="expression">Lambda expresion to get property</param>
+        protected virtual void OnPropertyChanged(Expression<Func<object>> expression)
+        {
+            string propertyName = PropertyName.For(expression);
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        /// <summary>
         /// Simplifies property setting code
         /// </summary>
         /// <typeparam name="T">type of proprerty</typeparam>
@@ -43,15 +51,6 @@ namespace AppLib.WPF.MVVM
             storage = value;
             OnPropertyChanged(propertyName);
             return true;
-        }
-
-        /// <summary>
-        /// Call the property changed event.
-        /// </summary>
-        /// <param name="propertyName">Property name. If not set, then caller member name will be used</param>
-        protected virtual void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            OnPropertyChanged(propertyName);
         }
     }
 }
