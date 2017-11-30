@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AppLib.WPF.MVVM
+namespace AppLib.MVVM
 {
     /// <summary>
     /// An object based delegate command

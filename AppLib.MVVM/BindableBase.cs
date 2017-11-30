@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 
-namespace AppLib.WPF.MVVM
+namespace AppLib.MVVM
 {
     /// <summary>
     /// A base class that implements the INotifyPropertyChanged interface, therefore making it simple to create

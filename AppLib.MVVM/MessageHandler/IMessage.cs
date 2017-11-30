@@ -1,4 +1,6 @@
-﻿namespace AppLib.Common.MessageHandler
+﻿using AppLib.Common;
+
+namespace AppLib.MVVM.MessageHandler
 {
     /// <summary>
     /// Message Target interface

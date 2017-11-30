@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Windows;
 
-namespace AppLib.WPF.MVVM
+namespace AppLib.MVVM
 {
 
     /// <summary>

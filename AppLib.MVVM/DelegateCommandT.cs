@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Input;
 using AppLib.WPF.Extensions;
 
-namespace AppLib.WPF.MVVM
+namespace AppLib.MVVM
 {
     /// <summary>
     /// A Delegate command implementation

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using AppLib.Common.Extensions;
+using AppLib.Common;
 
-namespace AppLib.Common.MessageHandler
+namespace AppLib.MVVM.MessageHandler
 {
     internal class Handler
     {

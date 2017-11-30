@@ -9,7 +9,7 @@ using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
-namespace AppLib.WPF.MVVM
+namespace AppLib.MVVM
 {
     /// <summary>
     /// A class implementing INotifyPropertyChanged and

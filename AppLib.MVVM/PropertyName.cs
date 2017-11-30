@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 
-namespace AppLib.WPF.MVVM
+namespace AppLib.MVVM
 {
     /// <summary>
     /// Gets property name using lambda expressions.

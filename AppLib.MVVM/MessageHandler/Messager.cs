@@ -1,9 +1,10 @@
-﻿using AppLib.Common.Extensions;
+﻿using AppLib.Common;
+using AppLib.Common.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AppLib.Common.MessageHandler
+namespace AppLib.MVVM.MessageHandler
 {
     /// <summary>
     /// A class implementing message sending

@@ -1,4 +1,4 @@
-﻿namespace AppLib.WPF.MVVM
+﻿namespace AppLib.MVVM
 {
     /// <summary>
     /// A generic View Interface
