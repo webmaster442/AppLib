@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System.Windows;
 using System.Windows.Controls;
+using System;
 
 namespace AppLib.WPF.Controls
 {
@@ -21,7 +22,13 @@ namespace AppLib.WPF.Controls
         /// Dependency property for SelectedFile
         /// </summary>
         public static readonly DependencyProperty SelectedFileProperty = 
-            DependencyProperty.Register("SelectedFile", typeof(string), typeof(FileSelector), new PropertyMetadata(""));
+            DependencyProperty.Register("SelectedFile", typeof(string), typeof(FileSelector), new PropertyMetadata("", SelectedFileChanged));
+
+        private static void SelectedFileChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            FileSelector fs = d as FileSelector;
+            fs.FileTextBox.Text = e.NewValue?.ToString();
+        }
 
         /// <summary>
         /// Dependency property for Filter
@@ -77,6 +84,11 @@ namespace AppLib.WPF.Controls
                     SelectedFile = openFileDialog.FileName;
                 }
             }
+        }
+
+        private void FileTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SelectedFile = FileTextBox.Text;
         }
     }
 }
