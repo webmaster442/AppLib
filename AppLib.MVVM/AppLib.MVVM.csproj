@@ -46,14 +46,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BindableBase.cs" />
-    <Compile Include="DelegateCommand.cs" />
-    <Compile Include="DelegateCommandT.cs" />
+    <Compile Include="Commands\Command.cs" />
+    <Compile Include="Commands\DelegateCommand.cs" />
+    <Compile Include="Commands\DelegateCommandT.cs" />
     <Compile Include="Interfaces.cs" />
     <Compile Include="MessageHandler\Handler.cs" />
     <Compile Include="MessageHandler\IMessage.cs" />
     <Compile Include="MessageHandler\Messager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyName.cs" />
+    <Compile Include="Commands\UpdateBindingOnExecute.cs" />
     <Compile Include="ValidatableBase.cs" />
     <Compile Include="ViewModel.cs" />
   </ItemGroup>
