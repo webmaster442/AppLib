@@ -28,7 +28,6 @@ namespace AppLib.MVVM
     /// <typeparam name="ViewType">View Type</typeparam>
     public abstract class ViewModel<ViewType>: ViewModel where ViewType: IView
     {
-
         /// <summary>
         /// View
         /// </summary>

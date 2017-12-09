@@ -124,6 +124,11 @@ namespace AppLib.WPF.Converters
             if (Directory.Exists(fullpath))
                 return ImageAwesome.CreateImageSource(FaIcons.fa_folder_o, new SolidColorBrush(Colors.Gold));
 
+            if (!File.Exists(fullpath))
+            {
+                return ImageAwesome.CreateImageSource(FaIcons.fa_exclamation, new SolidColorBrush(Colors.Red));
+            }
+
             var ext = Path.GetExtension(fullpath).ToLower();
 
             switch (ext)
