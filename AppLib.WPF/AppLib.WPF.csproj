@@ -135,6 +135,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attached\Browser.cs" />
     <Compile Include="Attached\Kinetic.cs" />
     <Compile Include="Attached\ListBoxSelector.cs" />
     <Compile Include="BindingValidators\CommonErrors.cs" />
