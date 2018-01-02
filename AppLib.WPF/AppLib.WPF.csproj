@@ -145,6 +145,7 @@
     <Compile Include="BindingValidators\IntValidaton.cs" />
     <Compile Include="BindingValidators\IPValidator.cs" />
     <Compile Include="BindingValidators\UrlValidator.cs" />
+    <Compile Include="BingPhotoOfDay.cs" />
     <Compile Include="Controls\AccordionPanel.cs" />
     <Compile Include="Controls\AlphaSelectControl.xaml.cs">
       <DependentUpon>AlphaSelectControl.xaml</DependentUpon>

@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Fraction.cs" />
     <Compile Include="Functions\Trigonometry.cs" />
+    <Compile Include="Functions\TrigonometryMode.cs" />
     <Compile Include="Matrix.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

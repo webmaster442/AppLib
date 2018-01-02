@@ -1,27 +1,7 @@
 ﻿using System;
 
-namespace ECalc.Maths
+namespace AppLib.Maths
 {
-
-    /// <summary>
-    /// Trigonometry modes
-    /// </summary>
-    public enum TrigMode
-    {
-        /// <summary>
-        /// Degrees
-        /// </summary>
-        DEG,
-        /// <summary>
-        /// Radians
-        /// </summary>
-        RAD,
-        /// <summary>
-        /// Gradians
-        /// </summary>
-        GRAD
-    }
-
     /// <summary>
     /// Trigonometrical functions
     /// </summary>
@@ -29,14 +9,14 @@ namespace ECalc.Maths
     {
         static Trigonometry()
         {
-            Mode = TrigMode.RAD;
+            Mode = TrigonometryMode.RAD;
         }
 
 
         /// <summary>
         /// Gets or sets the Trigonometry Mode
         /// </summary>
-        public static TrigMode Mode
+        public static TrigonometryMode Mode
         {
             get;
             set;
@@ -114,13 +94,13 @@ namespace ECalc.Maths
         {
             switch (Mode)
             {
-                case TrigMode.DEG:
+                case TrigonometryMode.DEG:
                     if ((Deg2Rad(value1) >= Math.PI) && ((Deg2Rad(value1) % Math.PI) == 0)) return 0;
                     else return Math.Sin(Deg2Rad(value1));
-                case TrigMode.GRAD:
+                case TrigonometryMode.GRAD:
                     if ((Grad2Rad(value1) >= Math.PI) && ((Grad2Rad(value1) % Math.PI) == 0)) return 0;
                     else return Math.Sin(Grad2Rad(value1));
-                case TrigMode.RAD:
+                case TrigonometryMode.RAD:
                     if ((value1 >= Math.PI) && ((value1 % Math.PI) == 0)) return 0;
                     else return Math.Sin(value1);
                 default:
@@ -137,13 +117,13 @@ namespace ECalc.Maths
         {
             switch (Mode)
             {
-                case TrigMode.DEG:
+                case TrigonometryMode.DEG:
                     if ((((Deg2Rad(value1) - (Math.PI / 2)) % Math.PI) == 0) || Deg2Rad(value1) == (Math.PI / 2)) return 0;
                     else return Math.Cos(Deg2Rad(value1));
-                case TrigMode.GRAD:
+                case TrigonometryMode.GRAD:
                     if ((((Grad2Rad(value1) - (Math.PI / 2)) % Math.PI) == 0) || Grad2Rad(value1) == (Math.PI / 2)) return 0;
                     else return Math.Cos(Grad2Rad(value1));
-                case TrigMode.RAD:
+                case TrigonometryMode.RAD:
                     if ((((value1 - (Math.PI / 2)) % Math.PI) == 0) || value1 == (Math.PI / 2)) return 0;
                     else return Math.Cos(value1);
                 default:
@@ -201,11 +181,11 @@ namespace ECalc.Maths
         {
             switch (Mode)
             {
-                case TrigMode.DEG:
+                case TrigonometryMode.DEG:
                     return Math.Sinh(Deg2Rad(value1));
-                case TrigMode.GRAD:
+                case TrigonometryMode.GRAD:
                     return Math.Sinh(Grad2Rad(value1));
-                case TrigMode.RAD:
+                case TrigonometryMode.RAD:
                     return Math.Sinh(value1);
                 default:
                     return double.NaN;
@@ -221,11 +201,11 @@ namespace ECalc.Maths
         {
             switch (Mode)
             {
-                case TrigMode.DEG:
+                case TrigonometryMode.DEG:
                     return Math.Cosh(Deg2Rad(value1));
-                case TrigMode.RAD:
+                case TrigonometryMode.RAD:
                     return Math.Cosh(Grad2Rad(value1));
-                case TrigMode.GRAD:
+                case TrigonometryMode.GRAD:
                     return Math.Cosh(value1);
                 default:
                     return double.NaN;
@@ -241,11 +221,11 @@ namespace ECalc.Maths
         {
             switch (Mode)
             {
-                case TrigMode.DEG:
+                case TrigonometryMode.DEG:
                     return Math.Tanh(Deg2Rad(value1));
-                case TrigMode.GRAD:
+                case TrigonometryMode.GRAD:
                     return Math.Tanh(Grad2Rad(value1));
-                case TrigMode.RAD:
+                case TrigonometryMode.RAD:
                     return Math.Tanh(value1);
                 default:
                     return double.NaN;
@@ -262,10 +242,10 @@ namespace ECalc.Maths
             double rad = value;
             switch (Mode)
             {
-                case TrigMode.DEG:
+                case TrigonometryMode.DEG:
                     rad = Deg2Rad(value);
                     break;
-                case TrigMode.GRAD:
+                case TrigonometryMode.GRAD:
                     rad = Grad2Rad(value);
                     break;
             }
@@ -281,11 +261,11 @@ namespace ECalc.Maths
         {
             switch (Mode)
             {
-                case TrigMode.DEG:
+                case TrigonometryMode.DEG:
                     return Rad2Deg(Math.Asin(value1));
-                case TrigMode.GRAD:
+                case TrigonometryMode.GRAD:
                     return Rad2Grad(Math.Asin(value1));
-                case TrigMode.RAD:
+                case TrigonometryMode.RAD:
                     return Math.Asin(value1);
                 default:
                     return double.NaN;
@@ -301,11 +281,11 @@ namespace ECalc.Maths
         {
             switch (Mode)
             {
-                case TrigMode.DEG:
+                case TrigonometryMode.DEG:
                     return Rad2Deg(Math.Acos(value1));
-                case TrigMode.GRAD:
+                case TrigonometryMode.GRAD:
                     return Rad2Grad(Math.Acos(value1));
-                case TrigMode.RAD:
+                case TrigonometryMode.RAD:
                     return Math.Acos(value1);
                 default:
                     return double.NaN;
@@ -321,11 +301,11 @@ namespace ECalc.Maths
         {
             switch (Mode)
             {
-                case TrigMode.DEG:
+                case TrigonometryMode.DEG:
                     return Rad2Deg(Math.Atan(value1));
-                case TrigMode.GRAD:
+                case TrigonometryMode.GRAD:
                     return Rad2Grad(Math.Atan(value1));
-                case TrigMode.RAD:
+                case TrigonometryMode.RAD:
                     return Math.Atan(value1);
                 default:
                     return double.NaN;
@@ -364,11 +344,11 @@ namespace ECalc.Maths
             double inrads = Math.Log(Math.Pow(Math.Pow(value1, 2) + 1, 0.5), Math.E);
             switch (Mode)
             {
-                case TrigMode.DEG:
+                case TrigonometryMode.DEG:
                     return Rad2Deg(inrads);
-                case TrigMode.GRAD:
+                case TrigonometryMode.GRAD:
                     return Rad2Grad(inrads);
-                case TrigMode.RAD:
+                case TrigonometryMode.RAD:
                     return inrads;
                 default:
                     return double.NaN;
@@ -385,11 +365,11 @@ namespace ECalc.Maths
             double inrads = Math.Log(Math.Pow(Math.Pow(value1, 2) - 1, 0.5), Math.E);
             switch (Mode)
             {
-                case TrigMode.DEG:
+                case TrigonometryMode.DEG:
                     return Rad2Deg(inrads);
-                case TrigMode.GRAD:
+                case TrigonometryMode.GRAD:
                     return Rad2Grad(inrads);
-                case TrigMode.RAD:
+                case TrigonometryMode.RAD:
                     return inrads;
                 default:
                     return double.NaN;
@@ -407,11 +387,11 @@ namespace ECalc.Maths
             double inrads = 0.5 * Math.Log((1 + value1 / 1 - value1), Math.E);
             switch (Mode)
             {
-                case TrigMode.DEG:
+                case TrigonometryMode.DEG:
                     return Rad2Deg(inrads);
-                case TrigMode.GRAD:
+                case TrigonometryMode.GRAD:
                     return Rad2Grad(inrads);
-                case TrigMode.RAD:
+                case TrigonometryMode.RAD:
                     return inrads;
                 default:
                     return double.NaN;
@@ -429,11 +409,11 @@ namespace ECalc.Maths
             double inrad = Math.Log((Math.Sqrt(-value * value + 1) + 1) / value);
             switch (Mode)
             {
-                case TrigMode.DEG:
+                case TrigonometryMode.DEG:
                     return Rad2Deg(inrad);
-                case TrigMode.GRAD:
+                case TrigonometryMode.GRAD:
                     return Rad2Grad(inrad);
-                case TrigMode.RAD:
+                case TrigonometryMode.RAD:
                     return inrad;
                 default:
                     return double.NaN;
@@ -461,11 +441,11 @@ namespace ECalc.Maths
             double inrad = Math.Log((Math.Sign(value) * Math.Sqrt(value * value + 1) + 1) / value);
             switch (Mode)
             {
-                case TrigMode.DEG:
+                case TrigonometryMode.DEG:
                     return Rad2Deg(inrad);
-                case TrigMode.GRAD:
+                case TrigonometryMode.GRAD:
                     return Rad2Grad(inrad);
-                case TrigMode.RAD:
+                case TrigonometryMode.RAD:
                     return inrad;
                 default:
                     return double.NaN;
@@ -482,10 +462,10 @@ namespace ECalc.Maths
             double rad = value;
             switch (Mode)
             {
-                case TrigMode.DEG:
+                case TrigonometryMode.DEG:
                     rad = Deg2Rad(value);
                     break;
-                case TrigMode.GRAD:
+                case TrigonometryMode.GRAD:
                     rad = Grad2Rad(value);
                     break;
             }
@@ -501,10 +481,10 @@ namespace ECalc.Maths
             double rad = value;
             switch (Mode)
             {
-                case TrigMode.DEG:
+                case TrigonometryMode.DEG:
                     rad = Deg2Rad(value);
                     break;
-                case TrigMode.GRAD:
+                case TrigonometryMode.GRAD:
                     rad = Grad2Rad(value);
                     break;
             }
