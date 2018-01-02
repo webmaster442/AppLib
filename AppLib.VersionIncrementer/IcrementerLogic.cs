@@ -131,7 +131,11 @@ namespace AppLib.VersionIncrementer
                 string Revision = Process(template.Revision, template, increment, out modified);
                 string Build = Process(template.Build, template, increment, out modified);
 
-                var output = ReadFile(assemblyinfotemplate);
+                var output = new StringBuilder("using System.Reflection;\n\n");
+                if (assemblyinfotemplate != "null")
+                {
+                    output = ReadFile(assemblyinfotemplate);
+                }
                 output.AppendFormat("[assembly: AssemblyVersion(\"{0}.{1}.{2}.{3}\")]\r\n", Main, Minor, Revision, Build);
                 output.AppendFormat("[assembly: AssemblyFileVersion(\"{0}.{1}.{2}.{3}\")]\r\n", Main, Minor, Revision, Build);
                 WriteToFile(outfile, output);
