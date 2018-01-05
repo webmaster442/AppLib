@@ -6,9 +6,10 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     d:DesignHeight="300"
     d:DesignWidth="300"
+    x:Name="ctrl"
     mc:Ignorable="d">
     <DataGrid
-        ItemsSource="{Binding Log.All}"
+        ItemsSource="{Binding ElementName=ctrl, Path=Log.All}"
         x:Name="LogViewerGrid"
         IsReadOnly="True"
         AutoGenerateColumns="True">
