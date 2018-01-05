@@ -8,12 +8,12 @@ namespace AppLib.WPF.Dialogs
     /// <summary>
     /// Serial Port configuration dialog
     /// </summary>
-    public partial class SerialPortDialog : Window
+    public partial class SerialPortControl : UserControl
     {
         /// <summary>
         /// Creates a new instance of SerialPortDialog
         /// </summary>
-        public SerialPortDialog()
+        public SerialPortControl()
         {
             InitializeComponent();
         }
@@ -62,16 +62,6 @@ namespace AppLib.WPF.Dialogs
             Handshake.SelectedIndex = 0;
             Parity.SelectedIndex = 0;
             StopBits.SelectedIndex = 1;
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            this.DialogResult = true;
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            this.DialogResult = false;
         }
 
         /// <summary>

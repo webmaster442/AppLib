@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows;
 using System.Windows.Controls;
 
 namespace AppLib.WPF.Dialogs
@@ -11,11 +10,27 @@ namespace AppLib.WPF.Dialogs
     /// try { //something; }
     /// catch (Exception ex) { ErrorDialog.Show(ex); }
     /// </example>
-    public sealed partial class ErrorDialog : Window
+    public sealed partial class ErrorControl : UserControl
     {
-        private ErrorDialog()
+        /// <summary>
+        /// Creates a new instance of ErrorControl
+        /// </summary>
+        public ErrorControl()
         {
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// Creates a new ErrorControl
+        /// </summary>
+        /// <param name="ex">Exception to show</param>
+        public ErrorControl(Exception ex): this()
+        {
+            ErrorText.Text = ex.Message;
+            StackTrace.Text = ex.StackTrace;
+            var nodes = RenderNode(ex);
+            InnerExceptions.Items.Add(nodes);
+            System.Media.SystemSounds.Exclamation.Play();
         }
 
         private static TreeViewItem RenderNode(Exception ex)
@@ -29,26 +44,6 @@ namespace AppLib.WPF.Dialogs
             }
 
             return node;
-        }
-
-        /// <summary>
-        /// Show an error dialog based on an exception
-        /// </summary>
-        /// <param name="ex">Exception, that provides data for the dialog</param>
-        public static bool? Show(Exception ex)
-        {
-            var dialog = new ErrorDialog();
-            dialog.ErrorText.Text = ex.Message;
-            dialog.StackTrace.Text = ex.StackTrace;
-            var nodes = RenderNode(ex);
-            dialog.InnerExceptions.Items.Add(nodes);
-            System.Media.SystemSounds.Exclamation.Play();
-            return dialog.ShowDialog();
-        }
-
-        private void BtnOk_Click(object sender, RoutedEventArgs e)
-        {
-            DialogResult = true;
         }
     }
 }

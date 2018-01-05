@@ -97,15 +97,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Dialogs\ErrorDialog.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Dialogs\SerialPortDialog.xaml">
+    <Page Include="Dialogs\BaseWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Dialogs\Updater.xaml">
+    <Page Include="Dialogs\ErrorControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\LogViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\SerialPortControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -209,16 +213,19 @@
     <Compile Include="Converters\StringInfoConverter.cs" />
     <Compile Include="Converters\TimePassedSinceConverter.cs" />
     <Compile Include="Converters\VisibilityConverter.cs" />
-    <Compile Include="Dialogs\UpdateInfo.cs" />
-    <Compile Include="Dialogs\Updater.xaml.cs">
-      <DependentUpon>Updater.xaml</DependentUpon>
+    <Compile Include="Dialogs\BaseWindow.xaml.cs">
+      <DependentUpon>BaseWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\Dialogs.cs" />
+    <Compile Include="Dialogs\LogViewer.xaml.cs">
+      <DependentUpon>LogViewer.xaml</DependentUpon>
     </Compile>
     <Compile Include="Extensions\VisualExtensions.cs" />
-    <Compile Include="Dialogs\ErrorDialog.xaml.cs">
-      <DependentUpon>ErrorDialog.xaml</DependentUpon>
+    <Compile Include="Dialogs\ErrorControl.xaml.cs">
+      <DependentUpon>ErrorControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\SerialPortDialog.xaml.cs">
-      <DependentUpon>SerialPortDialog.xaml</DependentUpon>
+    <Compile Include="Dialogs\SerialPortControl.xaml.cs">
+      <DependentUpon>SerialPortControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Extensions\ColorExtensions.cs" />
     <Compile Include="Extensions\DependencyObjectExtensions.cs" />
