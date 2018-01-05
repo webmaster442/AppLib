@@ -101,7 +101,7 @@ namespace AppLib.Common.Log
         /// <param name="ex">Exception data</param>
         public void Error(Exception ex)
         {
-            Add(new LogEntry(MessageLevel.Error, ex.Message, ex.Source, ex.StackTrace));
+            Add(new LogEntry(MessageLevel.Error, ex.Message, ex.Source, ex.Data, ex.StackTrace));
         }
 
         /// <summary>

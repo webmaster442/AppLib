@@ -13,23 +13,22 @@ namespace AppLib.Common.Log
         /// <summary>
         /// Log event Time stamp
         /// </summary>
-        [XmlAttribute("Date")]
-        public DateTime Date { get; }
+        public DateTime Date { get; set; }
 
         /// <summary>
         /// Message level
         /// </summary>
-        public MessageLevel Level { get; }
+        public MessageLevel Level { get; set; }
 
         /// <summary>
         /// Main log Message
         /// </summary>
-        public string Message { get; }
+        public string Message { get; set; }
 
         /// <summary>
         /// Additional related information
         /// </summary>
-        public List<string> AdditionalInfo { get; }
+        public List<string> AdditionalInfo { get; set; }
 
         /// <summary>
         /// Creates a new instance of Log Entry
