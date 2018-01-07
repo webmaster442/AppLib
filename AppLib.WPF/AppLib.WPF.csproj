@@ -195,6 +195,7 @@
     <Compile Include="Controls\TransitionHelpers.cs" />
     <Compile Include="Controls\VirtualizingWrapPanel.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Converters\EnumToBoolConverter.cs" />
     <Compile Include="Converters\EnumToCollectionConverter.cs" />
     <Compile Include="Converters\FontPt2PxConverter.cs" />
     <Compile Include="Converters\OperationConverter.cs" />
