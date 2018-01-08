@@ -11,7 +11,8 @@ namespace AppLib.MVVM
         /// Creates a new instance of DelegateCommand
         /// </summary>
         /// <param name="action">Action to perform</param>
-        public DelegateCommand(Action<object> action) : base(action)
+        internal DelegateCommand(Action<object> action) : 
+            base(action)
         {
         }
 
@@ -20,7 +21,8 @@ namespace AppLib.MVVM
         /// </summary>
         /// <param name="action">Action to perform</param>
         /// <param name="canExecute">Can Execute function</param>
-        public DelegateCommand(Action<object> action, Predicate<object> canExecute) : base(action, canExecute)
+        internal DelegateCommand(Action<object> action, Predicate<object> canExecute) :
+            base(action, canExecute)
         {
         }
 
@@ -30,8 +32,17 @@ namespace AppLib.MVVM
         /// <param name="action">Action to execute</param>
         /// <param name="canExecute">Can Execute function</param>
         /// <param name="state">Update binding on execute state</param>
-        public DelegateCommand(Action<object> action, Predicate<object> canExecute, UpdateBindingOnExecute state) : base(action, canExecute, state)
+        internal DelegateCommand(Action<object> action, Predicate<object> canExecute, UpdateBindingOnExecute state) : 
+            base(action, canExecute, state)
         {
+        }
+
+        /// <summary>
+        /// Parameter can be null, so execute the command
+        /// </summary>
+        protected override bool ExecuteWithNullParameter
+        {
+            get { return true; }
         }
     }
 }

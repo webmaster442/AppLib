@@ -40,19 +40,27 @@ namespace AppLib.MVVM
             set;
         }
 
+        /// <summary>
+        /// Execute if parameter is null?
+        /// </summary>
+        protected virtual bool ExecuteWithNullParameter
+        {
+            get { return false; }
+        }
+
 
         /// <summary>
         /// Creates a new Instance of DelegateCommand
         /// </summary>
         /// <param name="action">Acton to do</param>
-        public DelegateCommand(Action<T> action) : this(action, null) { }
+        internal DelegateCommand(Action<T> action) : this(action, null) { }
 
         /// <summary>
         /// Creates a new Instance of DelegateCommand
         /// </summary>
         /// <param name="action">Acton to do</param>
         /// <param name="canExecute">canExecute predicate</param>
-        public DelegateCommand(Action<T> action, Predicate<T> canExecute)
+        internal DelegateCommand(Action<T> action, Predicate<T> canExecute)
         {
             _action = action;
             _canExecute = canExecute;
@@ -64,7 +72,7 @@ namespace AppLib.MVVM
         /// <param name="action">Acton to do</param>
         /// <param name="canExecute">canExecute predicate</param>
         /// <param name="state"></param>
-        public DelegateCommand(Action<T> action, Predicate<T> canExecute, UpdateBindingOnExecute state)
+        internal DelegateCommand(Action<T> action, Predicate<T> canExecute, UpdateBindingOnExecute state)
         {
             _action = action;
             _canExecute = canExecute;
@@ -77,6 +85,10 @@ namespace AppLib.MVVM
         /// <returns>true if this command can be executed; otherwise, false.</returns>
         public bool CanExecute(object parameter)
         {
+            if (parameter == null && !ExecuteWithNullParameter)
+            {
+                return false;
+            }
             if (_canExecute == null) return true;
             return _canExecute((T)parameter);
         }
@@ -87,6 +99,11 @@ namespace AppLib.MVVM
         /// <param name="parameter">Data used by the command. If the command does not require data to be passed, this object can be set to null.</param>
         public void Execute(object parameter)
         {
+            if (!ExecuteWithNullParameter && parameter == null)
+            {
+                return;
+            }
+
             var focused = Keyboard.FocusedElement as UIElement;
 
             switch (UpdateOnExecute)
