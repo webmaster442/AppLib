@@ -128,6 +128,21 @@ namespace AppLib.Common.Extensions
         }
 
         /// <summary>
+        /// Flatten Dictionary and return all values indepentent of key
+        /// </summary>
+        /// <typeparam name="Tkey">Key type</typeparam>
+        /// <typeparam name="TValue">Value type</typeparam>
+        /// <param name="dictionary">Dictionary to flatten</param>
+        /// <returns>all values indepentent of key</returns>
+        public static IEnumerable<TValue> AllValues<Tkey, TValue>(this Dictionary<Tkey, TValue> dictionary)
+        {
+            foreach (var keyvaluePair in dictionary)
+            {
+                yield return keyvaluePair.Value;
+            }
+        }
+
+        /// <summary>
         /// Finds the first index of the element, that is matched by the rule.
         /// </summary>
         /// <typeparam name="T">Type of items</typeparam>
