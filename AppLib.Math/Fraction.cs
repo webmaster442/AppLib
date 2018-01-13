@@ -82,7 +82,7 @@ namespace AppLib.Maths
             {
                 //whole number
                 _numerator = (long)value;
-                _denominator = 0;
+                _denominator = 1;
             }
             else
             {
@@ -107,6 +107,7 @@ namespace AppLib.Maths
                 }
                 _numerator = (long)Math.Round(dTemp);
                 _denominator = iMultiple;
+                Reduce();
             }
         }
 

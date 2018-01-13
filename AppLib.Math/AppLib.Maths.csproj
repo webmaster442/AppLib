@@ -44,10 +44,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Fraction.cs" />
+    <Compile Include="Functions\Engineering.cs" />
+    <Compile Include="Functions\GeneralFunctions.cs" />
     <Compile Include="Functions\Trigonometry.cs" />
     <Compile Include="Functions\TrigonometryMode.cs" />
+    <Compile Include="Functions\Variations.cs" />
     <Compile Include="Matrix.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TypeFunctions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
