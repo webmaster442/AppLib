@@ -457,6 +457,13 @@ namespace AppLib.Common.PInvoke
         [DllImport("user32.dll", SetLastError = true)]
         public static extern bool UnregisterHotKey(IntPtr hWnd, int id);
 
+        /// <summary>
+        /// Lock workstation
+        /// </summary>
+        /// <returns>true, if lock was successfull</returns>
+        [DllImport("user32.dll")]
+        public static extern bool LockWorkStation();
+
         [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool SetForegroundWindow(IntPtr hWnd);
