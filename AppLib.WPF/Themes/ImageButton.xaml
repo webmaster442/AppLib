@@ -5,39 +5,33 @@
     xmlns:converters="clr-namespace:AppLib.WPF.Converters"
     xmlns:images="clr-namespace:AppLib.WPF.Controls.ImageControls">
 
-    <controls:VisibilityConvertor x:Key="VisibilityConvertor" />
+    <controls:VisibilityConvertor
+        x:Key="VisibilityConvertor" />
 
     <Style
         BasedOn="{StaticResource {x:Type Button}}"
         TargetType="{x:Type controls:ImageButton}">
-        <Setter Property="ContentMargin" Value="5,0"/>
+        <Setter Property="ContentMargin" Value="5,0" />
         <Style.Triggers>
             <Trigger Property="ImagePlacement" Value="Left">
                 <Setter Property="Template">
                     <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type controls:ImageButton}">
-                            <Button
-                                Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                Command="{TemplateBinding Command}"
-                                CommandParameter="{TemplateBinding CommandParameter}"
-                                CommandTarget="{TemplateBinding CommandTarget}"
-                                FontWeight="{TemplateBinding FontWeight}">
-                                <StackPanel Orientation="Horizontal">
-                                    <Image
-                                        Width="{TemplateBinding ImageWidth}"
-                                        Height="{TemplateBinding ImageHeight}"
-                                        VerticalAlignment="Center"
-                                        Source="{TemplateBinding Image}"
-                                        Visibility="{TemplateBinding Image,
-                                                                     Converter={StaticResource VisibilityConvertor}}" />
-                                    <TextBlock
-                                        Margin="{TemplateBinding ContentMargin}"
-                                        VerticalAlignment="Center"
-                                        Text="{TemplateBinding Content}" />
-                                </StackPanel>
-                            </Button>
+                        <ControlTemplate
+                            TargetType="{x:Type controls:ImageButton}">
+                            <StackPanel
+                                Orientation="Horizontal">
+                                <Image
+                                    Width="{TemplateBinding ImageWidth}"
+                                    Height="{TemplateBinding ImageHeight}"
+                                    VerticalAlignment="Center"
+                                    Source="{TemplateBinding Image}"
+                                    Visibility="{TemplateBinding Image,
+                                                                 Converter={StaticResource VisibilityConvertor}}" />
+                                <TextBlock
+                                    Margin="{TemplateBinding ContentMargin}"
+                                    VerticalAlignment="Center"
+                                    Text="{TemplateBinding Content}" />
+                            </StackPanel>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
@@ -45,28 +39,22 @@
             <Trigger Property="ImagePlacement" Value="Right">
                 <Setter Property="Template">
                     <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type controls:ImageButton}">
-                            <Button
-                                Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                Command="{TemplateBinding Command}"
-                                CommandParameter="{TemplateBinding CommandParameter}"
-                                CommandTarget="{TemplateBinding CommandTarget}"
-                                FontWeight="{TemplateBinding FontWeight}">
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock
-                                        VerticalAlignment="Center"
-                                        Text="{TemplateBinding Content}"
-                                        Margin="{TemplateBinding ContentMargin}"/>
-                                    <Image
-                                        Width="{TemplateBinding ImageWidth}"
-                                        Height="{TemplateBinding ImageHeight}"
-                                        VerticalAlignment="Center"
-                                        Source="{TemplateBinding Image}"
-                                        Visibility="{TemplateBinding Image, Converter={StaticResource VisibilityConvertor}}" />
-                                </StackPanel>
-                            </Button>
+                        <ControlTemplate
+                            TargetType="{x:Type controls:ImageButton}">
+                            <StackPanel
+                                Orientation="Horizontal">
+                                <TextBlock
+                                    Margin="{TemplateBinding ContentMargin}"
+                                    VerticalAlignment="Center"
+                                    Text="{TemplateBinding Content}" />
+                                <Image
+                                    Width="{TemplateBinding ImageWidth}"
+                                    Height="{TemplateBinding ImageHeight}"
+                                    VerticalAlignment="Center"
+                                    Source="{TemplateBinding Image}"
+                                    Visibility="{TemplateBinding Image,
+                                                                 Converter={StaticResource VisibilityConvertor}}" />
+                            </StackPanel>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
@@ -77,19 +65,21 @@
     <Style
         BasedOn="{StaticResource {x:Type Button}}"
         TargetType="{x:Type controls:FaImageButton}">
-        <Setter Property="ContentMargin" Value="5,0"/>
+        <Setter Property="ContentMargin" Value="5,0" />
         <Style.Triggers>
             <Trigger Property="ImagePlacement" Value="Left">
                 <Setter Property="Template">
                     <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type controls:FaImageButton}">
+                        <ControlTemplate
+                            TargetType="{x:Type controls:FaImageButton}">
                             <Button
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 Command="{TemplateBinding Command}"
                                 FontWeight="{TemplateBinding FontWeight}">
-                                <StackPanel Orientation="Horizontal">
+                                <StackPanel
+                                    Orientation="Horizontal">
                                     <images:ImageAwesome
                                         Width="{TemplateBinding IconSize}"
                                         Height="{TemplateBinding IconSize}"
@@ -109,14 +99,16 @@
             <Trigger Property="ImagePlacement" Value="Right">
                 <Setter Property="Template">
                     <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type controls:FaImageButton}">
+                        <ControlTemplate
+                            TargetType="{x:Type controls:FaImageButton}">
                             <Button
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 Command="{TemplateBinding Command}"
                                 FontWeight="{TemplateBinding FontWeight}">
-                                <StackPanel Orientation="Horizontal">
+                                <StackPanel
+                                    Orientation="Horizontal">
                                     <TextBlock
                                         Margin="{TemplateBinding ContentMargin}"
                                         VerticalAlignment="Center"
