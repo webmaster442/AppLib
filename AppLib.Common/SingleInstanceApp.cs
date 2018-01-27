@@ -79,7 +79,10 @@ namespace AppLib.Common
             return true;
         }
 
-        private void SubmitParameters()
+        /// <summary>
+        /// Submints recieved command line parameters to an allready running instance of the app
+        /// </summary>
+        public void SubmitParameters()
         {
             var pars = Environment.GetCommandLineArgs();
             StringBuilder sb = new StringBuilder();
