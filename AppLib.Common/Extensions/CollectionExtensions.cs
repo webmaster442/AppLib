@@ -128,6 +128,21 @@ namespace AppLib.Common.Extensions
         }
 
         /// <summary>
+        /// Get a value from a dictionary. If value is not present, then the fallback value is returned
+        /// </summary>
+        /// <typeparam name="Tkey">key type</typeparam>
+        /// <typeparam name="TValue">value type</typeparam>
+        /// <param name="dictionary">dictionary to add to or update</param>
+        /// <param name="key">key parameter</param>
+        /// <param name="fallback">fallback value</param>
+        /// <returns></returns>
+        public static TValue GetValueOrFallback<Tkey, TValue>(Dictionary<Tkey, TValue> dictionary, Tkey key, TValue fallback)
+        {
+            if (dictionary.ContainsKey(key)) return dictionary[key];
+            else return fallback;
+        }
+
+        /// <summary>
         /// Flatten Dictionary and return all values indepentent of key
         /// </summary>
         /// <typeparam name="Tkey">Key type</typeparam>
