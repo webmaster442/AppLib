@@ -51,8 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Console\BareParametersParser.cs" />
-    <Compile Include="Console\CharContext.cs" />
+    <Compile Include="Console\ParameterParser.cs" />
     <Compile Include="Console\RGBColor.cs" />
     <Compile Include="Console\Vt100.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
@@ -80,8 +79,6 @@
     <Compile Include="UId.cs" />
     <Compile Include="INI\IniFile.cs" />
     <Compile Include="INI\IniKey.cs" />
-    <Compile Include="Console\Parameter.cs" />
-    <Compile Include="Console\ParametersParser.cs" />
     <Compile Include="PInvoke\DwmApi.cs" />
     <Compile Include="PInvoke\DWMTypes.cs" />
     <Compile Include="PInvoke\Kernel32.cs" />
