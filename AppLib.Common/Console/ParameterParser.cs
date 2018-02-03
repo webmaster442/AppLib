@@ -17,17 +17,25 @@ namespace AppLib.Common.Console
         {
             char[] parmChars = commandLine.ToCharArray();
             bool inQuote = false;
-            for (int index = 0; index < parmChars.Length; index++)
+            for (int i = 0; i < parmChars.Length; i++)
             {
-                if (parmChars[index] == '"')
+                if (parmChars[i] == '"')
                     inQuote = !inQuote;
-                if (!inQuote && parmChars[index] == ' ')
-                    parmChars[index] = '\n';
+                if (!inQuote && parmChars[i] == ' ')
+                    parmChars[i] = '\n';
             }
-            return (new string(parmChars)).Split('\n');
+            var argumentsArray = (new string(parmChars)).Split('\n');
+            for (int i = 0; i < argumentsArray.Length; i++)
+            {
+                if (argumentsArray[i].StartsWith("\"") && argumentsArray[i].EndsWith("\""))
+                {
+                    argumentsArray[i] = argumentsArray[i].Substring(1, argumentsArray[i].Length - 2);
+                }
+            }
+            return argumentsArray;
         }
 
-        private void Process()
+        private void Process(bool notincludeProgramname)
         {
             int i = 0;
             int increment = 0;
@@ -52,9 +60,17 @@ namespace AppLib.Common.Console
                 }
                 else
                 {
-                    //file
-                    _Files.Add(current);
-                    increment = 1;
+                    if (notincludeProgramname && i == 0)
+                    {
+                        //skip program name
+                        increment = 1;
+                    }
+                    else
+                    {
+                        //file
+                        _Files.Add(current);
+                        increment = 1;
+                    }
                 }
 
                 i += increment;
@@ -80,26 +96,28 @@ namespace AppLib.Common.Console
         /// Creates a new command line parameter parser
         /// </summary>
         /// <param name="commandLine">command line string</param>
+        /// <param name="notincludeProgramname">do not include program name in files</param>
         /// <param name="lowercase">force lowecasing arguments</param>
-        public ParameterParser(string commandLine, bool lowercase = true): this()
+        public ParameterParser(string commandLine, bool notincludeProgramname = false, bool lowercase = true): this()
         {
             if (lowercase)
                 _CommandLineParts = ParseArguments(commandLine.ToLower());
             else
                 _CommandLineParts = ParseArguments(commandLine);
 
-            Process();
+            Process(notincludeProgramname);
         }
 
         /// <summary>
         /// Create a parameter parser from an allready tokenized input
         /// </summary>
         /// <param name="arguments">tokenized input</param>
-        public ParameterParser(string[] arguments) : this()
+        /// <param name="notincludeProgramname">do not include program name in files</param>
+        public ParameterParser(string[] arguments, bool notincludeProgramname = false) : this()
         {
             _CommandLineParts = arguments;
 
-            Process();
+            Process(notincludeProgramname);
         }
 
         /// <summary>
