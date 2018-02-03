@@ -22,6 +22,44 @@ namespace AppLib.Common
             _data = BitConverter.ToUInt64(buffer, 0);
         }
 
+        /// <summary>
+        /// Creates a new instance of UID
+        /// </summary>
+        /// <param name="value">intialization value</param>
+        public UId(int value)
+        {
+            _data = Convert.ToUInt64(value);
+        }
+
+        /// <summary>
+        /// Creates a new instance of UID
+        /// </summary>
+        /// <param name="value">intialization value</param>
+        public UId(uint value)
+        {
+            _data = Convert.ToUInt64(value);
+        }
+
+
+        /// <summary>
+        /// Creates a new instance of UID
+        /// </summary>
+        /// <param name="value">intialization value</param>
+        public UId(long value)
+        {
+            _data = Convert.ToUInt64(value);
+        }
+
+
+        /// <summary>
+        /// Creates a new instance of UID
+        /// </summary>
+        /// <param name="value">intialization value</param>
+        public UId(ulong value)
+        {
+            _data = value;
+        }
+
 
         /// <summary>
         /// Returns a string that represents the current object.
