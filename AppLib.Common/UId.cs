@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Security.Cryptography;
 
 namespace AppLib.Common
@@ -23,43 +24,13 @@ namespace AppLib.Common
         }
 
         /// <summary>
-        /// Creates a new instance of UID
+        /// Creates a new instance of UID based on a value
         /// </summary>
-        /// <param name="value">intialization value</param>
-        public UId(int value)
-        {
-            _data = Convert.ToUInt64(value);
-        }
-
-        /// <summary>
-        /// Creates a new instance of UID
-        /// </summary>
-        /// <param name="value">intialization value</param>
-        public UId(uint value)
-        {
-            _data = Convert.ToUInt64(value);
-        }
-
-
-        /// <summary>
-        /// Creates a new instance of UID
-        /// </summary>
-        /// <param name="value">intialization value</param>
-        public UId(long value)
-        {
-            _data = Convert.ToUInt64(value);
-        }
-
-
-        /// <summary>
-        /// Creates a new instance of UID
-        /// </summary>
-        /// <param name="value">intialization value</param>
+        /// <param name="value">value it initialize with</param>
         public UId(ulong value)
         {
             _data = value;
         }
-
 
         /// <summary>
         /// Returns a string that represents the current object.
@@ -68,47 +39,6 @@ namespace AppLib.Common
         public override string ToString()
         {
             return _data.ToString("X16");
-        }
-
-        /// <summary>
-        /// Determines whether the specified object is equal to the current object.
-        /// </summary>
-        /// <param name="obj">The object to compare with the current object.</param>
-        /// <returns>true if the specified object is equal to the current object; otherwise, false.</returns>
-        public override bool Equals(object obj)
-        {
-            var other = obj as UId;
-            if (other == null) return false;
-            else return Equals(other);
-        }
-
-        /// <summary>
-        /// Computes the hash of the current UID
-        /// </summary>
-        /// <returns>A hash code for the current object.</returns>
-        public override int GetHashCode()
-        {
-                return _data.GetHashCode();
-        }
-
-        /// <summary>
-        /// Determines whether the specified object is equal to the current object.
-        /// </summary>
-        /// <param name="other">The object to compare with the current object.</param>
-        /// <returns>true if the specified object is equal to the current object; otherwise, false.</returns>
-        public bool Equals(UId other)
-        {
-            return other._data == _data;
-        }
-
-        /// <summary>
-        /// Compares the current instance with another object of the same type and returns an integer that indicates whether the current instance precedes, follows, or occurs in the same position in the sort order as the other object.
-        /// </summary>
-        /// <param name="other">An object to compare with this instance.</param>
-        /// <returns>A value that indicates the relative order of the objects being compared.</returns>
-        public int CompareTo(UId other)
-        {
-            return _data.CompareTo(other._data);
         }
 
         /// <summary>
@@ -123,74 +53,43 @@ namespace AppLib.Common
         }
 
         /// <summary>
-        /// Compares two UID objects equality
+        /// Determines whether the specified object is equal to the current object.
         /// </summary>
-        /// <param name="One">First UID</param>
-        /// <param name="other">Second UID</param>
-        /// <returns>true, if the two instances are identical, false otherwise</returns>
-        public static bool operator == (UId One, UId other)
+        /// <param name="obj">The object to compare with the current object.</param>
+        /// <returns>true if the specified object is equal to the current object; otherwise, false.</returns>
+        public override bool Equals(object obj)
         {
-            return One.Equals(other);
+            return Equals(obj as UId);
         }
 
         /// <summary>
-        /// Compares two UID objects not equality
+        /// Determines whether the specified object is equal to the current object.
         /// </summary>
-        /// <param name="One">First UID</param>
-        /// <param name="other">Second UID</param>
-        /// <returns>true, if the two instances are not identical, false otherwise</returns>
-        public static bool operator !=(UId One, UId other)
+        /// <param name="other">The object to compare with the current object.</param>
+        /// <returns>true if the specified object is equal to the current object; otherwise, false.</returns>
+        public bool Equals(UId other)
         {
-            return !One.Equals(other);
+            return other != null &&
+                   _data == other._data;
         }
 
         /// <summary>
-        /// returns true if the first operand is less than the second, false otherwise.
+        /// Computes the hash of the current UID
         /// </summary>
-        /// <param name="one">First UID</param>
-        /// <param name="other">Second UID</param>
-        /// <returns>true if the first operand is less than the second, false otherwise.</returns>
-        public static bool operator < (UId one, UId other)
+        /// <returns>A hash code for the current object.</returns>
+        public override int GetHashCode()
         {
-            return one.CompareTo(other) == -1;
+            return -1945990370 + _data.GetHashCode();
         }
 
         /// <summary>
-        /// returns true if the first operand is greater than the second, false otherwise
+        /// Compares the current instance with another object of the same type and returns an integer that indicates whether the current instance precedes, follows, or occurs in the same position in the sort order as the other object.
         /// </summary>
-        /// <param name="one">First UID</param>
-        /// <param name="other">Second UID</param>
-        /// <returns>true if the first operand is greater than the second, false otherwise</returns>
-        public static bool operator >(UId one, UId other)
+        /// <param name="other">An object to compare with this instance.</param>
+        /// <returns>A value that indicates the relative order of the objects being compared.</returns>
+        public int CompareTo(UId other)
         {
-            return one.CompareTo(other) == 1;
-        }
-
-        /// <summary>
-        /// Explicitly converts an int to a uid
-        /// </summary>
-        /// <param name="value">value to convert</param>
-        public static explicit operator UId (int value)
-        {
-            return new UId(value);
-        }
-
-        /// <summary>
-        /// Explicitly converts an uint to a uid
-        /// </summary>
-        /// <param name="value">value to convert</param>
-        public static explicit operator UId(uint value)
-        {
-            return new UId(value);
-        }
-
-        /// <summary>
-        /// Explicitly converts a long to a uid
-        /// </summary>
-        /// <param name="value">value to convert</param>
-        public static explicit operator UId(long value)
-        {
-            return new UId(value);
+            return _data.CompareTo(other._data);
         }
 
         /// <summary>
@@ -200,6 +99,29 @@ namespace AppLib.Common
         public static explicit operator UId(ulong value)
         {
             return new UId(value);
+        }
+
+        /// <summary>
+        /// Compares two UID objects equality
+        /// </summary>
+        /// <param name="id1">First UID</param>
+        /// <param name="id2">Second UID</param>
+        /// <returns>true, if the two instances are identical, false otherwise</returns>
+        public static bool operator ==(UId id1, UId id2)
+        {
+            return EqualityComparer<UId>.Default.Equals(id1, id2);
+        }
+
+
+        /// <summary>
+        /// Compares two UID objects not equality
+        /// </summary>
+        /// <param name="id1">First UID</param>
+        /// <param name="id2">Second UID</param>
+        /// <returns>true, if the two instances are not identical, false otherwise</returns>
+        public static bool operator !=(UId id1, UId id2)
+        {
+            return !(id1 == id2);
         }
     }
 }
