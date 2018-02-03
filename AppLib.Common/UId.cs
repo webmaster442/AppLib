@@ -165,5 +165,41 @@ namespace AppLib.Common
         {
             return one.CompareTo(other) == 1;
         }
+
+        /// <summary>
+        /// Explicitly converts an int to a uid
+        /// </summary>
+        /// <param name="value">value to convert</param>
+        public static explicit operator UId (int value)
+        {
+            return new UId(value);
+        }
+
+        /// <summary>
+        /// Explicitly converts an uint to a uid
+        /// </summary>
+        /// <param name="value">value to convert</param>
+        public static explicit operator UId(uint value)
+        {
+            return new UId(value);
+        }
+
+        /// <summary>
+        /// Explicitly converts a long to a uid
+        /// </summary>
+        /// <param name="value">value to convert</param>
+        public static explicit operator UId(long value)
+        {
+            return new UId(value);
+        }
+
+        /// <summary>
+        /// Explicitly converts an ulong to a uid
+        /// </summary>
+        /// <param name="value">value to convert</param>
+        public static explicit operator UId(ulong value)
+        {
+            return new UId(value);
+        }
     }
 }
