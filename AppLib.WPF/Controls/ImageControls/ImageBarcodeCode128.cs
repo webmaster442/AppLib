@@ -27,7 +27,10 @@ namespace AppLib.WPF.Controls.ImageControls
         {
             var image = d as ImageBarcodeCode128;
             if (image == null) return;
-            d.SetValue(SourceProperty, CreateImageSource(image.Text, image.Foreground));
+
+            var dpi = VisualTreeHelper.GetDpi(image).PixelsPerDip;
+
+            d.SetValue(SourceProperty, CreateImageSource(image.Text, image.Foreground, dpi));
         }
 
         /// <summary>
@@ -65,15 +68,16 @@ namespace AppLib.WPF.Controls.ImageControls
         /// </summary>
         /// <param name="text">Text to encode</param>
         /// <param name="foregroundBrush">Foreground color</param>
+        /// <param name="pixelsPerDip">DPI scale</param>
         /// <returns>encoded text as image</returns>
-        public static ImageSource CreateImageSource(string text, Brush foregroundBrush)
+        public static ImageSource CreateImageSource(string text, Brush foregroundBrush, double pixelsPerDip = 96)
         {
             var bcode = BarcodeConverter128.StringToBarcode(text);
             var visual = new DrawingVisual();
             using (var drawingContext = visual.RenderOpen())
             {
                 drawingContext.DrawText(
-                    new FormattedText(bcode, CultureInfo.InvariantCulture, FlowDirection.LeftToRight, Code128Typeface, 100, foregroundBrush)
+                    new FormattedText(bcode, CultureInfo.InvariantCulture, FlowDirection.LeftToRight, Code128Typeface, 100, foregroundBrush, pixelsPerDip)
                     { TextAlignment = TextAlignment.Center }, new Point(0, 0));
             }
             return new DrawingImage(visual.Drawing);

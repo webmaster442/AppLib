@@ -46,7 +46,7 @@ namespace AppLib.Maths
         /// </summary>
         /// <param name="n">number of elements</param>
         /// <param name="k">number of repeating elements</param>
-        /// <returns>the number of possible combinations/returns>
+        /// <returns>the number of possible combinations</returns>
         public static double CombinationRepeat(double n, double k)
         {
             double n2 = (n + k) - 1;

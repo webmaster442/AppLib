@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace AppLib.Common.PInvoke
 {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     /// <summary>
     /// Flag values for SetWindowPos
     /// </summary>
@@ -781,5 +782,5 @@ namespace AppLib.Common.PInvoke
         public int dwFlags = 0;
     }
 
-
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 }

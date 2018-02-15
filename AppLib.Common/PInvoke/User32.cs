@@ -4,6 +4,7 @@ using System.Text;
 
 namespace AppLib.Common.PInvoke
 {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     /// <summary>
     /// Platform Invokes to User32.dll
     /// </summary>
@@ -476,5 +477,7 @@ namespace AppLib.Common.PInvoke
 
         [DllImport("User32")]
         public static extern IntPtr MonitorFromWindow(IntPtr handle, int flags);
+
     }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 }

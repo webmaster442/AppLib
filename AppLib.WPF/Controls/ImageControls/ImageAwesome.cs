@@ -58,7 +58,9 @@ namespace AppLib.WPF.Controls.ImageControls
 
             if (imageAwesome == null) return;
 
-            d.SetValue(SourceProperty, CreateImageSource(imageAwesome.Icon, imageAwesome.Foreground));
+            var dpi = VisualTreeHelper.GetDpi(imageAwesome).PixelsPerDip;
+
+            d.SetValue(SourceProperty, CreateImageSource(imageAwesome.Icon, imageAwesome.Foreground, dpi));
         }
 
         /// <summary>
@@ -66,8 +68,9 @@ namespace AppLib.WPF.Controls.ImageControls
         /// </summary>
         /// <param name="icon">The FontAwesome icon to be drawn.</param>
         /// <param name="foregroundBrush">The System.Windows.Media.Brush to be used as the foreground.</param>
+        /// <param name="pixelsPerDip">DPI scale</param>
         /// <returns>A new System.Windows.Media.ImageSource</returns>
-        public static ImageSource CreateImageSource(FaIcons icon, Brush foregroundBrush)
+        public static ImageSource CreateImageSource(FaIcons icon, Brush foregroundBrush, double pixelsPerDip = 96)
         {
             var charIcon = char.ConvertFromUtf32((int)icon);
 
@@ -75,7 +78,7 @@ namespace AppLib.WPF.Controls.ImageControls
             using (var drawingContext = visual.RenderOpen())
             {
                 drawingContext.DrawText(
-                    new FormattedText(charIcon,CultureInfo.InvariantCulture, FlowDirection.LeftToRight, FontAwesomeTypeface, 100, foregroundBrush)
+                    new FormattedText(charIcon,CultureInfo.InvariantCulture, FlowDirection.LeftToRight, FontAwesomeTypeface, 100, foregroundBrush, pixelsPerDip)
                     { TextAlignment = TextAlignment.Center }, new Point(0, 0));
             }
             return new DrawingImage(visual.Drawing);
