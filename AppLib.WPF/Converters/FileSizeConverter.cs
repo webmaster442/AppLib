@@ -38,7 +38,7 @@ namespace AppLib.WPF.Converters
                 val /= 1024D;
                 unit = "kiB";
             }
-            return string.Format("{0:0.000} {1}", val, unit);
+            return string.Format("{0:0.###} {1}", val, unit);
         }
 
         /// <summary>
