@@ -57,6 +57,7 @@ using System.Windows.Markup;
 [assembly: XmlnsPrefix("http://github.com/webmaster442/AppLib/WPF/Controls", "apllib")]
 [assembly: XmlnsPrefix("http://github.com/webmaster442/AppLib/WPF/Dialogs", "applib.dialogs")]
 [assembly: XmlnsDefinition("http://github.com/webmaster442/AppLib/WPF/Controls", "AppLib.WPF")]
+[assembly: XmlnsDefinition("http://github.com/webmaster442/AppLib/WPF/Controls", "AppLib.WPF.Shapes")]
 [assembly: XmlnsDefinition("http://github.com/webmaster442/AppLib/WPF/Controls", "AppLib.WPF.Controls")]
 [assembly: XmlnsDefinition("http://github.com/webmaster442/AppLib/WPF/Controls", "AppLib.WPF.Controls.ImageControls")]
 [assembly: XmlnsDefinition("http://github.com/webmaster442/AppLib/WPF/Controls", "AppLib.WPF.Converters")]
