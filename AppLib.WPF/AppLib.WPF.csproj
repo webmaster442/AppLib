@@ -89,14 +89,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Rating\Rating.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\Rating\Star.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Dialogs\BaseWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -154,7 +146,7 @@
     <Compile Include="BindingValidators\IPValidator.cs" />
     <Compile Include="BindingValidators\UrlValidator.cs" />
     <Compile Include="BingPhotoOfDay.cs" />
-    <Compile Include="Controls\AccordionPanel.cs" />
+    <Compile Include="Controls\Panels\AccordionPanel.cs" />
     <Compile Include="Controls\AlphaSelectControl.xaml.cs">
       <DependentUpon>AlphaSelectControl.xaml</DependentUpon>
     </Compile>
@@ -189,12 +181,8 @@
     <Compile Include="Controls\FuzzyTextClock.cs" />
     <Compile Include="Controls\ImageButton.cs" />
     <Compile Include="Controls\ModernWindow.cs" />
-    <Compile Include="Controls\Rating\Rating.xaml.cs">
-      <DependentUpon>Rating.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Rating\Star.xaml.cs">
-      <DependentUpon>Star.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Controls\Panels\RadialPanel.cs" />
+    <Compile Include="Controls\Panels\WeightedPanel.cs" />
     <Compile Include="Controls\SerialPortCombo.cs" />
     <Compile Include="Controls\TransitionControl.cs" />
     <Compile Include="Controls\TransitionHelpers.cs" />
