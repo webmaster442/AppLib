@@ -51,7 +51,7 @@ namespace AppLib.WPF
             get
             {
                 if (WasSuccesfull)
-                    return new BitmapImage(new Uri(_tempfilename));
+                    return BitmapHelper.FrozenBitmap(_tempfilename);
                 else
                     return null;
             }
@@ -65,7 +65,7 @@ namespace AppLib.WPF
             get
             {
                 if (WasSuccesfull)
-                    return new ImageBrush(new BitmapImage(new Uri(_tempfilename)));
+                    return new ImageBrush(BitmapHelper.FrozenBitmap(_tempfilename));
                 else
                     return null;
             }

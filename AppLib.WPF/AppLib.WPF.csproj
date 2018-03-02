@@ -146,6 +146,7 @@
     <Compile Include="BindingValidators\IPValidator.cs" />
     <Compile Include="BindingValidators\UrlValidator.cs" />
     <Compile Include="BingPhotoOfDay.cs" />
+    <Compile Include="BitmapHelper.cs" />
     <Compile Include="Controls\Panels\AccordionPanel.cs" />
     <Compile Include="Controls\AlphaSelectControl.xaml.cs">
       <DependentUpon>AlphaSelectControl.xaml</DependentUpon>
@@ -215,6 +216,7 @@
     <Compile Include="Dialogs\LogViewer.xaml.cs">
       <DependentUpon>LogViewer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\Collections.cs" />
     <Compile Include="Extensions\VisualExtensions.cs" />
     <Compile Include="Dialogs\ErrorControl.xaml.cs">
       <DependentUpon>ErrorControl.xaml</DependentUpon>

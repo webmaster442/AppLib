@@ -63,6 +63,7 @@
     <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Extensions\StringConversionExtensions.cs" />
     <Compile Include="Extensions\StringExtenions.cs" />
+    <Compile Include="Extensions\StringParserExtensions.cs" />
     <Compile Include="HttpServer\HttpCache.cs" />
     <Compile Include="HttpServer\HttpServer.cs" />
     <Compile Include="IOC\Container.cs" />
