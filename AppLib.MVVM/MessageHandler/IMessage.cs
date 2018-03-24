@@ -1,4 +1,4 @@
-﻿using AppLib.Common;
+﻿using System;
 
 namespace AppLib.MVVM.MessageHandler
 {
@@ -10,7 +10,7 @@ namespace AppLib.MVVM.MessageHandler
         /// <summary>
         /// Message reciever ID;
         /// </summary>
-        UId MessageReciverID { get; }
+        Guid MessageReciverID { get; }
     }
 
     /// <summary>

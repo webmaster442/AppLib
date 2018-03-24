@@ -74,7 +74,7 @@ namespace AppLib.MVVM.MessageHandler
         /// <param name="target">Target uid</param>
         /// <param name="message">message to send</param>
         /// <returns>true, if the sending was successfull</returns>
-        public bool SendMessage(UId target, object message)
+        public bool SendMessage(Guid target, object message)
         {
             if (target == null)
                 throw new ArgumentNullException(nameof(target));

@@ -50,6 +50,9 @@
     <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Commands\DelegateCommandT.cs" />
     <Compile Include="Interfaces.cs" />
+    <Compile Include="IoC\IIocContainer.cs" />
+    <Compile Include="IoC\IoCContainer.cs" />
+    <Compile Include="IoC\ResolveGetEventArgs.cs" />
     <Compile Include="MessageHandler\Handler.cs" />
     <Compile Include="MessageHandler\IMessage.cs" />
     <Compile Include="MessageHandler\Messager.cs" />

@@ -1,9 +1,8 @@
-﻿using System;
+﻿using AppLib.Common.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using AppLib.Common.Extensions;
-using AppLib.Common;
 
 namespace AppLib.MVVM.MessageHandler
 {
@@ -71,11 +70,11 @@ namespace AppLib.MVVM.MessageHandler
             return _wref.Target.GetType() == t;
         }
 
-        public bool HasUid(UId search)
+        public bool HasUid(Guid search)
         {
             if (_wref.Target == null)
                 return false;
-            return (_wref.Target as IMessageClient).MessageReciverID == search;
+            return (_wref.Target as IMessageClient)?.MessageReciverID == search;
         }
     }
 }
