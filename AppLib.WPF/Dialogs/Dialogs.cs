@@ -46,20 +46,5 @@ namespace AppLib.WPF.Dialogs
                 return false;
             }
         }
-
-        /// <summary>
-        /// Show a log viewer dialog
-        /// </summary>
-        /// <param name="log">Log to display</param>
-        public static void ShowLogViewer(Common.Log.ILogger log)
-        {
-            BaseWindow bw = new BaseWindow
-            {
-                Title = "Log Viewer",
-                DialogContent = new LogViewer(log)
-            };
-            bw.BtnCancel.Visibility = System.Windows.Visibility.Collapsed;
-            bw.ShowDialog();
-        }
     }
 }

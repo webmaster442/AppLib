@@ -97,10 +97,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Dialogs\LogViewer.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Dialogs\SerialPortControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -213,9 +209,6 @@
       <DependentUpon>BaseWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\Dialogs.cs" />
-    <Compile Include="Dialogs\LogViewer.xaml.cs">
-      <DependentUpon>LogViewer.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Extensions\Collections.cs" />
     <Compile Include="Extensions\VisualExtensions.cs" />
     <Compile Include="Dialogs\ErrorControl.xaml.cs">
