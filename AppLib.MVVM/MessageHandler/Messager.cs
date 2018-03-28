@@ -94,6 +94,30 @@ namespace AppLib.MVVM.MessageHandler
             return targethandler.CallHandler(message);
         }
 
+        public bool SendMessage(Type target, Guid id, object message)
+        {
+            if (target == null)
+                throw new ArgumentNullException(nameof(target));
+
+            if (id == null)
+                throw new ArgumentNullException(nameof(id));
+
+            if (message == null)
+                throw new ArgumentNullException(nameof(message));
+
+            ClearDeadHandlers();
+
+            var targethandler = (from h in _handlers
+                                 where h.HasUid(id) &&
+                                       h.IsTypeof(target)
+                                 select h).FirstOrDefault();
+
+            if (targethandler == null)
+                return false;
+
+            return targethandler.CallHandler(message);
+        }
+
         /// <summary>
         /// Send a message to the specific type of targets
         /// </summary>
