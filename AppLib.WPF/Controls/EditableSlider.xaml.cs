@@ -33,6 +33,8 @@ namespace AppLib.WPF.Controls
         private static void Rerender(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var slider = (EditableSlider)d;
+            if (slider.Value < slider.Minimum) slider.Value = slider.Minimum;
+            if (slider.Value > slider.Maximum) slider.Value = slider.Maximum;
             slider.UpdateView();
         }
 
