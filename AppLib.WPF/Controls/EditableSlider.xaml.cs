@@ -220,7 +220,7 @@ namespace AppLib.WPF.Controls
         private void UpdateView()
         {
             double valuePercent = (Value - Minimum) / (Maximum - Minimum);
-            rectPercent.Width = rectBase.ActualWidth * valuePercent;
+            rectPercent.Width = valuePercent < 0 ? 0 : rectBase.ActualWidth * valuePercent;
 
             double range = Math.Abs(Maximum - Minimum);
             if (range >= 40) ChangeDisplayFormatIfNeeded("0");
