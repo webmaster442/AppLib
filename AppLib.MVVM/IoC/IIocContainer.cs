@@ -10,5 +10,6 @@ namespace AppLib.MVVM.IoC
         bool Unregister<T>();
         T Resolve<T>();
         event EventHandler<ResolveGetEventArgs> ResolveGet;
+        bool CanResolve<T>();
     }
 }

@@ -129,6 +129,15 @@ namespace AppLib.MVVM.IoC
             }
         }
 
+        public bool CanResolve<T>()
+        {
+            lock (_lock)
+            {
+                var getter = TryGetGetter<T>();
+                return getter != null;
+            }
+        }
+
         public event EventHandler<ResolveGetEventArgs> ResolveGet;
     }
 }
