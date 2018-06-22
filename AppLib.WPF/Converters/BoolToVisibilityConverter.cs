@@ -22,10 +22,21 @@ namespace AppLib.WPF.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var input = (bool)value;
-            if (input)
-                return Visibility.Visible;
+
+            if (parameter != null)
+            {
+                if (!input)
+                    return Visibility.Visible;
+                else
+                    return Visibility.Collapsed;
+            }
             else
-                return Visibility.Collapsed;
+            {
+                if (input)
+                    return Visibility.Visible;
+                else
+                    return Visibility.Collapsed;
+            }
         }
 
 
@@ -41,15 +52,31 @@ namespace AppLib.WPF.Converters
         {
             Visibility input = (Visibility)value;
 
-            switch(input)
+            if (parameter != null)
             {
-                case Visibility.Visible:
-                    return true;
-                case Visibility.Collapsed:
-                case Visibility.Hidden:
-                default:
-                    return false;
+                switch (input)
+                {
+                    case Visibility.Visible:
+                        return false;
+                    case Visibility.Collapsed:
+                    case Visibility.Hidden:
+                    default:
+                        return true;
 
+                }
+            }
+            else
+            {
+                switch (input)
+                {
+                    case Visibility.Visible:
+                        return true;
+                    case Visibility.Collapsed:
+                    case Visibility.Hidden:
+                    default:
+                        return false;
+
+                }
             }
         }
     }

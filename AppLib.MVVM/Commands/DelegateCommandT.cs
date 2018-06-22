@@ -53,14 +53,14 @@ namespace AppLib.MVVM
         /// Creates a new Instance of DelegateCommand
         /// </summary>
         /// <param name="action">Acton to do</param>
-        internal DelegateCommand(Action<T> action) : this(action, null) { }
+        public DelegateCommand(Action<T> action) : this(action, null) { }
 
         /// <summary>
         /// Creates a new Instance of DelegateCommand
         /// </summary>
         /// <param name="action">Acton to do</param>
         /// <param name="canExecute">canExecute predicate</param>
-        internal DelegateCommand(Action<T> action, Predicate<T> canExecute)
+        public DelegateCommand(Action<T> action, Predicate<T> canExecute)
         {
             _action = action;
             _canExecute = canExecute;
@@ -72,7 +72,7 @@ namespace AppLib.MVVM
         /// <param name="action">Acton to do</param>
         /// <param name="canExecute">canExecute predicate</param>
         /// <param name="state"></param>
-        internal DelegateCommand(Action<T> action, Predicate<T> canExecute, UpdateBindingOnExecute state)
+        public DelegateCommand(Action<T> action, Predicate<T> canExecute, UpdateBindingOnExecute state)
         {
             _action = action;
             _canExecute = canExecute;
