@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AppLib.MVVM
 {
@@ -16,7 +12,7 @@ namespace AppLib.MVVM
         /// <param name="canDoAction">can do action</param>
         /// <param name="state">Update binding on execute state</param>
         /// <returns>A new Instance of DelegateCommand</returns>
-        public static DelegateCommand ToCommand(Action action, Func<bool> canDoAction, UpdateBindingOnExecute state)
+        public static DelegateCommand CreateCommand(Action action, Func<bool> canDoAction, UpdateBindingOnExecute state)
         {
             Predicate<object> predicate = new Predicate<object>((param) =>
             {
@@ -30,7 +26,7 @@ namespace AppLib.MVVM
         /// </summary>
         /// <param name="action">Action to transform to command</param>
         /// <returns>A new Instance of DelegateCommand</returns>
-        public static DelegateCommand ToCommand(Action action)
+        public static DelegateCommand CreateCommand(Action action)
         {
             return new DelegateCommand(x => action());
         }
@@ -41,7 +37,7 @@ namespace AppLib.MVVM
         ///  <param name="action">Action to transform to command</param>
         /// <param name="state">Update binding on execute state</param>
         /// <returns>A new Instance of DelegateCommand</returns>
-        public static DelegateCommand ToCommand(Action action, UpdateBindingOnExecute state)
+        public static DelegateCommand CreateCommand(Action action, UpdateBindingOnExecute state)
         {
             return new DelegateCommand(x => action(), null, state);
         }
@@ -53,7 +49,7 @@ namespace AppLib.MVVM
         /// <returns>A new Instance of DelegateCommand</returns>
         /// <param name="canDoAction">can do action</param>
         /// <returns>A new Instance of DelegateCommand</returns>
-        public static DelegateCommand ToCommand(Action action, Func<bool> canDoAction)
+        public static DelegateCommand CreateCommand(Action action, Func<bool> canDoAction)
         {
             Predicate<object> predicate = new Predicate<object>((param) =>
             {
@@ -67,7 +63,7 @@ namespace AppLib.MVVM
         /// </summary>
         /// <param name="action">Action to transform to command</param>
         /// <returns>A new Instance of DelegateCommand</returns>
-        public static DelegateCommand<T> ToCommand<T>(Action<T> action)
+        public static DelegateCommand<T> CreateCommand<T>(Action<T> action)
         {
             return new DelegateCommand<T>(x => action(x));
         }
@@ -78,7 +74,7 @@ namespace AppLib.MVVM
         ///  <param name="action">Action to transform to command</param>
         /// <param name="state">Update binding on execute state</param>
         /// <returns>A new Instance of DelegateCommand</returns>
-        public static DelegateCommand<T> ToCommand<T>(Action<T> action, UpdateBindingOnExecute state)
+        public static DelegateCommand<T> CreateCommand<T>(Action<T> action, UpdateBindingOnExecute state)
         {
             return new DelegateCommand<T>(x => action(x), null, state);
         }
@@ -90,7 +86,7 @@ namespace AppLib.MVVM
         /// <returns>A new Instance of DelegateCommand</returns>
         /// <param name="canDoAction">can do action</param>
         /// <returns>A new Instance of DelegateCommand</returns>
-        public static DelegateCommand<T> ToCommand<T>(Action<T> action, Predicate<T> canDoAction)
+        public static DelegateCommand<T> CreateCommand<T>(Action<T> action, Predicate<T> canDoAction)
         {
             return new DelegateCommand<T>(x => action(x), x => canDoAction(x));
         }
@@ -102,7 +98,7 @@ namespace AppLib.MVVM
         /// <returns>A new Instance of DelegateCommand</returns>
         /// <param name="canDoAction">can do action</param>
         /// <returns>A new Instance of DelegateCommand</returns>
-        public static DelegateCommand<T> ToCommand<T>(Action<T> action, Func<bool> canDoAction)
+        public static DelegateCommand<T> CreateCommand<T>(Action<T> action, Func<bool> canDoAction)
         {
             Predicate<T> predicate = new Predicate<T>((param) =>
             {
@@ -119,7 +115,7 @@ namespace AppLib.MVVM
         /// <param name="canDoAction">can do action</param>
         /// <param name="state">Update binding on execute state</param>
         /// <returns>A new Instance of DelegateCommand</returns>
-        public static DelegateCommand<T> ToCommand<T>(Action<T> action, Predicate<T> canDoAction, UpdateBindingOnExecute state)
+        public static DelegateCommand<T> CreateCommand<T>(Action<T> action, Predicate<T> canDoAction, UpdateBindingOnExecute state)
         {
             return new DelegateCommand<T>(x => action(x), x => canDoAction(x), state);
         }
@@ -132,7 +128,7 @@ namespace AppLib.MVVM
         /// <param name="canDoAction">can do action</param>
         /// <param name="state">Update binding on execute state</param>
         /// <returns>A new Instance of DelegateCommand</returns>
-        public static DelegateCommand<T> ToCommand<T>(Action<T> action, Func<bool> canDoAction, UpdateBindingOnExecute state)
+        public static DelegateCommand<T> CreateCommand<T>(Action<T> action, Func<bool> canDoAction, UpdateBindingOnExecute state)
         {
             Predicate<T> predicate = new Predicate<T>((param) =>
             {
