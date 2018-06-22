@@ -69,10 +69,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\AsyncProgressIndicator.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Controls\ColorPicker.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -151,16 +147,12 @@
       <DependentUpon>AnalogClock.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\AnimatedTabControl.cs" />
-    <Compile Include="Controls\AsyncProgressIndicator.xaml.cs">
-      <DependentUpon>AsyncProgressIndicator.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Controls\CircularProgressBar.cs" />
     <Compile Include="Controls\ColorPicker.xaml.cs">
       <DependentUpon>ColorPicker.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\ColorSpace.cs" />
     <Compile Include="Controls\DateTimeTextBlock.cs" />
-    <Compile Include="Controls\DockedWindow.cs" />
     <Compile Include="Controls\EditableSlider.xaml.cs">
       <DependentUpon>EditableSlider.xaml</DependentUpon>
     </Compile>
