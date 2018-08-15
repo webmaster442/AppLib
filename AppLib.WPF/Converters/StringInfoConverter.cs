@@ -21,8 +21,8 @@ namespace AppLib.WPF.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value == null) return null;
-            var str = value?.ToString();
-            var par = parameter.ToString().ToLower();
+            var str = value.ToString();
+            var par = parameter?.ToString()?.ToLower();
 
             switch (par)
             {

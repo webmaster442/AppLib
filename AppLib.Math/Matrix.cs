@@ -296,7 +296,7 @@ namespace AppLib.Maths
                 }
 
                 // Compute multipliers.
-                if (j < order & matrix.Data[indexjj] != 0.0)
+                if (j < order && matrix.Data[indexjj] != 0.0)
                 {
                     for (int i = j + 1; i < order; i++) matrix.Data[indexj + i] /= matrix.Data[indexjj];
                 }

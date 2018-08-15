@@ -161,8 +161,7 @@ namespace AppLib.WPF.Controls
             HexValue.Text = ColorSpace.GetHexCode(m_selectedColor);
 
             ctlAlphaSelect.DisplayColor = m_selectedColor;
-            if (ColorSelected != null)
-                ColorSelected(this, new RoutedEventArgs());
+            ColorSelected?.Invoke(this, new RoutedEventArgs());
 
             SetValue(ColorpPoperty, m_selectedColor);
         }

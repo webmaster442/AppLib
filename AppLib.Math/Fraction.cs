@@ -170,13 +170,16 @@ namespace AppLib.Maths
                 _numerator = f.Numerator;
                 _denominator = f.Denominator;
             }
+            else
+            {
 
-            // else string is in the form of Numerator/Denominator
-            long iNumerator = Convert.ToInt64(strValue.Substring(0, i));
-            long iDenominator = Convert.ToInt64(strValue.Substring(i + 1));
+                // else string is in the form of Numerator/Denominator
+                long iNumerator = Convert.ToInt64(strValue.Substring(0, i));
+                long iDenominator = Convert.ToInt64(strValue.Substring(i + 1));
 
-            _numerator = iNumerator;
-            _denominator = iDenominator;
+                _numerator = iNumerator;
+                _denominator = iDenominator;
+            }
         }
 
         /// <summary>

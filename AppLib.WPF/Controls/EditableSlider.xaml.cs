@@ -118,7 +118,7 @@ namespace AppLib.WPF.Controls
             set
             {
                 SetValue(ValueProperty, value);
-                if (ValueChanged != null) ValueChanged(this, new RoutedEventArgs());
+                ValueChanged?.Invoke(this, new RoutedEventArgs());
             }
         }
 

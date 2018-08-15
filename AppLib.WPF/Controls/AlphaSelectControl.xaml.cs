@@ -68,7 +68,7 @@ namespace AppLib.WPF.Controls
         {
             byte alpha = (byte)(255 - (yPos * 255 / rectMonitor.ActualHeight));
             Canvas.SetTop(rectMarker, yPos);
-            if (AlphaChanged != null) AlphaChanged(alpha);
+            AlphaChanged?.Invoke(alpha);
         }
 
     }

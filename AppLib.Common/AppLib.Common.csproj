@@ -73,7 +73,6 @@
     <Compile Include="PInvoke\Types.cs" />
     <Compile Include="PInvoke\User32.cs" />
     <Compile Include="SingleInstanceApp.cs" />
-    <Compile Include="UId.cs" />
     <Compile Include="INI\IniFile.cs" />
     <Compile Include="INI\IniKey.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
