@@ -45,7 +45,7 @@ namespace AppLib.Common.Console
                 var next = GetNext(_CommandLineParts, i);
                 if (current.StartsWith("/"))
                 {
-                    if (!next.StartsWith("/") && !string.IsNullOrEmpty(next))
+                    if (!string.IsNullOrEmpty(next) && !next.StartsWith("/"))
                     {
                         //switch with value
                         _SwithcesWithValues.AddOrUpdate(current, next);
@@ -82,7 +82,7 @@ namespace AppLib.Common.Console
         {
             int nextindex = i + 1;
             if (nextindex < commandLineParts.Length) return commandLineParts[nextindex];
-            else return "";
+            else return string.Empty;
         }
 
         private ParameterParser()

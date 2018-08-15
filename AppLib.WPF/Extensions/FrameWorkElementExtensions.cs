@@ -16,7 +16,7 @@ namespace AppLib.WPF.Extensions
         /// <returns>FrameWorkElement rendered to a RenderTargetBitmap</returns>
         public static ImageSource Render(this FrameworkElement element)
         {
-            var w = element.ActualWidth > 0 ? element.Width : element.Width;
+            var w = element.ActualWidth > 0 ? element.ActualWidth : element.Width;
             var h = element.ActualHeight > 0 ? element.ActualHeight : element.Height;
 
             if (element.ActualHeight == 0 || element.ActualWidth == 0)

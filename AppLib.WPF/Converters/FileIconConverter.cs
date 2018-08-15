@@ -46,7 +46,7 @@ namespace AppLib.WPF.Converters
                 Color.FromRgb(149, 165, 166),
                 Color.FromRgb(127, 140, 141)
             };
-            _colors.OrderBy(i => i.R * i.G * i.B);
+            _colors = _colors.OrderBy(i => i.R * i.G * i.B).ToArray();
             _cache = new Dictionary<string, ImageSource>();
         }
 
