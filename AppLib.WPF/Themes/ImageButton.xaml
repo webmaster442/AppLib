@@ -9,7 +9,6 @@
         x:Key="VisibilityConvertor" />
 
     <Style
-        BasedOn="{StaticResource {x:Type Button}}"
         TargetType="{x:Type controls:ImageButton}">
         <Setter Property="ContentMargin" Value="5,0" />
         <Style.Triggers>
@@ -63,7 +62,6 @@
     </Style>
 
     <Style
-        BasedOn="{StaticResource {x:Type Button}}"
         TargetType="{x:Type controls:FaImageButton}">
         <Setter Property="ContentMargin" Value="5,0" />
         <Style.Triggers>

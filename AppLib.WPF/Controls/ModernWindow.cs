@@ -213,8 +213,11 @@ namespace AppLib.WPF.Controls
 
         private void SetColor()
         {
-            var color = GetWindowColorizationColor(true);
-            DwmBorderBrush = new SolidColorBrush(color);
+            Dispatcher.Invoke(() =>
+            {
+                var color = GetWindowColorizationColor(true);
+                DwmBorderBrush = new SolidColorBrush(color);
+            });
         }
 
 
