@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Interop;
 
-namespace AppLib.WPF
+namespace Webmaster442.Applib
 {
 
     /// <summary>
