@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Windows.Markup;
 
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
@@ -29,3 +30,12 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
+
+[assembly: XmlnsPrefix("http://github.com/webmaster442/AppLib/WPF/Controls", "apllib")]
+[assembly: XmlnsDefinition("http://github.com/webmaster442/AppLib/WPF/Controls", "Webmaster442.Applib.Behaviors")]
+[assembly: XmlnsDefinition("http://github.com/webmaster442/AppLib/WPF/Controls", "Webmaster442.Applib.Controls")]
+[assembly: XmlnsDefinition("http://github.com/webmaster442/AppLib/WPF/Controls", "Webmaster442.Applib.Converters")]
+[assembly: XmlnsDefinition("http://github.com/webmaster442/AppLib/WPF/Controls", "Webmaster442.Applib.Panels")]
+[assembly: XmlnsDefinition("http://github.com/webmaster442/AppLib/WPF/Controls", "Webmaster442.Applib.Shaders")]
+[assembly: XmlnsDefinition("http://github.com/webmaster442/applib/wpf/Controls", "Webmaster442.Applib.Shapes")]
+[assembly: XmlnsDefinition("http://github.com/webmaster442/applib/wpf/Dialogs", "Webmaster442.Applib.Dialogs")]
