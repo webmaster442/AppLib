@@ -1,4 +1,0 @@
-2017.04.19
-	- Started tracking changes in changes.txt
-	- Exception extensions added
-	- Documented the UID class
