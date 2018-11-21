@@ -40,6 +40,9 @@ namespace Webmaster442.Applib.Panels
         {
             double totalWeight = TotalChildWeight();
 
+            if (totalWeight == 0)
+                return new Size(0, 0);
+
             foreach (ChildAndRect child in ChildrenTreemapOrder(InternalChildren.Cast<UIElement>(), availableSize))
                 child.Element.Measure(child.Rectangle.Size);
 
