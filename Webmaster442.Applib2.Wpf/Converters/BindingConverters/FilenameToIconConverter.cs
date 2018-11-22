@@ -6,7 +6,7 @@ using System.Windows.Data;
 using System.Windows.Media;
 using Webmaster442.Applib.Internals;
 
-namespace Webmaster442.Applib.Converters.BindingConverters
+namespace Webmaster442.Applib.Converters
 {
     public class FilenameToIconConverter: ConverterBase<FilenameToIconConverter>, IValueConverter
     {
@@ -30,7 +30,7 @@ namespace Webmaster442.Applib.Converters.BindingConverters
             }
             else if (Directory.Exists(path))
             {
-                return FileconExtractor.GetIcon(path);
+                return FileconExtractor.GetIcon(path, false, true);
             }
             else
             {

@@ -4,17 +4,14 @@
     xmlns:controls="clr-namespace:Webmaster442.Applib.Controls"
     xmlns:converters="clr-namespace:Webmaster442.Applib.Converters">
 
-    <Style
-        TargetType="{x:Type controls:ImageButton}">
+    <Style TargetType="{x:Type controls:ImageButton}">
         <Setter Property="ContentMargin" Value="5,0" />
         <Style.Triggers>
             <Trigger Property="ImagePlacement" Value="Left">
                 <Setter Property="Template">
                     <Setter.Value>
-                        <ControlTemplate
-                            TargetType="{x:Type controls:ImageButton}">
-                            <StackPanel
-                                Orientation="Horizontal">
+                        <ControlTemplate TargetType="{x:Type controls:ImageButton}">
+                            <StackPanel Orientation="Horizontal">
                                 <Image
                                     Width="{TemplateBinding ImageWidth}"
                                     Height="{TemplateBinding ImageHeight}"
@@ -34,10 +31,8 @@
             <Trigger Property="ImagePlacement" Value="Right">
                 <Setter Property="Template">
                     <Setter.Value>
-                        <ControlTemplate
-                            TargetType="{x:Type controls:ImageButton}">
-                            <StackPanel
-                                Orientation="Horizontal">
+                        <ControlTemplate TargetType="{x:Type controls:ImageButton}">
+                            <StackPanel Orientation="Horizontal">
                                 <TextBlock
                                     Margin="{TemplateBinding ContentMargin}"
                                     VerticalAlignment="Center"

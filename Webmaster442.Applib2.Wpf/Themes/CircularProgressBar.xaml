@@ -5,17 +5,12 @@
     xmlns:internals="clr-namespace:Webmaster442.Applib.Internals"
     xmlns:shapes="clr-namespace:Webmaster442.Applib.Shapes">
 
-    <Style
-        BasedOn="{StaticResource {x:Type ProgressBar}}"
-        TargetType="{x:Type controls:CircularProgressBar}">
+    <Style BasedOn="{StaticResource {x:Type ProgressBar}}" TargetType="{x:Type controls:CircularProgressBar}">
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate
-                    TargetType="{x:Type ProgressBar}">
+                <ControlTemplate TargetType="{x:Type ProgressBar}">
                     <Grid>
-                        <Ellipse
-                            Fill="{TemplateBinding Background}"
-                            Stroke="Black" />
+                        <Ellipse Fill="{TemplateBinding Background}" Stroke="Black" />
                         <Ellipse
                             Margin="40"
                             Fill="White"

@@ -62,6 +62,7 @@
     <Compile Include="Controls\SerialPortCombo.cs" />
     <Compile Include="Controls\TransitionControl.cs" />
     <Compile Include="Controls\TransitionSelector.cs" />
+    <Compile Include="Converters\BindingConverters\FilenameToIconConverter.cs" />
     <Compile Include="Converters\BindingConverters\NullToVisibilityConverter.cs" />
     <Compile Include="Dialogs\BaseWindow.xaml.cs">
       <DependentUpon>BaseWindow.xaml</DependentUpon>
@@ -70,6 +71,7 @@
     <Compile Include="Dialogs\SerialPortControl.xaml.cs">
       <DependentUpon>SerialPortControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Internals\FileconExtractor.cs" />
     <Compile Include="Internals\ProgressToAngleConverter.cs" />
     <Compile Include="Internals\TransitionHelpers.cs" />
     <Compile Include="Converters\BindingConverters\BoolToVisibilityConverter.cs" />

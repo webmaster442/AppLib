@@ -22,7 +22,7 @@ namespace Webmaster442.Applib.PInvoke
         public string szTypeName;
     }
 
-    internal static class Constants
+    internal static class SHGetFileInfoConstants
     {
         public const uint FILE_ATTRIBUTE_READONLY = 0x00000001;
         public const uint FILE_ATTRIBUTE_HIDDEN = 0x00000002;

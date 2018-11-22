@@ -4,13 +4,10 @@
     xmlns:controls="clr-namespace:Webmaster442.Applib.Controls"
     xmlns:internals="clr-namespace:Webmaster442.Applib.Internals">
 
-    <Style
-        BasedOn="{StaticResource {x:Type TabControl}}"
-        TargetType="{x:Type controls:AnimatedTabControl}">
+    <Style BasedOn="{StaticResource {x:Type TabControl}}" TargetType="{x:Type controls:AnimatedTabControl}">
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate
-                    TargetType="{x:Type TabControl}">
+                <ControlTemplate TargetType="{x:Type TabControl}">
                     <Grid
                         ClipToBounds="true"
                         KeyboardNavigation.TabNavigation="Local"
@@ -24,8 +21,7 @@
                             <RowDefinition x:Name="RowDefinition1" Height="*" />
                         </Grid.RowDefinitions>
                         <Grid.Resources>
-                            <internals:TabControlTransitionSelector
-                                x:Key="TabControlTransitionSelectorKey" />
+                            <internals:TabControlTransitionSelector x:Key="TabControlTransitionSelectorKey" />
                         </Grid.Resources>
                         <ScrollViewer
                             x:Name="HeaderPanel"
