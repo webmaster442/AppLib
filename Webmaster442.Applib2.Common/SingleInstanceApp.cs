@@ -15,7 +15,7 @@ namespace Webmaster442.Applib
         private static Mutex _mutex;
         private bool _isfirst;
         private string _UID;
-        private const string EXIT_STRING = "__EXIT__";
+        public const string EXIT_STRING = "__EXIT__";
         private Thread _server;
         private bool _isRunning = false;
 
