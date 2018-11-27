@@ -63,6 +63,7 @@
     <Compile Include="Controls\TransitionControl.cs" />
     <Compile Include="Controls\TransitionSelector.cs" />
     <Compile Include="Converters\BindingConverters\FilenameToIconConverter.cs" />
+    <Compile Include="Converters\BindingConverters\FrozenBitmapConverter.cs" />
     <Compile Include="Converters\BindingConverters\NullToVisibilityConverter.cs" />
     <Compile Include="Dialogs\BaseWindow.xaml.cs">
       <DependentUpon>BaseWindow.xaml</DependentUpon>
