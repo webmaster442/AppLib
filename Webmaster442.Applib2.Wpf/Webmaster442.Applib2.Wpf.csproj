@@ -72,6 +72,11 @@
     <Compile Include="Dialogs\SerialPortControl.xaml.cs">
       <DependentUpon>SerialPortControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\ColorExtensions.cs" />
+    <Compile Include="Extensions\DependencyObjectExtensions.cs" />
+    <Compile Include="Extensions\FrameWorkElementExtensions.cs" />
+    <Compile Include="Extensions\HSL.cs" />
+    <Compile Include="Extensions\VisualExtensions.cs" />
     <Compile Include="Internals\FileconExtractor.cs" />
     <Compile Include="Internals\ProgressToAngleConverter.cs" />
     <Compile Include="Internals\TransitionHelpers.cs" />
@@ -239,8 +244,6 @@
       <Name>Webmaster442.Applib2.Common</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Extensions\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Windows.Media;
-using AppLib.Common.Extensions;
 using System.Text;
 
-namespace AppLib.WPF.Extensions
+namespace Webmaster442.Applib.Extensions
 {
     /// <summary>
     /// Represents a color in the Hue, Saturation, Lightness modell

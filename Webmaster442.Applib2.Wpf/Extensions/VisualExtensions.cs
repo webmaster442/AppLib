@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Media;
 
-namespace AppLib.WPF.Extensions
+namespace Webmaster442.Applib.Extensions
 {
     /// <summary>
     /// Visual class extensions

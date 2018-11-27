@@ -1,33 +1,14 @@
-﻿using AppLib.Common.Extensions;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-namespace AppLib.WPF.Extensions
+namespace Webmaster442.Applib.Extensions
 {
     /// <summary>
     /// Extension methods for the color type
     /// </summary>
     public static class ColorExtensions
     {
-        /// <summary>
-        /// Fade a color to another color
-        /// </summary>
-        /// <param name="source">Color Source</param>
-        /// <param name="target">Target color</param>
-        /// <param name="amount">Amount of fading. Must be between 0 and 1</param>
-        /// <returns>A color faded to another color</returns>
-        public static Color FadeTo(this Color source, Color target, double amount)
-        {
-            double r = source.R;
-            double g = source.G;
-            double b = source.B;
-            r = r.Lerp(target.R, amount);
-            g = g.Lerp(target.G, amount);
-            b = b.Lerp(target.B, amount);
-            return Color.FromRgb((byte)r, (byte)g, (byte)b);
-        }
-
         /// <summary>
         /// Computes the negative color corresponding to the color. Ignores the alpha channel
         /// </summary>
@@ -37,7 +18,6 @@ namespace AppLib.WPF.Extensions
         {
             return Color.FromRgb((byte)(255 - c.R), (byte)(255 - c.G), (byte)(255 - c.B));
         }
-
 
         /// <summary>
         /// Computes the inverse color
@@ -89,7 +69,6 @@ namespace AppLib.WPF.Extensions
         /// <returns>the dominant color of an image</returns>
         public static Color GetDominantColor(this ImageSource img)
         {
-
             var rect = new Rect(0, 0, 1, 1);
             var group = new DrawingGroup();
             RenderOptions.SetBitmapScalingMode(group, BitmapScalingMode.HighQuality);
@@ -108,8 +87,6 @@ namespace AppLib.WPF.Extensions
             resizedImage.CopyPixels(pixels, 4, 0);
 
             return Color.FromArgb(pixels[3], pixels[2], pixels[1], pixels[0]);
-
-
         }
     }
 }

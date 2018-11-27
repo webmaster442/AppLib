@@ -2,7 +2,7 @@
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-namespace AppLib.WPF.Extensions
+namespace Webmaster442.Applib.Extensions
 {
     /// <summary>
     /// FrameWorkElement class extension methoods

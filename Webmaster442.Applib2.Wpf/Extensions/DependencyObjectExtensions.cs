@@ -6,7 +6,7 @@ using System.Windows;
 using System.Windows.Data;
 using System.Windows.Media;
 
-namespace AppLib.WPF.Extensions
+namespace Webmaster442.Applib.Extensions
 {
     /// <summary>
     /// Used in the UpdateAllBindings methood to indicate update direction
