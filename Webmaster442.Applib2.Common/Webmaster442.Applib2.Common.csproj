@@ -49,6 +49,8 @@
     <Compile Include="..\Version.cs">
       <Link>Properties\Version.cs</Link>
     </Compile>
+    <Compile Include="CSV\CSVLine.cs" />
+    <Compile Include="CSV\CSVReader.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\DependencyObjectExtensions.cs" />
     <Compile Include="Extensions\DictionaryExtensions.cs" />
