@@ -57,6 +57,7 @@
     <Compile Include="Controls\AnimatedTabControl.cs" />
     <Compile Include="Controls\CircularProgressBar.cs" />
     <Compile Include="Controls\DateTimeTextBlock.cs" />
+    <Compile Include="Controls\DialogPresenter.cs" />
     <Compile Include="Controls\FuzzyTextClock.cs" />
     <Compile Include="Controls\ImageButton.cs" />
     <Compile Include="Controls\SerialPortCombo.cs" />
@@ -158,6 +159,10 @@
     <Page Include="Themes\CircularProgressBar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\DialogPresenter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>

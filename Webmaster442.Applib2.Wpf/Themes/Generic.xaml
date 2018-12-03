@@ -4,5 +4,6 @@
         <ResourceDictionary Source="pack://application:,,,/Webmaster442.Applib2.Wpf;component/Themes/TransitionControl.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Webmaster442.Applib2.Wpf;component/Themes/AnimatedTabControl.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Webmaster442.Applib2.Wpf;component/Themes/ImageButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Webmaster442.Applib2.Wpf;component/Themes/DialogPresenter.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
