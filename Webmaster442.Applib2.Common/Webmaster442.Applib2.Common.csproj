@@ -64,6 +64,7 @@
     <Compile Include="Extensions\ObservableCollectionExtensions.cs" />
     <Compile Include="Extensions\RandomExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="IniFile.cs" />
     <Compile Include="IO\RandomStream.cs" />
     <Compile Include="IO\ZeroStream.cs" />
     <Compile Include="KeyboardHook.cs" />
