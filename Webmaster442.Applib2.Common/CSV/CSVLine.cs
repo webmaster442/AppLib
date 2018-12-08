@@ -10,7 +10,7 @@ namespace Webmaster442.Applib.CSV
         public CSVLine(string sourceLine, char delimiter) :base()
         {
             string[] parts = sourceLine.Split(delimiter);
-            _row = new List<string>(_row);
+            _row = new List<string>(parts);
         }
 
         public string this[int index] => _row[index];
