@@ -40,7 +40,7 @@ namespace Webmaster442.Applib
                 var lasterror = Marshal.GetLastWin32Error();
                 var innerEx = new Win32Exception(lasterror);
                 innerEx.Data.Add("LastWin32Error", lasterror);
-                throw new Exception("can't load DLL " + filename, innerEx);
+                throw new Win32Exception("can't load DLL " + filename, innerEx);
             }
             _modules.Add(filename, ptr);
         }
@@ -70,7 +70,7 @@ namespace Webmaster442.Applib
                 var lasterror = Marshal.GetLastWin32Error();
                 var innerEx = new Win32Exception(lasterror);
                 innerEx.Data.Add("LastWin32Error", lasterror);
-                throw new Exception("can't unload DLL " + filename, innerEx);
+                throw new Win32Exception("can't unload DLL " + filename, innerEx);
             }
             _modules.Remove(filename);
         }

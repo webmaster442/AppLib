@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -68,8 +69,12 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Webmaster442.Applib2.Common\Webmaster442.Applib2.Common.csproj">
-      <Project>{9FD26692-4195-44AE-AB3A-F3CC165FA868}</Project>
+      <Project>{9fd26692-4195-44ae-ab3a-f3cc165fa868}</Project>
       <Name>Webmaster442.Applib2.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Webmaster442.Applib2.Wpf\Webmaster442.Applib2.Wpf.csproj">
+      <Project>{061010f6-75a7-499a-a432-93e7729ca1ea}</Project>
+      <Name>Webmaster442.Applib2.Wpf</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

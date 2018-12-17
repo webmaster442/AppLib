@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
@@ -11,7 +10,7 @@ namespace Webmaster442.Applib.Extensions
     /// <summary>
     /// Used in the UpdateAllBindings methood to indicate update direction
     /// </summary>
-    public enum BindingDirection
+    public enum BindingUpdateDirection
     {
         /// <summary>
         /// Update binding source with target data
@@ -168,7 +167,7 @@ namespace Webmaster442.Applib.Extensions
         /// <returns>True, if executing in designer, otherwise false</returns>
         public static bool IsDesignMode(this DependencyObject obj)
         {
-            return DesignerProperties.GetIsInDesignMode(obj);
+            return System.ComponentModel.DesignerProperties.GetIsInDesignMode(obj);
         }
 
         /// <summary>
@@ -176,7 +175,7 @@ namespace Webmaster442.Applib.Extensions
         /// </summary>
         /// <param name="o">dependency object</param>
         /// <param name="direcion">Binding direction to update</param>
-        public static void UpdateAllBindings(this DependencyObject o, BindingDirection direcion)
+        public static void UpdateAllBindings(this DependencyObject o, BindingUpdateDirection direcion)
         {
             //Immediate Properties
             var properties = new List<FieldInfo>();
@@ -194,7 +193,7 @@ namespace Webmaster442.Applib.Extensions
                 var ex = BindingOperations.GetBindingExpression(o, property.GetValue(o) as DependencyProperty);
                 if (ex != null)
                 {
-                    if (direcion == BindingDirection.Source) ex.UpdateSource();
+                    if (direcion == BindingUpdateDirection.Source) ex.UpdateSource();
                     else ex.UpdateTarget();
                 }
             }

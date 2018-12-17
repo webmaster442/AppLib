@@ -12,7 +12,7 @@ namespace Webmaster442.Applib.IO
         /// </summary>
         public ZeroStream()
         {
-            Position = 0;
+            //Position = 0;
         }
 
         /// <summary>

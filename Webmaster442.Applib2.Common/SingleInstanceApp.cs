@@ -22,7 +22,8 @@ namespace Webmaster442.Applib
         /// <summary>
         /// Event that occures when command line parameter are available for processing
         /// </summary>
-        public event Action<string> CommandLineArgumentsRecieved;
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1009:DeclareEventHandlersCorrectly")]
+        public event EventHandler<string> CommandLineArgumentsRecieved;
 
         /// <summary>
         /// Creates a new single instance app
@@ -61,6 +62,7 @@ namespace Webmaster442.Applib
             Thread.Sleep(3); // give time for thread shutdown
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2202:Do not dispose objects multiple times")]
         private bool Write(string text, int connectTimeout = 300)
         {
             using (var client = new NamedPipeClientStream(_UID))
@@ -107,6 +109,7 @@ namespace Webmaster442.Applib
             return sb.ToString();
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2202:Do not dispose objects multiple times")]
         private void ServerThread()
         {
             while (true)
@@ -124,7 +127,7 @@ namespace Webmaster442.Applib
 
                 if (text == EXIT_STRING) break;
 
-                CommandLineArgumentsRecieved?.Invoke(text);
+                CommandLineArgumentsRecieved?.Invoke(this, text);
                 if (_isRunning == false) break;
             }
         }

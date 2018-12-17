@@ -19,7 +19,7 @@ namespace Webmaster442.Applib
             public Window()
             {
                 // create the handle for the window.
-                this.CreateHandle(new CreateParams());
+                base.CreateHandle(new CreateParams());
             }
 
             /// <summary>

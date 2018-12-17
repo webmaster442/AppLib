@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System;
+using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -20,12 +21,7 @@ namespace Webmaster442.Applib.Internals
                 attributes |= SHGetFileInfoConstants.FILE_ATTRIBUTE_DIRECTORY;
 
             SHFILEINFO shfi;
-            if (0 != Shell32.SHGetFileInfo(
-                        path,
-                        attributes,
-                        out shfi,
-                        (uint)Marshal.SizeOf(typeof(SHFILEINFO)),
-                        flags))
+            if (IntPtr.Zero != Shell32.SHGetFileInfo(path, attributes, out shfi, (uint)Marshal.SizeOf(typeof(SHFILEINFO)), flags))
             {
                 return System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(
                             shfi.hIcon,

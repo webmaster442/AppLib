@@ -5,9 +5,9 @@ namespace Webmaster442.Applib.PInvoke
 {
     internal static class Shell32
     {
-        [DllImport("shell32")]
-        public static extern int SHGetFileInfo(string pszPath, uint dwFileAttributes, out SHFILEINFO psfi, uint cbFileInfo, uint flags);
-
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1060:MovePInvokesToNativeMethodsClass")]
+        [DllImport("shell32", CharSet = CharSet.Unicode)]
+        public static extern IntPtr SHGetFileInfo(string pszPath, uint dwFileAttributes, out SHFILEINFO psfi, uint cbFileInfo, uint flags);
     }
 
     [StructLayout(LayoutKind.Sequential)]

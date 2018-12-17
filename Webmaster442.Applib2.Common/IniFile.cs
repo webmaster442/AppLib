@@ -80,7 +80,7 @@ namespace Webmaster442.Applib
 
             StringBuilder temp = new StringBuilder(1024);
 
-            int i = Kernel32.GetPrivateProfileString(section, key, "", temp,  1024, Path);
+            Kernel32.GetPrivateProfileString(section, key, "", temp,  1024, Path);
 
             return temp.ToString();
         }

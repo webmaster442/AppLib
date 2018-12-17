@@ -109,10 +109,10 @@ namespace Webmaster442.Applib.Commands
             switch (UpdateOnExecute)
             {
                 case UpdateBindingOnExecute.Source:
-                    focused?.UpdateAllBindings(BindingDirection.Source);
+                    focused?.UpdateAllBindings(BindingUpdateDirection.Source);
                     break;
                 case UpdateBindingOnExecute.Target:
-                    focused?.UpdateAllBindings(BindingDirection.Target);
+                    focused?.UpdateAllBindings(BindingUpdateDirection.Target);
                     break;
             }
             _action((T)parameter);
