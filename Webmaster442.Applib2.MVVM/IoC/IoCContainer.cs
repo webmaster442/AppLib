@@ -6,17 +6,24 @@ using System.Reflection;
 
 namespace Webmaster442.Applib.IoC
 {
+    /// <summary>
+    /// Implementation of IoC container
+    /// </summary>
     public sealed class IoCContainer : IIocContainer
     {
         private readonly Dictionary<Type, Delegate> _dictionary;
         private readonly object _lock;
 
+        /// <summary>
+        /// Creates a new instance of IoC container
+        /// </summary>
         public IoCContainer()
         {
             _dictionary = new Dictionary<Type, Delegate>();
             _lock = new object();
         }
 
+        /// <inheritdoc/>
         public void Register<T>(Func<T> getter)
         {
             lock (_lock)
@@ -25,7 +32,8 @@ namespace Webmaster442.Applib.IoC
             }
         }
 
-        public void RegisterCallingConstructor<TPublic, TImplementation>(ConstructorInfo constructor = null)
+        /// <inheritdoc/>
+        public void Register<TPublic, TImplementation>(ConstructorInfo constructor = null)
         {
             MethodInfo _getMethod = typeof(IoCContainer).GetMethod("Get");
 
@@ -65,6 +73,7 @@ namespace Webmaster442.Applib.IoC
             Register<TPublic>(implementedDelegate);
         }
 
+        /// <inheritdoc/>
         public bool Unregister<T>()
         {
             lock (_lock)
@@ -73,22 +82,11 @@ namespace Webmaster442.Applib.IoC
             }
         }
 
-        public Func<T> GetGetter<T>()
-        {
-            var getter = TryGetGetter<T>();
-
-            if (getter == null)
-                throw new InvalidOperationException("It is not possible to find a getter to the given type: " + typeof(T).FullName);
-
-            return getter;
-        }
-
-        public Func<T> TryGetGetter<T>()
+        private Func<T> TryGetGetter<T>()
         {
             lock (_lock)
             {
-                Delegate untypedDelegate;
-                if (!_dictionary.TryGetValue(typeof(T), out untypedDelegate))
+                if (!_dictionary.TryGetValue(typeof(T), out Delegate untypedDelegate))
                 {
                     var allHandlers = ResolveGet;
                     if (allHandlers != null)
@@ -116,6 +114,7 @@ namespace Webmaster442.Applib.IoC
             }
         }
 
+        /// <inheritdoc/>
         public T Resolve<T>()
         {
             lock (_lock)
@@ -129,6 +128,7 @@ namespace Webmaster442.Applib.IoC
             }
         }
 
+        /// <inheritdoc/>
         public bool CanResolve<T>()
         {
             lock (_lock)
@@ -138,6 +138,7 @@ namespace Webmaster442.Applib.IoC
             }
         }
 
+        /// <inheritdoc/>
         public event EventHandler<ResolveGetEventArgs> ResolveGet;
     }
 }

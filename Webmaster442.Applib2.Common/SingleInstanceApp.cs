@@ -13,9 +13,9 @@ namespace Webmaster442.Applib
     public sealed class SingleInstanceApp: IDisposable
     {
         private static Mutex _mutex;
-        private bool _isfirst;
-        private string _UID;
-        public const string EXIT_STRING = "__EXIT__";
+        private readonly bool _isfirst;
+        private readonly string _UID;
+        private const string EXIT_STRING = "__EXIT__";
         private Thread _server;
         private bool _isRunning = false;
 

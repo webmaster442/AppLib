@@ -20,6 +20,9 @@ namespace Webmaster442.Applib
         Gzip,
     }
 
+    /// <summary>
+    /// Serialization helper class
+    /// </summary>
     public static class Serializer
     {
         /// <summary>

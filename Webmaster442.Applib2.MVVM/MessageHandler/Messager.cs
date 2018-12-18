@@ -93,6 +93,13 @@ namespace Webmaster442.Applib.MessageHandler
             return targethandler.CallHandler(message);
         }
 
+        /// <summary>
+        /// Send a message to a type of target with id
+        /// </summary>
+        /// <param name="target">Target type</param>
+        /// <param name="id">Target guid</param>
+        /// <param name="message">Message to send</param>
+        /// <returns>true, if the sending was successfull</returns>
         public bool SendMessage(Type target, Guid id, object message)
         {
             if (target == null)

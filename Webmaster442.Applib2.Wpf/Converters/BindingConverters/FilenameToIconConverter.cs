@@ -8,12 +8,18 @@ using Webmaster442.Applib.Internals;
 
 namespace Webmaster442.Applib.Converters
 {
+    /// <summary>
+    /// Converts a file name to an Icon
+    /// </summary>
     public class FilenameToIconConverter: ConverterBase<FilenameToIconConverter>, IValueConverter
     {
         private Dictionary<string, ImageSource> _cache;
         private const long _cacheLimit = 1024L * 1024L * 8L; //8mb
         private long _cacheSize;
 
+        /// <summary>
+        /// Creates a new instance of FilenameToIconConverter
+        /// </summary>
         public FilenameToIconConverter()
         {
             _cache = new Dictionary<string, ImageSource>();
@@ -56,6 +62,7 @@ namespace Webmaster442.Applib.Converters
             }
         }
 
+        /// <inheritdoc/>
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var path = value as string;
@@ -66,6 +73,7 @@ namespace Webmaster442.Applib.Converters
             else return Binding.DoNothing;
         }
 
+        /// <inheritdoc/>
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             return Binding.DoNothing;

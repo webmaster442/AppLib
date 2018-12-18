@@ -26,6 +26,9 @@
     /// </summary>
     public interface IView<Model>: IView
     {
+        /// <summary>
+        /// View Model reference 
+        /// </summary>
         Model ViewModel { get; }
     }
 

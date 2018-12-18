@@ -7,6 +7,9 @@ using System.Windows.Input;
 
 namespace Webmaster442.Applib.Behaviors
 {
+    /// <summary>
+    /// Defines an Autocomplete behaviour for TextBox
+    /// </summary>
     public static class AutoCompleteBehavior
     {
         private static TextChangedEventHandler _onTextChanged = new TextChangedEventHandler(OnTextChanged);
@@ -19,17 +22,17 @@ namespace Webmaster442.Applib.Behaviors
             DependencyProperty.RegisterAttached
             (
                 "AutoCompleteItemsSource",
-                typeof(IEnumerable<String>),
+                typeof(IEnumerable<string>),
                 typeof(AutoCompleteBehavior),
                 new UIPropertyMetadata(null, OnAutoCompleteItemsSource)
             );
         /// <summary>
         /// Whether or not to ignore case when searching for matches.
         /// </summary>
-        public static readonly DependencyProperty AutoCompleteStringComparison =
+        public static readonly DependencyProperty AutoCompletestringComparison =
             DependencyProperty.RegisterAttached
             (
-                "AutoCompleteStringComparison",
+                "AutoCompletestringComparison",
                 typeof(StringComparison),
                 typeof(AutoCompleteBehavior),
                 new UIPropertyMetadata(StringComparison.Ordinal)
@@ -43,22 +46,32 @@ namespace Webmaster442.Applib.Behaviors
             DependencyProperty.RegisterAttached
             (
                 "AutoCompleteIndicator",
-                typeof(String),
+                typeof(string),
                 typeof(AutoCompleteBehavior),
-                new UIPropertyMetadata(String.Empty)
+                new UIPropertyMetadata(string.Empty)
             );
 
         #region Items Source
-        public static IEnumerable<String> GetAutoCompleteItemsSource(DependencyObject obj)
+        /// <summary>
+        /// Getter for AutoCompleteItemsSource
+        /// </summary>
+        /// <param name="obj">an instance of AutoCompleteItemsSource</param>
+        /// <returns>AutoCompleteItemsSource</returns>
+        public static IEnumerable<string> GetAutoCompleteItemsSource(DependencyObject obj)
         {
             object objRtn = obj.GetValue(AutoCompleteItemsSource);
-            if (objRtn is IEnumerable<String>)
-                return (objRtn as IEnumerable<String>);
+            if (objRtn is IEnumerable<string>)
+                return (objRtn as IEnumerable<string>);
 
             return null;
         }
 
-        public static void SetAutoCompleteItemsSource(DependencyObject obj, IEnumerable<String> value)
+        /// <summary>
+        /// Setter for AutoCompleteItemsSource
+        /// </summary>
+        /// <param name="obj">an instance of AutoCompleteItemsSource</param>
+        /// <param name="value">Value to set</param>
+        public static void SetAutoCompleteItemsSource(DependencyObject obj, IEnumerable<string> value)
         {
             obj.SetValue(AutoCompleteItemsSource, value);
         }
@@ -82,25 +95,45 @@ namespace Webmaster442.Applib.Behaviors
         }
         #endregion
 
-        #region String Comparison
-        public static StringComparison GetAutoCompleteStringComparison(DependencyObject obj)
+        #region string Comparison
+        /// <summary>
+        /// Getter for AutoCompletestringComparison
+        /// </summary>
+        /// <param name="obj">an instance of AutoCompleteItemsSource</param>
+        /// <returns>value of AutoCompletestringComparison</returns>
+        public static StringComparison GetAutoCompletestringComparison(DependencyObject obj)
         {
-            return (StringComparison)obj.GetValue(AutoCompleteStringComparison);
+            return (StringComparison)obj.GetValue(AutoCompletestringComparison);
         }
 
-        public static void SetAutoCompleteStringComparison(DependencyObject obj, StringComparison value)
+        /// <summary>
+        /// Setter for AutoCompletestringComparison
+        /// </summary>
+        /// <param name="obj">an instance of AutoCompleteItemsSource</param>
+        /// <param name="value">Value to set</param>
+        public static void SetAutoCompletestringComparison(DependencyObject obj, StringComparison value)
         {
-            obj.SetValue(AutoCompleteStringComparison, value);
+            obj.SetValue(AutoCompletestringComparison, value);
         }
         #endregion
 
         #region Indicator
-        public static String GetAutoCompleteIndicator(DependencyObject obj)
+        /// <summary>
+        /// Getter for AutoCompleteIndicator
+        /// </summary>
+        /// <param name="obj">an instance of AutoCompleteItemsSource</param>
+        /// <returns>value of AutoCompleteIndicator</returns>
+        public static string GetAutoCompleteIndicator(DependencyObject obj)
         {
-            return (String)obj.GetValue(AutoCompleteIndicator);
+            return (string)obj.GetValue(AutoCompleteIndicator);
         }
 
-        public static void SetAutoCompleteIndicator(DependencyObject obj, String value)
+        /// <summary>
+        /// Setter for AutoCompleteIndicator
+        /// </summary>
+        /// <param name="obj">an instance of AutoCompleteItemsSource</param>
+        /// <param name="value">Value to set</param>
+        public static void SetAutoCompleteIndicator(DependencyObject obj, string value)
         {
             obj.SetValue(AutoCompleteIndicator, value);
         }
@@ -146,21 +179,21 @@ namespace Webmaster442.Applib.Behaviors
             if (sender == null)
                 return;
 
-            IEnumerable<String> values = GetAutoCompleteItemsSource(tb);
+            IEnumerable<string> values = GetAutoCompleteItemsSource(tb);
             //No reason to search if we don't have any values.
             if (values == null)
                 return;
 
             //No reason to search if there's nothing there.
-            if (String.IsNullOrEmpty(tb.Text))
+            if (string.IsNullOrEmpty(tb.Text))
                 return;
 
             string indicator = GetAutoCompleteIndicator(tb);
             int startIndex = 0; //Start from the beginning of the line.
-            string matchingString = tb.Text;
+            string matchingstring = tb.Text;
             //If we have a trigger string, make sure that it has been typed before
             //giving auto-completion suggestions.
-            if (!String.IsNullOrEmpty(indicator))
+            if (!string.IsNullOrEmpty(indicator))
             {
                 startIndex = tb.Text.LastIndexOf(indicator);
                 //If we haven't typed the trigger string, then don't do anything.
@@ -168,18 +201,18 @@ namespace Webmaster442.Applib.Behaviors
                     return;
 
                 startIndex += indicator.Length;
-                matchingString = tb.Text.Substring(startIndex, (tb.Text.Length - startIndex));
+                matchingstring = tb.Text.Substring(startIndex, (tb.Text.Length - startIndex));
             }
 
             //If we don't have anything after the trigger string, return.
-            if (String.IsNullOrEmpty(matchingString))
+            if (string.IsNullOrEmpty(matchingstring))
                 return;
 
-            Int32 textLength = matchingString.Length;
+            int textLength = matchingstring.Length;
 
-            StringComparison comparer = GetAutoCompleteStringComparison(tb);
+            StringComparison comparer = GetAutoCompletestringComparison(tb);
             //Do search and changes here.
-            String match =
+            string match =
             (
                 from
                     value
@@ -190,15 +223,15 @@ namespace Webmaster442.Applib.Behaviors
                     where subvalue != null && subvalue.Length >= textLength
                     select subvalue
                 )
-                where value.Substring(0, textLength).Equals(matchingString, comparer)
+                where value.Substring(0, textLength).Equals(matchingstring, comparer)
                 select value.Substring(textLength, value.Length - textLength)/*Only select the last part of the suggestion*/
             ).FirstOrDefault();
 
             //Nothing.  Leave 'em alone
-            if (String.IsNullOrEmpty(match))
+            if (string.IsNullOrEmpty(match))
                 return;
 
-            int matchStart = (startIndex + matchingString.Length);
+            int matchStart = (startIndex + matchingstring.Length);
             tb.TextChanged -= _onTextChanged;
             tb.Text += match;
             tb.CaretIndex = matchStart;
