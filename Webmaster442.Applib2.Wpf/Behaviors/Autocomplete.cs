@@ -149,8 +149,7 @@ namespace Webmaster442.Applib.Behaviors
             if (e.Key != Key.Enter)
                 return;
 
-            TextBox tb = e.OriginalSource as TextBox;
-            if (tb == null)
+            if (!(e.OriginalSource is TextBox tb))
                 return;
 
             //If we pressed enter and if the selected text goes all the way to the end, move our caret position to the end
