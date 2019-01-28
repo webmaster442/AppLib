@@ -66,6 +66,7 @@
     <Compile Include="Controls\TransitionControl.cs" />
     <Compile Include="Controls\TransitionSelector.cs" />
     <Compile Include="Converters\BindingConverters\FilenameToIconConverter.cs" />
+    <Compile Include="Converters\BindingConverters\FileNameToSizeConverter.cs" />
     <Compile Include="Converters\BindingConverters\FrozenBitmapConverter.cs" />
     <Compile Include="Converters\BindingConverters\NullToVisibilityConverter.cs" />
     <Compile Include="Dialogs\BaseWindow.xaml.cs">
@@ -81,6 +82,7 @@
     <Compile Include="Extensions\HSL.cs" />
     <Compile Include="Extensions\VisualExtensions.cs" />
     <Compile Include="Internals\FileconExtractor.cs" />
+    <Compile Include="Internals\FileSizeCalculator.cs" />
     <Compile Include="Internals\ProgressToAngleConverter.cs" />
     <Compile Include="Internals\TransitionHelpers.cs" />
     <Compile Include="Converters\BindingConverters\BoolToVisibilityConverter.cs" />
